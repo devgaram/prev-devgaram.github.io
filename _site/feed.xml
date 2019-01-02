@@ -1,4 +1,163 @@
-<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="3.8.5">Jekyll</generator><link href="http://localhost:4000/feed.xml" rel="self" type="application/atom+xml" /><link href="http://localhost:4000/" rel="alternate" type="text/html" /><updated>2019-01-02T17:17:48+09:00</updated><id>http://localhost:4000/feed.xml</id><title type="html">It’s a piece of cake!</title><subtitle>프로가 되고싶은 초보개발자의 블로그입니다.</subtitle><author><name>devgaram</name><email>joingaram@gmail.com</email></author><entry><title type="html">npm 시작하기</title><link href="http://localhost:4000/npmstart1/" rel="alternate" type="text/html" title="npm 시작하기" /><published>2019-01-02T00:00:00+09:00</published><updated>2019-01-02T00:00:00+09:00</updated><id>http://localhost:4000/npmstart1</id><content type="html" xml:base="http://localhost:4000/npmstart1/">&lt;h2 id=&quot;1-npm이란&quot;&gt;1. npm이란?&lt;/h2&gt;
+<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="3.8.5">Jekyll</generator><link href="http://localhost:4000/feed.xml" rel="self" type="application/atom+xml" /><link href="http://localhost:4000/" rel="alternate" type="text/html" /><updated>2019-01-02T17:49:07+09:00</updated><id>http://localhost:4000/feed.xml</id><title type="html">It’s a piece of cake!</title><subtitle>프로가 되고싶은 초보개발자의 블로그입니다.</subtitle><author><name>devgaram</name><email>joingaram@gmail.com</email></author><entry><title type="html">npm Working with package.json</title><link href="http://localhost:4000/npmstart3/" rel="alternate" type="text/html" title="npm Working with package.json" /><published>2018-04-16T00:00:00+09:00</published><updated>2018-04-16T00:00:00+09:00</updated><id>http://localhost:4000/npmstart3</id><content type="html" xml:base="http://localhost:4000/npmstart3/">&lt;h2 id=&quot;5-working-with-packagejson&quot;&gt;5. Working with package.json&lt;/h2&gt;
+
+&lt;p&gt;로컬에 설치된 npm 패키지를 관리하는 최상의 방법은 package.json 파일을 생성하는 것입니다.&lt;/p&gt;
+
+&lt;p&gt;package.json 파일은 :&lt;/p&gt;
+&lt;ul&gt;
+  &lt;li&gt;프로젝트가 의존하고 있는 패키지들의 리스트를 보여줍니다.&lt;/li&gt;
+  &lt;li&gt;semantic versioning rule에 따라 프로젝트에 의존한 패키지들의 버전을 설정할 수 있습니다.&lt;/li&gt;
+  &lt;li&gt;빌드를 재현할 수 있으므로, 좀 더 쉽게 다른 개발자와 공유할 수 있습니다.&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h3 id=&quot;요구사항&quot;&gt;요구사항&lt;/h3&gt;
+
+&lt;p&gt;package.json 파일이 반드시 가져야하는 것&lt;/p&gt;
+&lt;ul&gt;
+  &lt;li&gt;“name”
+    &lt;ul&gt;
+      &lt;li&gt;소문자&lt;/li&gt;
+      &lt;li&gt;한단어, 띄어쓰기 허용X&lt;/li&gt;
+      &lt;li&gt;-(dashes) 와 _ (underscores) 허용O&lt;/li&gt;
+    &lt;/ul&gt;
+  &lt;/li&gt;
+  &lt;li&gt;“version”
+    &lt;ul&gt;
+      &lt;li&gt;x.x.x 형태&lt;/li&gt;
+      &lt;li&gt;semver spec을 따름&lt;/li&gt;
+    &lt;/ul&gt;
+  &lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt; {
+  &quot;name&quot; : &quot;my-awesome-package&quot;,
+  &quot;version&quot; : &quot;1.0.0&quot;
+}
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;h3 id=&quot;packagejson-파일-생성하기&quot;&gt;package.json 파일 생성하기&lt;/h3&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&amp;gt; npm init
+또는
+&amp;gt; npm init --yes 
+#--yes === -y
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+&lt;p&gt;위 명령어는 현재 디렉토리로부터 정보를 추출해서 해당 package.json 파일을 생성합니다.&lt;/p&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;{
+  &quot;name&quot;: &quot;my_package&quot;,
+  &quot;description&quot;: &quot;&quot;,
+  &quot;version&quot;: &quot;1.0.0&quot;,
+  &quot;main&quot;: &quot;index.js&quot;,
+  &quot;scripts&quot;: {
+    &quot;test&quot;: &quot;echo \&quot;Error: no test specified\&quot; &amp;amp;&amp;amp; exit 1&quot;
+  },
+  &quot;repository&quot;: {
+    &quot;type&quot;: &quot;git&quot;,
+    &quot;url&quot;: &quot;https://github.com/ashleygwilliams/my_package.git&quot;
+  },
+  &quot;keywords&quot;: [],
+  &quot;author&quot;: &quot;&quot;,
+  &quot;license&quot;: &quot;ISC&quot;,
+  &quot;bugs&quot;: {
+    &quot;url&quot;: &quot;https://github.com/ashleygwilliams/my_package/issues&quot;
+  },
+  &quot;homepage&quot;: &quot;https://github.com/ashleygwilliams/my_package&quot;
+}
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+&lt;ul&gt;
+  &lt;li&gt;name : 현재 디렉토리 이름&lt;/li&gt;
+  &lt;li&gt;version : 항상 1.0.0&lt;/li&gt;
+  &lt;li&gt;description : readme 정보 또는 “”&lt;/li&gt;
+  &lt;li&gt;main : 항상 index.js&lt;/li&gt;
+  &lt;li&gt;scripts : 기존적으로 빈 테스트 스크립트를 만든다.&lt;/li&gt;
+  &lt;li&gt;keywords : empty&lt;/li&gt;
+  &lt;li&gt;author : empty&lt;/li&gt;
+  &lt;li&gt;license : ISC&lt;/li&gt;
+  &lt;li&gt;bugs : 현재 디렉토리의 정보&lt;/li&gt;
+  &lt;li&gt;homepage : 현재 디렉토리의 정보&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;다음과 같이 명령어 실행시 옵션을 설정할 수 있습니다.&lt;/p&gt;
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt; &amp;gt; npm set init.author.email &quot;wombat@npmjs.com&quot;
+ &amp;gt; npm set init.author.name &quot;ag_dubs&quot; 
+ &amp;gt; npm set init.license &quot;MIT&quot; 
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;h3 id=&quot;dependencies-지정하기&quot;&gt;Dependencies 지정하기&lt;/h3&gt;
+
+&lt;p&gt;프로젝트가 의존하는 패키지를 지정하려면 package.json 파일에 사용할 패키지들을 나열해야합니다. 그리고 패키지들은 두 개의 타입으로 나열될 수 있습니다.&lt;/p&gt;
+&lt;ul&gt;
+  &lt;li&gt;“dependencies” : 프로젝트 배포 시&lt;/li&gt;
+  &lt;li&gt;“devDependencies” : 프로젝트 개발 또는 테스트 시&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;package.jsondp dependencies를 추가하는 더 쉬운 방법은 npm install 명령어 실행시 –save 또는 –save-dev 플래그를 사용하는 것 입니다.&lt;/p&gt;
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&amp;gt; npm install &amp;lt;package_name&amp;gt; --save
+&amp;gt; npm install &amp;lt;package_name&amp;gt; --save-dev
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;</content><author><name>devgaram</name><email>joingaram@gmail.com</email></author><category term="npm" /><summary type="html">5. Working with package.json</summary></entry><entry><title type="html">npm 로컬 패키지 설치하기</title><link href="http://localhost:4000/npmstart2/" rel="alternate" type="text/html" title="npm 로컬 패키지 설치하기" /><published>2018-04-13T00:00:00+09:00</published><updated>2018-04-13T00:00:00+09:00</updated><id>http://localhost:4000/npmstart2</id><content type="html" xml:base="http://localhost:4000/npmstart2/">&lt;h2 id=&quot;4-로컬에-패키지를-설치해보자&quot;&gt;4. 로컬에 패키지를 설치해보자&lt;/h2&gt;
+
+&lt;p&gt;패키지를 어떤 방식으로 사용하는지에 따라 우리는 로컬 또는 전역에 npm 패키지를 설치할 수 있습니다.&lt;/p&gt;
+&lt;ul&gt;
+  &lt;li&gt;Node.js의 require을 사용하여 당신의 모듈에서 패키지를 사용하려면 로컬로 설치하면 됩니다. 이는 npm 설치의 기본 동작입니다.&lt;/li&gt;
+  &lt;li&gt;패키지를 CLI와 같은 커맨드 라인 툴에서 사용하려면 전역으로 설치하면 됩니다.&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h3 id=&quot;패키지-다운로드하기&quot;&gt;패키지 다운로드하기&lt;/h3&gt;
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&amp;gt; npm install &amp;lt;package_name&amp;gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+&lt;p&gt;명령어를 실행하면 현재 디렉토리에 node_modules 디렉토리가 생성됩니다. (node_modules 디렉토리가 없을 경우)
+그리고 node_modules 디렉토리 안에 다운로드 받은 패키지가 존재하게됩니다.&lt;/p&gt;
+
+&lt;h3 id=&quot;설치된-패키지-어떤-버전일까&quot;&gt;설치된 패키지 어떤 버전일까?&lt;/h3&gt;
+
+&lt;p&gt;로컬 디렉토리에 package.json 파일이 없다면, 가장 최신 버전의 패키지가 설치됩니다. package.json 파일이 있으면 npm은 package.json 파일에 선언된 semver rule을 만족하는 최신버전을 설치합니다.&lt;/p&gt;
+
+&lt;p&gt;예) package.json&lt;/p&gt;
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;...
+&quot;dependencies&quot; : {
+&quot;lodash&quot; : &quot;~1.0.4&quot;
+}
+....
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+&lt;p&gt;npm은 package.json에 따라 1.0.4 버전의 lodash 패키지를 설치하게됩니다.&lt;/p&gt;
+
+&lt;h3 id=&quot;패키지를-어떻게-사용할까&quot;&gt;패키지를 어떻게 사용할까?&lt;/h3&gt;
+
+&lt;p&gt;일단 node_modules 디렉토리에 패키지가 있다면, 우리의 코드에서 패키지를 사용할 수 있습니다.&lt;/p&gt;
+
+&lt;p&gt;예) index.js 파일&lt;/p&gt;
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;var lodash = require('lodash');
+var output = lodash.without([1,2,3],1);
+console.log(output);    // 결과 : [2,3]
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+&lt;p&gt;만약 lodash 패키지가 설치되지않았다면 Error : Cannot find module ‘lodash’ 에러를 보게될 것 입니다.&lt;/p&gt;
+
+&lt;h2 id=&quot;7-로컬에-설치된-패키지-삭제해보자&quot;&gt;7. 로컬에 설치된 패키지 삭제해보자&lt;/h2&gt;
+
+&lt;p&gt;node_modules 디렉토리의 패키지를 삭제하는 명령어&lt;/p&gt;
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&amp;gt; npm uninstall lodash
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;package.json의 dependecies에서 패키지를 제거하려면 save 플래그를 사용해야합니다.&lt;/p&gt;
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&amp;gt; npm uninstall --save lodash
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+&lt;p&gt;&lt;strong&gt;Note:&lt;/strong&gt; 패키지가 devDependency로 설치된 경우, package.json에서 제거하는 방법은 다음과 같습니다.&lt;/p&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&amp;gt; npm uninstall --save-dev lodash
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+&lt;p&gt;node_modules 디렉토리에 해당 패키지가 없다면 삭제가 정상적으로 된 것입니다.&lt;/p&gt;
+
+&lt;h2 id=&quot;810-전역에-패키지를-설치업데이트삭제-해보기&quot;&gt;8~10. 전역에 패키지를 설치/업데이트/삭제 해보기&lt;/h2&gt;
+
+&lt;p&gt;패키지 설치&lt;/p&gt;
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&amp;gt; npm install -g jshint
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+&lt;p&gt;패키지업데이트&lt;/p&gt;
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&amp;gt; npm update -g jshint
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+&lt;p&gt;패키지 삭제&lt;/p&gt;
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&amp;gt; npm uninstall -g jshint
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;</content><author><name>devgaram</name><email>joingaram@gmail.com</email></author><category term="npm" /><summary type="html">4. 로컬에 패키지를 설치해보자</summary></entry><entry><title type="html">npm 시작하기</title><link href="http://localhost:4000/npmstart1/" rel="alternate" type="text/html" title="npm 시작하기" /><published>2018-04-11T00:00:00+09:00</published><updated>2018-04-11T00:00:00+09:00</updated><id>http://localhost:4000/npmstart1</id><content type="html" xml:base="http://localhost:4000/npmstart1/">&lt;h2 id=&quot;1-npm이란&quot;&gt;1. npm이란?&lt;/h2&gt;
 
 &lt;h3 id=&quot;npm은-어떻게-구성되어있을까&quot;&gt;npm은 어떻게 구성되어있을까?&lt;/h3&gt;
 
@@ -60,4 +219,4 @@ Node.js를 설치할 때, npm은 자동적으로 설치됩니다. 하지만, npm
 #npm 버전을 확인합니다.
 &amp;gt;npm install npm@latest -g
 #최신버전으로 업데이트합니다.
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;</content><author><name>devgaram</name><email>joingaram@gmail.com</email></author><summary type="html">1. npm이란?</summary></entry></feed>
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;</content><author><name>devgaram</name><email>joingaram@gmail.com</email></author><category term="npm" /><summary type="html">1. npm이란?</summary></entry></feed>
