@@ -19,7 +19,7 @@ locale                   : "ko"
 title                    : "It's a piece of cake!"
 title_separator          : "-"
 name                     : "devgaram"
-description              : "프로가 되고싶은 초보개발자의 블로그입니다."
+description              : "초보개발자의 블로그입니다."
 url                      : "https://devgaram.github.io" # the base hostname & protocol for your site e.g. "https://mmistakes.github.io"
 baseurl                  : # the subpath of your site, e.g. "/blog"
 repository               : "devgaram/devgaram.github.io" # GitHub username/repo-name e.g. "mmistakes/minimal-mistakes"
@@ -104,14 +104,14 @@ analytics:
 # Site Author
 author:
   name             : "devgaram"
-  avatar           : # path of avatar image, e.g. "/assets/images/bio-photo.jpg"
-  bio              : "프로가 되고싶은 초보 개발자"
+  avatar           : "/assets/images/garam-author.jpg"
+  bio              : " 생각을 정리하고 싶은 초보개발자"
   location         : "Gyeonggi-do"
   email            : "joingaram@gmail.com"
   links:
     - label: "Email"
       icon: "fas fa-fw fa-envelope-square"
-      # url: mailto:your.name@email.com
+      #url: mailto:joingaram@gmail.com
     - label: "Website"
       icon: "fas fa-fw fa-link"
       # url: "https://your-website.com"
@@ -123,7 +123,7 @@ author:
       # url: "https://facebook.com/"
     - label: "GitHub"
       icon: "fab fa-fw fa-github"
-      # url: "https://github.com/"
+      url: "https://github.com/devgaram"
     - label: "Instagram"
       icon: "fab fa-fw fa-instagram"
       # url: "https://instagram.com/"
@@ -290,3 +290,5 @@ defaults:
       comments: # true
       share: true
       related: true
+      classes: wide
+

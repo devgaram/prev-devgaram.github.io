@@ -39,7 +39,7 @@
   font-family: $sans-serif-narrow;
   line-height: initial;
   overflow: hidden;
-  text-overflow: ellipsis;
+  text-overflow: ellipsis;  
 
   a::before {
     content: '';
@@ -51,7 +51,7 @@
   }
 
   a + a {
-    opacity: 0.5;
+    opacity: 0.5;    
   }
 }
 

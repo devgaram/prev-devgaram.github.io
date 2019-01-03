@@ -127,7 +127,7 @@
   }
 
   img {
-    max-width: 110px;
+    max-width: 200px;
     border-radius: 50%;
 
     @include breakpoint($large) {
@@ -143,6 +143,7 @@
   padding-left: 15px;
   padding-right: 25px;
   line-height: 1;
+  color: #34314c;
 
   @include breakpoint($large) {
     display: block;
@@ -187,6 +188,7 @@
   z-index: 10;
   position: relative;
   cursor: pointer;
+  color: #34314c;
 
   li:last-child {
     a {
