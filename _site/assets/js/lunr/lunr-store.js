@@ -18,4 +18,9 @@ var store = [{
         "excerpt":"5. Working with package.json 로컬에 설치된 npm 패키지를 관리하는 최상의 방법은 package.json 파일을 생성하는 것입니다. package.json 파일은 : 프로젝트가 의존하고 있는 패키지들의 리스트를 보여줍니다. semantic versioning rule에 따라 프로젝트에 의존한 패키지들의 버전을 설정할 수 있습니다. 빌드를 재현할 수 있으므로, 좀 더 쉽게 다른 개발자와 공유할 수 있습니다. 요구사항 package.json 파일이...","categories": [],
         "tags": ["npm"],
         "url": "http://localhost:4000/npmstart3/",
+        "teaser":"http://localhost:4000/true"},{
+        "title": "안드로이드 시작하기 앞서 기초 학습",
+        "excerpt":"안드로이드 학습을 시작하기 전에 간단히 자바 기본 개념을 정리했습니다. 안드로이드 기초 안드로이드 4대 구성요소 액티비티 화면 하나당 하나의 액티비티 가짐. 여러개의 액티비티 중 하나가 메인 액티비티가 되며 manifest에 정의된다. 리시버 전화&amp;문자 수신, 배터리 부족 등의 브로드캐스트를 수신하는 객체 프로바이더 데이터베이스나 파일 등의 정보를 외부의 앱에 공개하기 위한 객체. ContentProvider 클래스를...","categories": [],
+        "tags": ["android"],
+        "url": "http://localhost:4000/android-base/",
         "teaser":"http://localhost:4000/true"}]
