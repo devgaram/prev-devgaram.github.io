@@ -19,8 +19,13 @@ var store = [{
         "tags": ["npm"],
         "url": "http://localhost:4000/npmstart3/",
         "teaser":"http://localhost:4000/true"},{
-        "title": "안드로이드 시작하기 앞서 기초 학습",
+        "title": "(안드로이드) 시작하기 앞서 기초 학습",
         "excerpt":"안드로이드 학습을 시작하기 전에 간단히 자바 기본 개념을 정리했습니다. 안드로이드 기초 안드로이드 4대 구성요소 액티비티 화면 하나당 하나의 액티비티 가짐. 여러개의 액티비티 중 하나가 메인 액티비티가 되며 manifest에 정의된다. 리시버 전화&amp;문자 수신, 배터리 부족 등의 브로드캐스트를 수신하는 객체 프로바이더 데이터베이스나 파일 등의 정보를 외부의 앱에 공개하기 위한 객체. ContentProvider 클래스를...","categories": [],
         "tags": ["android"],
         "url": "http://localhost:4000/android-base/",
+        "teaser":"http://localhost:4000/true"},{
+        "title": "(안드로이드) 어댑터뷰를 사용해보자",
+        "excerpt":"[될때까지 안드로이드] 어댑터뷰 파트의 내용을 정리한 글입니다. ListView 와 GridView 반복되고 양이 많은 데이터를 표시하고 싶을 때 이미지와 같이 메모리를 차지하는 리소스를 표시하고 싶을 때 모두 AdapterView 추상클래스를 상속받아 어댑터 패턴을 사용하여 데이터를 뷰에 표시한다. ScrollView의 경우 한번에 모든 컨텐츠를 로드하므로 컨텐츠가 메모리를 많이 사용할 경우 메모리 부족으로 앱이 종료될...","categories": [],
+        "tags": ["android"],
+        "url": "http://localhost:4000/android-adapter/",
         "teaser":"http://localhost:4000/true"}]
