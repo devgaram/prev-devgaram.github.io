@@ -5,7 +5,7 @@
 .archive {
   margin-top: 0.75em;
   margin-bottom: 2em;
-  font-size: $type-size-6;
+    
   @include breakpoint($large) {
     float: right;
     width: calc(100% - #{$right-sidebar-width-narrow});
@@ -29,6 +29,10 @@
   hr {
     border-top: 1px solid #34314c;
   }
+  .font-75 {
+    font-size: $type-size-5-2;
+  }
+  
 }
 
 .archive__item {
@@ -39,11 +43,11 @@
   margin: 1.414em 0 0;
   padding-bottom: 0.5em;
   font-size: $type-size-5;
-  color: $muted-text-color;
-  border-bottom: 1px solid $border-color;
+  color: $muted-text-custom-color;
+  border-bottom: 1px solid $border-color-custom;
 
   + .list__item .archive__item-title {
-    margin-top: 0.5em;
+    margin-top: 0.5em;    
   }
 }
 
@@ -53,6 +57,7 @@
   line-height: initial;
   overflow: hidden;
   text-overflow: ellipsis;  
+  font-size: $type-size-5-1;
 
   a::before {
     content: '';

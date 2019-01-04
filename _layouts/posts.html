@@ -1,8 +1,9 @@
 ---
 layout: archive
 ---
-
+<span class="font-75">
 {{ content }}
+</span>
 
 <ul class="taxonomy__index">
   {% assign postsInMonth = site.posts | group_by_exp: 'post', 'post.date | date: "%B %Y"' %}

@@ -14,6 +14,9 @@ $(document).ready(function() {
   $(window).resize(function() {
     didResize = true;
   });
+  /* 스크롤시 메인 헤더 이미지 marin 이동 */
+  $(window).scroll(function(event){console.log("추가";)});
+
   setInterval(function() {
     if (didResize) {
       didResize = false;
