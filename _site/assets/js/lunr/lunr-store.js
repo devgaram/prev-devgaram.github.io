@@ -28,4 +28,14 @@ var store = [{
         "excerpt":"[될때까지 안드로이드] 어댑터뷰 파트의 내용을 정리한 글입니다. ListView 와 GridView 반복되고 양이 많은 데이터를 표시하고 싶을 때 이미지와 같이 메모리를 차지하는 리소스를 표시하고 싶을 때 모두 AdapterView 추상클래스를 상속받아 어댑터 패턴을 사용하여 데이터를 뷰에 표시한다. ScrollView의 경우 한번에 모든 컨텐츠를 로드하므로 컨텐츠가 메모리를 많이 사용할 경우 메모리 부족으로 앱이 종료될...","categories": [],
         "tags": ["android"],
         "url": "http://localhost:4000/android-adapter/",
+        "teaser":"http://localhost:4000/true"},{
+        "title": "(안드로이드) RecyclerView를 사용하자",
+        "excerpt":"[될 때까지 안드로이드]의 RecyclerView 파트를 정리한 내용입니다. 어댑터 뷰의 성능을 개선한 컴포넌트로 애니메이션을 지원하고 뷰홀더 패턴을 강제한다. 대신 이벤트 리스너와 커서를 지원하지 않는 단점이 있다. 어댑터 뷰의 단점 빠르게 스크롤 할 때 성능문제와 불필요한 지연 문제가 있다. 데이터 목록이 변경되었을 때, notifyDataSetChanged() 메서드를 빈번하게 호출하여 전체 아이템을 갱신하는 데 비용이...","categories": [],
+        "tags": ["android"],
+        "url": "http://localhost:4000/android-recycler/",
+        "teaser":"http://localhost:4000/true"},{
+        "title": "(안드로이드) fragment를 사용하자",
+        "excerpt":"[될 때까지 안드로이드]의 fragment 파트를 정리한 내용입니다. 기본 프래그먼트 구현 예제. 다이얼로그 프래그먼트 구현 예제. 콜백 구현 예제. 여러 개의 프래그먼트를 하나의 액티비티에 조합하여 창이 여러 개인 UI를 구축할 때 사용할 수 있다. 하나의 프래그먼트를 여러 액티비티에서 재사용할 수 있으며,동적으로 추가, 삭제, 교체가 쉽다. 프래그먼트는 자체 수명 주기를 가진다. 프래그먼트는...","categories": [],
+        "tags": ["android"],
+        "url": "http://localhost:4000/android-fragment/",
         "teaser":"http://localhost:4000/true"}]
