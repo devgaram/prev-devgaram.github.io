@@ -1,4 +1,24 @@
 var store = [{
+        "title": "(JS) call()과 apply()",
+        "excerpt":"call() 과 apply() 메서드를 이용하여 명시적으로 this에 바인딩할 수 있습니다. 모든 함수의 부모 객체인 Function.prototype 객체의 메서드라서 모든 함수에서 호출 가능합니다. Function.prototype.apply() fun.apply(thisArg, [argArray]) fun 메서드를 호출할 때, fun 내부의 this를 매개변수인 thisArg로 바인딩 시킵니다. argArray는 fun 메서드에서 인자로 사용됩니다. argArray : 배열리터럴, Array 객체 Function.prototype.call() fun.call(thisArg[,arg1[,arg2[,....]]]) apply와 기능이 같으며,...","categories": [],
+        "tags": ["javascript"],
+        "url": "http://localhost:4000/javascript-callapply/",
+        "teaser":"http://localhost:4000/true"},{
+        "title": "(생활코딩) Javascript 입문1",
+        "excerpt":"생활코딩 URL : https://opentutorials.org/course/743 생활코딩 강의에서 기억하고 싶었던 내용을 포스팅해보았다. 변수의 효용을 이해하자. 필요에 의해서 변할 수 있는 영역과 변하지 않는 영역을 구분해서 코딩해야한다. 재활용 가능해진다. 유지보수 용이해진다. 비교 alert( 1 === \"1\"); //false 데이터타입[형식]도 동일해야함.**이걸쓰자! alert( 1 == \"1\"); //true 버그발생 가능성 높음.. var a; alert(a); //undefined 값이 정의되지...","categories": [],
+        "tags": ["javascript"],
+        "url": "http://localhost:4000/javascript-opentutorials-1/",
+        "teaser":"http://localhost:4000/true"},{
+        "title": "(생활코딩) Javascript 입문2",
+        "excerpt":"생활코딩 URL https://opentutorials.org/course/743/ 반복문, 함수 정의방법, 배열, 객체 반복문 for( var i=0; i&lt;10; i++){ if( i === 5) break; // 그 즉시, for문 중단 - coding1~4 까지만 출력됨 if( i === 5) continue; // 실행을 중단하고 반복문 이어서 함. - coding1~4/6~9까지 출력됨. document.write(\"coding\"+i+\"&lt;br/&gt;\"); } 함수 정의 방법 // [첫번째 방법]...","categories": [],
+        "tags": ["javascript"],
+        "url": "http://localhost:4000/javascript-opentutorials-2/",
+        "teaser":"http://localhost:4000/true"},{
+        "title": "(생활코딩) Javascript 입문3",
+        "excerpt":"생활코딩 javscript 과정 중 정규표현식 내용을 정리했습니다. 정규표현식(Regular Expression) 문자열에서 특정 문자를 찾을 때 사용 .. * 나중에 생활코딩 정규표현식 강의도 듣기!! &amp; 전화번호 때 사용했던 경험 넣기 컴파일 -&gt; 실행 단계로 이뤄진다. 컴파일 : 찾고 싶은 패턴을 만듬. 실행 : 문자열에서 패턴을 추출. 정규표현식 객체를 만드는 방법 1) var...","categories": [],
+        "tags": ["javascript"],
+        "url": "http://localhost:4000/javascript-opentutorials-3/",
+        "teaser":"http://localhost:4000/true"},{
         "title": "Vue2 65분만에 배우기!",
         "excerpt":"유튜브 영상 The Vue Tutorial for 2018 - Learn Vue 2 in 65 Minutes 중 몰랐던 내용 정리한 글입니다. 1. Vue-CLI 설치하기 Vue-CLI를 통해 Vue 프로젝트를 빠르고 쉽게 생성할 수 있다. &gt; mkdir vue-toy &gt; cd vue-toy &gt; npm install -g @vue/cli -- Vue-CLI 설치 &gt; vue create vue-voca --...","categories": [],
         "tags": ["vuejs"],
