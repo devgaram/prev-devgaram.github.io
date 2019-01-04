@@ -7,3 +7,4 @@
 @import "minimal-mistakes/skins/{{ site.minimal_mistakes_skin | default: 'default' }}"; // skin
 @import "minimal-mistakes"; // main partials
 @import url(http://fonts.googleapis.com/earlyaccess/nanumgothic.css);	// 나눔고딕
+@import url(//fonts.googleapis.com/earlyaccess/jejugothic.css); // 제주고딕

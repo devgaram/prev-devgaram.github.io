@@ -1,8 +1,145 @@
-<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="3.8.5">Jekyll</generator><link href="http://localhost:4000/feed.xml" rel="self" type="application/atom+xml" /><link href="http://localhost:4000/" rel="alternate" type="text/html" /><updated>2019-01-04T11:42:48+09:00</updated><id>http://localhost:4000/feed.xml</id><title type="html">It’s a piece of cake!</title><subtitle>초보개발자의 블로그입니다.</subtitle><author><name>devgaram</name><email>joingaram@gmail.com</email></author><entry><title type="html">안드로이드 시작하기 앞서 기초 학습</title><link href="http://localhost:4000/android-base/" rel="alternate" type="text/html" title="안드로이드 시작하기 앞서 기초 학습" /><published>2018-11-30T00:00:00+09:00</published><updated>2018-11-30T00:00:00+09:00</updated><id>http://localhost:4000/android-base</id><content type="html" xml:base="http://localhost:4000/android-base/">&lt;p&gt;안드로이드 학습을 시작하기 전에 간단히 자바 기본 개념을 정리했습니다.&lt;/p&gt;
+<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="3.8.5">Jekyll</generator><link href="http://localhost:4000/feed.xml" rel="self" type="application/atom+xml" /><link href="http://localhost:4000/" rel="alternate" type="text/html" /><updated>2019-01-04T17:57:24+09:00</updated><id>http://localhost:4000/feed.xml</id><title type="html">It’s a piece of cake!</title><subtitle>초보개발자의 블로그입니다.</subtitle><author><name>devgaram</name><email>joingaram@gmail.com</email></author><entry><title type="html">(안드로이드) 어댑터뷰를 사용해보자</title><link href="http://localhost:4000/android-adapter/" rel="alternate" type="text/html" title="(안드로이드) 어댑터뷰를 사용해보자" /><published>2018-12-02T00:00:00+09:00</published><updated>2018-12-02T00:00:00+09:00</updated><id>http://localhost:4000/android-adapter</id><content type="html" xml:base="http://localhost:4000/android-adapter/">&lt;p&gt;[될때까지 안드로이드] 어댑터뷰 파트의 내용을 정리한 글입니다.&lt;/p&gt;
 
-&lt;h2 id=&quot;안드로이드-기초&quot;&gt;안드로이드 기초&lt;/h2&gt;
+&lt;p&gt;ListView 와 GridView&lt;/p&gt;
+&lt;ul&gt;
+  &lt;li&gt;반복되고 양이 많은 데이터를 표시하고 싶을 때&lt;/li&gt;
+  &lt;li&gt;이미지와 같이 메모리를 차지하는 리소스를 표시하고 싶을 때&lt;/li&gt;
+  &lt;li&gt;모두 AdapterView 추상클래스를 상속받아 어댑터 패턴을 사용하여 데이터를 뷰에 표시한다.&lt;/li&gt;
+  &lt;li&gt;ScrollView의 경우 한번에 모든 컨텐츠를 로드하므로 컨텐츠가 메모리를 많이 사용할 경우 메모리 부족으로 앱이 종료될 수 있다.&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h1 id=&quot;adapterview&quot;&gt;AdapterView&lt;/h1&gt;
 &lt;hr /&gt;
-&lt;h3 id=&quot;안드로이드-4대-구성요소&quot;&gt;안드로이드 4대 구성요소&lt;/h3&gt;
+&lt;p&gt;AdapterView를 상속받은 뷰들은 화면에 보이는 내용만 로드하는 기법을 사용한다.&lt;/p&gt;
+
+&lt;h2 id=&quot;1-adapterview의-구현&quot;&gt;1. AdapterView의 구현&lt;/h2&gt;
+
+&lt;p&gt;데이터 준비하기&lt;/p&gt;
+&lt;div class=&quot;language-java highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;c1&quot;&gt;//MainActivity.java&lt;/span&gt;
+&lt;span class=&quot;n&quot;&gt;ArrayList&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;&amp;lt;&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;Weather&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;&amp;gt;&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;data&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;new&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;ArrayList&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;&amp;lt;&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;Weather&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;&amp;gt;()&lt;/span&gt;
+&lt;span class=&quot;n&quot;&gt;data&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;na&quot;&gt;add&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;k&quot;&gt;new&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;Weather&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;수원&quot;&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;&quot;25도&quot;&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;&quot;맑음&quot;&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;));&lt;/span&gt;
+&lt;span class=&quot;n&quot;&gt;data&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;na&quot;&gt;add&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;k&quot;&gt;new&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;Weather&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;안양&quot;&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;&quot;22도&quot;&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;&quot;비&quot;&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;));&lt;/span&gt;
+&lt;span class=&quot;n&quot;&gt;data&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;na&quot;&gt;add&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;k&quot;&gt;new&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;Weather&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;부천&quot;&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;&quot;22도&quot;&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;&quot;구름&quot;&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;));&lt;/span&gt;
+&lt;span class=&quot;n&quot;&gt;data&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;na&quot;&gt;add&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;k&quot;&gt;new&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;Weather&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;성남&quot;&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;&quot;24도&quot;&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;&quot;맑음&quot;&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;));&lt;/span&gt;
+&lt;span class=&quot;n&quot;&gt;data&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;na&quot;&gt;add&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;k&quot;&gt;new&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;Weather&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;서울&quot;&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;&quot;28도&quot;&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;&quot;구름&quot;&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;));&lt;/span&gt;
+&lt;span class=&quot;n&quot;&gt;data&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;na&quot;&gt;add&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;k&quot;&gt;new&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;Weather&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;광주&quot;&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;&quot;30도&quot;&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;&quot;비&quot;&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;));&lt;/span&gt;
+&lt;span class=&quot;n&quot;&gt;data&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;na&quot;&gt;add&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;k&quot;&gt;new&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;Weather&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;부산&quot;&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;&quot;20도&quot;&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;&quot;비&quot;&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;));&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;데이터를 뷰에 연결해 줄 어댑터를 준비한다.&lt;/p&gt;
+
+&lt;div class=&quot;language-java highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;c1&quot;&gt;//MainActivity.java&lt;/span&gt;
+&lt;span class=&quot;n&quot;&gt;MyFirstAdapter&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;adapter&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;new&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;MyFirstAdapter&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;data&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;);&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;뷰에 어댑터를 붙인다.&lt;/p&gt;
+&lt;div class=&quot;language-java highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;c1&quot;&gt;//MainActivity.java&lt;/span&gt;
+&lt;span class=&quot;n&quot;&gt;ListView&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;listView&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;ListView&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;findViewById&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;R&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;na&quot;&gt;id&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;na&quot;&gt;list_view&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;);&lt;/span&gt;
+&lt;span class=&quot;n&quot;&gt;listView&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;na&quot;&gt;setAdapter&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;adapter&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;);&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;h2 id=&quot;2-클릭-이벤트-구현&quot;&gt;2. 클릭 이벤트 구현&lt;/h2&gt;
+&lt;p&gt;public static interface AdapterView.OnItemClickListener    &lt;br /&gt;
+&lt;span class=&quot;clr-grey&quot;&gt;android.widget.AdapterView.OnItemClickListener : 어댑터뷰의 아이템 클릭시 호출되는 콜백 메서드를 정의한 인터페이스&lt;/span&gt;&lt;/p&gt;
+
+&lt;p&gt;public abstract void onItemClick (AdapterView&amp;lt;?&amp;gt; parent, View view, int position, long id)   &lt;br /&gt;
+&lt;span class=&quot;clr-grey&quot;&gt;
+parent : 클릭이 일어난 AdapterView  &lt;br /&gt;
+view : AdapterView 안의 클릭된 View = 클릭된 아이템 뷰  &lt;br /&gt;
+position : 클릭된 아이템 뷰의 위치  &lt;br /&gt;
+id : 클릭된 아이템 뷰의 row ID
+&lt;/span&gt;&lt;/p&gt;
+&lt;div class=&quot;language-java highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;n&quot;&gt;listView&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;na&quot;&gt;setOnItemClickListener&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;k&quot;&gt;new&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;AdapterView&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;na&quot;&gt;OnItemClickListener&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;()&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;{&lt;/span&gt;
+  &lt;span class=&quot;nd&quot;&gt;@Override&lt;/span&gt;
+  &lt;span class=&quot;kd&quot;&gt;public&lt;/span&gt; &lt;span class=&quot;kt&quot;&gt;void&lt;/span&gt; &lt;span class=&quot;nf&quot;&gt;onItemClick&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;AdapterView&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;&amp;lt;?&amp;gt;&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;parent&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;View&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;view&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;kt&quot;&gt;int&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;position&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;kt&quot;&gt;long&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;id&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;{&lt;/span&gt;
+    &lt;span class=&quot;n&quot;&gt;Toast&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;na&quot;&gt;makeText&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;MainActivity&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;na&quot;&gt;this&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;position&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;+&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;&quot; 번째 아이템 선택&quot;&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;Toast&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;na&quot;&gt;LENGTH_SHORT&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;).&lt;/span&gt;&lt;span class=&quot;na&quot;&gt;show&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;();&lt;/span&gt;
+   &lt;span class=&quot;o&quot;&gt;}&lt;/span&gt;
+&lt;span class=&quot;o&quot;&gt;});&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;h2 id=&quot;3-예제-구성&quot;&gt;3. 예제 구성&lt;/h2&gt;
+
+&lt;ol&gt;
+  &lt;li&gt;
+    &lt;p&gt;Weather.java
+날씨를 표현하는 모델클래스  &lt;br /&gt;
+&lt;span class=&quot;clr-grey&quot;&gt; toString() : 모든 클래스가 가지고 있는 기본메서디로 디버깅이나 로그에서 정보 확인을 위해 toString() 메서드 재정의한다. &lt;/span&gt;&lt;/p&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;p&gt;MyFirstAdapter.java  &lt;br /&gt;
+추상클래스인 BaseAdapter를 상속받는 클래스로 추상 메서드들을 구현해야 한다.  &lt;br /&gt;
+&lt;span class=&quot;clr-grey&quot;&gt; Note: BaseAdapter는 어댑터의 기능을 추상화해 둔 추상 클래스, 각 메서드 재정의 필요 &lt;/span&gt;&lt;/p&gt;
+  &lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;div class=&quot;language-java highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt; &lt;span class=&quot;nd&quot;&gt;@Override&lt;/span&gt;
+    &lt;span class=&quot;kd&quot;&gt;public&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;View&lt;/span&gt; &lt;span class=&quot;nf&quot;&gt;getView&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;kt&quot;&gt;int&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;position&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;View&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;convertView&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;ViewGroup&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;parent&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;{&lt;/span&gt;
+        &lt;span class=&quot;cm&quot;&gt;/**
+         * LayoutInflater 클래스란?
+         * Activity 이외의 클래스에서 Context를 통해 XML로 정의한 레이아웃을 로드하여 View로 반환해주는 클래스
+         */&lt;/span&gt;
+        &lt;span class=&quot;n&quot;&gt;ViewHolder&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;holder&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;;&lt;/span&gt;
+        &lt;span class=&quot;k&quot;&gt;if&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;convertView&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;==&lt;/span&gt; &lt;span class=&quot;kc&quot;&gt;null&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;{&lt;/span&gt;
+            &lt;span class=&quot;n&quot;&gt;holder&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;new&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;ViewHolder&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;();&lt;/span&gt;
+            &lt;span class=&quot;n&quot;&gt;convertView&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;LayoutInflater&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;na&quot;&gt;from&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;parent&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;na&quot;&gt;getContext&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;()).&lt;/span&gt;&lt;span class=&quot;na&quot;&gt;inflate&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;R&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;na&quot;&gt;layout&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;na&quot;&gt;item_weather&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;parent&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;kc&quot;&gt;false&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;);&lt;/span&gt;
+            &lt;span class=&quot;n&quot;&gt;ImageView&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;weatherImage&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;ImageView&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;convertView&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;na&quot;&gt;findViewById&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;R&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;na&quot;&gt;id&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;na&quot;&gt;weather_image&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;);&lt;/span&gt;
+            &lt;span class=&quot;n&quot;&gt;TextView&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;cityText&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;TextView&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;convertView&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;na&quot;&gt;findViewById&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;R&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;na&quot;&gt;id&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;na&quot;&gt;city_text&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;);&lt;/span&gt;
+            &lt;span class=&quot;n&quot;&gt;TextView&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;tempText&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;TextView&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;convertView&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;na&quot;&gt;findViewById&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;R&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;na&quot;&gt;id&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;na&quot;&gt;temp_text&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;);&lt;/span&gt;
+            &lt;span class=&quot;n&quot;&gt;holder&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;na&quot;&gt;cityText&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;cityText&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;;&lt;/span&gt;
+            &lt;span class=&quot;n&quot;&gt;holder&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;na&quot;&gt;tempText&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;tempText&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;;&lt;/span&gt;
+            &lt;span class=&quot;n&quot;&gt;holder&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;na&quot;&gt;weatherImage&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;weatherImage&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;;&lt;/span&gt;
+            &lt;span class=&quot;n&quot;&gt;convertView&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;na&quot;&gt;setTag&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;holder&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;);&lt;/span&gt;
+        &lt;span class=&quot;o&quot;&gt;}&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;else&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;{&lt;/span&gt;
+            &lt;span class=&quot;n&quot;&gt;holder&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;ViewHolder&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;convertView&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;na&quot;&gt;getTag&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;();&lt;/span&gt;
+        &lt;span class=&quot;o&quot;&gt;}&lt;/span&gt;
+
+        &lt;span class=&quot;n&quot;&gt;Weather&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;weather&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;mData&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;na&quot;&gt;get&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;position&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;);&lt;/span&gt;
+        &lt;span class=&quot;n&quot;&gt;holder&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;na&quot;&gt;cityText&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;na&quot;&gt;setText&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;weather&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;na&quot;&gt;getCity&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;());&lt;/span&gt;
+        &lt;span class=&quot;n&quot;&gt;holder&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;na&quot;&gt;tempText&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;na&quot;&gt;setText&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;weather&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;na&quot;&gt;getTemp&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;());&lt;/span&gt;
+        &lt;span class=&quot;n&quot;&gt;holder&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;na&quot;&gt;weatherImage&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;na&quot;&gt;setImageResource&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;mWeatherImageMap&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;na&quot;&gt;get&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;weather&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;na&quot;&gt;getWeather&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;()));&lt;/span&gt;
+        &lt;span class=&quot;k&quot;&gt;return&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;convertView&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;;&lt;/span&gt;
+    &lt;span class=&quot;o&quot;&gt;}&lt;/span&gt;
+    &lt;span class=&quot;kd&quot;&gt;static&lt;/span&gt; &lt;span class=&quot;kd&quot;&gt;class&lt;/span&gt; &lt;span class=&quot;nc&quot;&gt;ViewHolder&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;{&lt;/span&gt;
+        &lt;span class=&quot;n&quot;&gt;ImageView&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;weatherImage&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;;&lt;/span&gt;
+        &lt;span class=&quot;n&quot;&gt;TextView&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;cityText&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;;&lt;/span&gt;
+        &lt;span class=&quot;n&quot;&gt;TextView&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;tempText&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;;&lt;/span&gt;
+    &lt;span class=&quot;o&quot;&gt;}&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+&lt;ul&gt;
+  &lt;li&gt;핵심메서드 getView() 작성
+    &lt;ul&gt;
+      &lt;li&gt;각 아이템이 화면에 표시될 때마다 호출되며, 여기서 화면에 표시할 레이아웃과 데이터를 모두 작성해야한다.&lt;/li&gt;
+      &lt;li&gt;ListView의 각 아이템에 해당되는 View는 화면에 보이는 만큼만 생성되고 스크롤 시에 안쓰이는 아이템은 새로 보이는 아이템의 View로 재사용된다.  &lt;br /&gt;
+  &lt;span class=&quot;clr-grey&quot;&gt; Note: 두번째 파라미터인 convertView가 재사용 시에 이전에 생성되었던 getView()가 반환했던 View &lt;/span&gt;&lt;/li&gt;
+    &lt;/ul&gt;
+  &lt;/li&gt;
+  &lt;li&gt;LayoutInflater 추상 클래스
+    &lt;ul&gt;
+      &lt;li&gt;Activity 이외의 클래스에서 Context를 통해 XML로 정의한 레이아웃을 로드하여 View로 반환해주는 클래스&lt;/li&gt;
+      &lt;li&gt;레이아웃 XML 파일을 View 객체로 반환한다.&lt;/li&gt;
+      &lt;li&gt;LayoutInflater 인스턴스 받는 법 : &lt;strong&gt;Activity.getLayoutInflater()&lt;/strong&gt; or &lt;strong&gt;Context.getSystemService(Class)&lt;/strong&gt;&lt;/li&gt;
+      &lt;li&gt;Public methods  &lt;br /&gt;
+  &lt;span class=&quot;clr-grey&quot;&gt;
+  -LayoutInflater.from(parent.getContext())  &lt;br /&gt;
+  현재 Context로부터 LayoutInflater 인스턴스를 반환받는다.&lt;em&gt;static LayoutInflater&lt;/em&gt;  &lt;br /&gt;
+  -LayoutInflater.from(parent.getContext()).inflate(R.layout.item_weather, parent, false);  &lt;br /&gt;
+  	inflate(int resource, ViewGroup root, boolean attachToRoot)  &lt;br /&gt;
+  xml파일 item_weather을 View 객체 형태로 반환한다.
+  &lt;/span&gt;&lt;/li&gt;
+    &lt;/ul&gt;
+  &lt;/li&gt;
+  &lt;li&gt;ViewHolder
+자주 사용하는 뷰를 한번 로드하면 재사용하고 표시할 내용만 교체하기 위한 패턴
+    &lt;ul&gt;
+      &lt;li&gt;View 안에 여러 데이터를 담고 싶을 때, getTag(), setTag()를 사용한다.  &lt;br /&gt;
+  &lt;span class=&quot;clr-grey&quot;&gt;android.view.View, Tag는 Object 타입이라 다양한 용도로 사용가능&lt;/span&gt;&lt;/li&gt;
+    &lt;/ul&gt;
+  &lt;/li&gt;
+&lt;/ul&gt;</content><author><name>devgaram</name><email>joingaram@gmail.com</email></author><category term="android" /><summary type="html">[될때까지 안드로이드] 어댑터뷰 파트의 내용을 정리한 글입니다.</summary></entry><entry><title type="html">(안드로이드) 시작하기 앞서 기초 학습</title><link href="http://localhost:4000/android-base/" rel="alternate" type="text/html" title="(안드로이드) 시작하기 앞서 기초 학습" /><published>2018-11-30T00:00:00+09:00</published><updated>2018-11-30T00:00:00+09:00</updated><id>http://localhost:4000/android-base</id><content type="html" xml:base="http://localhost:4000/android-base/">&lt;p&gt;안드로이드 학습을 시작하기 전에 간단히 자바 기본 개념을 정리했습니다.&lt;/p&gt;
+
+&lt;h1 id=&quot;안드로이드-기초&quot;&gt;안드로이드 기초&lt;/h1&gt;
+&lt;hr /&gt;
+&lt;h2 id=&quot;안드로이드-4대-구성요소&quot;&gt;안드로이드 4대 구성요소&lt;/h2&gt;
 &lt;ul&gt;
   &lt;li&gt;액티비티  &lt;br /&gt;
 화면 하나당 하나의 액티비티 가짐. 여러개의 액티비티 중 하나가 메인 액티비티가 되며 manifest에 정의된다.&lt;/li&gt;
@@ -14,16 +151,16 @@
 백그라운드(음악재생, 파일다운로드)에서 오래 수행되어야 하는 앱. 화면 없음&lt;/li&gt;
 &lt;/ul&gt;
 
-&lt;h3 id=&quot;액티비티끼리-데이터를-주고받는-과정&quot;&gt;액티비티끼리 데이터를 주고받는 과정&lt;/h3&gt;
+&lt;h2 id=&quot;액티비티끼리-데이터를-주고받는-과정&quot;&gt;액티비티끼리 데이터를 주고받는 과정&lt;/h2&gt;
 &lt;ol&gt;
   &lt;li&gt;A 액티비티에서 startActivityForResult()로 B 액티비티 시작&lt;/li&gt;
   &lt;li&gt;B 액티비티에서 setResult()로 결과를 A 액티비티로 전달&lt;/li&gt;
   &lt;li&gt;A 액티비티의 onActivityResult()에서 B 액티비티에서 전달받은 데이터 처리&lt;/li&gt;
 &lt;/ol&gt;
 
-&lt;h2 id=&quot;자바-기초-개념&quot;&gt;자바 기초 개념&lt;/h2&gt;
+&lt;h1 id=&quot;자바-기초-개념&quot;&gt;자바 기초 개념&lt;/h1&gt;
 &lt;hr /&gt;
-&lt;h3 id=&quot;자바-상속과-인터페이스-개념-정리-출처&quot;&gt;자바 상속과 인터페이스 개념 정리 &lt;a href=&quot;http://nyebo.net/2016/01/just-java-summary/&quot;&gt;출처&lt;/a&gt;&lt;/h3&gt;
+&lt;h2 id=&quot;자바-상속과-인터페이스-개념-정리-출처&quot;&gt;자바 상속과 인터페이스 개념 정리 &lt;a href=&quot;http://nyebo.net/2016/01/just-java-summary/&quot;&gt;출처&lt;/a&gt;&lt;/h2&gt;
 &lt;ol&gt;
   &lt;li&gt;상속
     &lt;ul&gt;
@@ -99,7 +236,7 @@
       &lt;li&gt;캡슐화된 변수에 접근하려면 getter, setter 메서드를 만들어서 접근해야한다.&lt;/li&gt;
     &lt;/ul&gt;
   &lt;/li&gt;
-&lt;/ol&gt;</content><author><name>devgaram</name><email>joingaram@gmail.com</email></author><category term="android" /><summary type="html">안드로이드 학습을 시작하기 전에 간단히 자바 기본 개념을 정리했습니다.</summary></entry><entry><title type="html">npm Working with package.json</title><link href="http://localhost:4000/npmstart3/" rel="alternate" type="text/html" title="npm Working with package.json" /><published>2018-04-16T00:00:00+09:00</published><updated>2018-04-16T00:00:00+09:00</updated><id>http://localhost:4000/npmstart3</id><content type="html" xml:base="http://localhost:4000/npmstart3/">&lt;h2 id=&quot;5-working-with-packagejson&quot;&gt;5. Working with package.json&lt;/h2&gt;
+&lt;/ol&gt;</content><author><name>devgaram</name><email>joingaram@gmail.com</email></author><category term="android" /><summary type="html">안드로이드 학습을 시작하기 전에 간단히 자바 기본 개념을 정리했습니다.</summary></entry><entry><title type="html">npm Working with package.json</title><link href="http://localhost:4000/npmstart3/" rel="alternate" type="text/html" title="npm Working with package.json" /><published>2018-04-16T00:00:00+09:00</published><updated>2018-04-16T00:00:00+09:00</updated><id>http://localhost:4000/npmstart3</id><content type="html" xml:base="http://localhost:4000/npmstart3/">&lt;h1 id=&quot;5-working-with-packagejson&quot;&gt;5. Working with package.json&lt;/h1&gt;
 
 &lt;p&gt;로컬에 설치된 npm 패키지를 관리하는 최상의 방법은 package.json 파일을 생성하는 것입니다.&lt;/p&gt;
 
@@ -110,7 +247,7 @@
   &lt;li&gt;빌드를 재현할 수 있으므로, 좀 더 쉽게 다른 개발자와 공유할 수 있습니다.&lt;/li&gt;
 &lt;/ul&gt;
 
-&lt;h3 id=&quot;요구사항&quot;&gt;요구사항&lt;/h3&gt;
+&lt;h2 id=&quot;요구사항&quot;&gt;요구사항&lt;/h2&gt;
 
 &lt;p&gt;package.json 파일이 반드시 가져야하는 것&lt;/p&gt;
 &lt;ul&gt;
@@ -135,7 +272,7 @@
 }
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
 
-&lt;h3 id=&quot;packagejson-파일-생성하기&quot;&gt;package.json 파일 생성하기&lt;/h3&gt;
+&lt;h2 id=&quot;packagejson-파일-생성하기&quot;&gt;package.json 파일 생성하기&lt;/h2&gt;
 
 &lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&amp;gt; npm init
 또는
@@ -184,7 +321,7 @@
  &amp;gt; npm set init.license &quot;MIT&quot; 
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
 
-&lt;h3 id=&quot;dependencies-지정하기&quot;&gt;Dependencies 지정하기&lt;/h3&gt;
+&lt;h2 id=&quot;dependencies-지정하기&quot;&gt;Dependencies 지정하기&lt;/h2&gt;
 
 &lt;p&gt;프로젝트가 의존하는 패키지를 지정하려면 package.json 파일에 사용할 패키지들을 나열해야합니다. 그리고 패키지들은 두 개의 타입으로 나열될 수 있습니다.&lt;/p&gt;
 &lt;ul&gt;
@@ -195,7 +332,7 @@
 &lt;p&gt;package.jsondp dependencies를 추가하는 더 쉬운 방법은 npm install 명령어 실행시 –save 또는 –save-dev 플래그를 사용하는 것 입니다.&lt;/p&gt;
 &lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&amp;gt; npm install &amp;lt;package_name&amp;gt; --save
 &amp;gt; npm install &amp;lt;package_name&amp;gt; --save-dev
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;</content><author><name>devgaram</name><email>joingaram@gmail.com</email></author><category term="npm" /><summary type="html">5. Working with package.json</summary></entry><entry><title type="html">npm 로컬 패키지 설치하기</title><link href="http://localhost:4000/npmstart2/" rel="alternate" type="text/html" title="npm 로컬 패키지 설치하기" /><published>2018-04-13T00:00:00+09:00</published><updated>2018-04-13T00:00:00+09:00</updated><id>http://localhost:4000/npmstart2</id><content type="html" xml:base="http://localhost:4000/npmstart2/">&lt;h2 id=&quot;4-로컬에-패키지를-설치해보자&quot;&gt;4. 로컬에 패키지를 설치해보자&lt;/h2&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;</content><author><name>devgaram</name><email>joingaram@gmail.com</email></author><category term="npm" /><summary type="html">5. Working with package.json</summary></entry><entry><title type="html">npm 로컬 패키지 설치하기</title><link href="http://localhost:4000/npmstart2/" rel="alternate" type="text/html" title="npm 로컬 패키지 설치하기" /><published>2018-04-13T00:00:00+09:00</published><updated>2018-04-13T00:00:00+09:00</updated><id>http://localhost:4000/npmstart2</id><content type="html" xml:base="http://localhost:4000/npmstart2/">&lt;h1 id=&quot;4-로컬에-패키지를-설치해보자&quot;&gt;4. 로컬에 패키지를 설치해보자&lt;/h1&gt;
 
 &lt;p&gt;패키지를 어떤 방식으로 사용하는지에 따라 우리는 로컬 또는 전역에 npm 패키지를 설치할 수 있습니다.&lt;/p&gt;
 &lt;ul&gt;
@@ -203,13 +340,13 @@
   &lt;li&gt;패키지를 CLI와 같은 커맨드 라인 툴에서 사용하려면 전역으로 설치하면 됩니다.&lt;/li&gt;
 &lt;/ul&gt;
 
-&lt;h3 id=&quot;패키지-다운로드하기&quot;&gt;패키지 다운로드하기&lt;/h3&gt;
+&lt;h2 id=&quot;패키지-다운로드하기&quot;&gt;패키지 다운로드하기&lt;/h2&gt;
 &lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&amp;gt; npm install &amp;lt;package_name&amp;gt;
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
 &lt;p&gt;명령어를 실행하면 현재 디렉토리에 node_modules 디렉토리가 생성됩니다. (node_modules 디렉토리가 없을 경우)
 그리고 node_modules 디렉토리 안에 다운로드 받은 패키지가 존재하게됩니다.&lt;/p&gt;
 
-&lt;h3 id=&quot;설치된-패키지-어떤-버전일까&quot;&gt;설치된 패키지 어떤 버전일까?&lt;/h3&gt;
+&lt;h2 id=&quot;설치된-패키지-어떤-버전일까&quot;&gt;설치된 패키지 어떤 버전일까?&lt;/h2&gt;
 
 &lt;p&gt;로컬 디렉토리에 package.json 파일이 없다면, 가장 최신 버전의 패키지가 설치됩니다. package.json 파일이 있으면 npm은 package.json 파일에 선언된 semver rule을 만족하는 최신버전을 설치합니다.&lt;/p&gt;
 
@@ -222,7 +359,7 @@
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
 &lt;p&gt;npm은 package.json에 따라 1.0.4 버전의 lodash 패키지를 설치하게됩니다.&lt;/p&gt;
 
-&lt;h3 id=&quot;패키지를-어떻게-사용할까&quot;&gt;패키지를 어떻게 사용할까?&lt;/h3&gt;
+&lt;h2 id=&quot;패키지를-어떻게-사용할까&quot;&gt;패키지를 어떻게 사용할까?&lt;/h2&gt;
 
 &lt;p&gt;일단 node_modules 디렉토리에 패키지가 있다면, 우리의 코드에서 패키지를 사용할 수 있습니다.&lt;/p&gt;
 
@@ -233,7 +370,7 @@ console.log(output);    // 결과 : [2,3]
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
 &lt;p&gt;만약 lodash 패키지가 설치되지않았다면 Error : Cannot find module ‘lodash’ 에러를 보게될 것 입니다.&lt;/p&gt;
 
-&lt;h2 id=&quot;7-로컬에-설치된-패키지-삭제해보자&quot;&gt;7. 로컬에 설치된 패키지 삭제해보자&lt;/h2&gt;
+&lt;h1 id=&quot;7-로컬에-설치된-패키지-삭제해보자&quot;&gt;7. 로컬에 설치된 패키지 삭제해보자&lt;/h1&gt;
 
 &lt;p&gt;node_modules 디렉토리의 패키지를 삭제하는 명령어&lt;/p&gt;
 &lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&amp;gt; npm uninstall lodash
@@ -248,7 +385,7 @@ console.log(output);    // 결과 : [2,3]
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
 &lt;p&gt;node_modules 디렉토리에 해당 패키지가 없다면 삭제가 정상적으로 된 것입니다.&lt;/p&gt;
 
-&lt;h2 id=&quot;810-전역에-패키지를-설치업데이트삭제-해보기&quot;&gt;8~10. 전역에 패키지를 설치/업데이트/삭제 해보기&lt;/h2&gt;
+&lt;h1 id=&quot;810-전역에-패키지를-설치업데이트삭제-해보기&quot;&gt;8~10. 전역에 패키지를 설치/업데이트/삭제 해보기&lt;/h1&gt;
 
 &lt;p&gt;패키지 설치&lt;/p&gt;
 &lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&amp;gt; npm install -g jshint
@@ -258,9 +395,9 @@ console.log(output);    // 결과 : [2,3]
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
 &lt;p&gt;패키지 삭제&lt;/p&gt;
 &lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&amp;gt; npm uninstall -g jshint
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;</content><author><name>devgaram</name><email>joingaram@gmail.com</email></author><category term="npm" /><summary type="html">4. 로컬에 패키지를 설치해보자</summary></entry><entry><title type="html">npm 시작하기</title><link href="http://localhost:4000/npmstart1/" rel="alternate" type="text/html" title="npm 시작하기" /><published>2018-04-11T00:00:00+09:00</published><updated>2018-04-11T00:00:00+09:00</updated><id>http://localhost:4000/npmstart1</id><content type="html" xml:base="http://localhost:4000/npmstart1/">&lt;h2 id=&quot;1-npm이란&quot;&gt;1. npm이란?&lt;/h2&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;</content><author><name>devgaram</name><email>joingaram@gmail.com</email></author><category term="npm" /><summary type="html">4. 로컬에 패키지를 설치해보자</summary></entry><entry><title type="html">npm 시작하기</title><link href="http://localhost:4000/npmstart1/" rel="alternate" type="text/html" title="npm 시작하기" /><published>2018-04-11T00:00:00+09:00</published><updated>2018-04-11T00:00:00+09:00</updated><id>http://localhost:4000/npmstart1</id><content type="html" xml:base="http://localhost:4000/npmstart1/">&lt;h1 id=&quot;1-npm이란&quot;&gt;1. npm이란?&lt;/h1&gt;
 
-&lt;h3 id=&quot;npm은-어떻게-구성되어있을까&quot;&gt;npm은 어떻게 구성되어있을까?&lt;/h3&gt;
+&lt;h2 id=&quot;npm은-어떻게-구성되어있을까&quot;&gt;npm은 어떻게 구성되어있을까?&lt;/h2&gt;
 
 &lt;p&gt;npm은 세 개의 컴포넌트로 구성되어있습니다.&lt;/p&gt;
 &lt;ul&gt;
@@ -269,7 +406,7 @@ console.log(output);    // 결과 : [2,3]
   &lt;li&gt;the registry - 자바스크립트 소프트웨어의 공용 데이터베이스 및 메타 정보&lt;/li&gt;
 &lt;/ul&gt;
 
-&lt;h3 id=&quot;npm은-언제-사용할까&quot;&gt;npm은 언제 사용할까?&lt;/h3&gt;
+&lt;h2 id=&quot;npm은-언제-사용할까&quot;&gt;npm은 언제 사용할까?&lt;/h2&gt;
 
 &lt;ul&gt;
   &lt;li&gt;앱에 패키지를 적용시키거나, 통합시키고 싶을 때&lt;/li&gt;
@@ -284,13 +421,13 @@ console.log(output);    // 결과 : [2,3]
   &lt;li&gt;비슷한 프로젝트를 진행하는 개발자를 찾고 싶을 때&lt;/li&gt;
 &lt;/ul&gt;
 
-&lt;h2 id=&quot;2-패키지는-어떻게-찾을까&quot;&gt;2. 패키지는 어떻게 찾을까?&lt;/h2&gt;
+&lt;h1 id=&quot;2-패키지는-어떻게-찾을까&quot;&gt;2. 패키지는 어떻게 찾을까?&lt;/h1&gt;
 
 &lt;p&gt;패키지를 찾기위해서 npm의 검색창을 활용해야합니다. 그럼, 당신의 앱에 바코드(QR code) 기능을 넣고 싶다면 검색창에 QR code라고 입력해봅시다. QR Code와 관련된 패키지들이 조회되고, 패키지 선택에 도움을 줄 수 있는 랭킹 정보를 볼 수 있습니다.&lt;/p&gt;
 
 &lt;p&gt;그렇다면 비슷한 패키지들 중, 우리는 어떤 패키지를 선택하면 될까요?&lt;/p&gt;
 
-&lt;h3 id=&quot;각각의-패키지들은-npm-분석기에-의해-다음의-4가지로-랭킹되고있습니다&quot;&gt;각각의 패키지들은 npm 분석기에 의해 다음의 4가지로 랭킹되고있습니다.&lt;/h3&gt;
+&lt;h2 id=&quot;각각의-패키지들은-npm-분석기에-의해-다음의-4가지로-랭킹되고있습니다&quot;&gt;각각의 패키지들은 npm 분석기에 의해 다음의 4가지로 랭킹되고있습니다.&lt;/h2&gt;
 
 &lt;ul&gt;
   &lt;li&gt;Optimal -  아래 세가지 기준을 의미있게 조합하여 순위를 지정합니다.&lt;/li&gt;
@@ -299,7 +436,7 @@ console.log(output);    // 결과 : [2,3]
   &lt;li&gt;Maintenance - 개발자가 관심을 기울이며, 보다 자주 유지보수되는 패키지를 순위로 지정합니다.&lt;/li&gt;
 &lt;/ul&gt;
 
-&lt;h3 id=&quot;패키지를-선택해서-들어가보면-패키지-정보와-사용-방법등의-다양한-정보를-얻을-수-있습니다&quot;&gt;패키지를 선택해서 들어가보면 패키지 정보와 사용 방법등의 다양한 정보를 얻을 수 있습니다.&lt;/h3&gt;
+&lt;h2 id=&quot;패키지를-선택해서-들어가보면-패키지-정보와-사용-방법등의-다양한-정보를-얻을-수-있습니다&quot;&gt;패키지를 선택해서 들어가보면 패키지 정보와 사용 방법등의 다양한 정보를 얻을 수 있습니다.&lt;/h2&gt;
 
 &lt;ul&gt;
   &lt;li&gt;Readme - 개발자가 생성한 readme 파일로 패키지의 목적과 사용방법에 대해 설명되어있습니다.&lt;/li&gt;
@@ -308,7 +445,7 @@ console.log(output);    // 결과 : [2,3]
   &lt;li&gt;Versions - 패키지 업데이트 정보를 보여줍니다.&lt;/li&gt;
 &lt;/ul&gt;
 
-&lt;h2 id=&quot;3-npm-시작하기&quot;&gt;3. npm 시작하기&lt;/h2&gt;
+&lt;h1 id=&quot;3-npm-시작하기&quot;&gt;3. npm 시작하기&lt;/h1&gt;
 
 &lt;p&gt;npm은 Node.js로 개발되었기에 npm을 사용하기 위해서는 Node.js를 설치해야합니다.  &lt;br /&gt;
 Windows의 경우, 반드시 LTS 버전을 설치해야합니다.&lt;/p&gt;
@@ -322,7 +459,7 @@ Node.js를 설치할 때, npm은 자동적으로 설치됩니다. 하지만, npm
 #최신버전으로 업데이트합니다.
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;</content><author><name>devgaram</name><email>joingaram@gmail.com</email></author><category term="npm" /><summary type="html">1. npm이란?</summary></entry><entry><title type="html">Vue2 65분만에 배우기!</title><link href="http://localhost:4000/vue2/" rel="alternate" type="text/html" title="Vue2 65분만에 배우기!" /><published>2018-04-07T00:00:00+09:00</published><updated>2018-04-07T00:00:00+09:00</updated><id>http://localhost:4000/vue2</id><content type="html" xml:base="http://localhost:4000/vue2/">&lt;p&gt;유튜브 영상 The Vue Tutorial for 2018 - Learn Vue 2 in 65 Minutes 중 몰랐던 내용 정리한 글입니다.&lt;/p&gt;
 
-&lt;h3 id=&quot;1-vue-cli-설치하기&quot;&gt;1. Vue-CLI 설치하기&lt;/h3&gt;
+&lt;h2 id=&quot;1-vue-cli-설치하기&quot;&gt;1. Vue-CLI 설치하기&lt;/h2&gt;
 
 &lt;p&gt;Vue-CLI를 통해 Vue 프로젝트를 빠르고 쉽게 생성할 수 있다.&lt;/p&gt;
 &lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&amp;gt; mkdir vue-toy
@@ -357,7 +494,7 @@ Node.js를 설치할 때, npm은 자동적으로 설치됩니다. 하지만, npm
 
 &lt;p&gt;&lt;img src=&quot;/assets/images/2018-04-07-img.png&quot; alt=&quot;화면&quot; /&gt;&lt;/p&gt;
 
-&lt;h3 id=&quot;2-vue-form-validation&quot;&gt;2. Vue Form Validation&lt;/h3&gt;
+&lt;h2 id=&quot;2-vue-form-validation&quot;&gt;2. Vue Form Validation&lt;/h2&gt;
 
 &lt;p&gt;VeeValidate는 폼 유효성 체크를 위한 패키지다.&lt;/p&gt;
 
@@ -370,7 +507,7 @@ Node.js를 설치할 때, npm은 자동적으로 설치됩니다. 하지만, npm
 &lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;import VeeValidate from 'vee-validate';
 Vue.use(veeValidate);
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
-&lt;h3 id=&quot;3-vue-router&quot;&gt;3. Vue router&lt;/h3&gt;
+&lt;h2 id=&quot;3-vue-router&quot;&gt;3. Vue router&lt;/h2&gt;
 &lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&amp;gt; npm add vue-router
 #또는
 &amp;gt; yarn add vue-router
