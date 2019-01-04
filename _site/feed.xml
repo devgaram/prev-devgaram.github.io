@@ -1,4 +1,155 @@
-<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="3.8.5">Jekyll</generator><link href="http://localhost:4000/feed.xml" rel="self" type="application/atom+xml" /><link href="http://localhost:4000/" rel="alternate" type="text/html" /><updated>2019-01-04T17:57:24+09:00</updated><id>http://localhost:4000/feed.xml</id><title type="html">It’s a piece of cake!</title><subtitle>초보개발자의 블로그입니다.</subtitle><author><name>devgaram</name><email>joingaram@gmail.com</email></author><entry><title type="html">(안드로이드) 어댑터뷰를 사용해보자</title><link href="http://localhost:4000/android-adapter/" rel="alternate" type="text/html" title="(안드로이드) 어댑터뷰를 사용해보자" /><published>2018-12-02T00:00:00+09:00</published><updated>2018-12-02T00:00:00+09:00</updated><id>http://localhost:4000/android-adapter</id><content type="html" xml:base="http://localhost:4000/android-adapter/">&lt;p&gt;[될때까지 안드로이드] 어댑터뷰 파트의 내용을 정리한 글입니다.&lt;/p&gt;
+<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="3.8.5">Jekyll</generator><link href="http://localhost:4000/feed.xml" rel="self" type="application/atom+xml" /><link href="http://localhost:4000/" rel="alternate" type="text/html" /><updated>2019-01-04T18:09:14+09:00</updated><id>http://localhost:4000/feed.xml</id><title type="html">It’s a piece of cake!</title><subtitle>초보개발자의 블로그입니다.</subtitle><author><name>devgaram</name><email>joingaram@gmail.com</email></author><entry><title type="html">(안드로이드) fragment를 사용하자</title><link href="http://localhost:4000/android-fragment/" rel="alternate" type="text/html" title="(안드로이드) fragment를 사용하자" /><published>2018-12-07T00:00:00+09:00</published><updated>2018-12-07T00:00:00+09:00</updated><id>http://localhost:4000/android-fragment</id><content type="html" xml:base="http://localhost:4000/android-fragment/">&lt;p&gt;[될 때까지 안드로이드]의 fragment 파트를 정리한 내용입니다.&lt;/p&gt;
+
+&lt;p&gt;&lt;a href=&quot;https://github.com/devgaram/androidExample/tree/master/fragmentexam&quot;&gt;기본 프래그먼트 구현 예제&lt;/a&gt;.  &lt;br /&gt;
+&lt;a href=&quot;https://github.com/devgaram/androidExample/tree/master/exitdialogfragment&quot;&gt;다이얼로그 프래그먼트 구현 예제&lt;/a&gt;.  &lt;br /&gt;
+&lt;a href=&quot;https://github.com/devgaram/androidExample/tree/master/callbackexam&quot;&gt;콜백 구현 예제&lt;/a&gt;.&lt;/p&gt;
+
+&lt;p&gt;여러 개의 프래그먼트를 하나의 액티비티에 조합하여 창이 여러 개인 UI를 구축할 때 사용할 수 있다.&lt;/p&gt;
+&lt;ul&gt;
+  &lt;li&gt;하나의 프래그먼트를 여러 액티비티에서 재사용할 수 있으며,동적으로 추가, 삭제, 교체가 쉽다.&lt;/li&gt;
+  &lt;li&gt;프래그먼트는 자체 수명 주기를 가진다.&lt;/li&gt;
+  &lt;li&gt;프래그먼트는 부모-자식 관계를 가질 수 있다.&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;hr /&gt;
+
+&lt;h1 id=&quot;생명주기-소속-액티비티가-실행-중일-때&quot;&gt;생명주기 (소속 액티비티가 실행 중일 때)&lt;/h1&gt;
+
+&lt;p&gt;최소한 다음과 같은 수명 주기 메서드를 구현해야한다.&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;onCreate()&lt;/strong&gt;  &lt;br /&gt;
+프래그먼트를 생성할 때 호출되는 콜백 메서드 &lt;br /&gt;
+프래그먼트가 일시정지되거나 중지되었다가 재개되었을 때 유지하고자 하는 것을 초기화하는 부분&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;onCreateView()&lt;/strong&gt;  &lt;br /&gt;
+액티비티는 onCreate() 콜백 메서드에서 setContentView() 메서드를 호출하여 View 객체(레이아웃)을 가져온다.  &lt;br /&gt;
+프래그먼트는 onCreateView() 콜백 메서드에서 LayoutInflater를 통해 레이아웃을 가져온다.&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;onPause()&lt;/strong&gt;  &lt;br /&gt;
+시스템이 이 메서드를 호출하는 것은 사용자가 프래그먼트를 떠난다는 첫 번째 신호. &lt;br /&gt;
+현재 사용자 세션을 넘어서 지속되어야 하는 변경 사항을 저장하는 부분&lt;/p&gt;
+
+&lt;p&gt;프래그먼트 추가 &lt;br /&gt;
+onAttach() -&amp;gt; onCreate() -&amp;gt; onCreateView() -&amp;gt; onActivityCreated() -&amp;gt; onStart() -&amp;gt; onResume()&lt;/p&gt;
+
+&lt;p&gt;프래그먼트 소멸   &lt;br /&gt;
+onPause() -&amp;gt; onStop() -&amp;gt; onDestroyView() -&amp;gt; onDestroy() -&amp;gt; onDetach()&lt;/p&gt;
+
+&lt;h1 id=&quot;실습&quot;&gt;실습&lt;/h1&gt;
+
+&lt;h2 id=&quot;프래그먼트의-생성자&quot;&gt;프래그먼트의 생성자&lt;/h2&gt;
+&lt;p&gt;생성자를 오버로드할 수 없으며, 생성자를 통해 파라미터 전달을 금지하고 있다.  &lt;br /&gt;
+재생성 시에 정보를 자동으로 저장 및 복원하기 위한 설계가 이미 되어 있고 그것을 따르기 위한 제약이다. 
+프래그먼트의 생성과 동시에 파라미터를 전달하는 방법은 &lt;strong&gt;Bundle 객체&lt;/strong&gt;를 활용한다.&lt;/p&gt;
+
+&lt;div class=&quot;language-java highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;kd&quot;&gt;public&lt;/span&gt; &lt;span class=&quot;kd&quot;&gt;class&lt;/span&gt; &lt;span class=&quot;nc&quot;&gt;ColorFragment&lt;/span&gt; &lt;span class=&quot;kd&quot;&gt;extends&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;Fragment&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;{&lt;/span&gt;
+
+    &lt;span class=&quot;kd&quot;&gt;public&lt;/span&gt; &lt;span class=&quot;nf&quot;&gt;ColorFragment&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;()&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;{&lt;/span&gt;
+        &lt;span class=&quot;c1&quot;&gt;// Required empty public constructor&lt;/span&gt;
+    &lt;span class=&quot;o&quot;&gt;}&lt;/span&gt;
+    
+    &lt;span class=&quot;nd&quot;&gt;@Override&lt;/span&gt;
+    &lt;span class=&quot;kd&quot;&gt;public&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;View&lt;/span&gt; &lt;span class=&quot;nf&quot;&gt;onCreateView&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;LayoutInflater&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;inflater&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;ViewGroup&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;container&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;,&lt;/span&gt;
+                             &lt;span class=&quot;n&quot;&gt;Bundle&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;savedInstanceState&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;{&lt;/span&gt;
+        &lt;span class=&quot;c1&quot;&gt;// Inflate the layout for this fragment&lt;/span&gt;
+        &lt;span class=&quot;k&quot;&gt;return&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;inflater&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;na&quot;&gt;inflate&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;R&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;na&quot;&gt;layout&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;na&quot;&gt;fragment_color&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;container&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;kc&quot;&gt;false&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;);&lt;/span&gt;
+    &lt;span class=&quot;o&quot;&gt;}&lt;/span&gt;
+&lt;span class=&quot;o&quot;&gt;}&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+&lt;p&gt;&lt;br /&gt;&lt;/p&gt;
+
+&lt;h2 id=&quot;프래그먼트-매니저&quot;&gt;프래그먼트 매니저&lt;/h2&gt;
+&lt;p&gt;프래그먼트 조작을 위해 프래그먼트 매니저가 필요하다.  &lt;br /&gt;
+프래그먼트 매니저는 액티비티 처럼 백스택을 가지고 있음.&lt;/p&gt;
+&lt;ul&gt;
+  &lt;li&gt;액티비티 내 XML에 포함된 프래그먼트를 findFragmentById() 메서드로 가져오기 또는 findFragmentByTag()로 가져오기&lt;/li&gt;
+  &lt;li&gt;액티비티 백스택에서 프래그먼트를 popBackStack() 메서드로 빠져나오게 하여 액티비티의 뒤로 가기와 같은 효과를 냄 ( addToBackStack() : 프래그먼트 매니저의 백스택에 프래그먼트 추가하는 메서드 )&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;div class=&quot;language-java highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;kd&quot;&gt;public&lt;/span&gt; &lt;span class=&quot;kd&quot;&gt;class&lt;/span&gt; &lt;span class=&quot;nc&quot;&gt;MainActivity&lt;/span&gt; &lt;span class=&quot;kd&quot;&gt;extends&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;AppCompatActivity&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;{&lt;/span&gt;
+
+    &lt;span class=&quot;nd&quot;&gt;@Override&lt;/span&gt;
+    &lt;span class=&quot;kd&quot;&gt;protected&lt;/span&gt; &lt;span class=&quot;kt&quot;&gt;void&lt;/span&gt; &lt;span class=&quot;nf&quot;&gt;onCreate&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;Bundle&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;savedInstanceState&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;{&lt;/span&gt;
+      &lt;span class=&quot;o&quot;&gt;...&lt;/span&gt;&lt;span class=&quot;err&quot;&gt;생략&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;...&lt;/span&gt;
+        &lt;span class=&quot;n&quot;&gt;FragmentManager&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;fragmentManager&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;getSupportFragmentManager&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;();&lt;/span&gt;
+        &lt;span class=&quot;n&quot;&gt;ColorFragment&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;colorFragment&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;ColorFragment&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;fragmentManager&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;na&quot;&gt;findFragmentById&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;R&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;na&quot;&gt;id&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;na&quot;&gt;color_fragment&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;);&lt;/span&gt;
+        &lt;span class=&quot;n&quot;&gt;colorFragment&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;na&quot;&gt;setColor&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;Color&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;na&quot;&gt;BLUE&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;);&lt;/span&gt;
+    &lt;span class=&quot;o&quot;&gt;}&lt;/span&gt;
+&lt;span class=&quot;o&quot;&gt;}&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+&lt;h2 id=&quot;프래그먼트에서-액티비티에-접근하는-방법&quot;&gt;프래그먼트에서 액티비티에 접근하는 방법&lt;/h2&gt;
+
+&lt;div class=&quot;language-java highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;n&quot;&gt;View&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;listView&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;getActivity&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;().&lt;/span&gt;&lt;span class=&quot;na&quot;&gt;findViewById&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;R&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;na&quot;&gt;id&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;na&quot;&gt;list&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;);&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;h2 id=&quot;프래그먼트-교체-삭제-추가&quot;&gt;프래그먼트 교체, 삭제, 추가&lt;/h2&gt;
+&lt;p&gt;프래그먼트를 교체하기 위해서는 &amp;lt;fragment&lt;fragment&gt;&amp;gt;를 &amp;lt;FrameLayout&lt;FrameLayout&gt;&amp;gt;과 같은 레이아웃으로 감싸줘야한다.    
+**프래그먼트 트랜지션 수행** add(), remove(), replace() 같은 메서드를 사용하고 commit()을 수행하면 트랜지션이 적용된다.&lt;/FrameLayout&gt;&lt;/fragment&gt;&lt;/p&gt;
+
+&lt;div class=&quot;language-java highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;kd&quot;&gt;public&lt;/span&gt; &lt;span class=&quot;kd&quot;&gt;class&lt;/span&gt; &lt;span class=&quot;nc&quot;&gt;MainActivity&lt;/span&gt; &lt;span class=&quot;kd&quot;&gt;extends&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;AppCompatActivity&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;{&lt;/span&gt;
+
+  &lt;span class=&quot;o&quot;&gt;...&lt;/span&gt;&lt;span class=&quot;err&quot;&gt;생략&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;....&lt;/span&gt;
+  
+    &lt;span class=&quot;kd&quot;&gt;public&lt;/span&gt; &lt;span class=&quot;kt&quot;&gt;void&lt;/span&gt; &lt;span class=&quot;nf&quot;&gt;change&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;View&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;view&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;{&lt;/span&gt;
+        &lt;span class=&quot;n&quot;&gt;ColorFragment&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;fragment&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;new&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;ColorFragment&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;();&lt;/span&gt;
+        &lt;span class=&quot;kt&quot;&gt;int&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;red&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;new&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;Random&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;().&lt;/span&gt;&lt;span class=&quot;na&quot;&gt;nextInt&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;256&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;);&lt;/span&gt;
+        &lt;span class=&quot;kt&quot;&gt;int&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;green&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;new&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;Random&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;().&lt;/span&gt;&lt;span class=&quot;na&quot;&gt;nextInt&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;256&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;);&lt;/span&gt;
+        &lt;span class=&quot;kt&quot;&gt;int&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;blue&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;new&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;Random&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;().&lt;/span&gt;&lt;span class=&quot;na&quot;&gt;nextInt&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;256&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;);&lt;/span&gt;
+        &lt;span class=&quot;n&quot;&gt;fragment&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;na&quot;&gt;setColor&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;Color&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;na&quot;&gt;rgb&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;red&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;green&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;blue&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;));&lt;/span&gt;
+        &lt;span class=&quot;n&quot;&gt;getSupportFragmentManager&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;()&lt;/span&gt;
+                &lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;na&quot;&gt;beginTransaction&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;()&lt;/span&gt;
+                &lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;na&quot;&gt;replace&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;R&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;na&quot;&gt;id&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;na&quot;&gt;container&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;fragment&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;)&lt;/span&gt;
+                &lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;na&quot;&gt;commit&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;();&lt;/span&gt;
+    &lt;span class=&quot;o&quot;&gt;}&lt;/span&gt;
+&lt;span class=&quot;o&quot;&gt;}&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;h2 id=&quot;프래그먼트와-액티비티-간의-통신&quot;&gt;프래그먼트와 액티비티 간의 통신&lt;/h2&gt;
+
+&lt;p&gt;일반적으로 액티비티에서 프래그먼트나 다른 뷰들의 인스턴스를 가지고 있어서 이들의 메서드를 호출하는 식이다. 따라서 프래그먼트의 상태가 변했을 때 액티비티에서 이것을 알아차리려면 계속해서 프래그먼트의 상태 값을 알아내는 메서드를 호출해야한다.
+&lt;br /&gt;&lt;/p&gt;
+
+&lt;p&gt;그러나 콜백 인터페이스를 사용하여 프래그먼트의 상태가 변할 때마다 자동으로 액티비티에게 알려줄 수 있다. 
+Button의 onClick() 이벤트나 액티비티의 onCreate()가 대표적인 콜백 메서드이며, 호출자 입장에서는 피호출자의 변화를 감시하다가 알아채기 때문에 리스너(Listener) 라고도 불른다.&lt;/p&gt;</content><author><name>devgaram</name><email>joingaram@gmail.com</email></author><category term="android" /><summary type="html">[될 때까지 안드로이드]의 fragment 파트를 정리한 내용입니다.</summary></entry><entry><title type="html">(안드로이드) RecyclerView를 사용하자</title><link href="http://localhost:4000/android-recycler/" rel="alternate" type="text/html" title="(안드로이드) RecyclerView를 사용하자" /><published>2018-12-05T00:00:00+09:00</published><updated>2018-12-05T00:00:00+09:00</updated><id>http://localhost:4000/android-recycler</id><content type="html" xml:base="http://localhost:4000/android-recycler/">&lt;p&gt;[될 때까지 안드로이드]의 RecyclerView 파트를 정리한 내용입니다.&lt;/p&gt;
+
+&lt;p&gt;어댑터 뷰의 성능을 개선한 컴포넌트로 애니메이션을 지원하고 뷰홀더 패턴을 강제한다.  &lt;br /&gt;
+대신 이벤트 리스너와 커서를 지원하지 않는 단점이 있다.&lt;/p&gt;
+
+&lt;hr /&gt;
+
+&lt;h2 id=&quot;어댑터-뷰의-단점&quot;&gt;어댑터 뷰의 단점&lt;/h2&gt;
+&lt;ol&gt;
+  &lt;li&gt;빠르게 스크롤 할 때 성능문제와 불필요한 지연 문제가 있다.&lt;/li&gt;
+  &lt;li&gt;데이터 목록이 변경되었을 때, notifyDataSetChanged() 메서드를 빈번하게 호출하여 전체 아이템을 갱신하는 데 비용이 많이 든다. 이 메서드는 항상 전체 항목을 새로 로드한다.&lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;h2 id=&quot;리사이클러-뷰-vs-어댑터-뷰&quot;&gt;리사이클러 뷰 vs 어댑터 뷰&lt;/h2&gt;
+&lt;ul&gt;
+  &lt;li&gt;상속 받는 클래스 : RecyclerView.Adapter vs BaseAdapter&lt;/li&gt;
+  &lt;li&gt;리사이클러 뷰는 레이아웃 매니저를 지정해줘야 한다.&lt;/li&gt;
+  &lt;li&gt;리사이클러 뷰는 뷰홀더 패턴을 반드시 구현해야한다.&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h2 id=&quot;리사이클러-뷰-관련-클래스&quot;&gt;리사이클러 뷰 관련 클래스&lt;/h2&gt;
+&lt;ol&gt;
+  &lt;li&gt;RecyclerView.Adapter : 어댑터 역할&lt;/li&gt;
+  &lt;li&gt;RecyclerView.ViewHolder : 뷰홀더 클래스가 상속받아야 할 클래스&lt;/li&gt;
+  &lt;li&gt;LayoutManager : 아이템을 어떻게 배치할 것 인가
+    &lt;ul&gt;
+      &lt;li&gt;LinearLayoutManager&lt;/li&gt;
+      &lt;li&gt;GridLayoutManager&lt;/li&gt;
+      &lt;li&gt;StaggeredGridLayoutManager&lt;/li&gt;
+    &lt;/ul&gt;
+  &lt;/li&gt;
+  &lt;li&gt;RecyclerView.ItemAnimator : 아이템이 추가, 삭제, 재정렬 시 애니메이션 어떻게 할 것인가&lt;/li&gt;
+  &lt;li&gt;RecyclerView.ItemDecoration : 아이템을 세부적으로 어떻게 꾸밀 것인가&lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;h2 id=&quot;리사이클러-통지-메서드&quot;&gt;리사이클러 통지 메서드&lt;/h2&gt;
+&lt;ul&gt;
+  &lt;li&gt;notifyItemInserted(int position) : position 위치의 아이템이 삽입된 것을 통지&lt;/li&gt;
+  &lt;li&gt;notifyItemRemoved(int position) : position 위치의 아이템이 삭제된 것을 통지&lt;/li&gt;
+&lt;/ul&gt;</content><author><name>devgaram</name><email>joingaram@gmail.com</email></author><category term="android" /><summary type="html">[될 때까지 안드로이드]의 RecyclerView 파트를 정리한 내용입니다.</summary></entry><entry><title type="html">(안드로이드) 어댑터뷰를 사용해보자</title><link href="http://localhost:4000/android-adapter/" rel="alternate" type="text/html" title="(안드로이드) 어댑터뷰를 사용해보자" /><published>2018-12-02T00:00:00+09:00</published><updated>2018-12-02T00:00:00+09:00</updated><id>http://localhost:4000/android-adapter</id><content type="html" xml:base="http://localhost:4000/android-adapter/">&lt;p&gt;[될때까지 안드로이드] 어댑터뷰 파트의 내용을 정리한 글입니다.&lt;/p&gt;
 
 &lt;p&gt;ListView 와 GridView&lt;/p&gt;
 &lt;ul&gt;
