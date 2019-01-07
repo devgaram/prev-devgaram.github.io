@@ -19,6 +19,41 @@ var store = [{
         "tags": ["javascript"],
         "url": "http://localhost:4000/javascript-opentutorials-3/",
         "teaser":"http://localhost:4000/true"},{
+        "title": "(생활코딩) javascript 함수지향1",
+        "excerpt":"생활코딩 함수지향 파트 중 변수의 유효범위에 대한 내용을 정리했습니다. 변수의 유효범위 예제1) 지역변수와 전역변수의 구분1 var vscope = 'global'; //전역변수 function fscope(){ alert(vscope); } fscope(); //global Note: 전역변수 : 애플리케이션 전역에서 접근 가능한 변수 Note: 지역변수 : 함수 내에서만 접근 가능한 변수 *변수에 접근할 때, 지역변수를 우선적으로 찾는다. &lt;/br&gt; 예제2)...","categories": [],
+        "tags": ["javascript"],
+        "url": "http://localhost:4000/javascript-opentutorials-function-1/",
+        "teaser":"http://localhost:4000/true"},{
+        "title": "(생활코딩) javascript 함수지향2",
+        "excerpt":"생활코딩 함수지향 파트 중 값으로서의 함수와 콜백에 대한 내용을 정리했습니다. 1. 값으로서 함수 예제1) 자바스크립트에서는 함수도 객체이며, 함수도 값이 될 수 있다. function a(){} //함수는 a라는 변수에 담겨진 값. var a = function(){} 예제2) 함수는 객체 안에 저장될 수 있다. a = { b : function(){ } } b는 key,...","categories": [],
+        "tags": ["javascript"],
+        "url": "http://localhost:4000/javascript-opentutorials-function-2/",
+        "teaser":"http://localhost:4000/true"},{
+        "title": "(생활코딩) javascript 함수지향3",
+        "excerpt":"생활코딩 함수지향 파트 중 클로저에 대한 내용을 정리했습니다. 1. 클로저의 개념 function outter() { var title = 'coding everybody'; return function(){ alert(title); } } inner = outter(); inner(); 함수 outter의 리턴 값은 내부함수이며 변수 inner에 내부함수가 값으로 저장된다. outter 호출이 종료된 순간, outter는 사라진다. 하지만, inner()를 실행했을 때 알럿창에 coding...","categories": [],
+        "tags": ["javascript"],
+        "url": "http://localhost:4000/javascript-opentutorials-function-3/",
+        "teaser":"http://localhost:4000/true"},{
+        "title": "(생활코딩) javascript 함수지향4",
+        "excerpt":"생활코딩 함수지향 파트 중 arguments와 apply()에 대한 내용을 정리했습니다. 1. arguments function sum(){ var i, _sum = 0; for( i=0; i&lt; arguments.length; i++){ document.write(i + \":\" + arguments[i] + &lt;'br/&gt;'); _sum += arguments[i]; } return _sum; } document.write('result : ' + sum(1,2,3,4)); arguments는 사용자가 전달한 인자들이 담겨있는 객체다. .length를 통해...","categories": [],
+        "tags": ["javascript"],
+        "url": "http://localhost:4000/javascript-opentutorials-function-4/",
+        "teaser":"http://localhost:4000/true"},{
+        "title": "(생활코딩) javascript 객체지향1",
+        "excerpt":"생활코딩 객체지향에 대한 내용을 정리했습니다. 객체(object)는 연관되어 있는 것(변수, 메소드)들을 그룹화한 것, 각 그룹화된 것은 독립성을 가지는 부품이 된다. 1. 객체의 생성 방법 this는 함수가 속해있는 객체인 person을 가리킨다. var person = {}; person.name = 'egoing'; person.introduce = function(){ return 'My name is' + this.name; } document.write( person.introduce()); var person...","categories": [],
+        "tags": ["javascript"],
+        "url": "http://localhost:4000/javascript-opentutorials-object-1/",
+        "teaser":"http://localhost:4000/true"},{
+        "title": "(생활코딩) javascript 객체지향2",
+        "excerpt":"생활코딩 객체지향 파트 중 상속과 프로토타입에 대한 내용을 정리했습니다. 1. 상속 상속을 하기 위한 준비 작업 function Person(name){ this.name = name; } Person.prototype.name = null; Person.prototype.introduce = function(){ return 'My name is' + this.name; } var p1 = new Person('egoing'); document.write(p1.introduce()); //My name is egoing 객체의 프로퍼티 정의 방법은 생성자를...","categories": [],
+        "tags": ["javascript"],
+        "url": "http://localhost:4000/javascript-opentutorials-object-2/",
+        "teaser":"http://localhost:4000/true"},{
+        "title": "(mocha) 자바스크립트 단위테스트 시작하기",
+        "excerpt":"mocha 자바스크립트 테스트 프레임워크로 단위테스트 시작하는 방법입니다. 단위테스트(Unit Test)가 필요한 이유? 프로그램을 작은 단위로 쪼개서 내가 짠 프로그램이 내가 원하는 결과대로 동작하는 지 테스트할 수 있다. 단위테스트를 거치면 프로그램의 안정성이 높아지며, 단위테스트를 믿고 리팩토링을 할 수 있다. 자바스크립트로 짜여진 프로그램에서 오류를 찾을 때, 단위테스트를 거치지 않은 프로그램의 경우는 전체 흐름을...","categories": [],
+        "tags": ["mocha"],
+        "url": "http://localhost:4000/mocha-unittest/",
+        "teaser":"http://localhost:4000/true"},{
         "title": "Vue2 65분만에 배우기!",
         "excerpt":"유튜브 영상 The Vue Tutorial for 2018 - Learn Vue 2 in 65 Minutes 중 몰랐던 내용 정리한 글입니다. 1. Vue-CLI 설치하기 Vue-CLI를 통해 Vue 프로젝트를 빠르고 쉽게 생성할 수 있다. &gt; mkdir vue-toy &gt; cd vue-toy &gt; npm install -g @vue/cli -- Vue-CLI 설치 &gt; vue create vue-voca --...","categories": [],
         "tags": ["vuejs"],
