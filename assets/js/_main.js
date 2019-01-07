@@ -13,9 +13,14 @@ $(document).ready(function() {
 
   $(window).resize(function() {
     didResize = true;
-  });
-  /* 스크롤시 메인 헤더 이미지 marin 이동 */
-  $(window).scroll(function(event){console.log("추가";)});
+  }); 
+	
+  /* 메인 이미지 스크롤 */
+  setTimeout(function(){
+   $( "#header-image" ).animate({
+    "margin-top": "-875px"
+  }, {duration:5500, easing:"linear"});
+  },500);
 
   setInterval(function() {
     if (didResize) {

@@ -60,7 +60,11 @@ package.json 파일을 아래와 같이 수정합니다.
   }
 }
 ```
-## 3. uglify 실행
+## 3. uglify 설치 및 실행
+uglify-js 패키지 설치
+```
+> npm install uglify-js
+```
 package.json의 scripts 부분을 보면 build:js 스크립트 실행시 **npm run uglify && npm run add-banner** 를 실행하도로 되어있습니다.
 이를 참고하여 cmd에서 npm run build:js를 실행해봅시다. 정상적으로 _main.js 파일이 main.min.js로 압축된 것을 확인할 수 있을 것입니다.
 
