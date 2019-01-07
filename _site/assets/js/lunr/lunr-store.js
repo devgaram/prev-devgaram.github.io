@@ -98,4 +98,9 @@ var store = [{
         "excerpt":"minimal-mistakes 테마를 적용한 jekyll 블로그를 커스텀하는 과정에서 자바스크립트 코드를 추가하는 방법입니다. minimal-mistakes 문서에 자바스크립트 커스텀 방법이 잘 정리되어있습니다. 공식문서 바로가기. 우리가 수정해야 할 파일은 /assets/js/ 에 위치한 _main.js 파일입니다. 하지만, jekyll은 _main.js 파일이 아닌 main.min.js 파일을 컴파일하여 화면에 반영합니다. main.min.js 는 _main.js 자바스크립트 코드를 압축화하고 난독화한 파일로 npm 패키지 중...","categories": [],
         "tags": ["jekyll"],
         "url": "http://localhost:4000/jekyll-js-custom/",
+        "teaser":"http://localhost:4000/true"},{
+        "title": "안드로이드 MVVM에 대해 알아보자",
+        "excerpt":" ","categories": [],
+        "tags": ["android"],
+        "url": "http://localhost:4000/android-mvvm/",
         "teaser":"http://localhost:4000/true"}]

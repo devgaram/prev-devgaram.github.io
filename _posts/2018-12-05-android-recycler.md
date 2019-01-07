@@ -36,4 +36,7 @@ tags:
 * notifyItemInserted(int position) : position 위치의 아이템이 삽입된 것을 통지
 * notifyItemRemoved(int position) : position 위치의 아이템이 삭제된 것을 통지
 
+## 관련 메서드
+* void setHasFixedSize (boolean hasFixedSize) : 각 아이템의 변화가 리사이클러 뷰의 전체 크기에 영향을 끼치지 않는다면 true를 사용한다.
+
 
