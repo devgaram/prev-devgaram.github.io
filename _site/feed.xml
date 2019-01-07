@@ -1,4 +1,141 @@
-<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="3.8.5">Jekyll</generator><link href="http://localhost:4000/feed.xml" rel="self" type="application/atom+xml" /><link href="http://localhost:4000/" rel="alternate" type="text/html" /><updated>2019-01-07T16:08:43+09:00</updated><id>http://localhost:4000/feed.xml</id><title type="html">It’s a piece of cake!</title><subtitle>초보개발자의 블로그입니다.</subtitle><author><name>devgaram</name><email>joingaram@gmail.com</email></author><entry><title type="html">안드로이드 MVVM에 대해 알아보자</title><link href="http://localhost:4000/android-mvvm/" rel="alternate" type="text/html" title="안드로이드 MVVM에 대해 알아보자" /><published>2019-01-07T00:00:00+09:00</published><updated>2019-01-07T00:00:00+09:00</updated><id>http://localhost:4000/android-mvvm</id><content type="html" xml:base="http://localhost:4000/android-mvvm/"></content><author><name>devgaram</name><email>joingaram@gmail.com</email></author><category term="android" /><summary type="html"></summary></entry><entry><title type="html">jekyll의 minimal-mistakes에서 자바스크립트 커스텀하는 방법</title><link href="http://localhost:4000/jekyll-js-custom/" rel="alternate" type="text/html" title="jekyll의 minimal-mistakes에서 자바스크립트 커스텀하는 방법" /><published>2019-01-05T00:00:00+09:00</published><updated>2019-01-05T00:00:00+09:00</updated><id>http://localhost:4000/jekyll-js-custom</id><content type="html" xml:base="http://localhost:4000/jekyll-js-custom/">&lt;p&gt;minimal-mistakes 테마를 적용한 jekyll 블로그를 커스텀하는 과정에서 자바스크립트 코드를 추가하는 방법입니다.  &lt;br /&gt;
+<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="3.8.5">Jekyll</generator><link href="http://localhost:4000/feed.xml" rel="self" type="application/atom+xml" /><link href="http://localhost:4000/" rel="alternate" type="text/html" /><updated>2019-01-07T23:37:27+09:00</updated><id>http://localhost:4000/feed.xml</id><title type="html">It’s a piece of cake!</title><subtitle>초보개발자의 블로그입니다.</subtitle><author><name>devgaram</name><email>joingaram@gmail.com</email></author><entry><title type="html">안드로이드 LiveData 대해 알아보자</title><link href="http://localhost:4000/android-LiveData/" rel="alternate" type="text/html" title="안드로이드 LiveData 대해 알아보자" /><published>2019-01-07T00:00:00+09:00</published><updated>2019-01-07T00:00:00+09:00</updated><id>http://localhost:4000/android-LiveData</id><content type="html" xml:base="http://localhost:4000/android-LiveData/"></content><author><name>devgaram</name><email>joingaram@gmail.com</email></author><category term="android" /><summary type="html"></summary></entry><entry><title type="html">안드로이드 ViewModel에 대해 알아보자</title><link href="http://localhost:4000/android-viewModel/" rel="alternate" type="text/html" title="안드로이드 ViewModel에 대해 알아보자" /><published>2019-01-07T00:00:00+09:00</published><updated>2019-01-07T00:00:00+09:00</updated><id>http://localhost:4000/android-viewModel</id><content type="html" xml:base="http://localhost:4000/android-viewModel/">&lt;p&gt;안드로이드 아키텍쳐 중 ViewModel 클래스에 대한 내용입니다.&lt;/p&gt;
+
+&lt;hr /&gt;
+
+&lt;p&gt;안드로이드 프레임워크는 액티비티와 프래그먼트와 같은 UI 컨트롤러의 라이프 사이클을 관리한다.&lt;/p&gt;
+
+&lt;p&gt;아래와 같은 구성 변경 발생 시, 안드로이드는 UI 컨트롤러를 종료하거나 재생성한다.&lt;/p&gt;
+&lt;ul&gt;
+  &lt;li&gt;런타임에 화면 방향이 전환되는 경우&lt;/li&gt;
+  &lt;li&gt;언어, 글꼴 배율과 같은 기기 구성이 변경되는 경우&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;이 때 두가지 문제가 발생한다.&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;1) UI에 종속된 데이터 손실&lt;/strong&gt; &lt;br /&gt;
+해결1 - 적은 데이터의 경우 OnCreate()에서 onSaveInstanceState() 메서드를 사용하여 번들에서 해당 데이터를 복원할 수 있다.  &lt;br /&gt;
+&lt;span class=&quot;clr-grey&quot;&gt;많은 데이터와 비트맵에는 부적절하다.&lt;/span&gt;  &lt;br /&gt;
+해결2 - UI가 없는 워커 프래그먼트에 UI에 필요한 데이터를 관리하고 프래그먼트를 SetRetainInstance(true)로 설정함으로써 프래그먼트를 메모리에 유지(유보)시킨다.&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;2) 메모리 누수, 리소스 낭비&lt;/strong&gt;    &lt;br /&gt;
+UI 컨트롤러 재생성 시 다시 데이터를 로드하므로 리소스가 낭비되며, UI 컨트롤러가 비동기 호출을 하고 콜백을 받을 때 해당 컨트롤러가 파괴되었다면 에러가 발생하거나 메모리 누수가 날 수도 있다.&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;문제해결방법&lt;/strong&gt;&lt;/p&gt;
+
+&lt;p&gt;UI 컨트롤러는 아래와 같은 작업을 다루는 경향이 있다.&lt;/p&gt;
+&lt;ul&gt;
+  &lt;li&gt;UI 데이터 표시&lt;/li&gt;
+  &lt;li&gt;사용자 행동에 반응&lt;/li&gt;
+  &lt;li&gt;권한 요청&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;그러므로 데이터베이스 또는 네트워크에서 데이터를 요청하고 로드하는 작업은 다른 클래스에 위임하여 UI 컨트롤러 로직에서 뷰 데이터에 대한 소유권을 분리하는 것이 효율적이다.&lt;/p&gt;
+
+&lt;p&gt;&lt;br /&gt;&lt;/p&gt;
+&lt;h1 id=&quot;viewmodel-클래스-구현&quot;&gt;ViewModel 클래스 구현&lt;/h1&gt;
+
+&lt;p&gt;Architecture Components는 ViewModel 클래스를 제공한다. &lt;br /&gt;
+&lt;strong&gt;ViewModel 클래스의 인스턴스(객체)는 구성 변경에도 데이터를 유지하며, ViewModel 인스턴스는 재생성된 액티비티에서 즉시 사용될 수 있다.&lt;/strong&gt;
+소유자가 액티비티를 끝낼 때, 안드로이드는 ViewModel 객체의 onCleared() 메서드를 호출하여 리소스를 정리한다.&lt;/p&gt;
+
+&lt;p&gt;&lt;span class=&quot;clr-note&quot;&gt;
+ViewModel 사용 시 ViewModel에 액티비티, 프래그먼트, 뷰에 대한 컨텍스트를 저장해서는 안된다.   &lt;br /&gt;
+&lt;/span&gt;&lt;/p&gt;
+
+&lt;p&gt;-액티비티가 재생성 될 때, ViewModel은 액티비티 생명주기 외부에 존재하기 때문에 UI 컨텍스트를 ViewModel에 저장하면 메모리 락을 발생시키는 직접적인 원인이 된다. 단, Application 컨텍스트(전체 앱의 수명주기)를 저장하는 것은 괜찮다. Application 컨텐스트는 AndroidViewModel 클래스를 통해 받을 수 있다.&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;/assets/images/viewmodel-lifecycle.png&quot; alt=&quot;액티비티가 회전을 거쳐 끝날 때까지의 라이프 사이클&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;&lt;a href=&quot;/android-mvvm/#viewModel&quot;&gt;—-&amp;gt; 예제로 바로가기&lt;/a&gt;.&lt;/p&gt;</content><author><name>devgaram</name><email>joingaram@gmail.com</email></author><category term="android" /><summary type="html">안드로이드 아키텍쳐 중 ViewModel 클래스에 대한 내용입니다.</summary></entry><entry><title type="html">안드로이드 MVVM에 대해 알아보자</title><link href="http://localhost:4000/android-mvvm/" rel="alternate" type="text/html" title="안드로이드 MVVM에 대해 알아보자" /><published>2019-01-07T00:00:00+09:00</published><updated>2019-01-07T00:00:00+09:00</updated><id>http://localhost:4000/android-mvvm</id><content type="html" xml:base="http://localhost:4000/android-mvvm/">&lt;p&gt;Coding in Flow의  Room + ViewModel + LiveData + RecyclerView (MVVM) 튜토리얼을 정리했습니다.&lt;/p&gt;
+
+&lt;hr /&gt;
+
+&lt;h1 id=&quot;파일-구성&quot;&gt;파일 구성&lt;/h1&gt;
+&lt;ul&gt;
+  &lt;li&gt;MainActivity.java&lt;/li&gt;
+  &lt;li&gt;Note.java&lt;/li&gt;
+  &lt;li&gt;NoteAdapter.java&lt;/li&gt;
+  &lt;li&gt;NoteDao.interface&lt;/li&gt;
+  &lt;li&gt;NoteDatabase.java&lt;/li&gt;
+  &lt;li&gt;NoteRepository.java&lt;/li&gt;
+  &lt;li&gt;NoteViewModel.java&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;&lt;br /&gt;&lt;/p&gt;
+&lt;h1 id=&quot;mainactivityjava&quot;&gt;MainActivity.java&lt;/h1&gt;
+&lt;p&gt;앱의 시작점으로 RecyclerView 설정 및 ViewModel 생성하는 부분이다.&lt;/p&gt;
+
+&lt;h2 id=&quot;1-리사이클러뷰-구현&quot;&gt;1. 리사이클러뷰 구현&lt;/h2&gt;
+&lt;div class=&quot;language-java highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;n&quot;&gt;RecyclerView&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;recyclerView&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;findViewById&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;R&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;na&quot;&gt;id&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;na&quot;&gt;recycler_view&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;);&lt;/span&gt;
+&lt;span class=&quot;n&quot;&gt;recyclerView&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;na&quot;&gt;setLayoutManager&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;k&quot;&gt;new&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;LinearLayoutManager&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;k&quot;&gt;this&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;));&lt;/span&gt;   &lt;span class=&quot;c1&quot;&gt;// 1)&lt;/span&gt;
+&lt;span class=&quot;n&quot;&gt;recyclerView&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;na&quot;&gt;setHasFixedSize&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;kc&quot;&gt;true&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;);&lt;/span&gt; &lt;span class=&quot;c1&quot;&gt;// 2)&lt;/span&gt;
+
+&lt;span class=&quot;kd&quot;&gt;final&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;NoteAdapter&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;adapter&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;new&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;NoteAdapter&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;();&lt;/span&gt;  &lt;span class=&quot;c1&quot;&gt;// 3)&lt;/span&gt;
+&lt;span class=&quot;n&quot;&gt;recyclerView&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;na&quot;&gt;setAdapter&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;adapter&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;);&lt;/span&gt;   &lt;span class=&quot;c1&quot;&gt;// 3-1)&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+&lt;p&gt;1) LayoutManager 클래스, 아이템을 어떻게 배치할 것인가를 결정한다.  &lt;br /&gt;
+&lt;span class=&quot;clr-grey&quot;&gt;LinearLayoutManager 클래스 : 가로/세로 형태로 아이템을 배열한다.&lt;/span&gt;&lt;/p&gt;
+
+&lt;p&gt;2) 각 아이템의 변화가 리사이클러 뷰의 전체 크기에 영향을 끼치지 않는다면 true를 사용한다.&lt;/p&gt;
+
+&lt;p&gt;3) 데이터를 리사이클러뷰에 연결해 줄 어댑터 객체 생성&lt;/p&gt;
+
+&lt;p&gt;3-1) 3)에서 생성한 어댑터 객체를 리사이클러뷰에 붙인다.&lt;/p&gt;
+
+&lt;p&gt;&lt;br /&gt;
+&lt;span id=&quot;viewModel&quot;&gt;&lt;/span&gt;&lt;/p&gt;
+&lt;h2 id=&quot;2-viewmodel과-livedata&quot;&gt;2. ViewModel과 LiveData&lt;/h2&gt;
+&lt;p&gt;&lt;a href=&quot;/android-viewModel/&quot;&gt;—&amp;gt;뷰모델 개념 익히러가기&lt;/a&gt;.&lt;/p&gt;
+
+&lt;div class=&quot;language-java highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;n&quot;&gt;noteViewModel&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;ViewModelProviders&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;na&quot;&gt;of&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;k&quot;&gt;this&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;).&lt;/span&gt;&lt;span class=&quot;na&quot;&gt;get&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;NoteViewModel&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;na&quot;&gt;class&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;);&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+&lt;p&gt;&lt;strong&gt;ViewModel 객체 요청&lt;/strong&gt;  &lt;br /&gt;
+보통 ViewModel 생성 요청은 onCreate() 메서드에서 이루어지며, &lt;strong&gt;ViewModelProvider 클래스&lt;/strong&gt;를 통해서 ViewModel 객체를 생성한다.  &lt;br /&gt;
+ViewModelProviders 클래스의 of(this) 를 통해 this(UI 컨트롤러) 스코프를 가진 ViewModelProvider 인스턴스가 반환된다.  &lt;br /&gt;
+리턴된 ViewModelProvider 객체의 메서드 get(NoteViewModel.class) 를 통해 NoteViewModel 인스턴스가 생성된다.&lt;/p&gt;
+
+&lt;p&gt;&lt;span class=&quot;clr-grey&quot;&gt;&lt;strong&gt;NOTE:&lt;/strong&gt;get()은 이미 ViewModel 객체가 생성되었을 경우, 그 객체를 리턴한다. &lt;/span&gt;&lt;/p&gt;
+
+&lt;p&gt;&lt;br /&gt;
+&lt;strong&gt;LiveData 사용&lt;/strong&gt;  &lt;br /&gt;
+&lt;a href=&quot;/android-LiveData/&quot;&gt;—&amp;gt;LiveData 개념 익히러가기&lt;/a&gt;.&lt;/p&gt;
+
+&lt;p&gt;noteViewModel.java&lt;/p&gt;
+&lt;div class=&quot;language-java highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;kd&quot;&gt;public&lt;/span&gt; &lt;span class=&quot;kd&quot;&gt;class&lt;/span&gt; &lt;span class=&quot;nc&quot;&gt;NoteViewModel&lt;/span&gt; &lt;span class=&quot;kd&quot;&gt;extends&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;AndroidViewModel&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;{&lt;/span&gt;
+    &lt;span class=&quot;c1&quot;&gt;// ...생략&lt;/span&gt;
+    &lt;span class=&quot;kd&quot;&gt;private&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;LiveData&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;&amp;lt;&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;List&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;&amp;lt;&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;Note&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;&amp;gt;&amp;gt;&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;allNotes&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;;&lt;/span&gt;
+
+    &lt;span class=&quot;kd&quot;&gt;public&lt;/span&gt; &lt;span class=&quot;nf&quot;&gt;NoteViewModel&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nd&quot;&gt;@NonNull&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;Application&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;application&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;{&lt;/span&gt;
+        &lt;span class=&quot;kd&quot;&gt;super&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;application&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;);&lt;/span&gt;
+        &lt;span class=&quot;n&quot;&gt;repository&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;new&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;NoteRepository&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;application&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;);&lt;/span&gt;
+        &lt;span class=&quot;n&quot;&gt;allNotes&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;repository&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;na&quot;&gt;getAllNotes&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;();&lt;/span&gt;
+    &lt;span class=&quot;o&quot;&gt;}&lt;/span&gt;
+
+    &lt;span class=&quot;c1&quot;&gt;// ...생략&lt;/span&gt;
+    &lt;span class=&quot;kd&quot;&gt;public&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;LiveData&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;&amp;lt;&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;List&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;&amp;lt;&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;Note&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;&amp;gt;&amp;gt;&lt;/span&gt; &lt;span class=&quot;nf&quot;&gt;getAllNotes&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;()&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;{&lt;/span&gt;
+        &lt;span class=&quot;k&quot;&gt;return&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;allNotes&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;;&lt;/span&gt;
+    &lt;span class=&quot;o&quot;&gt;}&lt;/span&gt;
+&lt;span class=&quot;o&quot;&gt;}&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+&lt;p&gt;LiveData는 보통 ViewModel 내에서 함께 쓰인다.&lt;/p&gt;
+
+&lt;p&gt;&lt;br /&gt;
+MainActivity.java&lt;/p&gt;
+&lt;div class=&quot;language-java highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;n&quot;&gt;noteViewModel&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;na&quot;&gt;getAllNotes&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;().&lt;/span&gt;&lt;span class=&quot;na&quot;&gt;observe&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;k&quot;&gt;this&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;new&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;Observer&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;&amp;lt;&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;List&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;&amp;lt;&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;Note&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;&amp;gt;&amp;gt;()&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;{&lt;/span&gt;  &lt;span class=&quot;c1&quot;&gt;// 1) LifeCycleOwner, Observer&lt;/span&gt;
+    &lt;span class=&quot;nd&quot;&gt;@Override&lt;/span&gt;
+    &lt;span class=&quot;kd&quot;&gt;public&lt;/span&gt; &lt;span class=&quot;kt&quot;&gt;void&lt;/span&gt; &lt;span class=&quot;nf&quot;&gt;onChanged&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nd&quot;&gt;@Nullable&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;List&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;&amp;lt;&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;Note&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;&amp;gt;&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;notes&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;{&lt;/span&gt; &lt;span class=&quot;c1&quot;&gt;// 2)&lt;/span&gt;
+        &lt;span class=&quot;c1&quot;&gt;// update RecyclerView&lt;/span&gt;
+        &lt;span class=&quot;c1&quot;&gt;// Toast.makeText(MainActivity.this, &quot;onchanged&quot;, Toast.LENGTH_SHORT).show();&lt;/span&gt;
+        &lt;span class=&quot;n&quot;&gt;adapter&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;na&quot;&gt;setNotes&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;notes&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;);&lt;/span&gt;
+    &lt;span class=&quot;o&quot;&gt;}&lt;/span&gt;
+&lt;span class=&quot;o&quot;&gt;});&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+&lt;p&gt;1) noteViewModel.getAllNotes()를 통해 LiveData를 리턴받고 observe() 메서드를 통해 Observer를 붙여 감지를 시작한다.  &lt;br /&gt;
+&lt;span class=&quot;clr-grey&quot;&gt;&lt;strong&gt;NOTE:&lt;/strong&gt;보통 Observer는 프래그먼트나 액티비티 같은 UI 컨트롤러에서 만든다.&lt;/span&gt;&lt;/p&gt;
+
+&lt;p&gt;&lt;span class=&quot;clr-note&quot;&gt;&lt;strong&gt;POINT:&lt;/strong&gt;LiveData의 data가 변경될 때 LifeCycleOwner가 활성화 되어있는 한 등록된 모든 Observer들 에게 이벤트를 보낸다.&lt;/span&gt;&lt;/p&gt;
+
+&lt;p&gt;2) Observer는 onChanged() 메서드를 반드시 오버라이드해야하며, onChanged() 메서드에서 UI 업데이트를 한다.&lt;/p&gt;</content><author><name>devgaram</name><email>joingaram@gmail.com</email></author><category term="android" /><summary type="html">Coding in Flow의 Room + ViewModel + LiveData + RecyclerView (MVVM) 튜토리얼을 정리했습니다.</summary></entry><entry><title type="html">jekyll의 minimal-mistakes에서 자바스크립트 커스텀하는 방법</title><link href="http://localhost:4000/jekyll-js-custom/" rel="alternate" type="text/html" title="jekyll의 minimal-mistakes에서 자바스크립트 커스텀하는 방법" /><published>2019-01-05T00:00:00+09:00</published><updated>2019-01-05T00:00:00+09:00</updated><id>http://localhost:4000/jekyll-js-custom</id><content type="html" xml:base="http://localhost:4000/jekyll-js-custom/">&lt;p&gt;minimal-mistakes 테마를 적용한 jekyll 블로그를 커스텀하는 과정에서 자바스크립트 코드를 추가하는 방법입니다.  &lt;br /&gt;
 minimal-mistakes 문서에 자바스크립트 커스텀 방법이 잘 정리되어있습니다.
 &lt;a href=&quot;https://mmistakes.github.io/minimal-mistakes/docs/javascript/&quot;&gt;공식문서 바로가기&lt;/a&gt;.&lt;/p&gt;
 
@@ -613,128 +750,4 @@ console.log(output);    // 결과 : [2,3]
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
 &lt;p&gt;패키지 삭제&lt;/p&gt;
 &lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&amp;gt; npm uninstall -g jshint
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;</content><author><name>devgaram</name><email>joingaram@gmail.com</email></author><category term="npm" /><summary type="html">4. 로컬에 패키지를 설치해보자</summary></entry><entry><title type="html">npm 시작하기</title><link href="http://localhost:4000/npmstart1/" rel="alternate" type="text/html" title="npm 시작하기" /><published>2018-04-11T00:00:00+09:00</published><updated>2018-04-11T00:00:00+09:00</updated><id>http://localhost:4000/npmstart1</id><content type="html" xml:base="http://localhost:4000/npmstart1/">&lt;h1 id=&quot;1-npm이란&quot;&gt;1. npm이란?&lt;/h1&gt;
-
-&lt;h2 id=&quot;npm은-어떻게-구성되어있을까&quot;&gt;npm은 어떻게 구성되어있을까?&lt;/h2&gt;
-
-&lt;p&gt;npm은 세 개의 컴포넌트로 구성되어있습니다.&lt;/p&gt;
-&lt;ul&gt;
-  &lt;li&gt;the website - 패키지 탐색, 프로파일 설정, 개인 npm histoty 관리&lt;/li&gt;
-  &lt;li&gt;CLI ( the Command Line Interface ) - 개발자와 npm이 소통하는 방법으로 터미널에서 동작&lt;/li&gt;
-  &lt;li&gt;the registry - 자바스크립트 소프트웨어의 공용 데이터베이스 및 메타 정보&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;h2 id=&quot;npm은-언제-사용할까&quot;&gt;npm은 언제 사용할까?&lt;/h2&gt;
-
-&lt;ul&gt;
-  &lt;li&gt;앱에 패키지를 적용시키거나, 통합시키고 싶을 때&lt;/li&gt;
-  &lt;li&gt;바로 사용할 수 있는 독립된 툴을 다운받고싶을 때&lt;/li&gt;
-  &lt;li&gt;npx를 사용하여 다운로드받는 것 없이 패키지를 실행하고 싶을 때&lt;/li&gt;
-  &lt;li&gt;조직을 만들어서 유지보수, 개발 협업하고 싶을 때&lt;/li&gt;
-  &lt;li&gt;어디서든 npm 사용자와 코드를 공유하고 싶을 때&lt;/li&gt;
-  &lt;li&gt;코드 활용을 특정 개발자들로만 제한하고 싶을 때&lt;/li&gt;
-  &lt;li&gt;버전 및 코드 의존성 관리하고 싶을 때&lt;/li&gt;
-  &lt;li&gt;근본적인 코드가 업데이트될 때, 애플리케이션도 쉽게 업데이트되게 하고 싶을 때&lt;/li&gt;
-  &lt;li&gt;같은 문제를 해결하는 다양한 방법을 찾고싶을 때&lt;/li&gt;
-  &lt;li&gt;비슷한 프로젝트를 진행하는 개발자를 찾고 싶을 때&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;h1 id=&quot;2-패키지는-어떻게-찾을까&quot;&gt;2. 패키지는 어떻게 찾을까?&lt;/h1&gt;
-
-&lt;p&gt;패키지를 찾기위해서 npm의 검색창을 활용해야합니다. 그럼, 당신의 앱에 바코드(QR code) 기능을 넣고 싶다면 검색창에 QR code라고 입력해봅시다. QR Code와 관련된 패키지들이 조회되고, 패키지 선택에 도움을 줄 수 있는 랭킹 정보를 볼 수 있습니다.&lt;/p&gt;
-
-&lt;p&gt;그렇다면 비슷한 패키지들 중, 우리는 어떤 패키지를 선택하면 될까요?&lt;/p&gt;
-
-&lt;h2 id=&quot;각각의-패키지들은-npm-분석기에-의해-다음의-4가지로-랭킹되고있습니다&quot;&gt;각각의 패키지들은 npm 분석기에 의해 다음의 4가지로 랭킹되고있습니다.&lt;/h2&gt;
-
-&lt;ul&gt;
-  &lt;li&gt;Optimal -  아래 세가지 기준을 의미있게 조합하여 순위를 지정합니다.&lt;/li&gt;
-  &lt;li&gt;Populary - 패키지가 다운로드된 횟수로 패키지 순위를 지정하며, 유용하고 안정적인 패키지가 해당됩니다.&lt;/li&gt;
-  &lt;li&gt;Quality - readme 파일 존재여부, 안정성, 테스트, 최신 의존성주입, 사용자정의 웹사이트, 코드 복잡성등을 고려합니다.&lt;/li&gt;
-  &lt;li&gt;Maintenance - 개발자가 관심을 기울이며, 보다 자주 유지보수되는 패키지를 순위로 지정합니다.&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;h2 id=&quot;패키지를-선택해서-들어가보면-패키지-정보와-사용-방법등의-다양한-정보를-얻을-수-있습니다&quot;&gt;패키지를 선택해서 들어가보면 패키지 정보와 사용 방법등의 다양한 정보를 얻을 수 있습니다.&lt;/h2&gt;
-
-&lt;ul&gt;
-  &lt;li&gt;Readme - 개발자가 생성한 readme 파일로 패키지의 목적과 사용방법에 대해 설명되어있습니다.&lt;/li&gt;
-  &lt;li&gt;Dependencies - 대부분의 패키지들은 다른 패키지들로 만들어집니다. 이 패키지가 의존하고 있는 패키지들의 정보를 보여줍니다.&lt;/li&gt;
-  &lt;li&gt;Dependents - 이 패키지를 의존하고 있는 패키지들을 보여줍니다.&lt;/li&gt;
-  &lt;li&gt;Versions - 패키지 업데이트 정보를 보여줍니다.&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;h1 id=&quot;3-npm-시작하기&quot;&gt;3. npm 시작하기&lt;/h1&gt;
-
-&lt;p&gt;npm은 Node.js로 개발되었기에 npm을 사용하기 위해서는 Node.js를 설치해야합니다.  &lt;br /&gt;
-Windows의 경우, 반드시 LTS 버전을 설치해야합니다.&lt;/p&gt;
-&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&amp;gt; node -v
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
-&lt;p&gt;설치가 완료되면 다음과 같이 노드의 버전을 확인해봅시다. 정상적으로 출력된다면 설치가 완료된 것입니다. &lt;br /&gt;
-Node.js를 설치할 때, npm은 자동적으로 설치됩니다. 하지만, npm은 Node.js보다 더 자주 업데이트되기때문에 최신 버전으로 업데이트하는 방법을 알아야합니다.&lt;/p&gt;
-&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&amp;gt; npm -v
-#npm 버전을 확인합니다.
-&amp;gt;npm install npm@latest -g
-#최신버전으로 업데이트합니다.
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;</content><author><name>devgaram</name><email>joingaram@gmail.com</email></author><category term="npm" /><summary type="html">1. npm이란?</summary></entry><entry><title type="html">Vue2 65분만에 배우기!</title><link href="http://localhost:4000/vue2/" rel="alternate" type="text/html" title="Vue2 65분만에 배우기!" /><published>2018-04-07T00:00:00+09:00</published><updated>2018-04-07T00:00:00+09:00</updated><id>http://localhost:4000/vue2</id><content type="html" xml:base="http://localhost:4000/vue2/">&lt;p&gt;유튜브 영상 The Vue Tutorial for 2018 - Learn Vue 2 in 65 Minutes 중 몰랐던 내용 정리한 글입니다.&lt;/p&gt;
-
-&lt;h2 id=&quot;1-vue-cli-설치하기&quot;&gt;1. Vue-CLI 설치하기&lt;/h2&gt;
-
-&lt;p&gt;Vue-CLI를 통해 Vue 프로젝트를 빠르고 쉽게 생성할 수 있다.&lt;/p&gt;
-&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&amp;gt; mkdir vue-toy
-&amp;gt; cd vue-toy
-&amp;gt; npm install -g @vue/cli        -- Vue-CLI 설치
-&amp;gt; vue create vue-voca            -- Vue 프로젝트 생성[ vue create 프로젝트이름 ]
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
-
-&lt;p&gt;2018.04.09추가) yarn 설치 후, yarn을 통해 Vue-Cli 설치하는 방법&lt;/p&gt;
-&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&amp;gt; npm install -g yarn
-&amp;gt; yarn global add @vue/cli
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
-
-&lt;p&gt;뷰 프로젝트를 생성하면 다음과 같은 프롬프트를 볼 수 있다.&lt;/p&gt;
-&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;Vue CLI v3.0.0-beta.6
-?Please Pick a preset : (Use arrow Keys)
-&amp;gt; default (babel, eslint)
-   menually select features
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
-&lt;p&gt;2018.04.09추가)&lt;/p&gt;
-&lt;ul&gt;
-  &lt;li&gt;Vue-Cli의 기본 템플릿은 babel, eslint, unit-mocha를 포함한다.&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;p&gt;default로 생성을 성공적으로 완료하면 다음과 같이 명령어를 실행한다.&lt;/p&gt;
-&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&amp;gt; cd vue-voca
-&amp;gt; npm run serve
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
-
-&lt;p&gt;성공적으로 컴파일이 되면 http://localhost:8080/ 로 들어가본다.
-아래와 같은 화면을 볼 수 있다면, 성공적으로 Vue.js App을 생성한 것이다.&lt;/p&gt;
-
-&lt;p&gt;&lt;img src=&quot;/assets/images/2018-04-07-img.png&quot; alt=&quot;화면&quot; /&gt;&lt;/p&gt;
-
-&lt;h2 id=&quot;2-vue-form-validation&quot;&gt;2. Vue Form Validation&lt;/h2&gt;
-
-&lt;p&gt;VeeValidate는 폼 유효성 체크를 위한 패키지다.&lt;/p&gt;
-
-&lt;p&gt;설치방법&lt;/p&gt;
-&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&amp;gt; yarn add vee-validate
-#또는
-&amp;gt; npm install vee-validate --save
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
-&lt;p&gt;사용방법&lt;/p&gt;
-&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;import VeeValidate from 'vee-validate';
-Vue.use(veeValidate);
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
-&lt;h2 id=&quot;3-vue-router&quot;&gt;3. Vue router&lt;/h2&gt;
-&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&amp;gt; npm add vue-router
-#또는
-&amp;gt; yarn add vue-router
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
-
-&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;import vue from 'vue'
-import Router from 'vue-router'
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
-
-&lt;p&gt;vue 후에 vue-router를 임포트해야한다.&lt;/p&gt;
-
-&lt;p&gt;동영상에서 진행한 프로젝트를 따라한 &lt;a href=&quot;https://github.com/devgaram/vueStudy&quot;&gt;깃으로 가기&lt;/a&gt;. 개인적인 주석이 포함되어있습니다.&lt;/p&gt;</content><author><name>devgaram</name><email>joingaram@gmail.com</email></author><category term="vuejs" /><summary type="html">유튜브 영상 The Vue Tutorial for 2018 - Learn Vue 2 in 65 Minutes 중 몰랐던 내용 정리한 글입니다.</summary></entry></feed>
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;</content><author><name>devgaram</name><email>joingaram@gmail.com</email></author><category term="npm" /><summary type="html">4. 로컬에 패키지를 설치해보자</summary></entry></feed>
