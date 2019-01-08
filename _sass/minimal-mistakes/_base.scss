@@ -375,6 +375,12 @@ input[type="submit"],
 #header-image {
   margin-top: -45%;
   width: 100%;
+  animation-duration: 2s;
+  animation-name: opacityOne;
+}
+ @keyframes opacityOne {
+  from { opacity: 0.25; }
+  to { opacity: 1; }
 }
 
 .fa-gubun{

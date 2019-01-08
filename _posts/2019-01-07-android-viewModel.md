@@ -21,9 +21,9 @@ tags: [android, viewmodel, mvvm]
 이 때 두가지 문제가 발생한다.
 
 ## 1) UI에 종속된 데이터 손실  
-해결1 - 적은 데이터의 경우 OnCreate()에서 onSaveInstanceState() 메서드를 사용하여 번들에서 해당 데이터를 복원할 수 있다. 
+해결1 - 적은 데이터의 경우 <code class="codetainer">OnCreate()</code>에서 <code class="codetainer">onSaveInstanceState()</code> 메서드를 사용하여 번들에서 해당 데이터를 복원할 수 있다. 
 <span class="clr-grey">많은 데이터와 비트맵에는 부적절하다.</span>    
-해결2 - UI가 없는 워커 프래그먼트에 UI에 필요한 데이터를 관리하고 프래그먼트를 SetRetainInstance(true)로 설정함으로써 프래그먼트를 메모리에 유지(유보)시킨다.
+해결2 - UI가 없는 워커 프래그먼트에 UI에 필요한 데이터를 관리하고 프래그먼트를 <code class="codetainer">SetRetainInstance(true)</code>로 설정함으로써 프래그먼트를 메모리에 유지(유보)시킨다.
 
 ## 2) 메모리 누수, 리소스 낭비    
 UI 컨트롤러 재생성 시 다시 데이터를 로드하므로 리소스가 낭비되며, UI 컨트롤러가 비동기 호출을 하고 콜백을 받을 때 해당 컨트롤러가 파괴되었다면 에러가 발생하거나 메모리 누수가 날 수도 있다.
@@ -44,7 +44,7 @@ UI 컨트롤러는 아래와 같은 작업을 다루는 경향이 있다.
 
 Architecture Components는 ViewModel 클래스를 제공한다.   
 **ViewModel 클래스의 인스턴스(객체)는 구성 변경에도 데이터를 유지하며, ViewModel 인스턴스는 재생성된 액티비티에서 즉시 사용될 수 있다.**
-소유자가 액티비티를 끝낼 때, 안드로이드는 ViewModel 객체의 onCleared() 메서드를 호출하여 리소스를 정리한다.
+소유자가 액티비티를 끝낼 때, 안드로이드는 ViewModel 객체의 <code class="codetainer">onCleared()</code> 메서드를 호출하여 리소스를 정리한다.
 
 <span class="clr-note">
 ViewModel 사용 시 ViewModel에 액티비티, 프래그먼트, 뷰에 대한 컨텍스트를 저장해서는 안된다.     

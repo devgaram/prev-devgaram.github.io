@@ -66,7 +66,7 @@ uglify-js 패키지 설치
 > npm install uglify-js
 ```
 package.json의 scripts 부분을 보면 build:js 스크립트 실행시 **npm run uglify && npm run add-banner** 를 실행하도로 되어있습니다.
-이를 참고하여 cmd에서 npm run build:js를 실행해봅시다. 정상적으로 _main.js 파일이 main.min.js로 압축된 것을 확인할 수 있을 것입니다.
+이를 참고하여 cmd에서 <code class="codetainer">npm run build:js</code>를 실행해봅시다. 정상적으로 _main.js 파일이 main.min.js로 압축된 것을 확인할 수 있을 것입니다.
 
 ## 4. jekyll serve 실행
 이미 서버가 실행되어있다면 자동으로 반영됩니다.   
