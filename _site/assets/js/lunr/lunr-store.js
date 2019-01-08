@@ -10,7 +10,7 @@ var store = [{
         "url": "http://localhost:4000/javascript-opentutorials-1/",
         "teaser":"http://localhost:4000/true"},{
         "title": "(생활코딩) Javascript 입문2",
-        "excerpt":"생활코딩 URL https://opentutorials.org/course/743/ 반복문, 함수 정의방법, 배열, 객체 반복문 for( var i=0; i&lt;10; i++){ if( i === 5) break; // 그 즉시, for문 중단 - coding1~4 까지만 출력됨 if( i === 5) continue; // 실행을 중단하고 반복문 이어서 함. - coding1~4/6~9까지 출력됨. document.write(\"coding\"+i+\"&lt;br/&gt;\"); } 함수 정의 방법 // [첫번째 방법]...","categories": [],
+        "excerpt":"생활코딩 URL https://opentutorials.org/course/743/ 반복문, 함수 정의방법, 배열, 객체 반복문 for( var i=0; i&lt;10; i++){ if( i === 5) break; // 그 즉시, for문 중단 - coding1~4 까지만 출력됨 if( i === 5) continue; // 실행을 중단하고 반복문 이어서 함. - coding1~4/6~9까지 출력됨. document.write(\"coding\"+i+\"\"); } 함수 정의 방법 // [첫번째 방법]...","categories": [],
         "tags": ["javascript"],
         "url": "http://localhost:4000/javascript-opentutorials-2/",
         "teaser":"http://localhost:4000/true"},{
@@ -51,7 +51,7 @@ var store = [{
         "teaser":"http://localhost:4000/true"},{
         "title": "(mocha) 자바스크립트 단위테스트 시작하기",
         "excerpt":"mocha 자바스크립트 테스트 프레임워크로 단위테스트 시작하는 방법입니다. 단위테스트(Unit Test)가 필요한 이유? 프로그램을 작은 단위로 쪼개서 내가 짠 프로그램이 내가 원하는 결과대로 동작하는 지 테스트할 수 있다. 단위테스트를 거치면 프로그램의 안정성이 높아지며, 단위테스트를 믿고 리팩토링을 할 수 있다. 자바스크립트로 짜여진 프로그램에서 오류를 찾을 때, 단위테스트를 거치지 않은 프로그램의 경우는 전체 흐름을...","categories": [],
-        "tags": ["mocha"],
+        "tags": ["mocha","javascript"],
         "url": "http://localhost:4000/mocha-unittest/",
         "teaser":"http://localhost:4000/true"},{
         "title": "Vue2 65분만에 배우기!",
@@ -96,21 +96,21 @@ var store = [{
         "teaser":"http://localhost:4000/true"},{
         "title": "jekyll의 minimal-mistakes에서 자바스크립트 커스텀하는 방법",
         "excerpt":"minimal-mistakes 테마를 적용한 jekyll 블로그를 커스텀하는 과정에서 자바스크립트 코드를 추가하는 방법입니다. minimal-mistakes 문서에 자바스크립트 커스텀 방법이 잘 정리되어있습니다. 공식문서 바로가기. 우리가 수정해야 할 파일은 /assets/js/ 에 위치한 _main.js 파일입니다. 하지만, jekyll은 _main.js 파일이 아닌 main.min.js 파일을 컴파일하여 화면에 반영합니다. main.min.js 는 _main.js 자바스크립트 코드를 압축화하고 난독화한 파일로 npm 패키지 중...","categories": [],
-        "tags": ["jekyll"],
+        "tags": ["jekyll","github"],
         "url": "http://localhost:4000/jekyll-js-custom/",
         "teaser":"http://localhost:4000/true"},{
         "title": "안드로이드 LiveData 대해 알아보자",
         "excerpt":" ","categories": [],
-        "tags": ["android"],
+        "tags": ["android","livedata","mvvm"],
         "url": "http://localhost:4000/android-LiveData/",
         "teaser":"http://localhost:4000/true"},{
         "title": "안드로이드 MVVM에 대해 알아보자",
         "excerpt":"Coding in Flow의 Room + ViewModel + LiveData + RecyclerView (MVVM) 튜토리얼을 정리했습니다. 파일 구성 MainActivity.java Note.java NoteAdapter.java NoteDao.interface NoteDatabase.java NoteRepository.java NoteViewModel.java MainActivity.java 앱의 시작점으로 RecyclerView 설정 및 ViewModel 생성하는 부분이다. 1. 리사이클러뷰 구현 RecyclerView recyclerView = findViewById(R.id.recycler_view); recyclerView.setLayoutManager(new LinearLayoutManager(this)); // 1) recyclerView.setHasFixedSize(true); // 2) final NoteAdapter adapter = new...","categories": [],
-        "tags": ["android"],
+        "tags": ["android","mvvm"],
         "url": "http://localhost:4000/android-mvvm/",
         "teaser":"http://localhost:4000/true"},{
         "title": "안드로이드 ViewModel에 대해 알아보자",
-        "excerpt":"안드로이드 아키텍쳐 중 ViewModel 클래스에 대한 내용입니다. 안드로이드 프레임워크는 액티비티와 프래그먼트와 같은 UI 컨트롤러의 라이프 사이클을 관리한다. 아래와 같은 구성 변경 발생 시, 안드로이드는 UI 컨트롤러를 종료하거나 재생성한다. 런타임에 화면 방향이 전환되는 경우 언어, 글꼴 배율과 같은 기기 구성이 변경되는 경우 이 때 두가지 문제가 발생한다. 1) UI에 종속된 데이터...","categories": [],
-        "tags": ["android"],
+        "excerpt":"안드로이드 아키텍쳐 중 ViewModel 클래스에 대한 내용입니다. 안드로이드 프레임워크는 액티비티와 프래그먼트와 같은 UI 컨트롤러의 라이프 사이클을 관리한다. [ UI 컨트롤러 라이프 사이클과 ViewModel 스코프] 아래와 같은 구성 변경 발생 시, 안드로이드는 UI 컨트롤러를 종료하거나 재생성한다. 런타임에 화면 방향이 전환되는 경우 언어, 글꼴 배율과 같은 기기 구성이 변경되는 경우 이 때...","categories": [],
+        "tags": ["android","viewmodel","mvvm"],
         "url": "http://localhost:4000/android-viewModel/",
         "teaser":"http://localhost:4000/true"}]

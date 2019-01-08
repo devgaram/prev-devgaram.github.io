@@ -1,6 +1,7 @@
 ---
-layout: posts
+layout: post-content
 title: (생활코딩) javascript 객체지향2
+date: 2018-01-13
 tags:
  - javascript
 ---
@@ -29,7 +30,7 @@ document.write(p1.introduce());    //My name is egoing
 Person 객체에는 prototype이라는 속성이 있는 데 그 안에는 어떤 객체가 있다.    
 .name을 통해 그 객체에 값을 줄 수 있다.
 
-<br/>
+
 ```javascript
 function Person(name){ 
    this.name = name; 
@@ -56,11 +57,11 @@ Programmer.prototype.coding = function(){
 }
  
 var p1 = new Programmer('egoing'); 
-document.write(p1.introduce() + '<br/>');    //My name is egoing이 출력됨 
-document.write(p1.coding() + '<br/>');    //hello world! 
+document.write(p1.introduce() + '');    //My name is egoing이 출력됨 
+document.write(p1.coding() + '');    //hello world! 
  
 var p2 = new Desiner('leezche'); 
-document.write(p2.design() + '<br/>');    //beautiful!
+document.write(p2.design() + '');    //beautiful!
 ```
 Programmer에는 introduce 속성이 정의되어 있지않은데 어떻게 사용할 수 있었을까?    
 Person의 introduce를 상속받았기 때문이다.
@@ -79,7 +80,7 @@ name과 introduce라는 프로퍼티가 prototype이라는 객체가 가지고 �
 
 기본적으로 가지고있는 property를 가진 객체를 생성하기 위해서 객체 리터럴 대신, new라는 키워드를 사용한다.
 
-<br/>
+
 # 2. prototype
 ```javascript
 function Ultra(){} 
@@ -100,7 +101,7 @@ console.log(o.ultraProp);    //1
 ```
 o.ultraProp o라는 객체가 ultraProp를 가지고 있는지 찾는다. 그래서 1이 출력됨.
 
-<br/>
+
 ```javascript
 function Ultra(){} 
 Ultra.prototype.ultraProp = true; 
@@ -117,7 +118,7 @@ console.log(o.ultraProp);    //2가 출력됨
 ```
 o객체에 ultraProp 프로퍼티를 찾는다. 없으면 o라는 객체의 생성자를 알아 낸후, 이 생성자의 프로토타입 객체를 뒤져서 그 객체의 propery에 ultraProp가 있는 지 찾는다.
 
-<br/>
+
 ```javascript
 function Ultra(){} 
 Ultra.prototype.ultraProp = true; 

@@ -1,8 +1,11 @@
-<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="3.8.5">Jekyll</generator><link href="http://localhost:4000/feed.xml" rel="self" type="application/atom+xml" /><link href="http://localhost:4000/" rel="alternate" type="text/html" /><updated>2019-01-07T23:37:27+09:00</updated><id>http://localhost:4000/feed.xml</id><title type="html">It’s a piece of cake!</title><subtitle>초보개발자의 블로그입니다.</subtitle><author><name>devgaram</name><email>joingaram@gmail.com</email></author><entry><title type="html">안드로이드 LiveData 대해 알아보자</title><link href="http://localhost:4000/android-LiveData/" rel="alternate" type="text/html" title="안드로이드 LiveData 대해 알아보자" /><published>2019-01-07T00:00:00+09:00</published><updated>2019-01-07T00:00:00+09:00</updated><id>http://localhost:4000/android-LiveData</id><content type="html" xml:base="http://localhost:4000/android-LiveData/"></content><author><name>devgaram</name><email>joingaram@gmail.com</email></author><category term="android" /><summary type="html"></summary></entry><entry><title type="html">안드로이드 ViewModel에 대해 알아보자</title><link href="http://localhost:4000/android-viewModel/" rel="alternate" type="text/html" title="안드로이드 ViewModel에 대해 알아보자" /><published>2019-01-07T00:00:00+09:00</published><updated>2019-01-07T00:00:00+09:00</updated><id>http://localhost:4000/android-viewModel</id><content type="html" xml:base="http://localhost:4000/android-viewModel/">&lt;p&gt;안드로이드 아키텍쳐 중 ViewModel 클래스에 대한 내용입니다.&lt;/p&gt;
+<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="3.8.5">Jekyll</generator><link href="http://localhost:4000/feed.xml" rel="self" type="application/atom+xml" /><link href="http://localhost:4000/" rel="alternate" type="text/html" /><updated>2019-01-08T14:14:48+09:00</updated><id>http://localhost:4000/feed.xml</id><title type="html">It’s a piece of cake!</title><subtitle>초보개발자의 블로그입니다.</subtitle><author><name>devgaram</name><email>joingaram@gmail.com</email></author><entry><title type="html">안드로이드 LiveData 대해 알아보자</title><link href="http://localhost:4000/android-LiveData/" rel="alternate" type="text/html" title="안드로이드 LiveData 대해 알아보자" /><published>2019-01-07T00:00:00+09:00</published><updated>2019-01-07T00:00:00+09:00</updated><id>http://localhost:4000/android-LiveData</id><content type="html" xml:base="http://localhost:4000/android-LiveData/"></content><author><name>devgaram</name><email>joingaram@gmail.com</email></author><category term="android" /><category term="livedata" /><category term="mvvm" /><summary type="html"></summary></entry><entry><title type="html">안드로이드 ViewModel에 대해 알아보자</title><link href="http://localhost:4000/android-viewModel/" rel="alternate" type="text/html" title="안드로이드 ViewModel에 대해 알아보자" /><published>2019-01-07T00:00:00+09:00</published><updated>2019-01-07T00:00:00+09:00</updated><id>http://localhost:4000/android-viewModel</id><content type="html" xml:base="http://localhost:4000/android-viewModel/">&lt;p&gt;안드로이드 아키텍쳐 중 ViewModel 클래스에 대한 내용입니다.&lt;/p&gt;
 
 &lt;hr /&gt;
 
 &lt;p&gt;안드로이드 프레임워크는 액티비티와 프래그먼트와 같은 UI 컨트롤러의 라이프 사이클을 관리한다.&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;/assets/images/viewmodel-lifecycle.png&quot; alt=&quot;액티비티가 회전을 거쳐 끝날 때까지의 라이프 사이클&quot; /&gt;  &lt;br /&gt;
+[ UI 컨트롤러 라이프 사이클과 ViewModel 스코프]&lt;/p&gt;
 
 &lt;p&gt;아래와 같은 구성 변경 발생 시, 안드로이드는 UI 컨트롤러를 종료하거나 재생성한다.&lt;/p&gt;
 &lt;ul&gt;
@@ -12,15 +15,15 @@
 
 &lt;p&gt;이 때 두가지 문제가 발생한다.&lt;/p&gt;
 
-&lt;p&gt;&lt;strong&gt;1) UI에 종속된 데이터 손실&lt;/strong&gt; &lt;br /&gt;
-해결1 - 적은 데이터의 경우 OnCreate()에서 onSaveInstanceState() 메서드를 사용하여 번들에서 해당 데이터를 복원할 수 있다.  &lt;br /&gt;
+&lt;h2 id=&quot;1-ui에-종속된-데이터-손실&quot;&gt;1) UI에 종속된 데이터 손실&lt;/h2&gt;
+&lt;p&gt;해결1 - 적은 데이터의 경우 OnCreate()에서 onSaveInstanceState() 메서드를 사용하여 번들에서 해당 데이터를 복원할 수 있다. 
 &lt;span class=&quot;clr-grey&quot;&gt;많은 데이터와 비트맵에는 부적절하다.&lt;/span&gt;  &lt;br /&gt;
 해결2 - UI가 없는 워커 프래그먼트에 UI에 필요한 데이터를 관리하고 프래그먼트를 SetRetainInstance(true)로 설정함으로써 프래그먼트를 메모리에 유지(유보)시킨다.&lt;/p&gt;
 
-&lt;p&gt;&lt;strong&gt;2) 메모리 누수, 리소스 낭비&lt;/strong&gt;    &lt;br /&gt;
-UI 컨트롤러 재생성 시 다시 데이터를 로드하므로 리소스가 낭비되며, UI 컨트롤러가 비동기 호출을 하고 콜백을 받을 때 해당 컨트롤러가 파괴되었다면 에러가 발생하거나 메모리 누수가 날 수도 있다.&lt;/p&gt;
+&lt;h2 id=&quot;2-메모리-누수-리소스-낭비&quot;&gt;2) 메모리 누수, 리소스 낭비&lt;/h2&gt;
+&lt;p&gt;UI 컨트롤러 재생성 시 다시 데이터를 로드하므로 리소스가 낭비되며, UI 컨트롤러가 비동기 호출을 하고 콜백을 받을 때 해당 컨트롤러가 파괴되었다면 에러가 발생하거나 메모리 누수가 날 수도 있다.&lt;/p&gt;
 
-&lt;p&gt;&lt;strong&gt;문제해결방법&lt;/strong&gt;&lt;/p&gt;
+&lt;h2 id=&quot;문제해결방법&quot;&gt;문제해결방법&lt;/h2&gt;
 
 &lt;p&gt;UI 컨트롤러는 아래와 같은 작업을 다루는 경향이 있다.&lt;/p&gt;
 &lt;ul&gt;
@@ -31,8 +34,9 @@ UI 컨트롤러 재생성 시 다시 데이터를 로드하므로 리소스가 �
 
 &lt;p&gt;그러므로 데이터베이스 또는 네트워크에서 데이터를 요청하고 로드하는 작업은 다른 클래스에 위임하여 UI 컨트롤러 로직에서 뷰 데이터에 대한 소유권을 분리하는 것이 효율적이다.&lt;/p&gt;
 
-&lt;p&gt;&lt;br /&gt;&lt;/p&gt;
 &lt;h1 id=&quot;viewmodel-클래스-구현&quot;&gt;ViewModel 클래스 구현&lt;/h1&gt;
+
+&lt;p&gt;&lt;a href=&quot;/android-mvvm/#viewModel&quot;&gt;예제로 바로가기&lt;/a&gt;.&lt;/p&gt;
 
 &lt;p&gt;Architecture Components는 ViewModel 클래스를 제공한다. &lt;br /&gt;
 &lt;strong&gt;ViewModel 클래스의 인스턴스(객체)는 구성 변경에도 데이터를 유지하며, ViewModel 인스턴스는 재생성된 액티비티에서 즉시 사용될 수 있다.&lt;/strong&gt;
@@ -42,11 +46,7 @@ UI 컨트롤러 재생성 시 다시 데이터를 로드하므로 리소스가 �
 ViewModel 사용 시 ViewModel에 액티비티, 프래그먼트, 뷰에 대한 컨텍스트를 저장해서는 안된다.   &lt;br /&gt;
 &lt;/span&gt;&lt;/p&gt;
 
-&lt;p&gt;-액티비티가 재생성 될 때, ViewModel은 액티비티 생명주기 외부에 존재하기 때문에 UI 컨텍스트를 ViewModel에 저장하면 메모리 락을 발생시키는 직접적인 원인이 된다. 단, Application 컨텍스트(전체 앱의 수명주기)를 저장하는 것은 괜찮다. Application 컨텐스트는 AndroidViewModel 클래스를 통해 받을 수 있다.&lt;/p&gt;
-
-&lt;p&gt;&lt;img src=&quot;/assets/images/viewmodel-lifecycle.png&quot; alt=&quot;액티비티가 회전을 거쳐 끝날 때까지의 라이프 사이클&quot; /&gt;&lt;/p&gt;
-
-&lt;p&gt;&lt;a href=&quot;/android-mvvm/#viewModel&quot;&gt;—-&amp;gt; 예제로 바로가기&lt;/a&gt;.&lt;/p&gt;</content><author><name>devgaram</name><email>joingaram@gmail.com</email></author><category term="android" /><summary type="html">안드로이드 아키텍쳐 중 ViewModel 클래스에 대한 내용입니다.</summary></entry><entry><title type="html">안드로이드 MVVM에 대해 알아보자</title><link href="http://localhost:4000/android-mvvm/" rel="alternate" type="text/html" title="안드로이드 MVVM에 대해 알아보자" /><published>2019-01-07T00:00:00+09:00</published><updated>2019-01-07T00:00:00+09:00</updated><id>http://localhost:4000/android-mvvm</id><content type="html" xml:base="http://localhost:4000/android-mvvm/">&lt;p&gt;Coding in Flow의  Room + ViewModel + LiveData + RecyclerView (MVVM) 튜토리얼을 정리했습니다.&lt;/p&gt;
+&lt;p&gt;&lt;span class=&quot;clr-grey&quot;&gt;액티비티가 재생성 될 때, ViewModel은 액티비티 생명주기 외부에 존재하기 때문에 UI 컨텍스트를 ViewModel에 저장하면 메모리 락을 발생시키는 직접적인 원인이 된다. 단, Application 컨텍스트(전체 앱의 수명주기)를 저장하는 것은 괜찮다. Application 컨텐스트는 AndroidViewModel 클래스를 통해 받을 수 있다.&lt;/span&gt;&lt;/p&gt;</content><author><name>devgaram</name><email>joingaram@gmail.com</email></author><category term="android" /><category term="viewmodel" /><category term="mvvm" /><summary type="html">안드로이드 아키텍쳐 중 ViewModel 클래스에 대한 내용입니다.</summary></entry><entry><title type="html">안드로이드 MVVM에 대해 알아보자</title><link href="http://localhost:4000/android-mvvm/" rel="alternate" type="text/html" title="안드로이드 MVVM에 대해 알아보자" /><published>2019-01-07T00:00:00+09:00</published><updated>2019-01-07T00:00:00+09:00</updated><id>http://localhost:4000/android-mvvm</id><content type="html" xml:base="http://localhost:4000/android-mvvm/">&lt;p&gt;Coding in Flow의  Room + ViewModel + LiveData + RecyclerView (MVVM) 튜토리얼을 정리했습니다.&lt;/p&gt;
 
 &lt;hr /&gt;
 
@@ -61,7 +61,6 @@ ViewModel 사용 시 ViewModel에 액티비티, 프래그먼트, 뷰에 대한 �
   &lt;li&gt;NoteViewModel.java&lt;/li&gt;
 &lt;/ul&gt;
 
-&lt;p&gt;&lt;br /&gt;&lt;/p&gt;
 &lt;h1 id=&quot;mainactivityjava&quot;&gt;MainActivity.java&lt;/h1&gt;
 &lt;p&gt;앱의 시작점으로 RecyclerView 설정 및 ViewModel 생성하는 부분이다.&lt;/p&gt;
 
@@ -82,23 +81,21 @@ ViewModel 사용 시 ViewModel에 액티비티, 프래그먼트, 뷰에 대한 �
 
 &lt;p&gt;3-1) 3)에서 생성한 어댑터 객체를 리사이클러뷰에 붙인다.&lt;/p&gt;
 
-&lt;p&gt;&lt;br /&gt;
-&lt;span id=&quot;viewModel&quot;&gt;&lt;/span&gt;&lt;/p&gt;
+&lt;p&gt;&lt;span id=&quot;viewModel&quot;&gt;&lt;/span&gt;&lt;/p&gt;
 &lt;h2 id=&quot;2-viewmodel과-livedata&quot;&gt;2. ViewModel과 LiveData&lt;/h2&gt;
-&lt;p&gt;&lt;a href=&quot;/android-viewModel/&quot;&gt;—&amp;gt;뷰모델 개념 익히러가기&lt;/a&gt;.&lt;/p&gt;
+&lt;p&gt;&lt;a href=&quot;/android-viewModel/&quot;&gt;뷰모델 개념 익히러가기&lt;/a&gt;.&lt;/p&gt;
 
 &lt;div class=&quot;language-java highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;n&quot;&gt;noteViewModel&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;ViewModelProviders&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;na&quot;&gt;of&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;k&quot;&gt;this&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;).&lt;/span&gt;&lt;span class=&quot;na&quot;&gt;get&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;NoteViewModel&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;na&quot;&gt;class&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;);&lt;/span&gt;
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
 &lt;p&gt;&lt;strong&gt;ViewModel 객체 요청&lt;/strong&gt;  &lt;br /&gt;
-보통 ViewModel 생성 요청은 onCreate() 메서드에서 이루어지며, &lt;strong&gt;ViewModelProvider 클래스&lt;/strong&gt;를 통해서 ViewModel 객체를 생성한다.  &lt;br /&gt;
-ViewModelProviders 클래스의 of(this) 를 통해 this(UI 컨트롤러) 스코프를 가진 ViewModelProvider 인스턴스가 반환된다.  &lt;br /&gt;
+보통 ViewModel 생성 요청은 onCreate() 메서드에서 이루어지며, &lt;strong&gt;ViewModelProvider 클래스&lt;/strong&gt;를 통해서 ViewModel 객체를 생성한다. 
+ViewModelProviders 클래스의 of(this) 를 통해 this(UI 컨트롤러) 스코프를 가진 ViewModelProvider 인스턴스가 반환된다. 
 리턴된 ViewModelProvider 객체의 메서드 get(NoteViewModel.class) 를 통해 NoteViewModel 인스턴스가 생성된다.&lt;/p&gt;
 
 &lt;p&gt;&lt;span class=&quot;clr-grey&quot;&gt;&lt;strong&gt;NOTE:&lt;/strong&gt;get()은 이미 ViewModel 객체가 생성되었을 경우, 그 객체를 리턴한다. &lt;/span&gt;&lt;/p&gt;
 
-&lt;p&gt;&lt;br /&gt;
-&lt;strong&gt;LiveData 사용&lt;/strong&gt;  &lt;br /&gt;
-&lt;a href=&quot;/android-LiveData/&quot;&gt;—&amp;gt;LiveData 개념 익히러가기&lt;/a&gt;.&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;LiveData 사용&lt;/strong&gt;  &lt;br /&gt;
+&lt;a href=&quot;/android-LiveData/&quot;&gt;LiveData 개념 익히러가기&lt;/a&gt;.&lt;/p&gt;
 
 &lt;p&gt;noteViewModel.java&lt;/p&gt;
 &lt;div class=&quot;language-java highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;kd&quot;&gt;public&lt;/span&gt; &lt;span class=&quot;kd&quot;&gt;class&lt;/span&gt; &lt;span class=&quot;nc&quot;&gt;NoteViewModel&lt;/span&gt; &lt;span class=&quot;kd&quot;&gt;extends&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;AndroidViewModel&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;{&lt;/span&gt;
@@ -119,8 +116,7 @@ ViewModelProviders 클래스의 of(this) 를 통해 this(UI 컨트롤러) 스코
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
 &lt;p&gt;LiveData는 보통 ViewModel 내에서 함께 쓰인다.&lt;/p&gt;
 
-&lt;p&gt;&lt;br /&gt;
-MainActivity.java&lt;/p&gt;
+&lt;p&gt;MainActivity.java&lt;/p&gt;
 &lt;div class=&quot;language-java highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;n&quot;&gt;noteViewModel&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;na&quot;&gt;getAllNotes&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;().&lt;/span&gt;&lt;span class=&quot;na&quot;&gt;observe&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;k&quot;&gt;this&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;new&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;Observer&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;&amp;lt;&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;List&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;&amp;lt;&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;Note&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;&amp;gt;&amp;gt;()&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;{&lt;/span&gt;  &lt;span class=&quot;c1&quot;&gt;// 1) LifeCycleOwner, Observer&lt;/span&gt;
     &lt;span class=&quot;nd&quot;&gt;@Override&lt;/span&gt;
     &lt;span class=&quot;kd&quot;&gt;public&lt;/span&gt; &lt;span class=&quot;kt&quot;&gt;void&lt;/span&gt; &lt;span class=&quot;nf&quot;&gt;onChanged&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nd&quot;&gt;@Nullable&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;List&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;&amp;lt;&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;Note&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;&amp;gt;&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;notes&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;{&lt;/span&gt; &lt;span class=&quot;c1&quot;&gt;// 2)&lt;/span&gt;
@@ -130,12 +126,11 @@ MainActivity.java&lt;/p&gt;
     &lt;span class=&quot;o&quot;&gt;}&lt;/span&gt;
 &lt;span class=&quot;o&quot;&gt;});&lt;/span&gt;
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
-&lt;p&gt;1) noteViewModel.getAllNotes()를 통해 LiveData를 리턴받고 observe() 메서드를 통해 Observer를 붙여 감지를 시작한다.  &lt;br /&gt;
-&lt;span class=&quot;clr-grey&quot;&gt;&lt;strong&gt;NOTE:&lt;/strong&gt;보통 Observer는 프래그먼트나 액티비티 같은 UI 컨트롤러에서 만든다.&lt;/span&gt;&lt;/p&gt;
+&lt;p&gt;1) noteViewModel.getAllNotes()를 통해 LiveData를 리턴받고 observe() 메서드를 통해 Observer를 붙여 감지를 시작한다.
+&lt;span class=&quot;clr-grey&quot;&gt;보통 Observer는 프래그먼트나 액티비티 같은 UI 컨트롤러에서 만든다.&lt;/span&gt;  &lt;br /&gt;
+&lt;span class=&quot;clr-note&quot;&gt;LiveData의 data가 변경될 때 LifeCycleOwner가 활성화 되어있는 한 등록된 모든 Observer들 에게 이벤트를 보낸다.&lt;/span&gt;&lt;/p&gt;
 
-&lt;p&gt;&lt;span class=&quot;clr-note&quot;&gt;&lt;strong&gt;POINT:&lt;/strong&gt;LiveData의 data가 변경될 때 LifeCycleOwner가 활성화 되어있는 한 등록된 모든 Observer들 에게 이벤트를 보낸다.&lt;/span&gt;&lt;/p&gt;
-
-&lt;p&gt;2) Observer는 onChanged() 메서드를 반드시 오버라이드해야하며, onChanged() 메서드에서 UI 업데이트를 한다.&lt;/p&gt;</content><author><name>devgaram</name><email>joingaram@gmail.com</email></author><category term="android" /><summary type="html">Coding in Flow의 Room + ViewModel + LiveData + RecyclerView (MVVM) 튜토리얼을 정리했습니다.</summary></entry><entry><title type="html">jekyll의 minimal-mistakes에서 자바스크립트 커스텀하는 방법</title><link href="http://localhost:4000/jekyll-js-custom/" rel="alternate" type="text/html" title="jekyll의 minimal-mistakes에서 자바스크립트 커스텀하는 방법" /><published>2019-01-05T00:00:00+09:00</published><updated>2019-01-05T00:00:00+09:00</updated><id>http://localhost:4000/jekyll-js-custom</id><content type="html" xml:base="http://localhost:4000/jekyll-js-custom/">&lt;p&gt;minimal-mistakes 테마를 적용한 jekyll 블로그를 커스텀하는 과정에서 자바스크립트 코드를 추가하는 방법입니다.  &lt;br /&gt;
+&lt;p&gt;2) Observer는 onChanged() 메서드를 반드시 오버라이드해야하며, onChanged() 메서드에서 UI 업데이트를 한다.&lt;/p&gt;</content><author><name>devgaram</name><email>joingaram@gmail.com</email></author><category term="android" /><category term="mvvm" /><summary type="html">Coding in Flow의 Room + ViewModel + LiveData + RecyclerView (MVVM) 튜토리얼을 정리했습니다.</summary></entry><entry><title type="html">jekyll의 minimal-mistakes에서 자바스크립트 커스텀하는 방법</title><link href="http://localhost:4000/jekyll-js-custom/" rel="alternate" type="text/html" title="jekyll의 minimal-mistakes에서 자바스크립트 커스텀하는 방법" /><published>2019-01-05T00:00:00+09:00</published><updated>2019-01-05T00:00:00+09:00</updated><id>http://localhost:4000/jekyll-js-custom</id><content type="html" xml:base="http://localhost:4000/jekyll-js-custom/">&lt;p&gt;minimal-mistakes 테마를 적용한 jekyll 블로그를 커스텀하는 과정에서 자바스크립트 코드를 추가하는 방법입니다.  &lt;br /&gt;
 minimal-mistakes 문서에 자바스크립트 커스텀 방법이 잘 정리되어있습니다.
 &lt;a href=&quot;https://mmistakes.github.io/minimal-mistakes/docs/javascript/&quot;&gt;공식문서 바로가기&lt;/a&gt;.&lt;/p&gt;
 
@@ -197,7 +192,7 @@ package.json 파일을 아래와 같이 수정합니다.&lt;/p&gt;
 
 &lt;h2 id=&quot;4-jekyll-serve-실행&quot;&gt;4. jekyll serve 실행&lt;/h2&gt;
 &lt;p&gt;이미 서버가 실행되어있다면 자동으로 반영됩니다. &lt;br /&gt;
-그렇지 않다면 다시 &lt;strong&gt;jekyll serve&lt;/strong&gt; 를 통해 서버를 실행해주면 커스텀한 자바스크립트 코드가 반영된 것을 확인할 수 있습니다.&lt;/p&gt;</content><author><name>devgaram</name><email>joingaram@gmail.com</email></author><category term="jekyll" /><summary type="html">minimal-mistakes 테마를 적용한 jekyll 블로그를 커스텀하는 과정에서 자바스크립트 코드를 추가하는 방법입니다. minimal-mistakes 문서에 자바스크립트 커스텀 방법이 잘 정리되어있습니다. 공식문서 바로가기.</summary></entry><entry><title type="html">(안드로이드) fragment를 사용하자</title><link href="http://localhost:4000/android-fragment/" rel="alternate" type="text/html" title="(안드로이드) fragment를 사용하자" /><published>2018-12-07T00:00:00+09:00</published><updated>2018-12-07T00:00:00+09:00</updated><id>http://localhost:4000/android-fragment</id><content type="html" xml:base="http://localhost:4000/android-fragment/">&lt;p&gt;[될 때까지 안드로이드]의 fragment 파트를 정리한 내용입니다.&lt;/p&gt;
+그렇지 않다면 다시 &lt;strong&gt;jekyll serve&lt;/strong&gt; 를 통해 서버를 실행해주면 커스텀한 자바스크립트 코드가 반영된 것을 확인할 수 있습니다.&lt;/p&gt;</content><author><name>devgaram</name><email>joingaram@gmail.com</email></author><category term="jekyll" /><category term="github" /><summary type="html">minimal-mistakes 테마를 적용한 jekyll 블로그를 커스텀하는 과정에서 자바스크립트 코드를 추가하는 방법입니다. minimal-mistakes 문서에 자바스크립트 커스텀 방법이 잘 정리되어있습니다. 공식문서 바로가기.</summary></entry><entry><title type="html">(안드로이드) fragment를 사용하자</title><link href="http://localhost:4000/android-fragment/" rel="alternate" type="text/html" title="(안드로이드) fragment를 사용하자" /><published>2018-12-07T00:00:00+09:00</published><updated>2018-12-07T00:00:00+09:00</updated><id>http://localhost:4000/android-fragment</id><content type="html" xml:base="http://localhost:4000/android-fragment/">&lt;p&gt;[될 때까지 안드로이드]의 fragment 파트를 정리한 내용입니다.&lt;/p&gt;
 
 &lt;p&gt;&lt;a href=&quot;https://github.com/devgaram/androidExample/tree/master/fragmentexam&quot;&gt;기본 프래그먼트 구현 예제&lt;/a&gt;.  &lt;br /&gt;
 &lt;a href=&quot;https://github.com/devgaram/androidExample/tree/master/exitdialogfragment&quot;&gt;다이얼로그 프래그먼트 구현 예제&lt;/a&gt;.  &lt;br /&gt;
@@ -255,7 +250,6 @@ onPause() -&amp;gt; onStop() -&amp;gt; onDestroyView() -&amp;gt; onDestroy() -&a
     &lt;span class=&quot;o&quot;&gt;}&lt;/span&gt;
 &lt;span class=&quot;o&quot;&gt;}&lt;/span&gt;
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
-&lt;p&gt;&lt;br /&gt;&lt;/p&gt;
 
 &lt;h2 id=&quot;프래그먼트-매니저&quot;&gt;프래그먼트 매니저&lt;/h2&gt;
 &lt;p&gt;프래그먼트 조작을 위해 프래그먼트 매니저가 필요하다.  &lt;br /&gt;
@@ -305,8 +299,7 @@ onPause() -&amp;gt; onStop() -&amp;gt; onDestroyView() -&amp;gt; onDestroy() -&a
 
 &lt;h2 id=&quot;프래그먼트와-액티비티-간의-통신&quot;&gt;프래그먼트와 액티비티 간의 통신&lt;/h2&gt;
 
-&lt;p&gt;일반적으로 액티비티에서 프래그먼트나 다른 뷰들의 인스턴스를 가지고 있어서 이들의 메서드를 호출하는 식이다. 따라서 프래그먼트의 상태가 변했을 때 액티비티에서 이것을 알아차리려면 계속해서 프래그먼트의 상태 값을 알아내는 메서드를 호출해야한다.
-&lt;br /&gt;&lt;/p&gt;
+&lt;p&gt;일반적으로 액티비티에서 프래그먼트나 다른 뷰들의 인스턴스를 가지고 있어서 이들의 메서드를 호출하는 식이다. 따라서 프래그먼트의 상태가 변했을 때 액티비티에서 이것을 알아차리려면 계속해서 프래그먼트의 상태 값을 알아내는 메서드를 호출해야한다.&lt;/p&gt;
 
 &lt;p&gt;그러나 콜백 인터페이스를 사용하여 프래그먼트의 상태가 변할 때마다 자동으로 액티비티에게 알려줄 수 있다. 
 Button의 onClick() 이벤트나 액티비티의 onCreate()가 대표적인 콜백 메서드이며, 호출자 입장에서는 피호출자의 변화를 감시하다가 알아채기 때문에 리스너(Listener) 라고도 불른다.&lt;/p&gt;</content><author><name>devgaram</name><email>joingaram@gmail.com</email></author><category term="android" /><summary type="html">[될 때까지 안드로이드]의 fragment 파트를 정리한 내용입니다.</summary></entry><entry><title type="html">(안드로이드) RecyclerView를 사용하자</title><link href="http://localhost:4000/android-recycler/" rel="alternate" type="text/html" title="(안드로이드) RecyclerView를 사용하자" /><published>2018-12-05T00:00:00+09:00</published><updated>2018-12-05T00:00:00+09:00</updated><id>http://localhost:4000/android-recycler</id><content type="html" xml:base="http://localhost:4000/android-recycler/">&lt;p&gt;[될 때까지 안드로이드]의 RecyclerView 파트를 정리한 내용입니다.&lt;/p&gt;

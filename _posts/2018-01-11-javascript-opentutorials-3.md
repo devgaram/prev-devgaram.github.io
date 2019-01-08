@@ -1,6 +1,7 @@
 ---
-layout: posts
+layout: post-content
 title: (생활코딩) Javascript 입문3
+date: 2018-01-11
 tags:
  - javascript
 ---

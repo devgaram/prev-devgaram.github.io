@@ -1,6 +1,7 @@
 ---
-layout: posts
+layout: post-content
 title: (생활코딩) javascript 함수지향3
+date: 2018-01-13
 tags:
  - javascript
 ---
@@ -27,7 +28,7 @@ outter 호출이 종료된 순간, outter는 사라진다.
 왜?    
 <span class="clr-note">내부함수는 외부함수가 종료되도 외부함수에 접근할 수 있다.</span>
 
-<br/>
+
 # 2. private variable
 ```javascript
 function factory_movie(title){ 
@@ -56,7 +57,7 @@ factory_movie 호출 후, 함수의 생이 종료되어도 ghost, matrix를 통�
 왜 private variable을 사용해야 하는가?    
 <span class="clr-note">외부에서 title 변수를 수정해도 ghost, matrix가 가진 title의 맥락에는 영향을 주지 않는다.    즉, 데이터의 수정과 저장을 안전하게 할 수 있다.</span>
 
-<br/>
+
 # 3. 클로저의 응용
 ```javascript
 var arr = []; 
@@ -75,7 +76,7 @@ for( var index in arr ){
 두번째 반목문에서 배열객체의 함수를 실행하는 순간의 i가 콘솔에 찍히게 된다.    
 그러나, i는 첫번째 포문에 의해 이미 5가 되어버린 상태이므로 5만 다섯번 찍히게 된다.
 
-<br/>
+
 ```javascript
 var arr = []; 
 for(var i=0; i<5; i++){ 

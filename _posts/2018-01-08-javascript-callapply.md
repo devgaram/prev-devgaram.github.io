@@ -1,6 +1,7 @@
 ---
-layout: posts
+layout: post-content
 title: (JS) call()과 apply()
+date: 2018-01-08
 tags:
  - javascript
 ---

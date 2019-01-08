@@ -1,6 +1,7 @@
 ---
-layout: posts
+layout: post-content
 title: (안드로이드) RecyclerView를 사용하자
+date: 2018-12-05
 tags:
  - android
 ---

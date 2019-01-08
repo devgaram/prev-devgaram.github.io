@@ -74,9 +74,11 @@ $focus-color: $primary-color !default;
 /* 커스텀 - 상단 사이트 제목 */
 $site-title-color: #8EC0E4 !default;
 /* 커스텀 - 최근포스트 색깔 */
-$muted-text-custom-color: #CADBE9 !default;
+$muted-text-custom-color: #8EC0E4 !default;
+$background-custom-color: #8EC0E4 !default;
 $border-color-custom: #CADBE9 !default;
-
+$border-bottom-custom-color: #D4DFE6 !default;
+$border-right-custom-color: #f0f5f9 !default;
 
 /* YIQ color contrast */
 $yiq-contrasted-dark-default: $dark-gray !default;

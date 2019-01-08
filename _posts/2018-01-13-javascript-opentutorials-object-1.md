@@ -1,6 +1,7 @@
 ---
-layout: posts
+layout: post-content
 title: (생활코딩) javascript 객체지향1
+date: 2018-01-13
 tags:
  - javascript
 ---
@@ -31,7 +32,7 @@ var person = {
 }
 ```
 
-<br/>
+
 # 2. 생성자와 new
 생성자는 객체를 만드는 역할을 하는 함수.
 ```javascript
@@ -45,7 +46,7 @@ Person() 함수가 객체의 참조자가 될 수 있다.
 자바는 클래스 안에 생성자가 있고, 클래스의 객체를 만든다.   
 자바스크립트에서는 생성자가 함수일 뿐, 어디에 속해있지 않다.
 
-<br/>
+
 ```javascript
 function Person(name){ 
     this.name = name; 
@@ -65,7 +66,7 @@ Person 앞에 new가 존재하기 때문에 함수가 아닌 생성자가 된다
 생성자 함수가 하는 일은 객체의 초기화이며, 객체가 가지고 있는 정보, 객체가 할 수 있는 일을 정의하게 된다.    
 덕분에 코드의 재사용성이 높아진다.
 
-<br/>
+
 # 3. 함수와 this
 전역변수와 전역함수는 모두 window라는 전역객체의 속성과 메소드다.    
 <span class="clr-grey">node.js에서 전역객체는 global이다.</span>
@@ -95,7 +96,7 @@ var o = {
 o.func();    //o===this
 ```
 
-<br/>
+
 ## 2) 생성자와 this
 ```javascript
 var funcThis = null; 
@@ -105,7 +106,7 @@ function Func(){
  
 var o1 = Func(); 
 if( funcThis === window){ 
-    document.write('window<br/>'); 
+    document.write('window'); 
 } 
  
 var o2 = new Func(); 
@@ -116,7 +117,7 @@ if(funcThis === o2){
 ```
 Func를 생성자로 사용되면 this는 객체를 가리키고, 함수로 사용되면 this는 window는 가리킨다.
 
-<br/>
+
 ## 3) 객체로서 함수
 ```javascript
 function sum(x,y){return x+y;} 
@@ -130,7 +131,7 @@ var a = [0,1,2] 배열 리터럴
 편리하게 값을 만들 수 있는 문법적인 체계를 리터럴이라고 한다.
 </span>
 
-<br/>
+
 ## 4) apply와 this
 ```javascript
 var o = {} 
@@ -139,13 +140,13 @@ var p = {}
 function func(){ 
     switch(this){ 
         case o :  
-            document.write('o<br/>'); 
+            document.write('o'); 
             break;
         case p :  
-            document.write('p<br/>'); 
+            document.write('p'); 
             break; 
         case window :  
-            document.write('window<br/>'); 
+            document.write('window'); 
             break; 
     } 
 } 

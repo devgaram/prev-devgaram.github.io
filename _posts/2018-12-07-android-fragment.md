@@ -1,6 +1,7 @@
 ---
-layout: posts
+layout: post-content
 title: (안드로이드) fragment를 사용하자
+date: 2018-12-07
 tags:
  - android
 ---
@@ -62,7 +63,7 @@ public class ColorFragment extends Fragment {
     }
 }
 ```
-<br/>
+
 
 ## 프래그먼트 매니저
 프래그먼트 조작을 위해 프래그먼트 매니저가 필요하다.    
@@ -114,7 +115,7 @@ public class MainActivity extends AppCompatActivity {
 ## 프래그먼트와 액티비티 간의 통신
 
 일반적으로 액티비티에서 프래그먼트나 다른 뷰들의 인스턴스를 가지고 있어서 이들의 메서드를 호출하는 식이다. 따라서 프래그먼트의 상태가 변했을 때 액티비티에서 이것을 알아차리려면 계속해서 프래그먼트의 상태 값을 알아내는 메서드를 호출해야한다.
-<br/>
+
 
 그러나 콜백 인터페이스를 사용하여 프래그먼트의 상태가 변할 때마다 자동으로 액티비티에게 알려줄 수 있다. 
 Button의 onClick() 이벤트나 액티비티의 onCreate()가 대표적인 콜백 메서드이며, 호출자 입장에서는 피호출자의 변화를 감시하다가 알아채기 때문에 리스너(Listener) 라고도 불른다.
