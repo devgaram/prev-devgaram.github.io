@@ -1,6 +1,7 @@
 ---
-layout: posts
+layout: post-content
 title: (생활코딩) javascript 함수지향1
+date: 2018-01-11
 tags:
  - javascript
 ---
@@ -39,7 +40,7 @@ fscope();    //local
 alert(lv);    //undefined
 ```
 
-<br/>
+
 예제3) 지역변수와 전역변수의 구분3
 ```javascript
 function a(){
@@ -52,7 +53,7 @@ for(var i =0; i<5; i++){    // i는 전역변수
 ```
 for문의 i는 전역변수기 때문에 해당 코드는 계속 실행되다가 브라우저가 멈춘다.
 
-<br/>
+
 예제4) 전역변수 안쓰는 방법1
 ```javascript
 var MYAPP = {}
@@ -74,7 +75,7 @@ document.write(sum());    //30
 ```
 MYAPP 전역변수 하나만 생성하고, 그 안에 필요한 전역변수를 정의한다.
 
-<br/>
+
 예제5) 전역변수 안쓰는 방법2
 ```javascript
 (function(){
@@ -99,7 +100,7 @@ document.write(sum());    //30
 전역변수가 절대 존재하지 않게 개발할 때, 익명함수. 일회성함수를 이용한다.    
 Jquery와 같은 라이브러리에서 모듈화 기법으로 많이 사용한다.
 
-<br/>
+
 예제6) 자바와의 차이점. for문 안에서의 변수.
 ```javascript
 for( var i =0; i<1; i++){
@@ -110,7 +111,7 @@ alert(name);    //local no!
 자바는 반복문, 조건문 안에서 선언된 변수를 지역변수 취급하기 때문에 위와 같은 로직으로 실행시키면 에러가 난다.    
 그러나 자바스크립트에서 해당 변수는 전역변수이다.
 
-<br/>
+
 예제7) 정적 유효범위
 ```javascript
 var i = 5;

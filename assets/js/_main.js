@@ -15,12 +15,7 @@ $(document).ready(function() {
     didResize = true;
   }); 
 	
-  /* 메인 이미지 스크롤 */
-  setTimeout(function(){
-   $( "#header-image" ).animate({
-    "margin-top": "-875px"
-  }, {duration:5500, easing:"linear"});
-  },500);
+
 
   setInterval(function() {
     if (didResize) {

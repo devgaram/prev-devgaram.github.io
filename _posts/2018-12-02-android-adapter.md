@@ -1,6 +1,7 @@
 ---
-layout: posts
+layout: post-content
 title: (안드로이드) 어댑터뷰를 사용해보자
+date: 2018-12-02
 tags:
  - android
 ---

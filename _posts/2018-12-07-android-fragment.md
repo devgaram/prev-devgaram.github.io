@@ -1,6 +1,7 @@
 ---
-layout: posts
+layout: post-content
 title: (안드로이드) fragment를 사용하자
+date: 2018-12-07
 tags:
  - android
 ---
@@ -27,8 +28,8 @@ tags:
 프래그먼트가 일시정지되거나 중지되었다가 재개되었을 때 유지하고자 하는 것을 초기화하는 부분
 
 **onCreateView()**    
-액티비티는 onCreate() 콜백 메서드에서 setContentView() 메서드를 호출하여 View 객체(레이아웃)을 가져온다.    
-프래그먼트는 onCreateView() 콜백 메서드에서 LayoutInflater를 통해 레이아웃을 가져온다. 
+액티비티는 <code class="codetainer">onCreate()</code> 콜백 메서드에서 <code class="codetainer">setContentView()</code> 메서드를 호출하여 View 객체(레이아웃)을 가져온다.    
+프래그먼트는 <code class="codetainer">onCreateView()</code> 콜백 메서드에서 LayoutInflater를 통해 레이아웃을 가져온다. 
 
 **onPause()**    
 시스템이 이 메서드를 호출하는 것은 사용자가 프래그먼트를 떠난다는 첫 번째 신호.   
@@ -62,13 +63,13 @@ public class ColorFragment extends Fragment {
     }
 }
 ```
-<br/>
+
 
 ## 프래그먼트 매니저
 프래그먼트 조작을 위해 프래그먼트 매니저가 필요하다.    
 프래그먼트 매니저는 액티비티 처럼 백스택을 가지고 있음.
-* 액티비티 내 XML에 포함된 프래그먼트를 findFragmentById() 메서드로 가져오기 또는 findFragmentByTag()로 가져오기
-* 액티비티 백스택에서 프래그먼트를 popBackStack() 메서드로 빠져나오게 하여 액티비티의 뒤로 가기와 같은 효과를 냄 ( addToBackStack() : 프래그먼트 매니저의 백스택에 프래그먼트 추가하는 메서드 )
+* 액티비티 내 XML에 포함된 프래그먼트를 <code class="codetainer">findFragmentById()</code> 메서드로 가져오기 또는 <code class="codetainer">findFragmentByTag()</code>로 가져오기
+* 액티비티 백스택에서 프래그먼트를 <code class="codetainer">popBackStack()</code>메서드로 빠져나오게 하여 액티비티의 뒤로 가기와 같은 효과를 냄 ( <code class="codetainer">addToBackStack()</code> : 프래그먼트 매니저의 백스택에 프래그먼트 추가하는 메서드 )
 
 ```java
 public class MainActivity extends AppCompatActivity {
@@ -114,8 +115,8 @@ public class MainActivity extends AppCompatActivity {
 ## 프래그먼트와 액티비티 간의 통신
 
 일반적으로 액티비티에서 프래그먼트나 다른 뷰들의 인스턴스를 가지고 있어서 이들의 메서드를 호출하는 식이다. 따라서 프래그먼트의 상태가 변했을 때 액티비티에서 이것을 알아차리려면 계속해서 프래그먼트의 상태 값을 알아내는 메서드를 호출해야한다.
-<br/>
+
 
 그러나 콜백 인터페이스를 사용하여 프래그먼트의 상태가 변할 때마다 자동으로 액티비티에게 알려줄 수 있다. 
-Button의 onClick() 이벤트나 액티비티의 onCreate()가 대표적인 콜백 메서드이며, 호출자 입장에서는 피호출자의 변화를 감시하다가 알아채기 때문에 리스너(Listener) 라고도 불른다.
+Button의 <code class="codetainer">onClick()</code> 이벤트나 액티비티의 <code class="codetainer">onCreate()</code>가 대표적인 콜백 메서드이며, 호출자 입장에서는 피호출자의 변화를 감시하다가 알아채기 때문에 리스너(Listener) 라고도 불른다.
 

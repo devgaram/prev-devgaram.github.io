@@ -1,8 +1,8 @@
 ---
-layout: posts
+layout: post-content
 title: (mocha) 자바스크립트 단위테스트 시작하기
-tags:
- - mocha
+date: 2018-01-27
+tags: [mocha, javascript]
 ---
 
 mocha 자바스크립트 테스트 프레임워크로 단위테스트 시작하는 방법입니다.
@@ -16,7 +16,7 @@ mocha 자바스크립트 테스트 프레임워크로 단위테스트 시작하�
 자바스크립트로 짜여진 프로그램에서 오류를 찾을 때, 단위테스트를 거치지 않은 프로그램의 경우는 전체 흐름을 파악해가며 원인을 찾아야한다.     
 원인을 찾아 수정한다해도 이 결과가 어떤 이펙트를 가져올지 예상하기가 어려울 수 있다.
 
-<br/>
+
 # mocha 자바스크립트 테스트 프레임워크
 
 ## 1. 셋팅하기 (Windows8)
@@ -34,7 +34,7 @@ $nbm install chai
 ```
 그 결과, node_moduls 폴더가 생성된다.
 
-<br/>
+
 ## 2. 사용하기
 [InspiredJW님의 티스토리 블로그를 참고했습니다!](http://inspiredjw.com/entry/Mocha-%EB%A1%9C-%ED%95%98%EB%8A%94-JavaScript-Testing).    
 
@@ -51,7 +51,7 @@ exports.foo = (a,b) => {
 };
 exports.bar = (callback) => {};
 ```
-<br/>
+
 JsStudy/test/JsStudyTest.js
 ```javascript
 'use strict';
@@ -77,7 +77,7 @@ describe('with non-number params',()=>{
 	});
 });
 ```
-<br/>
+
 테스트 실행방법은 cmd 창에서 JsStudy 폴더로 이동한후, mocha 실행하기
 ```
 $mocha

@@ -1,6 +1,7 @@
 ---
-layout: posts
+layout: post-content
 title: (생활코딩) javascript 함수지향2
+date: 2018-01-13
 tags:
  - javascript
 ---
@@ -17,7 +18,7 @@ function a(){}     //함수는 a라는 변수에 담겨진 값.
 var a = function(){}
  ```
 
-<br/>
+
 예제2) 함수는 객체 안에 저장될 수 있다.    
  ```javascript
 a = {
@@ -29,7 +30,7 @@ b는 key, 객체 안에서 변수 역할(어떤 값을 저장하고 있기 때�
 속성에 저장된 값이 함수면 메소드라 부름.    
 즉, a라는 객체에 b라는 속성이 있는데, 이 속성의 값은 함수(메소드)다.
 
-<br/>
+
 예제3) 함수는 변수, 객체에 저장될 수 있고 인자로도 사용할 수 있다.
  ```javascript
 function cal (func, num){
@@ -50,7 +51,7 @@ function cal ( func, num){
 // 즉, func(1) => 2가 출력됨.
 ```
 
-<br/>
+
 예제4) 함수를 리턴 값으로도 사용할 수 있다.
  ```javascript
  function cal (mode){
@@ -66,7 +67,7 @@ return funcs['plus'] 는 funcs 객체의 plus 속성의 값인 function(left, ri
 cal('plus')(2,1)은 cal('plus')함수의 인자 값으로 2, 1을 전달하겠다는 의미이다.   
 cal('plus')는 function(left, right) {return left+right} 이므로 알럿창에 3이 뜬다.
 
-<br/>
+
 예제5) 함수를 배열의 값으로 사용할 수 있다.
  ```javascript
  var process = [
@@ -80,7 +81,7 @@ for(var i = 0; i  < process.length; i++)
  
 alert(input); //60.5
 ```
-<br/>
+
 # 2. 콜백
 ```javascript
 var numbers = [20, 10, 9, 8, 7, 6, 5, 4, 3, 2, 1];
@@ -93,7 +94,7 @@ array.sort (sortfunc)
 반환값 : 정렬된 배열
 </span>
 
-<br/>
+
 ```javascript
 var numbers = [20, 10, 9, 8, 7, 6, 5, 4, 3, 2, 1];
 var sortfunc = function(a, b){

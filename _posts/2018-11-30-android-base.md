@@ -1,6 +1,7 @@
 ---
-layout: posts
+layout: post-content
 title: (안드로이드) 시작하기 앞서 기초 학습
+date: 2018-11-30
 tags:
  - android
 ---

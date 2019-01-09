@@ -1,6 +1,7 @@
 ---
-layout: posts
+layout: post-content
 title: (안드로이드) RecyclerView를 사용하자
+date: 2018-12-05
 tags:
  - android
 ---
@@ -14,7 +15,7 @@ tags:
 
 ## 어댑터 뷰의 단점
 1. 빠르게 스크롤 할 때 성능문제와 불필요한 지연 문제가 있다.
-2. 데이터 목록이 변경되었을 때, notifyDataSetChanged() 메서드를 빈번하게 호출하여 전체 아이템을 갱신하는 데 비용이 많이 든다. 이 메서드는 항상 전체 항목을 새로 로드한다.
+2. 데이터 목록이 변경되었을 때, <code class="codetainer">notifyDataSetChanged()</code> 메서드를 빈번하게 호출하여 전체 아이템을 갱신하는 데 비용이 많이 든다. 이 메서드는 항상 전체 항목을 새로 로드한다.
 
 ## 리사이클러 뷰 vs 어댑터 뷰
 * 상속 받는 클래스 : RecyclerView.Adapter vs BaseAdapter
@@ -33,10 +34,10 @@ tags:
 5. RecyclerView.ItemDecoration : 아이템을 세부적으로 어떻게 꾸밀 것인가
 
 ## 리사이클러 통지 메서드
-* notifyItemInserted(int position) : position 위치의 아이템이 삽입된 것을 통지
-* notifyItemRemoved(int position) : position 위치의 아이템이 삭제된 것을 통지
+* <code class="codetainer">notifyItemInserted(int position)</code> : position 위치의 아이템이 삽입된 것을 통지
+* <code class="codetainer">notifyItemRemoved(int position)</code> : position 위치의 아이템이 삭제된 것을 통지
 
 ## 관련 메서드
-* void setHasFixedSize (boolean hasFixedSize) : 각 아이템의 변화가 리사이클러 뷰의 전체 크기에 영향을 끼치지 않는다면 true를 사용한다.
+* <code class="codetainer">void setHasFixedSize (boolean hasFixedSize)</code> : 각 아이템의 변화가 리사이클러 뷰의 전체 크기에 영향을 끼치지 않는다면 true를 사용한다.
 
 

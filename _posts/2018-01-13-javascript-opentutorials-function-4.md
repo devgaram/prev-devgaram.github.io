@@ -1,6 +1,7 @@
 ---
-layout: posts
+layout: post-content
 title: (생활코딩) javascript 함수지향4
+date: 2018-01-13
 tags:
  - javascript
 ---
@@ -25,7 +26,7 @@ arguments는 사용자가 전달한 인자들이 담겨있는 객체다.
 - .length를 통해 함수가 몇개의 인자 전달 받았는 지를 알 수 있다.
 - arguments[i] 를 통해 각 자리의 인자 값을 알 수 있다.
 
-<br/>
+
 자바스크립트는 매개변수의 수가 함수의 정의와 달라도 에러가 발생하지 않는다.
 ```javascript
 function one(arg1){ 
@@ -38,7 +39,7 @@ one('val1', 'val2');
 ```
 위의 차이점을 이용해보면. 함수에 정의된 매개변수의 갯수와 실제 전달받는 인자의 갯수를 비교해서 대상 함수가 올바르게 사용되었는 지를 체크 할 수 있다.
 
-<br/>
+
 # 2. apply() 내장함수
 ```javascript
 function sum(arg1, arg2){ 

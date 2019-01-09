@@ -1,8 +1,8 @@
 ---
-layout: posts
+layout: post-content
 title: 안드로이드 MVVM에 대해 알아보자
-tags:
- - android
+date: 2019-01-07
+tags: [android, mvvm]
 ---
 
 Coding in Flow의  Room + ViewModel + LiveData + RecyclerView (MVVM) 튜토리얼을 정리했습니다.
@@ -18,7 +18,7 @@ Coding in Flow의  Room + ViewModel + LiveData + RecyclerView (MVVM) 튜토리�
 * NoteRepository.java
 * NoteViewModel.java
 
-<br/>
+
 # MainActivity.java
 앱의 시작점으로 RecyclerView 설정 및 ViewModel 생성하는 부분이다.
 
@@ -40,24 +40,24 @@ recyclerView.setAdapter(adapter);   // 3-1)
 
 3-1) 3)에서 생성한 어댑터 객체를 리사이클러뷰에 붙인다.
 
-<br/>
+
 <span id="viewModel"></span>
 ## 2. ViewModel과 LiveData
-[--->뷰모델 개념 익히러가기](/android-viewModel/).
+[뷰모델 개념 익히러가기](/android-viewModel/).
 
 ```java
 noteViewModel = ViewModelProviders.of(this).get(NoteViewModel.class);
 ```
 **ViewModel 객체 요청**    
-보통 ViewModel 생성 요청은 onCreate() 메서드에서 이루어지며, **ViewModelProvider 클래스**를 통해서 ViewModel 객체를 생성한다.    
-ViewModelProviders 클래스의 of(this) 를 통해 this(UI 컨트롤러) 스코프를 가진 ViewModelProvider 인스턴스가 반환된다.    
-리턴된 ViewModelProvider 객체의 메서드 get(NoteViewModel.class) 를 통해 NoteViewModel 인스턴스가 생성된다.   
+보통 ViewModel 생성 요청은 <code class="codetainer">onCreate()</code> 메서드에서 이루어지며, **ViewModelProvider 클래스**를 통해서 ViewModel 객체를 생성한다. 
+ViewModelProviders 클래스의 <code class="codetainer">of(this)</code> 를 통해 this(UI 컨트롤러) 스코프를 가진 ViewModelProvider 인스턴스가 반환된다. 
+리턴된 ViewModelProvider 객체의 메서드 <code class="codetainer">get(NoteViewModel.class)</code> 를 통해 NoteViewModel 인스턴스가 생성된다.   
  
-<span class="clr-grey">**NOTE:**get()은 이미 ViewModel 객체가 생성되었을 경우, 그 객체를 리턴한다. </span> 
+<span class="clr-grey">**NOTE:** get()은 이미 ViewModel 객체가 생성되었을 경우, 그 객체를 리턴한다. </span> 
 
-<br/>
+<span id="LiveData"></span>
 **LiveData 사용**    
-[--->LiveData 개념 익히러가기](/android-LiveData/).    
+[LiveData 개념 익히러가기](/android-LiveData/).    
 
 noteViewModel.java
 ```java
@@ -79,7 +79,7 @@ public class NoteViewModel extends AndroidViewModel {
 ```
 LiveData는 보통 ViewModel 내에서 함께 쓰인다.
 
-<br/>
+
 MainActivity.java
 ```java
 noteViewModel.getAllNotes().observe(this, new Observer<List<Note>>() {  // 1) LifeCycleOwner, Observer
@@ -91,12 +91,11 @@ noteViewModel.getAllNotes().observe(this, new Observer<List<Note>>() {  // 1) Li
     }
 });
 ```
-1) noteViewModel.getAllNotes()를 통해 LiveData를 리턴받고 observe() 메서드를 통해 Observer를 붙여 감지를 시작한다.    
-<span class="clr-grey">**NOTE:**보통 Observer는 프래그먼트나 액티비티 같은 UI 컨트롤러에서 만든다.</span>    
+1) <code class="codetainer">noteViewModel.getAllNotes()</code>를 통해 LiveData를 리턴받고 <code class="codetainer">observe()</code> 메서드를 통해 Observer를 붙여 감지를 시작한다.
+<span class="clr-grey">보통 Observer는 프래그먼트나 액티비티 같은 UI 컨트롤러에서 만든다.</span>    
+<span class="clr-note">LiveData의 data가 변경될 때 LifeCycleOwner가 활성화 되어있는 한 등록된 모든 Observer들 에게 이벤트를 보낸다.</span>
 
-<span class="clr-note">**POINT:**LiveData의 data가 변경될 때 LifeCycleOwner가 활성화 되어있는 한 등록된 모든 Observer들 에게 이벤트를 보낸다.</span>
-
-2) Observer는 onChanged() 메서드를 반드시 오버라이드해야하며, onChanged() 메서드에서 UI 업데이트를 한다.
+2) Observer는 <code class="codetainer">onChanged()</code> 메서드를 반드시 오버라이드해야하며, <code class="codetainer">onChanged()</code> 메서드에서 UI 업데이트를 한다.
 
 
 

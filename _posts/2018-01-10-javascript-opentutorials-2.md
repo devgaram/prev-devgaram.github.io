@@ -1,6 +1,7 @@
 ---
-layout: posts
+layout: post-content
 title: (생활코딩) Javascript 입문2
+date: 2018-01-10
 tags:
  - javascript
 ---
@@ -15,7 +16,7 @@ tags:
 for( var i=0; i<10; i++){
     if( i === 5) break;     // 그 즉시, for문 중단 - coding1~4 까지만 출력됨
     if( i === 5) continue; // 실행을 중단하고 반복문 이어서 함. - coding1~4/6~9까지 출력됨.
-    document.write("coding"+i+"<br/>");
+    document.write("coding"+i+"");
 }
 ```
 
@@ -44,7 +45,7 @@ var member = ['a', 'b', 'c'];    //생성
 alert(member[0]);                // 'a' 
 
 for(var i=0; i<member.length; i++){    // 배열의 크기만큼 반복
-  document.write(member[i].toUpperCase()) + "<br/>";
+  document.write(member[i].toUpperCase()) + "";
 }
 /*배열의 원소 추가하는 방법*/
 member.push('f');        // a,b,c,f - 배열의 맨 뒤에 삽입
@@ -100,7 +101,7 @@ grades.'b'+'b';  //에러 남
 
 /*객체의 값 가져오기*/
 for(var key in grades){    //객체를 구성하는 값들의 키값만 하나씩 가져옴
- document.write("key : "+key+" value : "+grades[key] + "<br/>");
+ document.write("key : "+key+" value : "+grades[key] + "");
 }
 
 /*객체지향 프로그래밍 - 서로 연관된 데이터, 처리를 하나의 그릇안에 그룹핑 한것*/
