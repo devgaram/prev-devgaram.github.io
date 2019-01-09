@@ -1,52 +1,88 @@
-<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="3.8.5">Jekyll</generator><link href="http://localhost:4000/feed.xml" rel="self" type="application/atom+xml" /><link href="http://localhost:4000/" rel="alternate" type="text/html" /><updated>2019-01-08T17:25:32+09:00</updated><id>http://localhost:4000/feed.xml</id><title type="html">It’s a piece of cake!</title><subtitle>초보개발자의 블로그입니다.</subtitle><author><name>devgaram</name><email>joingaram@gmail.com</email></author><entry><title type="html">안드로이드 LiveData 대해 알아보자</title><link href="http://localhost:4000/android-LiveData/" rel="alternate" type="text/html" title="안드로이드 LiveData 대해 알아보자" /><published>2019-01-07T00:00:00+09:00</published><updated>2019-01-07T00:00:00+09:00</updated><id>http://localhost:4000/android-LiveData</id><content type="html" xml:base="http://localhost:4000/android-LiveData/"></content><author><name>devgaram</name><email>joingaram@gmail.com</email></author><category term="android" /><category term="livedata" /><category term="mvvm" /><summary type="html"></summary></entry><entry><title type="html">안드로이드 ViewModel에 대해 알아보자</title><link href="http://localhost:4000/android-viewModel/" rel="alternate" type="text/html" title="안드로이드 ViewModel에 대해 알아보자" /><published>2019-01-07T00:00:00+09:00</published><updated>2019-01-07T00:00:00+09:00</updated><id>http://localhost:4000/android-viewModel</id><content type="html" xml:base="http://localhost:4000/android-viewModel/">&lt;p&gt;안드로이드 아키텍쳐 중 ViewModel 클래스에 대한 내용입니다.&lt;/p&gt;
+<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="3.8.5">Jekyll</generator><link href="http://localhost:4000/feed.xml" rel="self" type="application/atom+xml" /><link href="http://localhost:4000/" rel="alternate" type="text/html" /><updated>2019-01-09T14:53:54+09:00</updated><id>http://localhost:4000/feed.xml</id><title type="html">It’s a piece of cake!</title><subtitle>초보개발자의 블로그입니다.</subtitle><author><name>devgaram</name><email>joingaram@gmail.com</email></author><entry><title type="html">안드로이드 LiveData 대해 알아보자</title><link href="http://localhost:4000/android-LiveData/" rel="alternate" type="text/html" title="안드로이드 LiveData 대해 알아보자" /><published>2019-01-09T00:00:00+09:00</published><updated>2019-01-09T00:00:00+09:00</updated><id>http://localhost:4000/android-LiveData</id><content type="html" xml:base="http://localhost:4000/android-LiveData/">&lt;p&gt;LiveData 클래스를 통해 데이터 변경을 감지해보자.&lt;/p&gt;
 
 &lt;hr /&gt;
 
-&lt;p&gt;안드로이드 프레임워크는 액티비티와 프래그먼트와 같은 UI 컨트롤러의 라이프 사이클을 관리한다.&lt;/p&gt;
+&lt;p&gt;&lt;a href=&quot;https://developer.android.com/topic/libraries/architecture/livedata#java&quot;&gt;안드로이드 개발문서-LiveData&lt;/a&gt;.&lt;/p&gt;
 
-&lt;p&gt;&lt;img src=&quot;/assets/images/viewmodel-lifecycle.png&quot; alt=&quot;액티비티가 회전을 거쳐 끝날 때까지의 라이프 사이클&quot; /&gt;  &lt;br /&gt;
-[ UI 컨트롤러 라이프 사이클과 ViewModel 스코프]&lt;/p&gt;
+&lt;h1 id=&quot;livedata는-lifecycleowner의-라이프사이클을-알고있다&quot;&gt;LiveData는 LifecycleOwner의 라이프사이클을 알고있다.&lt;/h1&gt;
+&lt;p&gt;LiveData 객체는 &lt;code class=&quot;codetainer&quot;&gt;observe()&lt;/code&gt; 메서드를 통해 &lt;code class=&quot;codetainer&quot;&gt;LifecycleOwner&lt;/code&gt;와 &lt;code class=&quot;codetainer&quot;&gt;Observer&lt;/code&gt;객체를 페어로 등록한다.  &lt;br /&gt;
+Observer 객체는 페어인 LifecycleOwner가 활성상태(&lt;code class=&quot;codetainer&quot;&gt;STARTED&lt;/code&gt; 또는 &lt;code class=&quot;codetainer&quot;&gt;RESUMED&lt;/code&gt;)일 때, 데이터 변화을 관측할 수 있다. 
+반대로, LiveData 객체는 LifecycleOwner가 비활성 상태면 LiveData의 변화를 Observer에게 전달하지 않으며, LifecycleOwner가 &lt;code class=&quot;codetainer&quot;&gt;DESTROYED&lt;/code&gt; 상태라면 자동으로 제거된다. 
+이러한 LiveData의 라이프사이클의 인지는 메모리 누수에 대한 걱정을 덜어주며, UI 컴포넌트(액티비티, 프래그먼트)를 사용할 때 유용하다.  &lt;br /&gt;
+&lt;span class=&quot;clr-grey&quot;&gt;&lt;strong&gt;Note:&lt;/strong&gt; LifecycleOwner의 비활성 상태 예시) 액티비티가 백 스택에 올라가있을 때 &lt;/span&gt;&lt;/p&gt;
 
-&lt;p&gt;아래와 같은 구성 변경 발생 시, 안드로이드는 UI 컨트롤러를 종료하거나 재생성한다.&lt;/p&gt;
-&lt;ul&gt;
-  &lt;li&gt;런타임에 화면 방향이 전환되는 경우&lt;/li&gt;
-  &lt;li&gt;언어, 글꼴 배율과 같은 기기 구성이 변경되는 경우&lt;/li&gt;
-&lt;/ul&gt;
+&lt;h1 id=&quot;livedata-사용시-이점&quot;&gt;LiveData 사용시 이점&lt;/h1&gt;
+&lt;p&gt;&lt;span class=&quot;li-icon&quot;&gt;일반적인 Observable과 달리, LifecycleOwner가 활성 상태일 때, LiveData의 변화를 Observer 객체에 전달함&lt;/span&gt;
+&lt;span class=&quot;li-icon&quot;&gt;충돌방지 : 액티비티가 백스택(비활성)에 있을 때, LiveData의 변화 이벤트를 Observer에게 전달하지 않음&lt;/span&gt;
+&lt;span class=&quot;li-icon&quot;&gt;메모리누수방지 : &lt;code class=&quot;codetainer&quot;&gt;DESTROYED&lt;/code&gt; 시, LiveData 제거&lt;/span&gt;
+&lt;span class=&quot;li-icon&quot;&gt;생명주기 수동으로 관리할 필요 없음&lt;/span&gt;
+&lt;span class=&quot;li-icon&quot;&gt;항상 최신 데이터 유지 가능 : 액티비티가 다시 활성상태로 돌아온 즉시 최신 데이터를 받는다.&lt;/span&gt;
+&lt;span class=&quot;li-icon&quot;&gt;환경변화(예,화면회전)로 UI 컴포넌트 재생성 시, 즉시 최신 데이터를 받는다.&lt;/span&gt;
+&lt;span class=&quot;li-icon&quot;&gt;LiveData를 상속받아 앱에서 자원 공유 가능&lt;/span&gt;&lt;/p&gt;
 
-&lt;p&gt;이 때 두가지 문제가 발생한다.&lt;/p&gt;
+&lt;h1 id=&quot;livedata-사용하기&quot;&gt;LiveData 사용하기&lt;/h1&gt;
+&lt;p&gt;&lt;a href=&quot;/android-mvvm/#LiveData&quot;&gt;예제로 바로가기&lt;/a&gt;.&lt;/p&gt;
+&lt;h2 id=&quot;1-livedata-객체-생성하기&quot;&gt;1. LiveData 객체 생성하기&lt;/h2&gt;
+&lt;p&gt;LiveData는 보통 &lt;code class=&quot;codetainer&quot;&gt;Collections&lt;/code&gt; 인터페이스를 구현한 클래스(List, Map, Set)를 사용하며, &lt;code class=&quot;codetainer&quot;&gt;ViewMoodel&lt;/code&gt; 객체 안에 저장된다.&lt;/p&gt;
+&lt;div class=&quot;language-java highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;kd&quot;&gt;public&lt;/span&gt; &lt;span class=&quot;kd&quot;&gt;class&lt;/span&gt; &lt;span class=&quot;nc&quot;&gt;NameViewModel&lt;/span&gt; &lt;span class=&quot;kd&quot;&gt;extends&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;ViewModel&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;{&lt;/span&gt;
+  &lt;span class=&quot;c1&quot;&gt;// String 타입의 LiveData 생성&lt;/span&gt;
+  &lt;span class=&quot;kd&quot;&gt;private&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;MutableLiveData&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;&amp;lt;&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;String&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;&amp;gt;&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;mCurrentName&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;;&lt;/span&gt;
 
-&lt;h2 id=&quot;1-ui에-종속된-데이터-손실&quot;&gt;1) UI에 종속된 데이터 손실&lt;/h2&gt;
-&lt;p&gt;해결1 - 적은 데이터의 경우 &lt;code class=&quot;codetainer&quot;&gt;OnCreate()&lt;/code&gt;에서 &lt;code class=&quot;codetainer&quot;&gt;onSaveInstanceState()&lt;/code&gt; 메서드를 사용하여 번들에서 해당 데이터를 복원할 수 있다. 
-&lt;span class=&quot;clr-grey&quot;&gt;많은 데이터와 비트맵에는 부적절하다.&lt;/span&gt;  &lt;br /&gt;
-해결2 - UI가 없는 워커 프래그먼트에 UI에 필요한 데이터를 관리하고 프래그먼트를 &lt;code class=&quot;codetainer&quot;&gt;SetRetainInstance(true)&lt;/code&gt;로 설정함으로써 프래그먼트를 메모리에 유지(유보)시킨다.&lt;/p&gt;
+    &lt;span class=&quot;kd&quot;&gt;public&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;MutableLiveData&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;&amp;lt;&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;String&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;&amp;gt;&lt;/span&gt; &lt;span class=&quot;nf&quot;&gt;getCurrentName&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;()&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;{&lt;/span&gt;
+        &lt;span class=&quot;k&quot;&gt;if&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;mCurrentName&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;==&lt;/span&gt; &lt;span class=&quot;kc&quot;&gt;null&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;{&lt;/span&gt;
+            &lt;span class=&quot;n&quot;&gt;mCurrentName&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;new&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;MutableLiveData&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;&amp;lt;&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;String&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;&amp;gt;();&lt;/span&gt;
+        &lt;span class=&quot;o&quot;&gt;}&lt;/span&gt;
+        &lt;span class=&quot;k&quot;&gt;return&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;mCurrentName&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;;&lt;/span&gt;
+    &lt;span class=&quot;o&quot;&gt;}&lt;/span&gt;
 
-&lt;h2 id=&quot;2-메모리-누수-리소스-낭비&quot;&gt;2) 메모리 누수, 리소스 낭비&lt;/h2&gt;
-&lt;p&gt;UI 컨트롤러 재생성 시 다시 데이터를 로드하므로 리소스가 낭비되며, UI 컨트롤러가 비동기 호출을 하고 콜백을 받을 때 해당 컨트롤러가 파괴되었다면 에러가 발생하거나 메모리 누수가 날 수도 있다.&lt;/p&gt;
+&lt;span class=&quot;c1&quot;&gt;// ..생략&lt;/span&gt;
+&lt;span class=&quot;o&quot;&gt;}&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+&lt;h2 id=&quot;2-livedata-객체-관찰하기&quot;&gt;2. LiveData 객체 관찰하기&lt;/h2&gt;
+&lt;p&gt;&lt;code class=&quot;codetainer&quot;&gt;onCreate()&lt;/code&gt; 메서드에서 LiveData 관찰을 시작하는 것이 좋다.
+&lt;span class=&quot;li-icon&quot;&gt;&lt;code class=&quot;codetainer&quot;&gt;onResume()&lt;/code&gt; 메서드에서 사용 시 중복 호출이 발생된다.&lt;/span&gt;
+&lt;span class=&quot;li-icon&quot;&gt;&lt;code class=&quot;codetainer&quot;&gt;STARTED&lt;/code&gt; 상태가 되자마자 LiveData 객체의 최신 데이터를 받을 수 있다.&lt;/span&gt;&lt;/p&gt;
 
-&lt;h2 id=&quot;문제해결방법&quot;&gt;문제해결방법&lt;/h2&gt;
+&lt;div class=&quot;language-java highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;kd&quot;&gt;public&lt;/span&gt; &lt;span class=&quot;kd&quot;&gt;class&lt;/span&gt; &lt;span class=&quot;nc&quot;&gt;NameActivity&lt;/span&gt; &lt;span class=&quot;kd&quot;&gt;extends&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;AppCompatActivity&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;{&lt;/span&gt;
 
-&lt;p&gt;UI 컨트롤러는 아래와 같은 작업을 다루는 경향이 있다.&lt;/p&gt;
-&lt;ul&gt;
-  &lt;li&gt;UI 데이터 표시&lt;/li&gt;
-  &lt;li&gt;사용자 행동에 반응&lt;/li&gt;
-  &lt;li&gt;권한 요청&lt;/li&gt;
-&lt;/ul&gt;
+    &lt;span class=&quot;kd&quot;&gt;private&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;NameViewModel&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;mModel&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;;&lt;/span&gt;
 
-&lt;p&gt;그러므로 데이터베이스 또는 네트워크에서 데이터를 요청하고 로드하는 작업은 다른 클래스에 위임하여 UI 컨트롤러 로직에서 뷰 데이터에 대한 소유권을 분리하는 것이 효율적이다.&lt;/p&gt;
+    &lt;span class=&quot;nd&quot;&gt;@Override&lt;/span&gt;
+    &lt;span class=&quot;kd&quot;&gt;protected&lt;/span&gt; &lt;span class=&quot;kt&quot;&gt;void&lt;/span&gt; &lt;span class=&quot;nf&quot;&gt;onCreate&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;Bundle&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;savedInstanceState&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;{&lt;/span&gt;
+        &lt;span class=&quot;kd&quot;&gt;super&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;na&quot;&gt;onCreate&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;savedInstanceState&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;);&lt;/span&gt;
 
-&lt;h1 id=&quot;viewmodel-클래스-구현&quot;&gt;ViewModel 클래스 구현&lt;/h1&gt;
+        &lt;span class=&quot;c1&quot;&gt;// ..생략&lt;/span&gt;
 
-&lt;p&gt;&lt;a href=&quot;/android-mvvm/#viewModel&quot;&gt;예제로 바로가기&lt;/a&gt;.&lt;/p&gt;
+        &lt;span class=&quot;c1&quot;&gt;// ViewModel 얻기&lt;/span&gt;
+        &lt;span class=&quot;n&quot;&gt;mModel&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;ViewModelProviders&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;na&quot;&gt;of&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;k&quot;&gt;this&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;).&lt;/span&gt;&lt;span class=&quot;na&quot;&gt;get&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;NameViewModel&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;na&quot;&gt;class&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;);&lt;/span&gt;
 
-&lt;p&gt;Architecture Components는 ViewModel 클래스를 제공한다. &lt;br /&gt;
-&lt;strong&gt;ViewModel 클래스의 인스턴스(객체)는 구성 변경에도 데이터를 유지하며, ViewModel 인스턴스는 재생성된 액티비티에서 즉시 사용될 수 있다.&lt;/strong&gt;
-소유자가 액티비티를 끝낼 때, 안드로이드는 ViewModel 객체의 &lt;code class=&quot;codetainer&quot;&gt;onCleared()&lt;/code&gt; 메서드를 호출하여 리소스를 정리한다.&lt;/p&gt;
 
-&lt;p&gt;&lt;span class=&quot;clr-note&quot;&gt;
-ViewModel 사용 시 ViewModel에 액티비티, 프래그먼트, 뷰에 대한 컨텍스트를 저장해서는 안된다.   &lt;br /&gt;
-&lt;/span&gt;&lt;/p&gt;
+        &lt;span class=&quot;c1&quot;&gt;// 옵저버 생성&lt;/span&gt;
+        &lt;span class=&quot;kd&quot;&gt;final&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;Observer&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;&amp;lt;&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;String&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;&amp;gt;&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;nameObserver&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;new&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;Observer&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;&amp;lt;&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;String&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;&amp;gt;()&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;{&lt;/span&gt;
+            &lt;span class=&quot;nd&quot;&gt;@Override&lt;/span&gt;
+            &lt;span class=&quot;kd&quot;&gt;public&lt;/span&gt; &lt;span class=&quot;kt&quot;&gt;void&lt;/span&gt; &lt;span class=&quot;nf&quot;&gt;onChanged&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nd&quot;&gt;@Nullable&lt;/span&gt; &lt;span class=&quot;kd&quot;&gt;final&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;String&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;newName&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;{&lt;/span&gt;
+                &lt;span class=&quot;c1&quot;&gt;// Update the UI, in this case, a TextView.&lt;/span&gt;
+                &lt;span class=&quot;n&quot;&gt;mNameTextView&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;na&quot;&gt;setText&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;newName&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;);&lt;/span&gt;
+            &lt;span class=&quot;o&quot;&gt;}&lt;/span&gt;
+        &lt;span class=&quot;o&quot;&gt;};&lt;/span&gt;
 
-&lt;p&gt;&lt;span class=&quot;clr-grey&quot;&gt;액티비티가 재생성 될 때, ViewModel은 액티비티 생명주기 외부에 존재하기 때문에 UI 컨텍스트를 ViewModel에 저장하면 메모리 락을 발생시키는 직접적인 원인이 된다. 단, Application 컨텍스트(전체 앱의 수명주기)를 저장하는 것은 괜찮다. Application 컨텐스트는 AndroidViewModel 클래스를 통해 받을 수 있다.&lt;/span&gt;&lt;/p&gt;</content><author><name>devgaram</name><email>joingaram@gmail.com</email></author><category term="android" /><category term="viewmodel" /><category term="mvvm" /><summary type="html">안드로이드 아키텍쳐 중 ViewModel 클래스에 대한 내용입니다.</summary></entry><entry><title type="html">안드로이드 MVVM에 대해 알아보자</title><link href="http://localhost:4000/android-mvvm/" rel="alternate" type="text/html" title="안드로이드 MVVM에 대해 알아보자" /><published>2019-01-07T00:00:00+09:00</published><updated>2019-01-07T00:00:00+09:00</updated><id>http://localhost:4000/android-mvvm</id><content type="html" xml:base="http://localhost:4000/android-mvvm/">&lt;p&gt;Coding in Flow의  Room + ViewModel + LiveData + RecyclerView (MVVM) 튜토리얼을 정리했습니다.&lt;/p&gt;
+        &lt;span class=&quot;c1&quot;&gt;// LiveData 관찰 시작&lt;/span&gt;
+        &lt;span class=&quot;n&quot;&gt;mModel&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;na&quot;&gt;getCurrentName&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;().&lt;/span&gt;&lt;span class=&quot;na&quot;&gt;observe&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;k&quot;&gt;this&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;nameObserver&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;);&lt;/span&gt;
+    &lt;span class=&quot;o&quot;&gt;}&lt;/span&gt;
+&lt;span class=&quot;o&quot;&gt;}&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+&lt;h2 id=&quot;3-livedata-객체-업데이트하기&quot;&gt;3. LiveData 객체 업데이트하기&lt;/h2&gt;
+&lt;p&gt;LiveData는 데이터를 업데이트 하는 publid 메서드를 가지고 있지 않으므로, LiveData를 상속받은 &lt;code class=&quot;codetainer&quot;&gt;MutableLiveData&lt;/code&gt;를 사용해야한다. 
+&lt;code class=&quot;codetainer&quot;&gt;MutableLiveData&lt;/code&gt;는 &lt;code class=&quot;codetainer&quot;&gt;public setValue(T)&lt;/code&gt;와 &lt;code class=&quot;codetainer&quot;&gt;public postValue(T)&lt;/code&gt; 메서드를 가지고 있어서 이를 통해 데이터를 변경할 수 있다.&lt;/p&gt;
+&lt;div class=&quot;language-java highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;n&quot;&gt;mButton&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;na&quot;&gt;setOnClickListener&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;k&quot;&gt;new&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;OnClickListener&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;()&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;{&lt;/span&gt;
+    &lt;span class=&quot;nd&quot;&gt;@Override&lt;/span&gt;
+    &lt;span class=&quot;kd&quot;&gt;public&lt;/span&gt; &lt;span class=&quot;kt&quot;&gt;void&lt;/span&gt; &lt;span class=&quot;nf&quot;&gt;onClick&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;View&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;v&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;{&lt;/span&gt;
+        &lt;span class=&quot;n&quot;&gt;String&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;anotherName&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;&quot;John Doe&quot;&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;;&lt;/span&gt;
+        &lt;span class=&quot;n&quot;&gt;mModel&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;na&quot;&gt;getCurrentName&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;().&lt;/span&gt;&lt;span class=&quot;na&quot;&gt;setValue&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;anotherName&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;);&lt;/span&gt;
+    &lt;span class=&quot;o&quot;&gt;}&lt;/span&gt;
+&lt;span class=&quot;o&quot;&gt;});&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+&lt;p&gt;&lt;code class=&quot;codetainer&quot;&gt;setValue(T)&lt;/code&gt;와 &lt;code class=&quot;codetainer&quot;&gt;postValue(T)&lt;/code&gt;는 호출 시 Observer의 &lt;code class=&quot;codetainer&quot;&gt;onChanged()&lt;/code&gt; 메서드가 호출되어 UI가 업데이트 된다.&lt;/p&gt;</content><author><name>devgaram</name><email>joingaram@gmail.com</email></author><category term="android" /><category term="livedata" /><category term="mvvm" /><summary type="html">LiveData 클래스를 통해 데이터 변경을 감지해보자.</summary></entry><entry><title type="html">안드로이드 MVVM에 대해 알아보자</title><link href="http://localhost:4000/android-mvvm/" rel="alternate" type="text/html" title="안드로이드 MVVM에 대해 알아보자" /><published>2019-01-07T00:00:00+09:00</published><updated>2019-01-07T00:00:00+09:00</updated><id>http://localhost:4000/android-mvvm</id><content type="html" xml:base="http://localhost:4000/android-mvvm/">&lt;p&gt;Coding in Flow의  Room + ViewModel + LiveData + RecyclerView (MVVM) 튜토리얼을 정리했습니다.&lt;/p&gt;
 
 &lt;hr /&gt;
 
@@ -94,7 +130,8 @@ ViewModelProviders 클래스의 &lt;code class=&quot;codetainer&quot;&gt;of(this
 
 &lt;p&gt;&lt;span class=&quot;clr-grey&quot;&gt;&lt;strong&gt;NOTE:&lt;/strong&gt; get()은 이미 ViewModel 객체가 생성되었을 경우, 그 객체를 리턴한다. &lt;/span&gt;&lt;/p&gt;
 
-&lt;p&gt;&lt;strong&gt;LiveData 사용&lt;/strong&gt;  &lt;br /&gt;
+&lt;p&gt;&lt;span id=&quot;LiveData&quot;&gt;&lt;/span&gt;
+&lt;strong&gt;LiveData 사용&lt;/strong&gt;  &lt;br /&gt;
 &lt;a href=&quot;/android-LiveData/&quot;&gt;LiveData 개념 익히러가기&lt;/a&gt;.&lt;/p&gt;
 
 &lt;p&gt;noteViewModel.java&lt;/p&gt;
@@ -130,7 +167,55 @@ ViewModelProviders 클래스의 &lt;code class=&quot;codetainer&quot;&gt;of(this
 &lt;span class=&quot;clr-grey&quot;&gt;보통 Observer는 프래그먼트나 액티비티 같은 UI 컨트롤러에서 만든다.&lt;/span&gt;  &lt;br /&gt;
 &lt;span class=&quot;clr-note&quot;&gt;LiveData의 data가 변경될 때 LifeCycleOwner가 활성화 되어있는 한 등록된 모든 Observer들 에게 이벤트를 보낸다.&lt;/span&gt;&lt;/p&gt;
 
-&lt;p&gt;2) Observer는 &lt;code class=&quot;codetainer&quot;&gt;onChanged()&lt;/code&gt; 메서드를 반드시 오버라이드해야하며, &lt;code class=&quot;codetainer&quot;&gt;onChanged()&lt;/code&gt; 메서드에서 UI 업데이트를 한다.&lt;/p&gt;</content><author><name>devgaram</name><email>joingaram@gmail.com</email></author><category term="android" /><category term="mvvm" /><summary type="html">Coding in Flow의 Room + ViewModel + LiveData + RecyclerView (MVVM) 튜토리얼을 정리했습니다.</summary></entry><entry><title type="html">jekyll의 minimal-mistakes에서 자바스크립트 커스텀하는 방법</title><link href="http://localhost:4000/jekyll-js-custom/" rel="alternate" type="text/html" title="jekyll의 minimal-mistakes에서 자바스크립트 커스텀하는 방법" /><published>2019-01-05T00:00:00+09:00</published><updated>2019-01-05T00:00:00+09:00</updated><id>http://localhost:4000/jekyll-js-custom</id><content type="html" xml:base="http://localhost:4000/jekyll-js-custom/">&lt;p&gt;minimal-mistakes 테마를 적용한 jekyll 블로그를 커스텀하는 과정에서 자바스크립트 코드를 추가하는 방법입니다.  &lt;br /&gt;
+&lt;p&gt;2) Observer는 &lt;code class=&quot;codetainer&quot;&gt;onChanged()&lt;/code&gt; 메서드를 반드시 오버라이드해야하며, &lt;code class=&quot;codetainer&quot;&gt;onChanged()&lt;/code&gt; 메서드에서 UI 업데이트를 한다.&lt;/p&gt;</content><author><name>devgaram</name><email>joingaram@gmail.com</email></author><category term="android" /><category term="mvvm" /><summary type="html">Coding in Flow의 Room + ViewModel + LiveData + RecyclerView (MVVM) 튜토리얼을 정리했습니다.</summary></entry><entry><title type="html">안드로이드 ViewModel에 대해 알아보자</title><link href="http://localhost:4000/android-viewModel/" rel="alternate" type="text/html" title="안드로이드 ViewModel에 대해 알아보자" /><published>2019-01-07T00:00:00+09:00</published><updated>2019-01-07T00:00:00+09:00</updated><id>http://localhost:4000/android-viewModel</id><content type="html" xml:base="http://localhost:4000/android-viewModel/">&lt;p&gt;안드로이드 아키텍쳐 중 ViewModel 클래스에 대한 내용입니다.&lt;/p&gt;
+
+&lt;hr /&gt;
+
+&lt;p&gt;안드로이드 프레임워크는 액티비티와 프래그먼트와 같은 UI 컨트롤러의 라이프 사이클을 관리한다.&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;/assets/images/viewmodel-lifecycle.png&quot; alt=&quot;액티비티가 회전을 거쳐 끝날 때까지의 라이프 사이클&quot; /&gt;  &lt;br /&gt;
+[ UI 컨트롤러 라이프 사이클과 ViewModel 스코프]&lt;/p&gt;
+
+&lt;p&gt;아래와 같은 구성 변경 발생 시, 안드로이드는 UI 컨트롤러를 종료하거나 재생성한다.&lt;/p&gt;
+&lt;ul&gt;
+  &lt;li&gt;런타임에 화면 방향이 전환되는 경우&lt;/li&gt;
+  &lt;li&gt;언어, 글꼴 배율과 같은 기기 구성이 변경되는 경우&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;이 때 두가지 문제가 발생한다.&lt;/p&gt;
+
+&lt;h2 id=&quot;1-ui에-종속된-데이터-손실&quot;&gt;1) UI에 종속된 데이터 손실&lt;/h2&gt;
+&lt;p&gt;해결1 - 적은 데이터의 경우 &lt;code class=&quot;codetainer&quot;&gt;OnCreate()&lt;/code&gt;에서 &lt;code class=&quot;codetainer&quot;&gt;onSaveInstanceState()&lt;/code&gt; 메서드를 사용하여 번들에서 해당 데이터를 복원할 수 있다. 
+&lt;span class=&quot;clr-grey&quot;&gt;많은 데이터와 비트맵에는 부적절하다.&lt;/span&gt;  &lt;br /&gt;
+해결2 - UI가 없는 워커 프래그먼트에 UI에 필요한 데이터를 관리하고 프래그먼트를 &lt;code class=&quot;codetainer&quot;&gt;SetRetainInstance(true)&lt;/code&gt;로 설정함으로써 프래그먼트를 메모리에 유지(유보)시킨다.&lt;/p&gt;
+
+&lt;h2 id=&quot;2-메모리-누수-리소스-낭비&quot;&gt;2) 메모리 누수, 리소스 낭비&lt;/h2&gt;
+&lt;p&gt;UI 컨트롤러 재생성 시 다시 데이터를 로드하므로 리소스가 낭비되며, UI 컨트롤러가 비동기 호출을 하고 콜백을 받을 때 해당 컨트롤러가 파괴되었다면 에러가 발생하거나 메모리 누수가 날 수도 있다.&lt;/p&gt;
+
+&lt;h2 id=&quot;문제해결방법&quot;&gt;문제해결방법&lt;/h2&gt;
+
+&lt;p&gt;UI 컨트롤러는 아래와 같은 작업을 다루는 경향이 있다.&lt;/p&gt;
+&lt;ul&gt;
+  &lt;li&gt;UI 데이터 표시&lt;/li&gt;
+  &lt;li&gt;사용자 행동에 반응&lt;/li&gt;
+  &lt;li&gt;권한 요청&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;그러므로 데이터베이스 또는 네트워크에서 데이터를 요청하고 로드하는 작업은 다른 클래스에 위임하여 UI 컨트롤러 로직에서 뷰 데이터에 대한 소유권을 분리하는 것이 효율적이다.&lt;/p&gt;
+
+&lt;h1 id=&quot;viewmodel-클래스-구현&quot;&gt;ViewModel 클래스 구현&lt;/h1&gt;
+
+&lt;p&gt;&lt;a href=&quot;/android-mvvm/#viewModel&quot;&gt;예제로 바로가기&lt;/a&gt;.&lt;/p&gt;
+
+&lt;p&gt;Architecture Components는 ViewModel 클래스를 제공한다. &lt;br /&gt;
+&lt;strong&gt;ViewModel 클래스의 인스턴스(객체)는 구성 변경에도 데이터를 유지하며, ViewModel 인스턴스는 재생성된 액티비티에서 즉시 사용될 수 있다.&lt;/strong&gt;
+소유자가 액티비티를 끝낼 때, 안드로이드는 ViewModel 객체의 &lt;code class=&quot;codetainer&quot;&gt;onCleared()&lt;/code&gt; 메서드를 호출하여 리소스를 정리한다.&lt;/p&gt;
+
+&lt;p&gt;&lt;span class=&quot;clr-note&quot;&gt;
+ViewModel 사용 시 ViewModel에 액티비티, 프래그먼트, 뷰에 대한 컨텍스트를 저장해서는 안된다.   &lt;br /&gt;
+&lt;/span&gt;&lt;/p&gt;
+
+&lt;p&gt;&lt;span class=&quot;clr-grey&quot;&gt;액티비티가 재생성 될 때, ViewModel은 액티비티 생명주기 외부에 존재하기 때문에 UI 컨텍스트를 ViewModel에 저장하면 메모리 락을 발생시키는 직접적인 원인이 된다. 단, Application 컨텍스트(전체 앱의 수명주기)를 저장하는 것은 괜찮다. Application 컨텐스트는 AndroidViewModel 클래스를 통해 받을 수 있다.&lt;/span&gt;&lt;/p&gt;</content><author><name>devgaram</name><email>joingaram@gmail.com</email></author><category term="android" /><category term="viewmodel" /><category term="mvvm" /><summary type="html">안드로이드 아키텍쳐 중 ViewModel 클래스에 대한 내용입니다.</summary></entry><entry><title type="html">jekyll의 minimal-mistakes에서 자바스크립트 커스텀하는 방법</title><link href="http://localhost:4000/jekyll-js-custom/" rel="alternate" type="text/html" title="jekyll의 minimal-mistakes에서 자바스크립트 커스텀하는 방법" /><published>2019-01-05T00:00:00+09:00</published><updated>2019-01-05T00:00:00+09:00</updated><id>http://localhost:4000/jekyll-js-custom</id><content type="html" xml:base="http://localhost:4000/jekyll-js-custom/">&lt;p&gt;minimal-mistakes 테마를 적용한 jekyll 블로그를 커스텀하는 과정에서 자바스크립트 코드를 추가하는 방법입니다.  &lt;br /&gt;
 minimal-mistakes 문서에 자바스크립트 커스텀 방법이 잘 정리되어있습니다.
 &lt;a href=&quot;https://mmistakes.github.io/minimal-mistakes/docs/javascript/&quot;&gt;공식문서 바로가기&lt;/a&gt;.&lt;/p&gt;
 

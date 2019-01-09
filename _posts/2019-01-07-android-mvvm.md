@@ -55,7 +55,7 @@ ViewModelProviders 클래스의 <code class="codetainer">of(this)</code> 를 통
  
 <span class="clr-grey">**NOTE:** get()은 이미 ViewModel 객체가 생성되었을 경우, 그 객체를 리턴한다. </span> 
 
-
+<span id="LiveData"></span>
 **LiveData 사용**    
 [LiveData 개념 익히러가기](/android-LiveData/).    
 

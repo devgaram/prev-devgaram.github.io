@@ -565,6 +565,19 @@
   code.codetainer {
     color: #0080ff;
   }
+  span.li-icon {
+    display: block;
+  }
+  span.li-icon::before {
+    content: "";
+    width: .4em;
+    height: 0.35em;
+    display: block;
+    background: #494e52;   
+    display: inline-block; 
+    margin-right: 0.6em;
+    border-radius: 0.175em;  
+  }
 }
 #page__post-archive {
   margin-left: auto;

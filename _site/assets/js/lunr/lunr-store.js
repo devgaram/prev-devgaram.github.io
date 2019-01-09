@@ -99,11 +99,6 @@ var store = [{
         "tags": ["jekyll","github"],
         "url": "http://localhost:4000/jekyll-js-custom/",
         "teaser":"http://localhost:4000/true"},{
-        "title": "안드로이드 LiveData 대해 알아보자",
-        "excerpt":" ","categories": [],
-        "tags": ["android","livedata","mvvm"],
-        "url": "http://localhost:4000/android-LiveData/",
-        "teaser":"http://localhost:4000/true"},{
         "title": "안드로이드 MVVM에 대해 알아보자",
         "excerpt":"Coding in Flow의 Room + ViewModel + LiveData + RecyclerView (MVVM) 튜토리얼을 정리했습니다. 파일 구성 MainActivity.java Note.java NoteAdapter.java NoteDao.interface NoteDatabase.java NoteRepository.java NoteViewModel.java MainActivity.java 앱의 시작점으로 RecyclerView 설정 및 ViewModel 생성하는 부분이다. 1. 리사이클러뷰 구현 RecyclerView recyclerView = findViewById(R.id.recycler_view); recyclerView.setLayoutManager(new LinearLayoutManager(this)); // 1) recyclerView.setHasFixedSize(true); // 2) final NoteAdapter adapter = new...","categories": [],
         "tags": ["android","mvvm"],
@@ -113,4 +108,9 @@ var store = [{
         "excerpt":"안드로이드 아키텍쳐 중 ViewModel 클래스에 대한 내용입니다. 안드로이드 프레임워크는 액티비티와 프래그먼트와 같은 UI 컨트롤러의 라이프 사이클을 관리한다. [ UI 컨트롤러 라이프 사이클과 ViewModel 스코프] 아래와 같은 구성 변경 발생 시, 안드로이드는 UI 컨트롤러를 종료하거나 재생성한다. 런타임에 화면 방향이 전환되는 경우 언어, 글꼴 배율과 같은 기기 구성이 변경되는 경우 이 때...","categories": [],
         "tags": ["android","viewmodel","mvvm"],
         "url": "http://localhost:4000/android-viewModel/",
+        "teaser":"http://localhost:4000/true"},{
+        "title": "안드로이드 LiveData 대해 알아보자",
+        "excerpt":"LiveData 클래스를 통해 데이터 변경을 감지해보자. 안드로이드 개발문서-LiveData. LiveData는 LifecycleOwner의 라이프사이클을 알고있다. LiveData 객체는 observe() 메서드를 통해 LifecycleOwner와 Observer객체를 페어로 등록한다. Observer 객체는 페어인 LifecycleOwner가 활성상태(STARTED 또는 RESUMED)일 때, 데이터 변화을 관측할 수 있다. 반대로, LiveData 객체는 LifecycleOwner가 비활성 상태면 LiveData의 변화를 Observer에게 전달하지 않으며, LifecycleOwner가 DESTROYED 상태라면 자동으로 제거된다....","categories": [],
+        "tags": ["android","livedata","mvvm"],
+        "url": "http://localhost:4000/android-LiveData/",
         "teaser":"http://localhost:4000/true"}]
