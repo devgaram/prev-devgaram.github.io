@@ -100,7 +100,7 @@ var store = [{
         "url": "http://localhost:4000/jekyll-js-custom/",
         "teaser":"http://localhost:4000/true"},{
         "title": "안드로이드 MVVM에 대해 알아보자",
-        "excerpt":"Coding in Flow의 Room + ViewModel + LiveData + RecyclerView (MVVM) 튜토리얼을 정리했습니다. 파일 구성 MainActivity.java Note.java NoteAdapter.java NoteDao.interface NoteDatabase.java NoteRepository.java NoteViewModel.java MainActivity.java 앱의 시작점으로 RecyclerView 설정 및 ViewModel 생성하는 부분이다. 1. 리사이클러뷰 구현 RecyclerView recyclerView = findViewById(R.id.recycler_view); recyclerView.setLayoutManager(new LinearLayoutManager(this)); // 1) recyclerView.setHasFixedSize(true); // 2) final NoteAdapter adapter = new...","categories": [],
+        "excerpt":"Coding in Flow의 Room + ViewModel + LiveData + RecyclerView (MVVM) 튜토리얼을 정리했습니다. 파일 구성 MainActivity.java Note.java NoteAdapter.java NoteDao.interface NoteDatabase.java NoteRepository.java NoteViewModel.java MVVM - VIEW와 VIEWMODEL MainActivity.class : 앱의 시작점으로 RecyclerView 설정 및 ViewModel 생성하는 부분 NoteViewModel.class : UI 컴포넌트와 UI 데이터의 분리 NoteAdapter.class : 리사이클러뷰 어댑터 NoteRepository.class : 저장소,...","categories": [],
         "tags": ["android","mvvm"],
         "url": "http://localhost:4000/android-mvvm/",
         "teaser":"http://localhost:4000/true"},{
