@@ -1,6 +1,6 @@
 ---
 layout: post-content
-title: 안드로이드 MVVM에 대해 알아보자
+title: 안드로이드 MVVM에 대해 알아보자1
 date: 2019-01-07
 tags: [android, mvvm]
 ---
