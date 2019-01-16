@@ -1,4 +1,121 @@
-<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="3.8.5">Jekyll</generator><link href="http://localhost:4000/feed.xml" rel="self" type="application/atom+xml" /><link href="http://localhost:4000/" rel="alternate" type="text/html" /><updated>2019-01-09T22:43:41+09:00</updated><id>http://localhost:4000/feed.xml</id><title type="html">It’s a piece of cake!</title><subtitle>초보개발자의 블로그입니다.</subtitle><author><name>devgaram</name><email>joingaram@gmail.com</email></author><entry><title type="html">안드로이드 LiveData 대해 알아보자</title><link href="http://localhost:4000/android-LiveData/" rel="alternate" type="text/html" title="안드로이드 LiveData 대해 알아보자" /><published>2019-01-09T00:00:00+09:00</published><updated>2019-01-09T00:00:00+09:00</updated><id>http://localhost:4000/android-LiveData</id><content type="html" xml:base="http://localhost:4000/android-LiveData/">&lt;p&gt;LiveData 클래스를 통해 데이터 변경을 감지해보자.&lt;/p&gt;
+<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="3.8.5">Jekyll</generator><link href="http://localhost:4000/feed.xml" rel="self" type="application/atom+xml" /><link href="http://localhost:4000/" rel="alternate" type="text/html" /><updated>2019-01-16T18:02:20+09:00</updated><id>http://localhost:4000/feed.xml</id><title type="html">It’s a piece of cake!</title><subtitle>초보개발자의 블로그입니다.</subtitle><author><name>devgaram</name><email>joingaram@gmail.com</email></author><entry><title type="html">(Drawable 리소스) LayerDrawable과 ShapeDrawable을 이용해 둥근모서리와 그림자 있는 배경 만들기.</title><link href="http://localhost:4000/android-drawable/" rel="alternate" type="text/html" title="(Drawable 리소스) LayerDrawable과 ShapeDrawable을 이용해 둥근모서리와 그림자 있는 배경 만들기." /><published>2019-01-16T00:00:00+09:00</published><updated>2019-01-16T00:00:00+09:00</updated><id>http://localhost:4000/android-drawable</id><content type="html" xml:base="http://localhost:4000/android-drawable/">&lt;p&gt;LayerDrawable과 ShapeDrawable을 이용해 둥근모서리+그림자+투명배경이 있는 디자인을 다른 XML 리소스의 background로 적용하는 방법입니다.&lt;/p&gt;
+
+&lt;hr /&gt;
+
+&lt;p&gt;&lt;a href=&quot;https://developer.android.com/guide/topics/resources/drawable-resource?hl=ko&quot;&gt;안드로이드 개발문서-Drawable 바로가기&lt;/a&gt;&lt;/p&gt;
+
+&lt;h2 id=&quot;드로어블drawable-리소스&quot;&gt;드로어블(Drawable) 리소스&lt;/h2&gt;
+&lt;p&gt;앱 화면에 그리고 싶은 것을 XML 파일로 미리 정의할 수 있으며, &lt;code class=&quot;codetainer&quot;&gt;getDrawable(int)&lt;/code&gt;와 같은 API를 사용하여 가져오거나 
+&lt;code class=&quot;codetainer&quot;&gt;android:drawable&lt;/code&gt; 및 &lt;code class=&quot;codetainer&quot;&gt;android:icon&lt;/code&gt;과 같은 속성을 사용하여 다른 XML 리소스에 적용할 수 있다.   &lt;br /&gt;
+&lt;span class=&quot;clr-grey&quot;&gt;&lt;strong&gt;Example)&lt;/strong&gt; android:background=”@drawable/custom_layer_resource”&lt;/span&gt;&lt;/p&gt;
+
+&lt;h1 id=&quot;layerdrawable&quot;&gt;LayerDrawable&lt;/h1&gt;
+&lt;p&gt;각 &lt;code class=&quot;highlighter-rouge&quot;&gt;&amp;lt;item&amp;gt;&lt;/code&gt; 요소는 순서대로 그려지므로, 맨 마지막 &lt;code class=&quot;highlighter-rouge&quot;&gt;&amp;lt;item&amp;gt;&lt;/code&gt;이 맨 위에 보이게 된다.&lt;/p&gt;
+
+&lt;p&gt;&lt;span class=&quot;li-nonicon&quot;&gt;위치 : res/drawable/filename.xml&lt;/span&gt;
+&lt;span class=&quot;li-nonicon&quot;&gt;Java 리소스 참조 : R.drawable.filename&lt;/span&gt;
+&lt;span class=&quot;li-nonicon&quot;&gt;XML 리소스 참조 : @[package:]drawable/filename&lt;/span&gt;&lt;/p&gt;
+
+&lt;div class=&quot;language-xml highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;cp&quot;&gt;&amp;lt;?xml version=&quot;1.0&quot; encoding=&quot;utf-8&quot;?&amp;gt;&lt;/span&gt;
+&lt;span class=&quot;nt&quot;&gt;&amp;lt;layer-list&lt;/span&gt;
+    &lt;span class=&quot;na&quot;&gt;xmlns:android=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;http://schemas.android.com/apk/res/android&quot;&lt;/span&gt; &lt;span class=&quot;nt&quot;&gt;&amp;gt;&lt;/span&gt;&lt;span class=&quot;c&quot;&gt;&amp;lt;!-- XML 네임스페이스 정의 필수 --&amp;gt;&lt;/span&gt;
+    &lt;span class=&quot;nt&quot;&gt;&amp;lt;item&lt;/span&gt;
+        &lt;span class=&quot;na&quot;&gt;android:drawable=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;@[package:]drawable/drawable_resource&quot;&lt;/span&gt;
+        &lt;span class=&quot;na&quot;&gt;android:id=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;@[+][package:]id/resource_name&quot;&lt;/span&gt;
+        &lt;span class=&quot;na&quot;&gt;android:top=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;dimension&quot;&lt;/span&gt;
+        &lt;span class=&quot;na&quot;&gt;android:right=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;dimension&quot;&lt;/span&gt;
+        &lt;span class=&quot;na&quot;&gt;android:bottom=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;dimension&quot;&lt;/span&gt;
+        &lt;span class=&quot;na&quot;&gt;android:left=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;dimension&quot;&lt;/span&gt; &lt;span class=&quot;nt&quot;&gt;/&amp;gt;&lt;/span&gt; 
+&lt;span class=&quot;nt&quot;&gt;&amp;lt;/layer-list&amp;gt;&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+&lt;p&gt;&lt;span class=&quot;li-icon&quot;&gt;&lt;code class=&quot;codetainer&quot;&gt;android:top=&quot;dimension&quot;&lt;/code&gt; top에서 dimension 값만큼 padding&lt;/span&gt;&lt;/p&gt;
+
+&lt;h1 id=&quot;shapedrawable&quot;&gt;ShapeDrawable&lt;/h1&gt;
+
+&lt;p&gt;&lt;span class=&quot;li-nonicon&quot;&gt;위치 : res/drawable/filename.xml&lt;/span&gt;
+&lt;span class=&quot;li-nonicon&quot;&gt;Java 리소스 참조 : R.drawable.filename&lt;/span&gt;
+&lt;span class=&quot;li-nonicon&quot;&gt;XML 리소스 참조 : @[package:]drawable/filename&lt;/span&gt;&lt;/p&gt;
+
+&lt;div class=&quot;language-xml highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;cp&quot;&gt;&amp;lt;?xml version=&quot;1.0&quot; encoding=&quot;utf-8&quot;?&amp;gt;&lt;/span&gt;
+&lt;span class=&quot;nt&quot;&gt;&amp;lt;shape&lt;/span&gt;
+    &lt;span class=&quot;na&quot;&gt;xmlns:android=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;http://schemas.android.com/apk/res/android&quot;&lt;/span&gt;
+    &lt;span class=&quot;na&quot;&gt;android:shape=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;[&quot;rectangle&quot;&lt;/span&gt; &lt;span class=&quot;err&quot;&gt;|&lt;/span&gt; &lt;span class=&quot;err&quot;&gt;&quot;oval&quot;&lt;/span&gt; &lt;span class=&quot;err&quot;&gt;|&lt;/span&gt; &lt;span class=&quot;err&quot;&gt;&quot;line&quot;&lt;/span&gt; &lt;span class=&quot;err&quot;&gt;|&lt;/span&gt; &lt;span class=&quot;err&quot;&gt;&quot;ring&quot;]&lt;/span&gt; &lt;span class=&quot;nt&quot;&gt;&amp;gt;&lt;/span&gt;
+    &lt;span class=&quot;nt&quot;&gt;&amp;lt;corners&lt;/span&gt;
+        &lt;span class=&quot;na&quot;&gt;android:radius=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;integer&quot;&lt;/span&gt;
+        &lt;span class=&quot;na&quot;&gt;android:topLeftRadius=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;integer&quot;&lt;/span&gt;
+        &lt;span class=&quot;na&quot;&gt;android:topRightRadius=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;integer&quot;&lt;/span&gt;
+        &lt;span class=&quot;na&quot;&gt;android:bottomLeftRadius=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;integer&quot;&lt;/span&gt;
+        &lt;span class=&quot;na&quot;&gt;android:bottomRightRadius=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;integer&quot;&lt;/span&gt; &lt;span class=&quot;nt&quot;&gt;/&amp;gt;&lt;/span&gt;
+    &lt;span class=&quot;nt&quot;&gt;&amp;lt;gradient&lt;/span&gt;
+        &lt;span class=&quot;na&quot;&gt;android:angle=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;integer&quot;&lt;/span&gt;
+        &lt;span class=&quot;na&quot;&gt;android:centerX=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;float&quot;&lt;/span&gt;
+        &lt;span class=&quot;na&quot;&gt;android:centerY=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;float&quot;&lt;/span&gt;
+        &lt;span class=&quot;na&quot;&gt;android:centerColor=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;integer&quot;&lt;/span&gt;
+        &lt;span class=&quot;na&quot;&gt;android:endColor=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;color&quot;&lt;/span&gt;
+        &lt;span class=&quot;na&quot;&gt;android:gradientRadius=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;integer&quot;&lt;/span&gt;
+        &lt;span class=&quot;na&quot;&gt;android:startColor=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;color&quot;&lt;/span&gt;
+        &lt;span class=&quot;na&quot;&gt;android:type=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;[&quot;linear&quot;&lt;/span&gt; &lt;span class=&quot;err&quot;&gt;|&lt;/span&gt; &lt;span class=&quot;err&quot;&gt;&quot;radial&quot;&lt;/span&gt; &lt;span class=&quot;err&quot;&gt;|&lt;/span&gt; &lt;span class=&quot;err&quot;&gt;&quot;sweep&quot;]&lt;/span&gt;
+        &lt;span class=&quot;na&quot;&gt;android:useLevel=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;[&quot;true&quot;&lt;/span&gt; &lt;span class=&quot;err&quot;&gt;|&lt;/span&gt; &lt;span class=&quot;err&quot;&gt;&quot;false&quot;]&lt;/span&gt; &lt;span class=&quot;nt&quot;&gt;/&amp;gt;&lt;/span&gt;
+    &lt;span class=&quot;nt&quot;&gt;&amp;lt;padding&lt;/span&gt;
+        &lt;span class=&quot;na&quot;&gt;android:left=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;integer&quot;&lt;/span&gt;
+        &lt;span class=&quot;na&quot;&gt;android:top=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;integer&quot;&lt;/span&gt;
+        &lt;span class=&quot;na&quot;&gt;android:right=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;integer&quot;&lt;/span&gt;
+        &lt;span class=&quot;na&quot;&gt;android:bottom=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;integer&quot;&lt;/span&gt; &lt;span class=&quot;nt&quot;&gt;/&amp;gt;&lt;/span&gt;
+    &lt;span class=&quot;nt&quot;&gt;&amp;lt;size&lt;/span&gt;
+        &lt;span class=&quot;na&quot;&gt;android:width=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;integer&quot;&lt;/span&gt;
+        &lt;span class=&quot;na&quot;&gt;android:height=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;integer&quot;&lt;/span&gt; &lt;span class=&quot;nt&quot;&gt;/&amp;gt;&lt;/span&gt;
+    &lt;span class=&quot;nt&quot;&gt;&amp;lt;solid&lt;/span&gt;
+        &lt;span class=&quot;na&quot;&gt;android:color=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;color&quot;&lt;/span&gt; &lt;span class=&quot;nt&quot;&gt;/&amp;gt;&lt;/span&gt;
+    &lt;span class=&quot;nt&quot;&gt;&amp;lt;stroke&lt;/span&gt;
+        &lt;span class=&quot;na&quot;&gt;android:width=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;integer&quot;&lt;/span&gt;
+        &lt;span class=&quot;na&quot;&gt;android:color=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;color&quot;&lt;/span&gt;
+        &lt;span class=&quot;na&quot;&gt;android:dashWidth=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;integer&quot;&lt;/span&gt;
+        &lt;span class=&quot;na&quot;&gt;android:dashGap=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;integer&quot;&lt;/span&gt; &lt;span class=&quot;nt&quot;&gt;/&amp;gt;&lt;/span&gt;
+&lt;span class=&quot;nt&quot;&gt;&amp;lt;/shape&amp;gt;&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+&lt;p&gt;&lt;span class=&quot;li-icon&quot;&gt;&lt;code class=&quot;codetainer&quot;&gt;corners : &lt;/code&gt;둥근모서리&lt;/span&gt;
+&lt;span class=&quot;li-icon&quot;&gt;&lt;code class=&quot;codetainer&quot;&gt;gradient : &lt;/code&gt;그라데이션 색상&lt;/span&gt;
+&lt;span class=&quot;li-icon&quot;&gt;&lt;code class=&quot;codetainer&quot;&gt;padding : &lt;/code&gt;shape가 아닌 view 요소에 적용할 패딩&lt;/span&gt;
+&lt;span class=&quot;li-icon&quot;&gt;&lt;code class=&quot;codetainer&quot;&gt;size : &lt;/code&gt;shape 크기&lt;/span&gt;
+&lt;span class=&quot;li-icon&quot;&gt;&lt;code class=&quot;codetainer&quot;&gt;solid : &lt;/code&gt;채우기 색상&lt;/span&gt;
+&lt;span class=&quot;li-icon&quot;&gt;&lt;code class=&quot;codetainer&quot;&gt;stroke : &lt;/code&gt;선 속성&lt;/span&gt;&lt;/p&gt;
+
+&lt;h1 id=&quot;실전예제&quot;&gt;실전예제&lt;/h1&gt;
+
+&lt;p&gt;1) 둥근모서리+그림자+투명배경 드로어블 생성하기&lt;/p&gt;
+
+&lt;p&gt;res/drawable/round_border.xml&lt;/p&gt;
+&lt;div class=&quot;language-xml highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;cp&quot;&gt;&amp;lt;?xml version=&quot;1.0&quot; encoding=&quot;utf-8&quot;?&amp;gt;&lt;/span&gt;
+&lt;span class=&quot;nt&quot;&gt;&amp;lt;layer-list&lt;/span&gt; &lt;span class=&quot;na&quot;&gt;xmlns:android=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;http://schemas.android.com/apk/res/android&quot;&lt;/span&gt; &lt;span class=&quot;nt&quot;&gt;&amp;gt;&lt;/span&gt;
+    &lt;span class=&quot;nt&quot;&gt;&amp;lt;item&amp;gt;&lt;/span&gt;
+        &lt;span class=&quot;nt&quot;&gt;&amp;lt;shape&lt;/span&gt; &lt;span class=&quot;na&quot;&gt;android:shape=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;rectangle&quot;&lt;/span&gt; &lt;span class=&quot;nt&quot;&gt;&amp;gt;&lt;/span&gt;            
+            &lt;span class=&quot;nt&quot;&gt;&amp;lt;solid&lt;/span&gt; &lt;span class=&quot;na&quot;&gt;android:color=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;@android:color/darker_gray&quot;&lt;/span&gt; &lt;span class=&quot;nt&quot;&gt;/&amp;gt;&lt;/span&gt;
+        &lt;span class=&quot;nt&quot;&gt;&amp;lt;/shape&amp;gt;&lt;/span&gt;
+    &lt;span class=&quot;nt&quot;&gt;&amp;lt;/item&amp;gt;&lt;/span&gt;
+    &lt;span class=&quot;nt&quot;&gt;&amp;lt;item&lt;/span&gt;
+        &lt;span class=&quot;na&quot;&gt;android:bottom=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;-2dp&quot;&lt;/span&gt;
+        &lt;span class=&quot;na&quot;&gt;android:left=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;2dp&quot;&lt;/span&gt;
+        &lt;span class=&quot;na&quot;&gt;android:right=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;2dp&quot;&lt;/span&gt;
+        &lt;span class=&quot;na&quot;&gt;android:top=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;2dp&quot;&lt;/span&gt;&lt;span class=&quot;nt&quot;&gt;&amp;gt;&lt;/span&gt;
+        &lt;span class=&quot;nt&quot;&gt;&amp;lt;shape&lt;/span&gt; &lt;span class=&quot;na&quot;&gt;android:shape=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;rectangle&quot;&lt;/span&gt; &lt;span class=&quot;nt&quot;&gt;&amp;gt;&lt;/span&gt;
+            &lt;span class=&quot;nt&quot;&gt;&amp;lt;stroke&lt;/span&gt;
+                &lt;span class=&quot;na&quot;&gt;android:width=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;0.75dp&quot;&lt;/span&gt;
+                &lt;span class=&quot;na&quot;&gt;android:color=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;#f5f5f5&quot;&lt;/span&gt; &lt;span class=&quot;nt&quot;&gt;/&amp;gt;&lt;/span&gt;
+            &lt;span class=&quot;nt&quot;&gt;&amp;lt;corners&lt;/span&gt;
+                &lt;span class=&quot;na&quot;&gt;android:topLeftRadius=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;10dp&quot;&lt;/span&gt;
+                &lt;span class=&quot;na&quot;&gt;android:topRightRadius=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;10dp&quot;&lt;/span&gt;&lt;span class=&quot;nt&quot;&gt;/&amp;gt;&lt;/span&gt;
+            &lt;span class=&quot;nt&quot;&gt;&amp;lt;solid&lt;/span&gt; &lt;span class=&quot;na&quot;&gt;android:color=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;#3cffffff&quot;&lt;/span&gt; &lt;span class=&quot;nt&quot;&gt;/&amp;gt;&lt;/span&gt;
+        &lt;span class=&quot;nt&quot;&gt;&amp;lt;/shape&amp;gt;&lt;/span&gt;
+    &lt;span class=&quot;nt&quot;&gt;&amp;lt;/item&amp;gt;&lt;/span&gt;
+&lt;span class=&quot;nt&quot;&gt;&amp;lt;/layer-list&amp;gt;&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+&lt;p&gt;2) round_border를 LinearLayout의 배경으로 적용하기&lt;/p&gt;
+&lt;div class=&quot;language-xml highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;nt&quot;&gt;&amp;lt;LinearLayout&lt;/span&gt;
+        &lt;span class=&quot;na&quot;&gt;android:layout_width=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;match_parent&quot;&lt;/span&gt;
+        &lt;span class=&quot;na&quot;&gt;android:layout_height=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;10dp&quot;&lt;/span&gt;
+        &lt;span class=&quot;na&quot;&gt;android:background=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;@drawable/round_border&quot;&lt;/span&gt;&lt;span class=&quot;nt&quot;&gt;&amp;gt;&lt;/span&gt;
+&lt;span class=&quot;nt&quot;&gt;&amp;lt;/LinearLayout&amp;gt;&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;</content><author><name>devgaram</name><email>joingaram@gmail.com</email></author><category term="android" /><category term="resource" /><summary type="html">LayerDrawable과 ShapeDrawable을 이용해 둥근모서리+그림자+투명배경이 있는 디자인을 다른 XML 리소스의 background로 적용하는 방법입니다.</summary></entry><entry><title type="html">안드로이드 LiveData 대해 알아보자</title><link href="http://localhost:4000/android-LiveData/" rel="alternate" type="text/html" title="안드로이드 LiveData 대해 알아보자" /><published>2019-01-09T00:00:00+09:00</published><updated>2019-01-09T00:00:00+09:00</updated><id>http://localhost:4000/android-LiveData</id><content type="html" xml:base="http://localhost:4000/android-LiveData/">&lt;p&gt;LiveData 클래스를 통해 데이터 변경을 감지해보자.&lt;/p&gt;
 
 &lt;hr /&gt;
 
@@ -82,7 +199,7 @@ Observer 객체는 페어인 LifecycleOwner가 활성상태(&lt;code class=&quot
     &lt;span class=&quot;o&quot;&gt;}&lt;/span&gt;
 &lt;span class=&quot;o&quot;&gt;});&lt;/span&gt;
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
-&lt;p&gt;&lt;code class=&quot;codetainer&quot;&gt;setValue(T)&lt;/code&gt;와 &lt;code class=&quot;codetainer&quot;&gt;postValue(T)&lt;/code&gt;는 호출 시 Observer의 &lt;code class=&quot;codetainer&quot;&gt;onChanged()&lt;/code&gt; 메서드가 호출되어 UI가 업데이트 된다.&lt;/p&gt;</content><author><name>devgaram</name><email>joingaram@gmail.com</email></author><category term="android" /><category term="livedata" /><category term="mvvm" /><summary type="html">LiveData 클래스를 통해 데이터 변경을 감지해보자.</summary></entry><entry><title type="html">안드로이드 MVVM에 대해 알아보자</title><link href="http://localhost:4000/android-mvvm/" rel="alternate" type="text/html" title="안드로이드 MVVM에 대해 알아보자" /><published>2019-01-07T00:00:00+09:00</published><updated>2019-01-07T00:00:00+09:00</updated><id>http://localhost:4000/android-mvvm</id><content type="html" xml:base="http://localhost:4000/android-mvvm/">&lt;p&gt;Coding in Flow의  Room + ViewModel + LiveData + RecyclerView (MVVM) 튜토리얼을 정리했습니다.&lt;/p&gt;
+&lt;p&gt;&lt;code class=&quot;codetainer&quot;&gt;setValue(T)&lt;/code&gt;와 &lt;code class=&quot;codetainer&quot;&gt;postValue(T)&lt;/code&gt;는 호출 시 Observer의 &lt;code class=&quot;codetainer&quot;&gt;onChanged()&lt;/code&gt; 메서드가 호출되어 UI가 업데이트 된다.&lt;/p&gt;</content><author><name>devgaram</name><email>joingaram@gmail.com</email></author><category term="android" /><category term="livedata" /><category term="mvvm" /><summary type="html">LiveData 클래스를 통해 데이터 변경을 감지해보자.</summary></entry><entry><title type="html">안드로이드 MVVM에 대해 알아보자1</title><link href="http://localhost:4000/android-mvvm/" rel="alternate" type="text/html" title="안드로이드 MVVM에 대해 알아보자1" /><published>2019-01-07T00:00:00+09:00</published><updated>2019-01-07T00:00:00+09:00</updated><id>http://localhost:4000/android-mvvm</id><content type="html" xml:base="http://localhost:4000/android-mvvm/">&lt;p&gt;Coding in Flow의  Room + ViewModel + LiveData + RecyclerView (MVVM) 튜토리얼을 정리했습니다.&lt;/p&gt;
 
 &lt;hr /&gt;
 
@@ -297,7 +414,13 @@ ViewModelProviders 클래스의 &lt;code class=&quot;codetainer&quot;&gt;of(this
     &lt;span class=&quot;nd&quot;&gt;@Query&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;SELECT * FROM note_table ORDER BY priority DESC&quot;&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;)&lt;/span&gt;
     &lt;span class=&quot;n&quot;&gt;LiveData&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;&amp;lt;&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;List&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;&amp;lt;&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;Note&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;&amp;gt;&amp;gt;&lt;/span&gt; &lt;span class=&quot;nf&quot;&gt;getAllNotes&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;();&lt;/span&gt;
 &lt;span class=&quot;o&quot;&gt;}&lt;/span&gt;
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;</content><author><name>devgaram</name><email>joingaram@gmail.com</email></author><category term="android" /><category term="mvvm" /><summary type="html">Coding in Flow의 Room + ViewModel + LiveData + RecyclerView (MVVM) 튜토리얼을 정리했습니다.</summary></entry><entry><title type="html">안드로이드 ViewModel에 대해 알아보자</title><link href="http://localhost:4000/android-viewModel/" rel="alternate" type="text/html" title="안드로이드 ViewModel에 대해 알아보자" /><published>2019-01-07T00:00:00+09:00</published><updated>2019-01-07T00:00:00+09:00</updated><id>http://localhost:4000/android-viewModel</id><content type="html" xml:base="http://localhost:4000/android-viewModel/">&lt;p&gt;안드로이드 아키텍쳐 중 ViewModel 클래스에 대한 내용입니다.&lt;/p&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;</content><author><name>devgaram</name><email>joingaram@gmail.com</email></author><category term="android" /><category term="mvvm" /><summary type="html">Coding in Flow의 Room + ViewModel + LiveData + RecyclerView (MVVM) 튜토리얼을 정리했습니다.</summary></entry><entry><title type="html">안드로이드 MVVM에 대해 알아보자2 - 추가/수정/삭제</title><link href="http://localhost:4000/android-mvvm-part2/" rel="alternate" type="text/html" title="안드로이드 MVVM에 대해 알아보자2 - 추가/수정/삭제" /><published>2019-01-07T00:00:00+09:00</published><updated>2019-01-07T00:00:00+09:00</updated><id>http://localhost:4000/android-mvvm-part2</id><content type="html" xml:base="http://localhost:4000/android-mvvm-part2/">&lt;p&gt;Coding in Flow의  Room + ViewModel + LiveData + RecyclerView (MVVM) 튜토리얼 중 추가/수정/삭제 부분을 정리했습니다.&lt;/p&gt;
+
+&lt;hr /&gt;
+
+&lt;p&gt;&lt;a href=&quot;/android-mvvm/&quot;&gt;안드로이드 MVVM에 대해 알아보자1&lt;/a&gt;.에 이어지는 내용으로 노트 추가/수정/삭제를 다룬다.&lt;/p&gt;
+
+&lt;h1 id=&quot;노트-추가해보자&quot;&gt;노트 추가해보자.&lt;/h1&gt;</content><author><name>devgaram</name><email>joingaram@gmail.com</email></author><category term="android" /><category term="mvvm" /><summary type="html">Coding in Flow의 Room + ViewModel + LiveData + RecyclerView (MVVM) 튜토리얼 중 추가/수정/삭제 부분을 정리했습니다.</summary></entry><entry><title type="html">안드로이드 ViewModel에 대해 알아보자</title><link href="http://localhost:4000/android-viewModel/" rel="alternate" type="text/html" title="안드로이드 ViewModel에 대해 알아보자" /><published>2019-01-07T00:00:00+09:00</published><updated>2019-01-07T00:00:00+09:00</updated><id>http://localhost:4000/android-viewModel</id><content type="html" xml:base="http://localhost:4000/android-viewModel/">&lt;p&gt;안드로이드 아키텍쳐 중 ViewModel 클래스에 대한 내용입니다.&lt;/p&gt;
 
 &lt;hr /&gt;
 
@@ -799,163 +922,4 @@ id : 클릭된 아이템 뷰의 row ID
       &lt;li&gt;캡슐화된 변수에 접근하려면 getter, setter 메서드를 만들어서 접근해야한다.&lt;/li&gt;
     &lt;/ul&gt;
   &lt;/li&gt;
-&lt;/ol&gt;</content><author><name>devgaram</name><email>joingaram@gmail.com</email></author><category term="android" /><summary type="html">안드로이드 학습을 시작하기 전에 간단히 자바 기본 개념을 정리했습니다.</summary></entry><entry><title type="html">npm Working with package.json</title><link href="http://localhost:4000/npmstart3/" rel="alternate" type="text/html" title="npm Working with package.json" /><published>2018-04-16T00:00:00+09:00</published><updated>2018-04-16T00:00:00+09:00</updated><id>http://localhost:4000/npmstart3</id><content type="html" xml:base="http://localhost:4000/npmstart3/">&lt;h1 id=&quot;5-working-with-packagejson&quot;&gt;5. Working with package.json&lt;/h1&gt;
-
-&lt;p&gt;로컬에 설치된 npm 패키지를 관리하는 최상의 방법은 package.json 파일을 생성하는 것입니다.&lt;/p&gt;
-
-&lt;p&gt;package.json 파일은 :&lt;/p&gt;
-&lt;ul&gt;
-  &lt;li&gt;프로젝트가 의존하고 있는 패키지들의 리스트를 보여줍니다.&lt;/li&gt;
-  &lt;li&gt;semantic versioning rule에 따라 프로젝트에 의존한 패키지들의 버전을 설정할 수 있습니다.&lt;/li&gt;
-  &lt;li&gt;빌드를 재현할 수 있으므로, 좀 더 쉽게 다른 개발자와 공유할 수 있습니다.&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;h2 id=&quot;요구사항&quot;&gt;요구사항&lt;/h2&gt;
-
-&lt;p&gt;package.json 파일이 반드시 가져야하는 것&lt;/p&gt;
-&lt;ul&gt;
-  &lt;li&gt;“name”
-    &lt;ul&gt;
-      &lt;li&gt;소문자&lt;/li&gt;
-      &lt;li&gt;한단어, 띄어쓰기 허용X&lt;/li&gt;
-      &lt;li&gt;-(dashes) 와 _ (underscores) 허용O&lt;/li&gt;
-    &lt;/ul&gt;
-  &lt;/li&gt;
-  &lt;li&gt;“version”
-    &lt;ul&gt;
-      &lt;li&gt;x.x.x 형태&lt;/li&gt;
-      &lt;li&gt;semver spec을 따름&lt;/li&gt;
-    &lt;/ul&gt;
-  &lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt; {
-  &quot;name&quot; : &quot;my-awesome-package&quot;,
-  &quot;version&quot; : &quot;1.0.0&quot;
-}
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
-
-&lt;h2 id=&quot;packagejson-파일-생성하기&quot;&gt;package.json 파일 생성하기&lt;/h2&gt;
-
-&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&amp;gt; npm init
-또는
-&amp;gt; npm init --yes 
-#--yes === -y
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
-&lt;p&gt;위 명령어는 현재 디렉토리로부터 정보를 추출해서 해당 package.json 파일을 생성합니다.&lt;/p&gt;
-
-&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;{
-  &quot;name&quot;: &quot;my_package&quot;,
-  &quot;description&quot;: &quot;&quot;,
-  &quot;version&quot;: &quot;1.0.0&quot;,
-  &quot;main&quot;: &quot;index.js&quot;,
-  &quot;scripts&quot;: {
-    &quot;test&quot;: &quot;echo \&quot;Error: no test specified\&quot; &amp;amp;&amp;amp; exit 1&quot;
-  },
-  &quot;repository&quot;: {
-    &quot;type&quot;: &quot;git&quot;,
-    &quot;url&quot;: &quot;https://github.com/ashleygwilliams/my_package.git&quot;
-  },
-  &quot;keywords&quot;: [],
-  &quot;author&quot;: &quot;&quot;,
-  &quot;license&quot;: &quot;ISC&quot;,
-  &quot;bugs&quot;: {
-    &quot;url&quot;: &quot;https://github.com/ashleygwilliams/my_package/issues&quot;
-  },
-  &quot;homepage&quot;: &quot;https://github.com/ashleygwilliams/my_package&quot;
-}
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
-&lt;ul&gt;
-  &lt;li&gt;name : 현재 디렉토리 이름&lt;/li&gt;
-  &lt;li&gt;version : 항상 1.0.0&lt;/li&gt;
-  &lt;li&gt;description : readme 정보 또는 “”&lt;/li&gt;
-  &lt;li&gt;main : 항상 index.js&lt;/li&gt;
-  &lt;li&gt;scripts : 기존적으로 빈 테스트 스크립트를 만든다.&lt;/li&gt;
-  &lt;li&gt;keywords : empty&lt;/li&gt;
-  &lt;li&gt;author : empty&lt;/li&gt;
-  &lt;li&gt;license : ISC&lt;/li&gt;
-  &lt;li&gt;bugs : 현재 디렉토리의 정보&lt;/li&gt;
-  &lt;li&gt;homepage : 현재 디렉토리의 정보&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;p&gt;다음과 같이 명령어 실행시 옵션을 설정할 수 있습니다.&lt;/p&gt;
-&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt; &amp;gt; npm set init.author.email &quot;wombat@npmjs.com&quot;
- &amp;gt; npm set init.author.name &quot;ag_dubs&quot; 
- &amp;gt; npm set init.license &quot;MIT&quot; 
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
-
-&lt;h2 id=&quot;dependencies-지정하기&quot;&gt;Dependencies 지정하기&lt;/h2&gt;
-
-&lt;p&gt;프로젝트가 의존하는 패키지를 지정하려면 package.json 파일에 사용할 패키지들을 나열해야합니다. 그리고 패키지들은 두 개의 타입으로 나열될 수 있습니다.&lt;/p&gt;
-&lt;ul&gt;
-  &lt;li&gt;“dependencies” : 프로젝트 배포 시&lt;/li&gt;
-  &lt;li&gt;“devDependencies” : 프로젝트 개발 또는 테스트 시&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;p&gt;package.jsondp dependencies를 추가하는 더 쉬운 방법은 npm install 명령어 실행시 –save 또는 –save-dev 플래그를 사용하는 것 입니다.&lt;/p&gt;
-&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&amp;gt; npm install &amp;lt;package_name&amp;gt; --save
-&amp;gt; npm install &amp;lt;package_name&amp;gt; --save-dev
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;</content><author><name>devgaram</name><email>joingaram@gmail.com</email></author><category term="npm" /><summary type="html">5. Working with package.json</summary></entry><entry><title type="html">npm 로컬 패키지 설치하기</title><link href="http://localhost:4000/npmstart2/" rel="alternate" type="text/html" title="npm 로컬 패키지 설치하기" /><published>2018-04-13T00:00:00+09:00</published><updated>2018-04-13T00:00:00+09:00</updated><id>http://localhost:4000/npmstart2</id><content type="html" xml:base="http://localhost:4000/npmstart2/">&lt;h1 id=&quot;4-로컬에-패키지를-설치해보자&quot;&gt;4. 로컬에 패키지를 설치해보자&lt;/h1&gt;
-
-&lt;p&gt;패키지를 어떤 방식으로 사용하는지에 따라 우리는 로컬 또는 전역에 npm 패키지를 설치할 수 있습니다.&lt;/p&gt;
-&lt;ul&gt;
-  &lt;li&gt;Node.js의 require을 사용하여 당신의 모듈에서 패키지를 사용하려면 로컬로 설치하면 됩니다. 이는 npm 설치의 기본 동작입니다.&lt;/li&gt;
-  &lt;li&gt;패키지를 CLI와 같은 커맨드 라인 툴에서 사용하려면 전역으로 설치하면 됩니다.&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;h2 id=&quot;패키지-다운로드하기&quot;&gt;패키지 다운로드하기&lt;/h2&gt;
-&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&amp;gt; npm install &amp;lt;package_name&amp;gt;
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
-&lt;p&gt;명령어를 실행하면 현재 디렉토리에 node_modules 디렉토리가 생성됩니다. (node_modules 디렉토리가 없을 경우)
-그리고 node_modules 디렉토리 안에 다운로드 받은 패키지가 존재하게됩니다.&lt;/p&gt;
-
-&lt;h2 id=&quot;설치된-패키지-어떤-버전일까&quot;&gt;설치된 패키지 어떤 버전일까?&lt;/h2&gt;
-
-&lt;p&gt;로컬 디렉토리에 package.json 파일이 없다면, 가장 최신 버전의 패키지가 설치됩니다. package.json 파일이 있으면 npm은 package.json 파일에 선언된 semver rule을 만족하는 최신버전을 설치합니다.&lt;/p&gt;
-
-&lt;p&gt;예) package.json&lt;/p&gt;
-&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;...
-&quot;dependencies&quot; : {
-&quot;lodash&quot; : &quot;~1.0.4&quot;
-}
-....
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
-&lt;p&gt;npm은 package.json에 따라 1.0.4 버전의 lodash 패키지를 설치하게됩니다.&lt;/p&gt;
-
-&lt;h2 id=&quot;패키지를-어떻게-사용할까&quot;&gt;패키지를 어떻게 사용할까?&lt;/h2&gt;
-
-&lt;p&gt;일단 node_modules 디렉토리에 패키지가 있다면, 우리의 코드에서 패키지를 사용할 수 있습니다.&lt;/p&gt;
-
-&lt;p&gt;예) index.js 파일&lt;/p&gt;
-&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;var lodash = require('lodash');
-var output = lodash.without([1,2,3],1);
-console.log(output);    // 결과 : [2,3]
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
-&lt;p&gt;만약 lodash 패키지가 설치되지않았다면 Error : Cannot find module ‘lodash’ 에러를 보게될 것 입니다.&lt;/p&gt;
-
-&lt;h1 id=&quot;7-로컬에-설치된-패키지-삭제해보자&quot;&gt;7. 로컬에 설치된 패키지 삭제해보자&lt;/h1&gt;
-
-&lt;p&gt;node_modules 디렉토리의 패키지를 삭제하는 명령어&lt;/p&gt;
-&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&amp;gt; npm uninstall lodash
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
-
-&lt;p&gt;package.json의 dependecies에서 패키지를 제거하려면 save 플래그를 사용해야합니다.&lt;/p&gt;
-&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&amp;gt; npm uninstall --save lodash
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
-&lt;p&gt;&lt;strong&gt;Note:&lt;/strong&gt; 패키지가 devDependency로 설치된 경우, package.json에서 제거하는 방법은 다음과 같습니다.&lt;/p&gt;
-
-&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&amp;gt; npm uninstall --save-dev lodash
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
-&lt;p&gt;node_modules 디렉토리에 해당 패키지가 없다면 삭제가 정상적으로 된 것입니다.&lt;/p&gt;
-
-&lt;h1 id=&quot;810-전역에-패키지를-설치업데이트삭제-해보기&quot;&gt;8~10. 전역에 패키지를 설치/업데이트/삭제 해보기&lt;/h1&gt;
-
-&lt;p&gt;패키지 설치&lt;/p&gt;
-&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&amp;gt; npm install -g jshint
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
-&lt;p&gt;패키지업데이트&lt;/p&gt;
-&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&amp;gt; npm update -g jshint
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
-&lt;p&gt;패키지 삭제&lt;/p&gt;
-&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&amp;gt; npm uninstall -g jshint
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;</content><author><name>devgaram</name><email>joingaram@gmail.com</email></author><category term="npm" /><summary type="html">4. 로컬에 패키지를 설치해보자</summary></entry></feed>
+&lt;/ol&gt;</content><author><name>devgaram</name><email>joingaram@gmail.com</email></author><category term="android" /><summary type="html">안드로이드 학습을 시작하기 전에 간단히 자바 기본 개념을 정리했습니다.</summary></entry></feed>

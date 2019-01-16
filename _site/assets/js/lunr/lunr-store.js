@@ -99,7 +99,7 @@ var store = [{
         "tags": ["jekyll","github"],
         "url": "http://localhost:4000/jekyll-js-custom/",
         "teaser":"http://localhost:4000/true"},{
-        "title": "안드로이드 MVVM에 대해 알아보자",
+        "title": "안드로이드 MVVM에 대해 알아보자1",
         "excerpt":"Coding in Flow의 Room + ViewModel + LiveData + RecyclerView (MVVM) 튜토리얼을 정리했습니다. 파일 구성 MainActivity.java Note.java NoteAdapter.java NoteDao.interface NoteDatabase.java NoteRepository.java NoteViewModel.java MVVM - VIEW와 VIEWMODEL MainActivity.class : 앱의 시작점으로 RecyclerView 설정 및 ViewModel 생성하는 부분 NoteViewModel.class : UI 컴포넌트와 UI 데이터의 분리 NoteAdapter.class : 리사이클러뷰 어댑터 NoteRepository.class : 저장소,...","categories": [],
         "tags": ["android","mvvm"],
         "url": "http://localhost:4000/android-mvvm/",
@@ -109,8 +109,18 @@ var store = [{
         "tags": ["android","viewmodel","mvvm"],
         "url": "http://localhost:4000/android-viewModel/",
         "teaser":"http://localhost:4000/true"},{
+        "title": "안드로이드 MVVM에 대해 알아보자2 - 추가/수정/삭제",
+        "excerpt":"Coding in Flow의  Room + ViewModel + LiveData + RecyclerView (MVVM) 튜토리얼 중 추가/수정/삭제 부분을 정리했습니다.     안드로이드 MVVM에 대해 알아보자1.에 이어지는 내용으로 노트 추가/수정/삭제를 다룬다.   노트 추가해보자.   ","categories": [],
+        "tags": ["android","mvvm"],
+        "url": "http://localhost:4000/android-mvvm-part2/",
+        "teaser":"http://localhost:4000/true"},{
         "title": "안드로이드 LiveData 대해 알아보자",
         "excerpt":"LiveData 클래스를 통해 데이터 변경을 감지해보자. 안드로이드 개발문서-LiveData. LiveData는 LifecycleOwner의 라이프사이클을 알고있다. LiveData 객체는 observe() 메서드를 통해 LifecycleOwner와 Observer객체를 페어로 등록한다. Observer 객체는 페어인 LifecycleOwner가 활성상태(STARTED 또는 RESUMED)일 때, 데이터 변화을 관측할 수 있다. 반대로, LiveData 객체는 LifecycleOwner가 비활성 상태면 LiveData의 변화를 Observer에게 전달하지 않으며, LifecycleOwner가 DESTROYED 상태라면 자동으로 제거된다....","categories": [],
         "tags": ["android","livedata","mvvm"],
         "url": "http://localhost:4000/android-LiveData/",
+        "teaser":"http://localhost:4000/true"},{
+        "title": "(Drawable 리소스) LayerDrawable과 ShapeDrawable을 이용해 둥근모서리와 그림자 있는 배경 만들기.",
+        "excerpt":"LayerDrawable과 ShapeDrawable을 이용해 둥근모서리+그림자+투명배경이 있는 디자인을 다른 XML 리소스의 background로 적용하는 방법입니다. 안드로이드 개발문서-Drawable 바로가기 드로어블(Drawable) 리소스 앱 화면에 그리고 싶은 것을 XML 파일로 미리 정의할 수 있으며, getDrawable(int)와 같은 API를 사용하여 가져오거나 android:drawable 및 android:icon과 같은 속성을 사용하여 다른 XML 리소스에 적용할 수 있다. Example) android:background=”@drawable/custom_layer_resource” LayerDrawable 각 &lt;item&gt;...","categories": [],
+        "tags": ["android","resource"],
+        "url": "http://localhost:4000/android-drawable/",
         "teaser":"http://localhost:4000/true"}]

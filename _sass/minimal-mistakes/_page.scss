@@ -578,6 +578,14 @@
     margin-right: 0.6em;
     border-radius: 0.175em;  
   }
+  span.li-nonicon {
+    display: block;
+  }
+  span.li-nonicon::before {
+    content: "";     
+    display: inline-block;    
+    margin-right: 0.6em;
+  }
 }
 #page__post-archive {
   margin-left: auto;
@@ -587,6 +595,7 @@
  .page__title {
    font-size: $type-size-3;
    margin-bottom: $type-size-5;  
+   line-height: $type-size-4;  
  }
  .page__title::before {
     content: "";
