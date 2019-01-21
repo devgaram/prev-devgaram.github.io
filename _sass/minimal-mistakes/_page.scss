@@ -580,11 +580,19 @@
   }
   span.li-nonicon {
     display: block;
+    margin-left: 0.3em
   }
   span.li-nonicon::before {
-    content: "";     
-    display: inline-block;    
-    margin-right: 0.6em;
+
+  }
+
+  table {
+      font-size: $type-size-5-1;
+      td {
+          code {
+	      font-size: $type-size-5-1;
+	  }
+      }
   }
 }
 #page__post-archive {

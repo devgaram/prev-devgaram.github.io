@@ -123,4 +123,9 @@ var store = [{
         "excerpt":"LayerDrawable과 ShapeDrawable을 이용해 둥근모서리+그림자+투명배경이 있는 디자인을 다른 XML 리소스의 background로 적용하는 방법입니다. 안드로이드 개발문서-Drawable 바로가기 드로어블(Drawable) 리소스 앱 화면에 그리고 싶은 것을 XML 파일로 미리 정의할 수 있으며, getDrawable(int)와 같은 API를 사용하여 가져오거나 android:drawable 및 android:icon과 같은 속성을 사용하여 다른 XML 리소스에 적용할 수 있다. Example) android:background=”@drawable/custom_layer_resource” LayerDrawable 각 &lt;item&gt;...","categories": [],
         "tags": ["android","resource"],
         "url": "http://localhost:4000/android-drawable/",
+        "teaser":"http://localhost:4000/true"},{
+        "title": "안드로이드에서 이미지 애니메이션 구현 방법",
+        "excerpt":"이미지 애니메이션 구현 방법에는 다음과 같이 1)Animation Drawable과 2)Animated vector Drawable 두가지 옵션이 있다. 안드로이드 개발문서-Animate drwable graphics 바로가기 Icon Animation 참고 문서 Animation Drawable : 몇 개의 정적 drawable 파일들을 순차적으로 보여주는 방식으로 애니메이션을 구현하고 싶을 때(프레임 애니메이션) AnimatedVectorDrawable : 하나의 아이콘이 다른 이미지로 서서히 변화되는(morph) 애니메이션을 구현하고 싶을...","categories": [],
+        "tags": ["android","animation"],
+        "url": "http://localhost:4000/android-animate/",
         "teaser":"http://localhost:4000/true"}]

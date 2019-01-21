@@ -1,4 +1,267 @@
-<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="3.8.5">Jekyll</generator><link href="http://localhost:4000/feed.xml" rel="self" type="application/atom+xml" /><link href="http://localhost:4000/" rel="alternate" type="text/html" /><updated>2019-01-16T18:02:20+09:00</updated><id>http://localhost:4000/feed.xml</id><title type="html">It’s a piece of cake!</title><subtitle>초보개발자의 블로그입니다.</subtitle><author><name>devgaram</name><email>joingaram@gmail.com</email></author><entry><title type="html">(Drawable 리소스) LayerDrawable과 ShapeDrawable을 이용해 둥근모서리와 그림자 있는 배경 만들기.</title><link href="http://localhost:4000/android-drawable/" rel="alternate" type="text/html" title="(Drawable 리소스) LayerDrawable과 ShapeDrawable을 이용해 둥근모서리와 그림자 있는 배경 만들기." /><published>2019-01-16T00:00:00+09:00</published><updated>2019-01-16T00:00:00+09:00</updated><id>http://localhost:4000/android-drawable</id><content type="html" xml:base="http://localhost:4000/android-drawable/">&lt;p&gt;LayerDrawable과 ShapeDrawable을 이용해 둥근모서리+그림자+투명배경이 있는 디자인을 다른 XML 리소스의 background로 적용하는 방법입니다.&lt;/p&gt;
+<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="3.8.5">Jekyll</generator><link href="http://localhost:4000/feed.xml" rel="self" type="application/atom+xml" /><link href="http://localhost:4000/" rel="alternate" type="text/html" /><updated>2019-01-21T16:15:56+09:00</updated><id>http://localhost:4000/feed.xml</id><title type="html">It’s a piece of cake!</title><subtitle>초보개발자의 블로그입니다.</subtitle><author><name>devgaram</name><email>joingaram@gmail.com</email></author><entry><title type="html">안드로이드에서 이미지 애니메이션 구현 방법</title><link href="http://localhost:4000/android-animate/" rel="alternate" type="text/html" title="안드로이드에서 이미지 애니메이션 구현 방법" /><published>2019-01-21T00:00:00+09:00</published><updated>2019-01-21T00:00:00+09:00</updated><id>http://localhost:4000/android-animate</id><content type="html" xml:base="http://localhost:4000/android-animate/">&lt;p&gt;이미지 애니메이션 구현 방법에는 다음과 같이 1)Animation Drawable과 2)Animated vector Drawable 두가지 옵션이 있다.&lt;/p&gt;
+
+&lt;hr /&gt;
+
+&lt;p&gt;&lt;a href=&quot;https://developer.android.com/guide/topics/graphics/drawable-animation?hl=ko&quot;&gt;안드로이드 개발문서-Animate drwable graphics 바로가기&lt;/a&gt;
+&lt;a href=&quot;https://www.androiddesignpatterns.com/2016/11/introduction-to-icon-animation-techniques.html&quot;&gt;Icon Animation 참고 문서&lt;/a&gt;&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;Animation Drawable&lt;/strong&gt; : 몇 개의 정적 drawable 파일들을 순차적으로 보여주는 방식으로 애니메이션을 구현하고 싶을 때(프레임 애니메이션)   &lt;br /&gt;
+&lt;strong&gt;AnimatedVectorDrawable&lt;/strong&gt; : 하나의 아이콘이 다른 이미지로 서서히 변화되는(morph) 애니메이션을 구현하고 싶을 때&lt;/p&gt;
+
+&lt;h1 id=&quot;animationdrawable-사용하기&quot;&gt;AnimationDrawable 사용하기&lt;/h1&gt;
+&lt;p&gt;프레임 애니메이션 구현 &lt;a href=&quot;https://github.com/devgaram/AndroidBudgeter/blob/master/app/src/main/res/drawable/ani_emotion.xml&quot;&gt;예제&lt;/a&gt;&lt;/p&gt;
+
+&lt;p&gt;res/drawable/ani_emotion.xml&lt;/p&gt;
+&lt;div class=&quot;language-xml highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;nt&quot;&gt;&amp;lt;animation-list&lt;/span&gt; &lt;span class=&quot;na&quot;&gt;xmlns:android=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;http://schemas.android.com/apk/res/android&quot;&lt;/span&gt;
+    &lt;span class=&quot;na&quot;&gt;android:oneshot=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;false&quot;&lt;/span&gt;&lt;span class=&quot;nt&quot;&gt;&amp;gt;&lt;/span&gt;
+    &lt;span class=&quot;nt&quot;&gt;&amp;lt;item&lt;/span&gt; &lt;span class=&quot;na&quot;&gt;android:drawable=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;@drawable/emotion_mouth_1&quot;&lt;/span&gt; &lt;span class=&quot;na&quot;&gt;android:duration=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;5000&quot;&lt;/span&gt; &lt;span class=&quot;nt&quot;&gt;/&amp;gt;&lt;/span&gt;
+    &lt;span class=&quot;nt&quot;&gt;&amp;lt;item&lt;/span&gt; &lt;span class=&quot;na&quot;&gt;android:drawable=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;@drawable/emotion_mouth_2&quot;&lt;/span&gt; &lt;span class=&quot;na&quot;&gt;android:duration=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;5000&quot;&lt;/span&gt; &lt;span class=&quot;nt&quot;&gt;/&amp;gt;&lt;/span&gt;
+    &lt;span class=&quot;nt&quot;&gt;&amp;lt;item&lt;/span&gt; &lt;span class=&quot;na&quot;&gt;android:drawable=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;@drawable/emotion_mouth_3&quot;&lt;/span&gt; &lt;span class=&quot;na&quot;&gt;android:duration=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;5000&quot;&lt;/span&gt; &lt;span class=&quot;nt&quot;&gt;/&amp;gt;&lt;/span&gt;
+    &lt;span class=&quot;nt&quot;&gt;&amp;lt;item&lt;/span&gt; &lt;span class=&quot;na&quot;&gt;android:drawable=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;@drawable/emotion_mouth_4&quot;&lt;/span&gt; &lt;span class=&quot;na&quot;&gt;android:duration=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;5000&quot;&lt;/span&gt; &lt;span class=&quot;nt&quot;&gt;/&amp;gt;&lt;/span&gt;
+    &lt;span class=&quot;nt&quot;&gt;&amp;lt;item&lt;/span&gt; &lt;span class=&quot;na&quot;&gt;android:drawable=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;@drawable/emotion_mouth_5&quot;&lt;/span&gt; &lt;span class=&quot;na&quot;&gt;android:duration=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;5000&quot;&lt;/span&gt; &lt;span class=&quot;nt&quot;&gt;/&amp;gt;&lt;/span&gt;
+&lt;span class=&quot;nt&quot;&gt;&amp;lt;/animation-list&amp;gt;&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+&lt;p&gt;&lt;span class=&quot;li-icon&quot;&gt;&lt;code class=&quot;codetainer&quot;&gt;android:oneshot&lt;/code&gt; : true 한번만, false 반복&lt;/span&gt;&lt;/p&gt;
+
+&lt;p&gt;res/drawable/emotion_mouth_1.xml&lt;/p&gt;
+&lt;div class=&quot;language-xml highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;cp&quot;&gt;&amp;lt;?xml version=&quot;1.0&quot; encoding=&quot;utf-8&quot;?&amp;gt;&lt;/span&gt;
+&lt;span class=&quot;nt&quot;&gt;&amp;lt;layer-list&lt;/span&gt; &lt;span class=&quot;na&quot;&gt;xmlns:android=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;http://schemas.android.com/apk/res/android&quot;&lt;/span&gt;&lt;span class=&quot;nt&quot;&gt;&amp;gt;&lt;/span&gt;
+    &lt;span class=&quot;nt&quot;&gt;&amp;lt;item&lt;/span&gt;
+        &lt;span class=&quot;na&quot;&gt;android:top=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;@dimen/mb_l&quot;&lt;/span&gt;&lt;span class=&quot;nt&quot;&gt;&amp;gt;&lt;/span&gt;
+        &lt;span class=&quot;nt&quot;&gt;&amp;lt;shape&lt;/span&gt;
+            &lt;span class=&quot;na&quot;&gt;xmlns:android=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;http://schemas.android.com/apk/res/android&quot;&lt;/span&gt;
+            &lt;span class=&quot;na&quot;&gt;android:shape=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;rectangle&quot;&lt;/span&gt;&lt;span class=&quot;nt&quot;&gt;&amp;gt;&lt;/span&gt;
+            &lt;span class=&quot;nt&quot;&gt;&amp;lt;size&lt;/span&gt;
+                &lt;span class=&quot;na&quot;&gt;android:width=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;120dp&quot;&lt;/span&gt;
+                &lt;span class=&quot;na&quot;&gt;android:height=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;60dp&quot;&lt;/span&gt;&lt;span class=&quot;nt&quot;&gt;&amp;gt;&amp;lt;/size&amp;gt;&lt;/span&gt;
+            &lt;span class=&quot;nt&quot;&gt;&amp;lt;solid&lt;/span&gt; &lt;span class=&quot;na&quot;&gt;android:color=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;@color/colorDefaultFont&quot;&lt;/span&gt;&lt;span class=&quot;nt&quot;&gt;/&amp;gt;&lt;/span&gt;
+            &lt;span class=&quot;nt&quot;&gt;&amp;lt;corners&lt;/span&gt;
+                &lt;span class=&quot;na&quot;&gt;android:topRightRadius=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;60dp&quot;&lt;/span&gt;
+                &lt;span class=&quot;na&quot;&gt;android:topLeftRadius=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;60dp&quot;&lt;/span&gt;&lt;span class=&quot;nt&quot;&gt;&amp;gt;&amp;lt;/corners&amp;gt;&lt;/span&gt;
+        &lt;span class=&quot;nt&quot;&gt;&amp;lt;/shape&amp;gt;&lt;/span&gt;
+    &lt;span class=&quot;nt&quot;&gt;&amp;lt;/item&amp;gt;&lt;/span&gt;
+&lt;span class=&quot;nt&quot;&gt;&amp;lt;/layer-list&amp;gt;&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+&lt;p&gt;&lt;span class=&quot;li-icon&quot;&gt;ShapeDrawable로 입모양 그린 XML 파일&lt;/span&gt;&lt;/p&gt;
+
+&lt;p&gt;res/drawable/activity_main.xml&lt;/p&gt;
+&lt;div class=&quot;language-xml highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;nt&quot;&gt;&amp;lt;ImageView&lt;/span&gt;
+            &lt;span class=&quot;na&quot;&gt;android:id=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;@+id/emotion_mouth&quot;&lt;/span&gt;
+            &lt;span class=&quot;na&quot;&gt;android:layout_width=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;wrap_content&quot;&lt;/span&gt;
+            &lt;span class=&quot;na&quot;&gt;android:layout_height=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;wrap_content&quot;&lt;/span&gt;
+            &lt;span class=&quot;na&quot;&gt;android:layout_gravity=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;center&quot;&lt;/span&gt;
+            &lt;span class=&quot;na&quot;&gt;android:src=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;@drawable/ani_emotion&quot;&lt;/span&gt; &lt;span class=&quot;nt&quot;&gt;/&amp;gt;&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;MainActivity.java&lt;/p&gt;
+&lt;div class=&quot;language-java highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;n&quot;&gt;AnimationDrawable&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;emotionAnimation&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;;&lt;/span&gt;
+
+&lt;span class=&quot;kd&quot;&gt;public&lt;/span&gt; &lt;span class=&quot;kt&quot;&gt;void&lt;/span&gt; &lt;span class=&quot;nf&quot;&gt;onCreate&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;Bundle&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;savedInstanceState&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;{&lt;/span&gt;
+  &lt;span class=&quot;kd&quot;&gt;super&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;na&quot;&gt;onCreate&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;savedInstanceState&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;);&lt;/span&gt;
+  &lt;span class=&quot;n&quot;&gt;setContentView&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;R&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;na&quot;&gt;layout&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;na&quot;&gt;main&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;);&lt;/span&gt;
+
+  &lt;span class=&quot;n&quot;&gt;ImageView&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;emotionImage&lt;/span&gt;  &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;ImageView&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;findViewById&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;R&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;na&quot;&gt;id&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;na&quot;&gt;emotion_mouth&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;);&lt;/span&gt;
+  &lt;span class=&quot;n&quot;&gt;emotionImage&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;na&quot;&gt;setImageResource&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;R&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;na&quot;&gt;drawable&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;na&quot;&gt;ani_emotion&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;);&lt;/span&gt;
+  &lt;span class=&quot;n&quot;&gt;emotionAnimation&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;AnimationDrawable&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;emotionImage&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;na&quot;&gt;getDrawable&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;();&lt;/span&gt;
+
+  &lt;span class=&quot;n&quot;&gt;emotionImage&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;na&quot;&gt;setOnClickListener&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;k&quot;&gt;new&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;View&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;na&quot;&gt;OnClickListener&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;()&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;{&lt;/span&gt;
+      &lt;span class=&quot;nd&quot;&gt;@Override&lt;/span&gt;
+      &lt;span class=&quot;kd&quot;&gt;public&lt;/span&gt; &lt;span class=&quot;kt&quot;&gt;void&lt;/span&gt; &lt;span class=&quot;nf&quot;&gt;onClick&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;View&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;view&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;{&lt;/span&gt;
+        &lt;span class=&quot;n&quot;&gt;emotionAnimation&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;na&quot;&gt;start&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;();&lt;/span&gt;
+      &lt;span class=&quot;o&quot;&gt;}&lt;/span&gt;
+  &lt;span class=&quot;o&quot;&gt;});&lt;/span&gt;
+&lt;span class=&quot;o&quot;&gt;}&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+&lt;p&gt;&lt;span class=&quot;clr-note&quot;&gt;&lt;strong&gt;Note:&lt;/strong&gt; &lt;/span&gt;&lt;span class=&quot;clr-grey&quot;&gt;&lt;code class=&quot;codetainer&quot;&gt;onCreate()&lt;/code&gt; 메서드에선 &lt;code class=&quot;codetainer&quot;&gt;AnimationDrawable&lt;/code&gt;가 완전히 로드되지 않으므로 &lt;code class=&quot;codetainer&quot;&gt;start()&lt;/code&gt; 메서드를 사용할 수 없고, 
+만약 애니메이션 즉시 실행을 원한다면 액티비티의 &lt;code class=&quot;codetainer&quot;&gt;onStart()&lt;/code&gt; 메서드에서 &lt;code class=&quot;codetainer&quot;&gt;start()&lt;/code&gt; 메서드를 호출해야한다.&lt;/span&gt;&lt;/p&gt;
+
+&lt;h1 id=&quot;animatedvectordrawable-사용하기&quot;&gt;AnimatedVectorDrawable 사용하기&lt;/h1&gt;
+&lt;p&gt;&lt;a href=&quot;https://developer.android.com/reference/android/graphics/drawable/AnimatedVectorDrawable?hl=ko&quot;&gt;안드로이드 개발문서-AnimatedVectorDrawable 바로가기&lt;/a&gt;&lt;/p&gt;
+
+&lt;p&gt;vectorDrawable은 흐려지거나 픽셀화되는 현상 없이 확장가능한 드로어블 타입이다.   &lt;br /&gt;
+vectorDrawable 애니메이션을 구현하기 위해서는 3개의 xml 파일이 필요하다.&lt;/p&gt;
+
+&lt;h2 id=&quot;1-vectordrawable&quot;&gt;1) vectorDrawable&lt;/h2&gt;
+
+&lt;table&gt;
+  &lt;thead&gt;
+    &lt;tr&gt;
+      &lt;th&gt;Element Name&lt;/th&gt;
+      &lt;th&gt;Animatable attribute name&lt;/th&gt;
+    &lt;/tr&gt;
+  &lt;/thead&gt;
+  &lt;tbody&gt;
+    &lt;tr&gt;
+      &lt;td&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;&amp;lt;vector&amp;gt;&lt;/code&gt;&lt;/td&gt;
+      &lt;td&gt;alpha&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;&amp;lt;group&amp;gt;&lt;/code&gt;&lt;/td&gt;
+      &lt;td&gt;rotation, pivotX, pivotY, scaleX, scaleY, translateX, translateY&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;&amp;lt;path&amp;gt;&lt;/code&gt;&lt;/td&gt;
+      &lt;td&gt;pathData, fillColor, strokeColor, strokeColor, strokeWidth, strokeAlpha, fillAlpha, trimPathStart, trimPathEnd, trimPathOffset&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;&amp;lt;clip-path&amp;gt;&lt;/code&gt;&lt;/td&gt;
+      &lt;td&gt;pathData&lt;/td&gt;
+    &lt;/tr&gt;
+  &lt;/tbody&gt;
+&lt;/table&gt;
+
+&lt;div class=&quot;language-xml highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt; &lt;span class=&quot;c&quot;&gt;&amp;lt;!--res/drawable/vectordrawable.xml--&amp;gt;&lt;/span&gt;
+ &lt;span class=&quot;nt&quot;&gt;&amp;lt;vector&lt;/span&gt; &lt;span class=&quot;na&quot;&gt;xmlns:android=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;http://schemas.android.com/apk/res/android&quot;&lt;/span&gt;
+     &lt;span class=&quot;na&quot;&gt;android:height=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;64dp&quot;&lt;/span&gt;
+     &lt;span class=&quot;na&quot;&gt;android:width=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;64dp&quot;&lt;/span&gt;
+     &lt;span class=&quot;na&quot;&gt;android:viewportHeight=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;600&quot;&lt;/span&gt;
+     &lt;span class=&quot;na&quot;&gt;android:viewportWidth=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;600&quot;&lt;/span&gt; &lt;span class=&quot;nt&quot;&gt;&amp;gt;&lt;/span&gt;
+     &lt;span class=&quot;nt&quot;&gt;&amp;lt;group&lt;/span&gt;
+         &lt;span class=&quot;na&quot;&gt;android:name=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;rotationGroup&quot;&lt;/span&gt;
+         &lt;span class=&quot;na&quot;&gt;android:pivotX=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;300.0&quot;&lt;/span&gt;
+         &lt;span class=&quot;na&quot;&gt;android:pivotY=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;300.0&quot;&lt;/span&gt;
+         &lt;span class=&quot;na&quot;&gt;android:rotation=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;45.0&quot;&lt;/span&gt; &lt;span class=&quot;nt&quot;&gt;&amp;gt;&lt;/span&gt;
+         &lt;span class=&quot;nt&quot;&gt;&amp;lt;path&lt;/span&gt;
+             &lt;span class=&quot;na&quot;&gt;android:name=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;v&quot;&lt;/span&gt;
+             &lt;span class=&quot;na&quot;&gt;android:fillColor=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;#000000&quot;&lt;/span&gt;
+             &lt;span class=&quot;na&quot;&gt;android:pathData=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;M300,70 l 0,-70 70,70 0,0 -70,70z&quot;&lt;/span&gt; &lt;span class=&quot;nt&quot;&gt;/&amp;gt;&lt;/span&gt;
+     &lt;span class=&quot;nt&quot;&gt;&amp;lt;/group&amp;gt;&lt;/span&gt;
+ &lt;span class=&quot;nt&quot;&gt;&amp;lt;/vector&amp;gt;&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;h2 id=&quot;2-animatedvectordrawable&quot;&gt;2) AnimatedVectorDrawable&lt;/h2&gt;
+&lt;p&gt;&lt;span class=&quot;li-nonicon&quot;&gt;한 개의 &lt;code class=&quot;highlighter-rouge&quot;&gt;android:drawable&lt;/code&gt; 속성과 하나 이상의 &lt;code class=&quot;highlighter-rouge&quot;&gt;&amp;lt;target&amp;gt;&lt;/code&gt;을 가진다.&lt;/span&gt;
+&lt;span class=&quot;li-nonicon&quot;&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;&amp;lt;target&amp;gt;&lt;/code&gt; 은 &lt;code class=&quot;highlighter-rouge&quot;&gt;android:name&lt;/code&gt; 속성으로 &lt;code class=&quot;highlighter-rouge&quot;&gt;ObjectAnimator&lt;/code&gt; 또는 &lt;code class=&quot;highlighter-rouge&quot;&gt;AnimatorSet&lt;/code&gt;의 타겟이 되는 &lt;code class=&quot;highlighter-rouge&quot;&gt;vectorDrawable&lt;/code&gt;을 명시한다.
+&lt;span class=&quot;clr-grey&quot;&gt;&lt;strong&gt;Note:&lt;/strong&gt; 타겟은 vectorDrawable의 group element 또는 path element가 될 수 있다.&lt;/span&gt;&lt;/span&gt;&lt;/p&gt;
+
+&lt;div class=&quot;language-xml highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;c&quot;&gt;&amp;lt;!--res/drawable/animatedVector.xml--&amp;gt;&lt;/span&gt;
+&lt;span class=&quot;nt&quot;&gt;&amp;lt;animated-vector&lt;/span&gt; &lt;span class=&quot;na&quot;&gt;xmlns:android=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;http://schemas.android.com/apk/res/android&quot;&lt;/span&gt;
+     &lt;span class=&quot;na&quot;&gt;android:drawable=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;@drawable/vectordrawable&quot;&lt;/span&gt; &lt;span class=&quot;nt&quot;&gt;&amp;gt;&lt;/span&gt;
+     &lt;span class=&quot;nt&quot;&gt;&amp;lt;target&lt;/span&gt;
+         &lt;span class=&quot;na&quot;&gt;android:name=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;rotationGroup&quot;&lt;/span&gt;
+         &lt;span class=&quot;na&quot;&gt;android:animation=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;@animator/rotation&quot;&lt;/span&gt; &lt;span class=&quot;nt&quot;&gt;/&amp;gt;&lt;/span&gt;
+     &lt;span class=&quot;nt&quot;&gt;&amp;lt;target&lt;/span&gt;
+         &lt;span class=&quot;na&quot;&gt;android:name=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;v&quot;&lt;/span&gt;
+         &lt;span class=&quot;na&quot;&gt;android:animation=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;@animator/path_morph&quot;&lt;/span&gt; &lt;span class=&quot;nt&quot;&gt;/&amp;gt;&lt;/span&gt;
+ &lt;span class=&quot;nt&quot;&gt;&amp;lt;/animated-vector&amp;gt;&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+&lt;p&gt;&lt;span class=&quot;li-icon&quot;&gt;vectorDrawable에서 rotationGroup 이름 속성을 가진 &lt;code class=&quot;highlighter-rouge&quot;&gt;&amp;lt;group&amp;gt;&lt;/code&gt; 엘리먼트에 rotation 애니메이션을 적용&lt;/span&gt;
+&lt;span class=&quot;li-icon&quot;&gt;vectorDrawable에서 v 이름 속성을 가진 &lt;code class=&quot;highlighter-rouge&quot;&gt;&amp;lt;path&amp;gt;&lt;/code&gt; 엘리먼트에 path_morph 애니메이션을 적용&lt;/span&gt;&lt;/p&gt;
+
+&lt;h2 id=&quot;3-objectanimator-or-animatorset-애니메이션-정의&quot;&gt;3) ObjectAnimator or AnimatorSet 애니메이션 정의&lt;/h2&gt;
+&lt;p&gt;애니메이션은 &lt;code class=&quot;highlighter-rouge&quot;&gt;ObjectAnimator&lt;/code&gt; 와 &lt;code class=&quot;highlighter-rouge&quot;&gt;AnimatorSet&lt;/code&gt;으로 정의할 수 있다.&lt;/p&gt;
+
+&lt;div class=&quot;language-xml highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;c&quot;&gt;&amp;lt;!-- res/animator/rotation.xml --&amp;gt;&lt;/span&gt;
+&lt;span class=&quot;nt&quot;&gt;&amp;lt;objectAnimator&lt;/span&gt;
+    &lt;span class=&quot;na&quot;&gt;android:duration=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;6000&quot;&lt;/span&gt;
+    &lt;span class=&quot;na&quot;&gt;android:propertyName=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;rotation&quot;&lt;/span&gt;
+    &lt;span class=&quot;na&quot;&gt;android:valueFrom=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;0&quot;&lt;/span&gt;
+    &lt;span class=&quot;na&quot;&gt;android:valueTo=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;360&quot;&lt;/span&gt; &lt;span class=&quot;nt&quot;&gt;/&amp;gt;&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+&lt;p&gt;6초동안 360도 회전하는 애니메이션&lt;/p&gt;
+
+&lt;div class=&quot;language-xml highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;c&quot;&gt;&amp;lt;!-- res/animator/path_morph.xml --&amp;gt;&lt;/span&gt;
+&lt;span class=&quot;nt&quot;&gt;&amp;lt;set&lt;/span&gt; &lt;span class=&quot;na&quot;&gt;xmlns:android=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;http://schemas.android.com/apk/res/android&quot;&lt;/span&gt;&lt;span class=&quot;nt&quot;&gt;&amp;gt;&lt;/span&gt;
+    &lt;span class=&quot;nt&quot;&gt;&amp;lt;objectAnimator&lt;/span&gt;
+        &lt;span class=&quot;na&quot;&gt;android:duration=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;3000&quot;&lt;/span&gt;
+        &lt;span class=&quot;na&quot;&gt;android:propertyName=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;pathData&quot;&lt;/span&gt;
+        &lt;span class=&quot;na&quot;&gt;android:valueFrom=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;M300,70 l 0,-70 70,70 0,0   -70,70z&quot;&lt;/span&gt;
+        &lt;span class=&quot;na&quot;&gt;android:valueTo=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;M300,70 l 0,-70 70,0  0,140 -70,0 z&quot;&lt;/span&gt;
+        &lt;span class=&quot;na&quot;&gt;android:valueType=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;pathType&quot;&lt;/span&gt; &lt;span class=&quot;nt&quot;&gt;/&amp;gt;&lt;/span&gt;
+&lt;span class=&quot;nt&quot;&gt;&amp;lt;/set&amp;gt;&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+&lt;p&gt;3초동안 모양 바뀌는 애니메이션(morph)   &lt;br /&gt;
+&lt;span class=&quot;clr-note&quot;&gt;&lt;strong&gt;Note:&lt;/strong&gt; &lt;code class=&quot;highlighter-rouge&quot;&gt;android:valueFrom&lt;/code&gt; 과 &lt;code class=&quot;highlighter-rouge&quot;&gt;android:valueTo&lt;/code&gt;의 명령 순서와 파라미터 값은 동일해야한다.&lt;/span&gt;   &lt;br /&gt;
+&lt;span class=&quot;clr-grey&quot;&gt;&lt;strong&gt;Note:&lt;/strong&gt;  path 값은 string 리소스에 저장하는 것을 추천한다.&lt;/span&gt;&lt;/p&gt;
+
+&lt;h2 id=&quot;4-3개의-xml을-aapt-툴의-지원으로-하나의-xml에-정의할-수-있다&quot;&gt;4) 3개의 xml을 AAPT 툴의 지원으로 하나의 xml에 정의할 수 있다.&lt;/h2&gt;
+
+&lt;div class=&quot;language-xml highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt; &lt;span class=&quot;nt&quot;&gt;&amp;lt;animated-vector&lt;/span&gt; &lt;span class=&quot;na&quot;&gt;xmlns:android=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;http://schemas.android.com/apk/res/android&quot;&lt;/span&gt;
+                  &lt;span class=&quot;na&quot;&gt;xmlns:aapt=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;http://schemas.android.com/aapt&quot;&lt;/span&gt; &lt;span class=&quot;nt&quot;&gt;&amp;gt;&lt;/span&gt;
+     &lt;span class=&quot;nt&quot;&gt;&amp;lt;aapt:attr&lt;/span&gt; &lt;span class=&quot;na&quot;&gt;name=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;android:drawable&quot;&lt;/span&gt;&lt;span class=&quot;nt&quot;&gt;&amp;gt;&lt;/span&gt;
+         &lt;span class=&quot;nt&quot;&gt;&amp;lt;vector&lt;/span&gt;
+             &lt;span class=&quot;na&quot;&gt;android:height=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;64dp&quot;&lt;/span&gt;
+             &lt;span class=&quot;na&quot;&gt;android:width=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;64dp&quot;&lt;/span&gt;
+             &lt;span class=&quot;na&quot;&gt;android:viewportHeight=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;600&quot;&lt;/span&gt;
+             &lt;span class=&quot;na&quot;&gt;android:viewportWidth=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;600&quot;&lt;/span&gt; &lt;span class=&quot;nt&quot;&gt;&amp;gt;&lt;/span&gt;
+             &lt;span class=&quot;nt&quot;&gt;&amp;lt;group&lt;/span&gt;
+                 &lt;span class=&quot;na&quot;&gt;android:name=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;rotationGroup&quot;&lt;/span&gt;
+                 &lt;span class=&quot;na&quot;&gt;android:pivotX=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;300.0&quot;&lt;/span&gt;
+                 &lt;span class=&quot;na&quot;&gt;android:pivotY=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;300.0&quot;&lt;/span&gt;
+                 &lt;span class=&quot;na&quot;&gt;android:rotation=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;45.0&quot;&lt;/span&gt; &lt;span class=&quot;nt&quot;&gt;&amp;gt;&lt;/span&gt;
+                 &lt;span class=&quot;nt&quot;&gt;&amp;lt;path&lt;/span&gt;
+                     &lt;span class=&quot;na&quot;&gt;android:name=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;v&quot;&lt;/span&gt;
+                     &lt;span class=&quot;na&quot;&gt;android:fillColor=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;#000000&quot;&lt;/span&gt;
+                     &lt;span class=&quot;na&quot;&gt;android:pathData=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;M300,70 l 0,-70 70,70 0,0 -70,70z&quot;&lt;/span&gt; &lt;span class=&quot;nt&quot;&gt;/&amp;gt;&lt;/span&gt;
+             &lt;span class=&quot;nt&quot;&gt;&amp;lt;/group&amp;gt;&lt;/span&gt;
+         &lt;span class=&quot;nt&quot;&gt;&amp;lt;/vector&amp;gt;&lt;/span&gt;
+     &lt;span class=&quot;nt&quot;&gt;&amp;lt;/aapt:attr&amp;gt;&lt;/span&gt;
+
+     &lt;span class=&quot;nt&quot;&gt;&amp;lt;target&lt;/span&gt; &lt;span class=&quot;na&quot;&gt;android:name=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;rotationGroup&quot;&lt;/span&gt;&lt;span class=&quot;nt&quot;&gt;&amp;gt;&lt;/span&gt; *
+         &lt;span class=&quot;nt&quot;&gt;&amp;lt;aapt:attr&lt;/span&gt; &lt;span class=&quot;na&quot;&gt;name=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;android:animation&quot;&lt;/span&gt;&lt;span class=&quot;nt&quot;&gt;&amp;gt;&lt;/span&gt;
+             &lt;span class=&quot;nt&quot;&gt;&amp;lt;objectAnimator&lt;/span&gt;
+             &lt;span class=&quot;na&quot;&gt;android:duration=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;6000&quot;&lt;/span&gt;
+             &lt;span class=&quot;na&quot;&gt;android:propertyName=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;rotation&quot;&lt;/span&gt;
+             &lt;span class=&quot;na&quot;&gt;android:valueFrom=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;0&quot;&lt;/span&gt;
+             &lt;span class=&quot;na&quot;&gt;android:valueTo=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;360&quot;&lt;/span&gt; &lt;span class=&quot;nt&quot;&gt;/&amp;gt;&lt;/span&gt;
+         &lt;span class=&quot;nt&quot;&gt;&amp;lt;/aapt:attr&amp;gt;&lt;/span&gt;
+     &lt;span class=&quot;nt&quot;&gt;&amp;lt;/target&amp;gt;&lt;/span&gt;
+
+     &lt;span class=&quot;nt&quot;&gt;&amp;lt;target&lt;/span&gt; &lt;span class=&quot;na&quot;&gt;android:name=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;v&quot;&lt;/span&gt; &lt;span class=&quot;nt&quot;&gt;&amp;gt;&lt;/span&gt;
+         &lt;span class=&quot;nt&quot;&gt;&amp;lt;aapt:attr&lt;/span&gt; &lt;span class=&quot;na&quot;&gt;name=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;android:animation&quot;&lt;/span&gt;&lt;span class=&quot;nt&quot;&gt;&amp;gt;&lt;/span&gt;
+             &lt;span class=&quot;nt&quot;&gt;&amp;lt;set&amp;gt;&lt;/span&gt;
+                 &lt;span class=&quot;nt&quot;&gt;&amp;lt;objectAnimator&lt;/span&gt;
+                     &lt;span class=&quot;na&quot;&gt;android:duration=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;3000&quot;&lt;/span&gt;
+                     &lt;span class=&quot;na&quot;&gt;android:propertyName=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;pathData&quot;&lt;/span&gt;
+                     &lt;span class=&quot;na&quot;&gt;android:valueFrom=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;M300,70 l 0,-70 70,70 0,0 -70,70z&quot;&lt;/span&gt;
+                     &lt;span class=&quot;na&quot;&gt;android:valueTo=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;M300,70 l 0,-70 70,0  0,140 -70,0 z&quot;&lt;/span&gt;
+                     &lt;span class=&quot;na&quot;&gt;android:valueType=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;pathType&quot;&lt;/span&gt;&lt;span class=&quot;nt&quot;&gt;/&amp;gt;&lt;/span&gt;
+             &lt;span class=&quot;nt&quot;&gt;&amp;lt;/set&amp;gt;&lt;/span&gt;
+         &lt;span class=&quot;nt&quot;&gt;&amp;lt;/aapt:attr&amp;gt;&lt;/span&gt;
+      &lt;span class=&quot;nt&quot;&gt;&amp;lt;/target&amp;gt;&lt;/span&gt;
+ &lt;span class=&quot;nt&quot;&gt;&amp;lt;/animated-vector&amp;gt;&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;h2 id=&quot;5-정의한-애니메이션-적용하기&quot;&gt;5) 정의한 애니메이션 적용하기&lt;/h2&gt;
+
+&lt;p&gt;res/drawable/activity_main.xml&lt;/p&gt;
+&lt;div class=&quot;language-xml highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;nt&quot;&gt;&amp;lt;ImageView&lt;/span&gt;
+            &lt;span class=&quot;na&quot;&gt;android:id=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;@+id/emotion_mouth&quot;&lt;/span&gt;
+            &lt;span class=&quot;na&quot;&gt;android:layout_width=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;wrap_content&quot;&lt;/span&gt;
+            &lt;span class=&quot;na&quot;&gt;android:layout_height=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;wrap_content&quot;&lt;/span&gt;
+            &lt;span class=&quot;na&quot;&gt;android:layout_gravity=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;center&quot;&lt;/span&gt;
+            &lt;span class=&quot;na&quot;&gt;android:src=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;@drawable/animatedVector&quot;&lt;/span&gt; &lt;span class=&quot;nt&quot;&gt;/&amp;gt;&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;MainActivity.java&lt;/p&gt;
+&lt;div class=&quot;language-java highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt; &lt;span class=&quot;n&quot;&gt;ImageView&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;emotionImage&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;;&lt;/span&gt;
+
+&lt;span class=&quot;kd&quot;&gt;public&lt;/span&gt; &lt;span class=&quot;kt&quot;&gt;void&lt;/span&gt; &lt;span class=&quot;nf&quot;&gt;onCreate&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;Bundle&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;savedInstanceState&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;{&lt;/span&gt;
+  &lt;span class=&quot;kd&quot;&gt;super&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;na&quot;&gt;onCreate&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;savedInstanceState&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;);&lt;/span&gt;
+  &lt;span class=&quot;n&quot;&gt;setContentView&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;R&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;na&quot;&gt;layout&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;na&quot;&gt;main&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;);&lt;/span&gt;
+
+  &lt;span class=&quot;n&quot;&gt;emotionImage&lt;/span&gt;  &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;ImageView&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;findViewById&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;R&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;na&quot;&gt;id&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;na&quot;&gt;emotion_mouth&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;);&lt;/span&gt;
+  
+  &lt;span class=&quot;n&quot;&gt;emotionImage&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;na&quot;&gt;setOnClickListener&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;k&quot;&gt;new&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;View&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;na&quot;&gt;OnClickListener&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;()&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;{&lt;/span&gt;
+      &lt;span class=&quot;nd&quot;&gt;@Override&lt;/span&gt;
+      &lt;span class=&quot;kd&quot;&gt;public&lt;/span&gt; &lt;span class=&quot;kt&quot;&gt;void&lt;/span&gt; &lt;span class=&quot;nf&quot;&gt;onClick&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;View&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;view&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;{&lt;/span&gt;
+        &lt;span class=&quot;n&quot;&gt;Drawable&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;drawable&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;emotionImage&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;na&quot;&gt;getDrawable&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;();&lt;/span&gt;
+            &lt;span class=&quot;k&quot;&gt;if&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;Build&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;na&quot;&gt;VERSION&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;na&quot;&gt;SDK_INT&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;&amp;gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;Build&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;na&quot;&gt;VERSION_CODES&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;na&quot;&gt;LOLLIPOP&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;{&lt;/span&gt;
+                &lt;span class=&quot;k&quot;&gt;if&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;drawable&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;instanceof&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;AnimatedVectorDrawable&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;{&lt;/span&gt;
+                    &lt;span class=&quot;n&quot;&gt;AnimatedVectorDrawable&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;animatedVectorDrawable&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;AnimatedVectorDrawable&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;drawable&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;;&lt;/span&gt;
+                    &lt;span class=&quot;n&quot;&gt;animatedVectorDrawable&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;na&quot;&gt;start&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;();&lt;/span&gt;
+                &lt;span class=&quot;o&quot;&gt;}&lt;/span&gt;
+            &lt;span class=&quot;o&quot;&gt;}&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;else&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;{&lt;/span&gt;
+                &lt;span class=&quot;k&quot;&gt;if&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;drawable&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;instanceof&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;AnimatedVectorDrawableCompat&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;{&lt;/span&gt;
+                    &lt;span class=&quot;n&quot;&gt;AnimatedVectorDrawableCompat&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;animatedVectorDrawableCompat&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;AnimatedVectorDrawableCompat&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;drawable&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;;&lt;/span&gt;
+                    &lt;span class=&quot;n&quot;&gt;animatedVectorDrawableCompat&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;na&quot;&gt;start&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;();&lt;/span&gt;
+                &lt;span class=&quot;o&quot;&gt;}&lt;/span&gt;
+            &lt;span class=&quot;o&quot;&gt;}&lt;/span&gt;
+      &lt;span class=&quot;o&quot;&gt;}&lt;/span&gt;
+  &lt;span class=&quot;o&quot;&gt;});&lt;/span&gt;
+  
+&lt;span class=&quot;o&quot;&gt;}&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;</content><author><name>devgaram</name><email>joingaram@gmail.com</email></author><category term="android" /><category term="animation" /><summary type="html">이미지 애니메이션 구현 방법에는 다음과 같이 1)Animation Drawable과 2)Animated vector Drawable 두가지 옵션이 있다.</summary></entry><entry><title type="html">(Drawable 리소스) LayerDrawable과 ShapeDrawable을 이용해 둥근모서리와 그림자 있는 배경 만들기.</title><link href="http://localhost:4000/android-drawable/" rel="alternate" type="text/html" title="(Drawable 리소스) LayerDrawable과 ShapeDrawable을 이용해 둥근모서리와 그림자 있는 배경 만들기." /><published>2019-01-16T00:00:00+09:00</published><updated>2019-01-16T00:00:00+09:00</updated><id>http://localhost:4000/android-drawable</id><content type="html" xml:base="http://localhost:4000/android-drawable/">&lt;p&gt;LayerDrawable과 ShapeDrawable을 이용해 둥근모서리+그림자+투명배경이 있는 디자인을 다른 XML 리소스의 background로 적용하는 방법입니다.&lt;/p&gt;
 
 &lt;hr /&gt;
 
@@ -821,105 +1084,4 @@ id : 클릭된 아이템 뷰의 row ID
   &lt;span class=&quot;clr-grey&quot;&gt;android.view.View, Tag는 Object 타입이라 다양한 용도로 사용가능&lt;/span&gt;&lt;/li&gt;
     &lt;/ul&gt;
   &lt;/li&gt;
-&lt;/ul&gt;</content><author><name>devgaram</name><email>joingaram@gmail.com</email></author><category term="android" /><summary type="html">[될때까지 안드로이드] 어댑터뷰 파트의 내용을 정리한 글입니다.</summary></entry><entry><title type="html">(안드로이드) 시작하기 앞서 기초 학습</title><link href="http://localhost:4000/android-base/" rel="alternate" type="text/html" title="(안드로이드) 시작하기 앞서 기초 학습" /><published>2018-11-30T00:00:00+09:00</published><updated>2018-11-30T00:00:00+09:00</updated><id>http://localhost:4000/android-base</id><content type="html" xml:base="http://localhost:4000/android-base/">&lt;p&gt;안드로이드 학습을 시작하기 전에 간단히 자바 기본 개념을 정리했습니다.&lt;/p&gt;
-
-&lt;h1 id=&quot;안드로이드-기초&quot;&gt;안드로이드 기초&lt;/h1&gt;
-&lt;hr /&gt;
-&lt;h2 id=&quot;안드로이드-4대-구성요소&quot;&gt;안드로이드 4대 구성요소&lt;/h2&gt;
-&lt;ul&gt;
-  &lt;li&gt;액티비티  &lt;br /&gt;
-화면 하나당 하나의 액티비티 가짐. 여러개의 액티비티 중 하나가 메인 액티비티가 되며 manifest에 정의된다.&lt;/li&gt;
-  &lt;li&gt;리시버  &lt;br /&gt;
-전화&amp;amp;문자 수신, 배터리 부족 등의 브로드캐스트를 수신하는 객체&lt;/li&gt;
-  &lt;li&gt;프로바이더  &lt;br /&gt;
-데이터베이스나 파일 등의 정보를 외부의 앱에 공개하기 위한 객체. ContentProvider 클래스를 상속받아 구현&lt;/li&gt;
-  &lt;li&gt;서비스  &lt;br /&gt;
-백그라운드(음악재생, 파일다운로드)에서 오래 수행되어야 하는 앱. 화면 없음&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;h2 id=&quot;액티비티끼리-데이터를-주고받는-과정&quot;&gt;액티비티끼리 데이터를 주고받는 과정&lt;/h2&gt;
-&lt;ol&gt;
-  &lt;li&gt;A 액티비티에서 startActivityForResult()로 B 액티비티 시작&lt;/li&gt;
-  &lt;li&gt;B 액티비티에서 setResult()로 결과를 A 액티비티로 전달&lt;/li&gt;
-  &lt;li&gt;A 액티비티의 onActivityResult()에서 B 액티비티에서 전달받은 데이터 처리&lt;/li&gt;
-&lt;/ol&gt;
-
-&lt;h1 id=&quot;자바-기초-개념&quot;&gt;자바 기초 개념&lt;/h1&gt;
-&lt;hr /&gt;
-&lt;h2 id=&quot;자바-상속과-인터페이스-개념-정리-출처&quot;&gt;자바 상속과 인터페이스 개념 정리 &lt;a href=&quot;http://nyebo.net/2016/01/just-java-summary/&quot;&gt;출처&lt;/a&gt;&lt;/h2&gt;
-&lt;ol&gt;
-  &lt;li&gt;상속
-    &lt;ul&gt;
-      &lt;li&gt;어떤 클래스보다 내용이 구체적인 새로운 클래스가 필요할 때 기존 클래스에서 물려받아 새로운 부분만 추가하거나 수정하려고 만든 개념이다.&lt;/li&gt;
-      &lt;li&gt;상속을 이용하면 슈퍼 클래스(부모)의 필드, 메서드를 상속받으며 서브 클래스(자식)에서 자신만의 필드나 메서드를 추가하여 구체화할 수 있다.
-물론 상속받은 메서드를 재정의(오버라이딩)하는 것도 가능하다.&lt;/li&gt;
-      &lt;li&gt;상속은 클래스를 선언할 때 extends 키워드를 사용하여 정의한다.&lt;/li&gt;
-      &lt;li&gt;다른 객체지향 언어와 달리 다중 상속을 지원하지 않는다.&lt;/li&gt;
-      &lt;li&gt;다형성 : 슈퍼클래스가 같은 서브 클래스들이 동일한 요청(메서드)을 다르게 처리할 수 있는 특징을 말한다. 메서드를 오버라이딩(재정의)하여 구현한다.&lt;/li&gt;
-    &lt;/ul&gt;
-  &lt;/li&gt;
-  &lt;li&gt;클래스의 기본 구조
-    &lt;ul&gt;
-      &lt;li&gt;패키지 : 자바 클래스들을 같은 성격으로 묶어서 관리하는 디렉토리 개념&lt;/li&gt;
-      &lt;li&gt;클래스 : 자바 프로그램의 기본 단위&lt;/li&gt;
-      &lt;li&gt;인스턴스 : 객체지향개념에 따라 클래스는 바로 사용할 수 없고 인스턴스로 사용해야한다. 인스턴스를 이용하여 메서드 호출 등 필요한 작업을 처리한다.&lt;/li&gt;
-      &lt;li&gt;생성자 : 클래스를 생성할 때 제일 먼저 실행되는 특수한 형태의 메서드, 리턴값이 없으며(데이터형 입력하면 안됨) 메서드 이름은 반드시 클래스 이름과 일치해야 한다.&lt;/li&gt;
-    &lt;/ul&gt;
-  &lt;/li&gt;
-  &lt;li&gt;접근 한정자의 종류와 접근 범위
-    &lt;ul&gt;
-      &lt;li&gt;public : 클래스 내부, 동일 패키지, 하위클래스, 그 외의 영역에서 접근 가능&lt;/li&gt;
-      &lt;li&gt;protected : 클래스 내부, 동일 패키지, 하위클래스에서 접근 가능&lt;/li&gt;
-      &lt;li&gt;default : 클래스 내부, 동일 패키지에서 접근 가능&lt;/li&gt;
-      &lt;li&gt;private : 클래스 내부에서만 접근 가능&lt;/li&gt;
-    &lt;/ul&gt;
-  &lt;/li&gt;
-  &lt;li&gt;일반 한정자의 종류
-    &lt;ul&gt;
-      &lt;li&gt;static : 클래스 메서드와 클래스 변수를 선언하는 데 사용한다. 
-자바의 정적 영역에 할당되는 리소스를 선언하는 데 사용. 
-동일한 가상머신 상에서 실행 중인 모든 클래스에서 공유한다. 
-인스턴스를 생성하지 않고도 클래스의 메서드나 멤버에 접근할 수 있다.&lt;/li&gt;
-      &lt;li&gt;final : 더 이상 변경할 수 없도록 선언하는 한정자. 클래스에서 사용하면 서브 클래스를 만들 수 없다. 메서드에서 사용하면 오버라이딩을 할 수 없다.
-변수에 사용하면 저장된 값은 변할 수 없으므로 상수의 역할을 한다.&lt;/li&gt;
-      &lt;li&gt;abstract : 추상 클래스를 선언하는 데 사용하는 한정사&lt;/li&gt;
-    &lt;/ul&gt;
-  &lt;/li&gt;
-  &lt;li&gt;인스턴스 변수와 클래스 변수
-    &lt;ul&gt;
-      &lt;li&gt;인스턴스 변수는 클래스의 인스턴스로만 접근 가능한 변수(일반적인 멤버 변수), 클래스 외부에서 접근 차단하려고 private 키워드를 사용하기도 함.&lt;/li&gt;
-      &lt;li&gt;동일 클래스의 인스턴스라 해도 각 인스턴스의 변수는 값이 서로 다르고 서로에 영향을 주지 않는다.&lt;/li&gt;
-      &lt;li&gt;클래스 변수는 모든 클래스의 인스턴스로 공유되는 변수, static 키워드를 사용하여 선언한다.&lt;/li&gt;
-    &lt;/ul&gt;
-  &lt;/li&gt;
-  &lt;li&gt;자바 가상머신의 메모리 구조
-    &lt;ul&gt;
-      &lt;li&gt;Heap 영역 : 자바 객체, 인스턴스 변수&lt;/li&gt;
-      &lt;li&gt;Stack 영역 : 메서드 파라미터, 지역 변수&lt;/li&gt;
-      &lt;li&gt;Method 영역 : 메서드 바이트 코드, 클래스(static) 변수&lt;/li&gt;
-    &lt;/ul&gt;
-  &lt;/li&gt;
-  &lt;li&gt;추상 클래스와 인터페이스
-    &lt;ul&gt;
-      &lt;li&gt;추상클래스&lt;/li&gt;
-    &lt;/ul&gt;
-    &lt;ul&gt;
-      &lt;li&gt;추상 메서드(정의만 한 메서드)를 하나 이상 포함한다, 추상 메서드가 포함된 클래스는 반드시 추상 클래스로 정의해야 한다.&lt;/li&gt;
-      &lt;li&gt;그 자체를 인스턴스화(객체 생성)에 사용할 수 없다. 추상 클래스를 상속받는 클래스를 만든 후 추상클래스에 선언된 모든 추상 메서드를 오버라이딩해서 구현해야 한다.&lt;/li&gt;
-    &lt;/ul&gt;
-  &lt;/li&gt;
-  &lt;li&gt;인터페이스
-    &lt;ul&gt;
-      &lt;li&gt;모두 추상 메서드로만 구성해야 한다.&lt;/li&gt;
-      &lt;li&gt;일반 멤버 필드는 없고, public, static, final로 선언한 상수만 있다.&lt;/li&gt;
-      &lt;li&gt;그 자체를 인스턴스화(객체 생성) 불가. 다른 클래스로 구현할 때는 implements 키워드로 구현을 선언해야한다.&lt;/li&gt;
-      &lt;li&gt;다중 상속 개념 지원하는 형태로 사용 가능&lt;/li&gt;
-    &lt;/ul&gt;
-  &lt;/li&gt;
-  &lt;li&gt;캡슐화
-    &lt;ul&gt;
-      &lt;li&gt;외부에서 변수에 직접 접근할 수 없도록 하는 객체지향 프로그래밍 방법이다.&lt;/li&gt;
-      &lt;li&gt;캡슐화된 변수에 접근하려면 getter, setter 메서드를 만들어서 접근해야한다.&lt;/li&gt;
-    &lt;/ul&gt;
-  &lt;/li&gt;
-&lt;/ol&gt;</content><author><name>devgaram</name><email>joingaram@gmail.com</email></author><category term="android" /><summary type="html">안드로이드 학습을 시작하기 전에 간단히 자바 기본 개념을 정리했습니다.</summary></entry></feed>
+&lt;/ul&gt;</content><author><name>devgaram</name><email>joingaram@gmail.com</email></author><category term="android" /><summary type="html">[될때까지 안드로이드] 어댑터뷰 파트의 내용을 정리한 글입니다.</summary></entry></feed>
