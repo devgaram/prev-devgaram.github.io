@@ -1,0 +1,45 @@
+---
+layout: archive-headeronly
+---
+
+<section>
+	<h2>책 기록</h2>
+	<ul class="book-memory">
+	{% for book in site.data.book-memory %}
+	  <li>
+		
+		<div class="title">{{ book.title }} <i class="{{ book.gubun }}">{{ book.gubun }}</i> </div>
+		<div class="author">{{ book.author }} | {{ book.publisher }}</div>		
+		<div class="report">{{ book.report }}</div>
+	  </li>
+	{% endfor %}
+	</ul>
+</section>
+<style>
+i.borrow {
+    padding: 0.5em;
+    background: pink;
+    font-size: 0.5em;
+    border-radius: 0.5em;
+    color: #000;
+	vertical-align: middle;
+}
+i.buy {
+    padding: 0.5em;
+    background: yellow;
+    font-size: 0.5em;
+    border-radius: 0.5em;
+    color: #000;
+	vertical-align: middle;
+}
+ul.book-memory{
+	list-style:none;
+}
+.author {
+    font-size: 0.85em;
+    color: grey;
+}
+.title {
+    padding: 0.3em 0em;
+}
+</style>
