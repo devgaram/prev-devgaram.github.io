@@ -4,3 +4,7 @@ layout: archive-headeronly
 <span class="font-75" id="page__post-content">
 {{ content }}
 </span>
+{% if page.comments %}
+<div id="disqus_thread"></div>
+{% include comments-providers/disqus.html %}
+{% endif %}
