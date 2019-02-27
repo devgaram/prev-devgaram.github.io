@@ -4,6 +4,7 @@ title: (생활코딩) Javascript 입문2
 date: 2018-01-10
 tags:
  - javascript
+categories: [자바스크립트]
 ---
 
 생활코딩 URL https://opentutorials.org/course/743/    

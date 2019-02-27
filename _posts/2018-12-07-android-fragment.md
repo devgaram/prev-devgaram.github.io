@@ -4,6 +4,7 @@ title: (안드로이드) fragment를 사용하자
 date: 2018-12-07
 tags:
  - android
+categories: [안드로이드]
 ---
 
 [될 때까지 안드로이드]의 fragment 파트를 정리한 내용입니다.

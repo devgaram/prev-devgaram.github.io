@@ -292,3 +292,8 @@ defaults:
       related: true
       classes: wide
 
+collections:
+  portfolio:
+    output: true
+    permalink: /:collection/:path/
+

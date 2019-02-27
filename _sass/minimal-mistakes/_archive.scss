@@ -23,11 +23,9 @@
 }
 
 .archive__subtitle {
-  background: $background-custom-color;
-  margin: 1.414em 0 1.35em;
-  padding: 0.5em 1em 0.5em;
+  margin: 1.414em 0 2em;  
   font-size: $type-size-5;
-  color: #fff;
+  color: $black;
 
   + .list__item .archive__item-title {
     margin-top: 0.5em;    
@@ -441,3 +439,25 @@
     }
   }
 }
+
+.category_home {
+  background: #fff;
+  border: 1px solid #eaeaeb;
+  display: inline-block;
+  width: 30%;
+  padding: 10% 0;
+  text-align: center;
+  color: #000;
+  font-size: 0.9em;
+  vertical-align: middle;
+  margin: 0 2% 4% 0;
+  cursor: pointer;
+  box-shadow: 3px 3px 5px 1px #eaeaeb;
+
+  .category_home__size {
+    margin-top: 0.5em;
+    color: #333;
+  }
+}
+
+    

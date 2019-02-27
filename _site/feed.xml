@@ -5,8 +5,8 @@
     <description>라미의 블로그입니다.</description>
     <link>http://localhost:4000/</link>
     <atom:link href="http://localhost:4000/feed.xml" rel="self" type="application/rss+xml"/>
-    <pubDate>Wed, 27 Feb 2019 15:43:33 +0900</pubDate>
-    <lastBuildDate>Wed, 27 Feb 2019 15:43:33 +0900</lastBuildDate>
+    <pubDate>Wed, 27 Feb 2019 17:04:14 +0900</pubDate>
+    <lastBuildDate>Wed, 27 Feb 2019 17:04:14 +0900</lastBuildDate>
     <generator>Jekyll v3.8.5</generator>
     
       <item>
@@ -277,13 +277,15 @@ vectorDrawable 애니메이션을 구현하기 위해서는 3개의 xml 파일�
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
 </description>
         <pubDate>Mon, 21 Jan 2019 00:00:00 +0900</pubDate>
-        <link>http://localhost:4000/android-animate/</link>
-        <guid isPermaLink="true">http://localhost:4000/android-animate/</guid>
+        <link>http://localhost:4000/%EC%95%88%EB%93%9C%EB%A1%9C%EC%9D%B4%EB%93%9C/android-animate/</link>
+        <guid isPermaLink="true">http://localhost:4000/%EC%95%88%EB%93%9C%EB%A1%9C%EC%9D%B4%EB%93%9C/android-animate/</guid>
         
         <category>android</category>
         
         <category>animation</category>
         
+        
+        <category>안드로이드</category>
         
       </item>
     
@@ -409,13 +411,15 @@ vectorDrawable 애니메이션을 구현하기 위해서는 3개의 xml 파일�
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
 </description>
         <pubDate>Wed, 16 Jan 2019 00:00:00 +0900</pubDate>
-        <link>http://localhost:4000/android-drawable/</link>
-        <guid isPermaLink="true">http://localhost:4000/android-drawable/</guid>
+        <link>http://localhost:4000/%EC%95%88%EB%93%9C%EB%A1%9C%EC%9D%B4%EB%93%9C/android-drawable/</link>
+        <guid isPermaLink="true">http://localhost:4000/%EC%95%88%EB%93%9C%EB%A1%9C%EC%9D%B4%EB%93%9C/android-drawable/</guid>
         
         <category>android</category>
         
         <category>resource</category>
         
+        
+        <category>안드로이드</category>
         
       </item>
     
@@ -509,8 +513,8 @@ Observer 객체는 페어인 LifecycleOwner가 활성상태(&lt;code class=&quot
 
 </description>
         <pubDate>Wed, 09 Jan 2019 00:00:00 +0900</pubDate>
-        <link>http://localhost:4000/android-LiveData/</link>
-        <guid isPermaLink="true">http://localhost:4000/android-LiveData/</guid>
+        <link>http://localhost:4000/%EC%95%88%EB%93%9C%EB%A1%9C%EC%9D%B4%EB%93%9C/android-LiveData/</link>
+        <guid isPermaLink="true">http://localhost:4000/%EC%95%88%EB%93%9C%EB%A1%9C%EC%9D%B4%EB%93%9C/android-LiveData/</guid>
         
         <category>android</category>
         
@@ -518,6 +522,8 @@ Observer 객체는 페어인 LifecycleOwner가 활성상태(&lt;code class=&quot
         
         <category>mvvm</category>
         
+        
+        <category>안드로이드</category>
         
       </item>
     
@@ -533,13 +539,15 @@ Observer 객체는 페어인 LifecycleOwner가 활성상태(&lt;code class=&quot
 
 </description>
         <pubDate>Mon, 07 Jan 2019 00:00:00 +0900</pubDate>
-        <link>http://localhost:4000/android-mvvm-part2/</link>
-        <guid isPermaLink="true">http://localhost:4000/android-mvvm-part2/</guid>
+        <link>http://localhost:4000/%EC%95%88%EB%93%9C%EB%A1%9C%EC%9D%B4%EB%93%9C/android-mvvm-part2/</link>
+        <guid isPermaLink="true">http://localhost:4000/%EC%95%88%EB%93%9C%EB%A1%9C%EC%9D%B4%EB%93%9C/android-mvvm-part2/</guid>
         
         <category>android</category>
         
         <category>mvvm</category>
         
+        
+        <category>안드로이드</category>
         
       </item>
     
@@ -596,8 +604,8 @@ ViewModel 사용 시 ViewModel에 액티비티, 프래그먼트, 뷰에 대한 �
 &lt;p&gt;&lt;span class=&quot;clr-grey&quot;&gt;액티비티가 재생성 될 때, ViewModel은 액티비티 생명주기 외부에 존재하기 때문에 UI 컨텍스트를 ViewModel에 저장하면 메모리 락을 발생시키는 직접적인 원인이 된다. 단, Application 컨텍스트(전체 앱의 수명주기)를 저장하는 것은 괜찮다. Application 컨텐스트는 AndroidViewModel 클래스를 통해 받을 수 있다.&lt;/span&gt;&lt;/p&gt;
 </description>
         <pubDate>Mon, 07 Jan 2019 00:00:00 +0900</pubDate>
-        <link>http://localhost:4000/android-viewModel/</link>
-        <guid isPermaLink="true">http://localhost:4000/android-viewModel/</guid>
+        <link>http://localhost:4000/%EC%95%88%EB%93%9C%EB%A1%9C%EC%9D%B4%EB%93%9C/android-viewModel/</link>
+        <guid isPermaLink="true">http://localhost:4000/%EC%95%88%EB%93%9C%EB%A1%9C%EC%9D%B4%EB%93%9C/android-viewModel/</guid>
         
         <category>android</category>
         
@@ -605,6 +613,8 @@ ViewModel 사용 시 ViewModel에 액티비티, 프래그먼트, 뷰에 대한 �
         
         <category>mvvm</category>
         
+        
+        <category>안드로이드</category>
         
       </item>
     
@@ -829,13 +839,15 @@ ViewModelProviders 클래스의 &lt;code class=&quot;codetainer&quot;&gt;of(this
 
 </description>
         <pubDate>Mon, 07 Jan 2019 00:00:00 +0900</pubDate>
-        <link>http://localhost:4000/android-mvvm/</link>
-        <guid isPermaLink="true">http://localhost:4000/android-mvvm/</guid>
+        <link>http://localhost:4000/%EC%95%88%EB%93%9C%EB%A1%9C%EC%9D%B4%EB%93%9C/android-mvvm/</link>
+        <guid isPermaLink="true">http://localhost:4000/%EC%95%88%EB%93%9C%EB%A1%9C%EC%9D%B4%EB%93%9C/android-mvvm/</guid>
         
         <category>android</category>
         
         <category>mvvm</category>
         
+        
+        <category>안드로이드</category>
         
       </item>
     
@@ -907,13 +919,15 @@ package.json 파일을 아래와 같이 수정합니다.&lt;/p&gt;
 
 </description>
         <pubDate>Sat, 05 Jan 2019 00:00:00 +0900</pubDate>
-        <link>http://localhost:4000/jekyll-js-custom/</link>
-        <guid isPermaLink="true">http://localhost:4000/jekyll-js-custom/</guid>
+        <link>http://localhost:4000/%EB%B8%94%EB%A1%9C%EA%B7%B8/jekyll-js-custom/</link>
+        <guid isPermaLink="true">http://localhost:4000/%EB%B8%94%EB%A1%9C%EA%B7%B8/jekyll-js-custom/</guid>
         
         <category>jekyll</category>
         
         <category>github</category>
         
+        
+        <category>블로그</category>
         
       </item>
     
@@ -1033,11 +1047,13 @@ Button의 &lt;code class=&quot;codetainer&quot;&gt;onClick()&lt;/code&gt; 이벤
 
 </description>
         <pubDate>Fri, 07 Dec 2018 00:00:00 +0900</pubDate>
-        <link>http://localhost:4000/android-fragment/</link>
-        <guid isPermaLink="true">http://localhost:4000/android-fragment/</guid>
+        <link>http://localhost:4000/%EC%95%88%EB%93%9C%EB%A1%9C%EC%9D%B4%EB%93%9C/android-fragment/</link>
+        <guid isPermaLink="true">http://localhost:4000/%EC%95%88%EB%93%9C%EB%A1%9C%EC%9D%B4%EB%93%9C/android-fragment/</guid>
         
         <category>android</category>
         
+        
+        <category>안드로이드</category>
         
       </item>
     
@@ -1091,11 +1107,13 @@ Button의 &lt;code class=&quot;codetainer&quot;&gt;onClick()&lt;/code&gt; 이벤
 
 </description>
         <pubDate>Wed, 05 Dec 2018 00:00:00 +0900</pubDate>
-        <link>http://localhost:4000/android-recycler/</link>
-        <guid isPermaLink="true">http://localhost:4000/android-recycler/</guid>
+        <link>http://localhost:4000/%EC%95%88%EB%93%9C%EB%A1%9C%EC%9D%B4%EB%93%9C/android-recycler/</link>
+        <guid isPermaLink="true">http://localhost:4000/%EC%95%88%EB%93%9C%EB%A1%9C%EC%9D%B4%EB%93%9C/android-recycler/</guid>
         
         <category>android</category>
         
+        
+        <category>안드로이드</category>
         
       </item>
     
@@ -1241,11 +1259,13 @@ id : 클릭된 아이템 뷰의 row ID
 &lt;/ul&gt;
 </description>
         <pubDate>Sun, 02 Dec 2018 00:00:00 +0900</pubDate>
-        <link>http://localhost:4000/android-adapter/</link>
-        <guid isPermaLink="true">http://localhost:4000/android-adapter/</guid>
+        <link>http://localhost:4000/%EC%95%88%EB%93%9C%EB%A1%9C%EC%9D%B4%EB%93%9C/android-adapter/</link>
+        <guid isPermaLink="true">http://localhost:4000/%EC%95%88%EB%93%9C%EB%A1%9C%EC%9D%B4%EB%93%9C/android-adapter/</guid>
         
         <category>android</category>
         
+        
+        <category>안드로이드</category>
         
       </item>
     
@@ -1356,11 +1376,13 @@ id : 클릭된 아이템 뷰의 row ID
 
 </description>
         <pubDate>Fri, 30 Nov 2018 00:00:00 +0900</pubDate>
-        <link>http://localhost:4000/android-base/</link>
-        <guid isPermaLink="true">http://localhost:4000/android-base/</guid>
+        <link>http://localhost:4000/%EC%95%88%EB%93%9C%EB%A1%9C%EC%9D%B4%EB%93%9C/android-base/</link>
+        <guid isPermaLink="true">http://localhost:4000/%EC%95%88%EB%93%9C%EB%A1%9C%EC%9D%B4%EB%93%9C/android-base/</guid>
         
         <category>android</category>
         
+        
+        <category>안드로이드</category>
         
       </item>
     
@@ -1465,11 +1487,13 @@ id : 클릭된 아이템 뷰의 row ID
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
 </description>
         <pubDate>Mon, 16 Apr 2018 00:00:00 +0900</pubDate>
-        <link>http://localhost:4000/npmstart3/</link>
-        <guid isPermaLink="true">http://localhost:4000/npmstart3/</guid>
+        <link>http://localhost:4000/npm/npmstart3/</link>
+        <guid isPermaLink="true">http://localhost:4000/npm/npmstart3/</guid>
         
         <category>npm</category>
         
+        
+        <category>npm</category>
         
       </item>
     
@@ -1541,11 +1565,13 @@ console.log(output);    // 결과 : [2,3]
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
 </description>
         <pubDate>Fri, 13 Apr 2018 00:00:00 +0900</pubDate>
-        <link>http://localhost:4000/npmstart2/</link>
-        <guid isPermaLink="true">http://localhost:4000/npmstart2/</guid>
+        <link>http://localhost:4000/npm/npmstart2/</link>
+        <guid isPermaLink="true">http://localhost:4000/npm/npmstart2/</guid>
         
         <category>npm</category>
         
+        
+        <category>npm</category>
         
       </item>
     
@@ -1616,11 +1642,13 @@ Node.js를 설치할 때, npm은 자동적으로 설치됩니다. 하지만, npm
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
 </description>
         <pubDate>Wed, 11 Apr 2018 00:00:00 +0900</pubDate>
-        <link>http://localhost:4000/npmstart1/</link>
-        <guid isPermaLink="true">http://localhost:4000/npmstart1/</guid>
+        <link>http://localhost:4000/npm/npmstart1/</link>
+        <guid isPermaLink="true">http://localhost:4000/npm/npmstart1/</guid>
         
         <category>npm</category>
         
+        
+        <category>npm</category>
         
       </item>
     
@@ -1691,11 +1719,13 @@ import Router from 'vue-router'
 &lt;p&gt;동영상에서 진행한 프로젝트를 따라한 &lt;a href=&quot;https://github.com/devgaram/vueStudy&quot;&gt;깃으로 가기&lt;/a&gt;. 개인적인 주석이 포함되어있습니다.&lt;/p&gt;
 </description>
         <pubDate>Sat, 07 Apr 2018 00:00:00 +0900</pubDate>
-        <link>http://localhost:4000/vue2/</link>
-        <guid isPermaLink="true">http://localhost:4000/vue2/</guid>
+        <link>http://localhost:4000/frontend/vue2/</link>
+        <guid isPermaLink="true">http://localhost:4000/frontend/vue2/</guid>
         
         <category>vuejs</category>
         
+        
+        <category>Frontend</category>
         
       </item>
     
@@ -1787,13 +1817,15 @@ API&lt;/span&gt;&lt;/p&gt;
 &lt;/ul&gt;
 </description>
         <pubDate>Sat, 27 Jan 2018 00:00:00 +0900</pubDate>
-        <link>http://localhost:4000/mocha-unittest/</link>
-        <guid isPermaLink="true">http://localhost:4000/mocha-unittest/</guid>
+        <link>http://localhost:4000/tdd/mocha-unittest/</link>
+        <guid isPermaLink="true">http://localhost:4000/tdd/mocha-unittest/</guid>
         
         <category>mocha</category>
         
         <category>javascript</category>
         
+        
+        <category>TDD</category>
         
       </item>
     
@@ -1920,11 +1952,13 @@ Person의 introduce를 상속받았기 때문이다.&lt;/p&gt;
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
 </description>
         <pubDate>Sat, 13 Jan 2018 00:00:00 +0900</pubDate>
-        <link>http://localhost:4000/javascript-opentutorials-object-2/</link>
-        <guid isPermaLink="true">http://localhost:4000/javascript-opentutorials-object-2/</guid>
+        <link>http://localhost:4000/%EC%9E%90%EB%B0%94%EC%8A%A4%ED%81%AC%EB%A6%BD%ED%8A%B8/javascript-opentutorials-object-2/</link>
+        <guid isPermaLink="true">http://localhost:4000/%EC%9E%90%EB%B0%94%EC%8A%A4%ED%81%AC%EB%A6%BD%ED%8A%B8/javascript-opentutorials-object-2/</guid>
         
         <category>javascript</category>
         
+        
+        <category>자바스크립트</category>
         
       </item>
     
@@ -2067,11 +2101,13 @@ var a = [0,1,2] 배열 리터럴  &lt;br /&gt;
 &lt;p&gt;자바스크립트의 this는 변화무쌍하다.&lt;/p&gt;
 </description>
         <pubDate>Sat, 13 Jan 2018 00:00:00 +0900</pubDate>
-        <link>http://localhost:4000/javascript-opentutorials-object-1/</link>
-        <guid isPermaLink="true">http://localhost:4000/javascript-opentutorials-object-1/</guid>
+        <link>http://localhost:4000/%EC%9E%90%EB%B0%94%EC%8A%A4%ED%81%AC%EB%A6%BD%ED%8A%B8/javascript-opentutorials-object-1/</link>
+        <guid isPermaLink="true">http://localhost:4000/%EC%9E%90%EB%B0%94%EC%8A%A4%ED%81%AC%EB%A6%BD%ED%8A%B8/javascript-opentutorials-object-1/</guid>
         
         <category>javascript</category>
         
+        
+        <category>자바스크립트</category>
         
       </item>
     
@@ -2136,11 +2172,13 @@ this는 var this = o1; 과 암시적으로 같다.  &lt;br /&gt;
 즉, o1 = { va1 : 1, val2 : 2, val3 : 3, sum : sum} 에 o1.sum()과 같다.&lt;/p&gt;
 </description>
         <pubDate>Sat, 13 Jan 2018 00:00:00 +0900</pubDate>
-        <link>http://localhost:4000/javascript-opentutorials-function-4/</link>
-        <guid isPermaLink="true">http://localhost:4000/javascript-opentutorials-function-4/</guid>
+        <link>http://localhost:4000/%EC%9E%90%EB%B0%94%EC%8A%A4%ED%81%AC%EB%A6%BD%ED%8A%B8/javascript-opentutorials-function-4/</link>
+        <guid isPermaLink="true">http://localhost:4000/%EC%9E%90%EB%B0%94%EC%8A%A4%ED%81%AC%EB%A6%BD%ED%8A%B8/javascript-opentutorials-function-4/</guid>
         
         <category>javascript</category>
         
+        
+        <category>자바스크립트</category>
         
       </item>
     
@@ -2230,11 +2268,13 @@ factory_movie 호출 후, 함수의 생이 종료되어도 ghost, matrix를 통�
 
 </description>
         <pubDate>Sat, 13 Jan 2018 00:00:00 +0900</pubDate>
-        <link>http://localhost:4000/javascript-opentutorials-function-3/</link>
-        <guid isPermaLink="true">http://localhost:4000/javascript-opentutorials-function-3/</guid>
+        <link>http://localhost:4000/%EC%9E%90%EB%B0%94%EC%8A%A4%ED%81%AC%EB%A6%BD%ED%8A%B8/javascript-opentutorials-function-3/</link>
+        <guid isPermaLink="true">http://localhost:4000/%EC%9E%90%EB%B0%94%EC%8A%A4%ED%81%AC%EB%A6%BD%ED%8A%B8/javascript-opentutorials-function-3/</guid>
         
         <category>javascript</category>
         
+        
+        <category>자바스크립트</category>
         
       </item>
     
@@ -2338,11 +2378,13 @@ array.sort (sortfunc)  &lt;br /&gt;
 &lt;p&gt;&lt;span class=&quot;clr-note&quot;&gt;**콜백은 비동기처리에서 유용하게 사용된다.&lt;/span&gt;&lt;/p&gt;
 </description>
         <pubDate>Sat, 13 Jan 2018 00:00:00 +0900</pubDate>
-        <link>http://localhost:4000/javascript-opentutorials-function-2/</link>
-        <guid isPermaLink="true">http://localhost:4000/javascript-opentutorials-function-2/</guid>
+        <link>http://localhost:4000/%EC%9E%90%EB%B0%94%EC%8A%A4%ED%81%AC%EB%A6%BD%ED%8A%B8/javascript-opentutorials-function-2/</link>
+        <guid isPermaLink="true">http://localhost:4000/%EC%9E%90%EB%B0%94%EC%8A%A4%ED%81%AC%EB%A6%BD%ED%8A%B8/javascript-opentutorials-function-2/</guid>
         
         <category>javascript</category>
         
+        
+        <category>자바스크립트</category>
         
       </item>
     
@@ -2459,11 +2501,13 @@ Jquery와 같은 라이브러리에서 모듈화 기법으로 많이 사용한�
 &lt;/span&gt;&lt;/p&gt;
 </description>
         <pubDate>Thu, 11 Jan 2018 00:00:00 +0900</pubDate>
-        <link>http://localhost:4000/javascript-opentutorials-function-1/</link>
-        <guid isPermaLink="true">http://localhost:4000/javascript-opentutorials-function-1/</guid>
+        <link>http://localhost:4000/%EC%9E%90%EB%B0%94%EC%8A%A4%ED%81%AC%EB%A6%BD%ED%8A%B8/javascript-opentutorials-function-1/</link>
+        <guid isPermaLink="true">http://localhost:4000/%EC%9E%90%EB%B0%94%EC%8A%A4%ED%81%AC%EB%A6%BD%ED%8A%B8/javascript-opentutorials-function-1/</guid>
         
         <category>javascript</category>
         
+        
+        <category>자바스크립트</category>
         
       </item>
     
@@ -2518,11 +2562,13 @@ console.log(result);
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
 </description>
         <pubDate>Thu, 11 Jan 2018 00:00:00 +0900</pubDate>
-        <link>http://localhost:4000/javascript-opentutorials-3/</link>
-        <guid isPermaLink="true">http://localhost:4000/javascript-opentutorials-3/</guid>
+        <link>http://localhost:4000/%EC%9E%90%EB%B0%94%EC%8A%A4%ED%81%AC%EB%A6%BD%ED%8A%B8/javascript-opentutorials-3/</link>
+        <guid isPermaLink="true">http://localhost:4000/%EC%9E%90%EB%B0%94%EC%8A%A4%ED%81%AC%EB%A6%BD%ED%8A%B8/javascript-opentutorials-3/</guid>
         
         <category>javascript</category>
         
+        
+        <category>자바스크립트</category>
         
       </item>
     
@@ -2644,11 +2690,13 @@ grades.show_list();    //객체의 함수호출 aa,10 bb,6 cc,80 출력
 &lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
 </description>
         <pubDate>Wed, 10 Jan 2018 00:00:00 +0900</pubDate>
-        <link>http://localhost:4000/javascript-opentutorials-2/</link>
-        <guid isPermaLink="true">http://localhost:4000/javascript-opentutorials-2/</guid>
+        <link>http://localhost:4000/%EC%9E%90%EB%B0%94%EC%8A%A4%ED%81%AC%EB%A6%BD%ED%8A%B8/javascript-opentutorials-2/</link>
+        <guid isPermaLink="true">http://localhost:4000/%EC%9E%90%EB%B0%94%EC%8A%A4%ED%81%AC%EB%A6%BD%ED%8A%B8/javascript-opentutorials-2/</guid>
         
         <category>javascript</category>
         
+        
+        <category>자바스크립트</category>
         
       </item>
     
@@ -2687,11 +2735,13 @@ NaN   : 0/0 계산할 수 없음. false로 간주&lt;/p&gt;
 &lt;p&gt;if(‘’) alert(‘빈문자열’); //false 빈문자열은 false/ 문자열있으면 true로 간주&lt;/p&gt;
 </description>
         <pubDate>Tue, 09 Jan 2018 00:00:00 +0900</pubDate>
-        <link>http://localhost:4000/javascript-opentutorials-1/</link>
-        <guid isPermaLink="true">http://localhost:4000/javascript-opentutorials-1/</guid>
+        <link>http://localhost:4000/%EC%9E%90%EB%B0%94%EC%8A%A4%ED%81%AC%EB%A6%BD%ED%8A%B8/javascript-opentutorials-1/</link>
+        <guid isPermaLink="true">http://localhost:4000/%EC%9E%90%EB%B0%94%EC%8A%A4%ED%81%AC%EB%A6%BD%ED%8A%B8/javascript-opentutorials-1/</guid>
         
         <category>javascript</category>
         
+        
+        <category>자바스크립트</category>
         
       </item>
     
@@ -2770,11 +2820,13 @@ argArray는 fun 메서드에서 인자로 사용됩니다. &lt;br /&gt;
 &lt;p&gt;&lt;a href=&quot;https://developer.mozilla.org/ko/docs/Web/JavaScript/Reference/Functions/%EC%95%A0%EB%A1%9C%EC%9A%B0_%ED%8E%91%EC%85%98&quot;&gt;출처&lt;/a&gt;&lt;/p&gt;
 </description>
         <pubDate>Mon, 08 Jan 2018 00:00:00 +0900</pubDate>
-        <link>http://localhost:4000/javascript-callapply/</link>
-        <guid isPermaLink="true">http://localhost:4000/javascript-callapply/</guid>
+        <link>http://localhost:4000/%EC%9E%90%EB%B0%94%EC%8A%A4%ED%81%AC%EB%A6%BD%ED%8A%B8/javascript-callapply/</link>
+        <guid isPermaLink="true">http://localhost:4000/%EC%9E%90%EB%B0%94%EC%8A%A4%ED%81%AC%EB%A6%BD%ED%8A%B8/javascript-callapply/</guid>
         
         <category>javascript</category>
         
+        
+        <category>자바스크립트</category>
         
       </item>
     

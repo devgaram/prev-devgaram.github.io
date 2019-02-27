@@ -3,6 +3,7 @@ layout: post-content
 title: 안드로이드 ViewModel에 대해 알아보자
 date: 2019-01-07
 tags: [android, viewmodel, mvvm]
+categories: [안드로이드]
 ---
 
 안드로이드 아키텍쳐 중 ViewModel 클래스에 대한 내용입니다.

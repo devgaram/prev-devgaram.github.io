@@ -4,6 +4,7 @@ title: (생활코딩) javascript 함수지향3
 date: 2018-01-13
 tags:
  - javascript
+categories: [자바스크립트]
 ---
 
 생활코딩 함수지향 파트 중 클로저에 대한 내용을 정리했습니다.

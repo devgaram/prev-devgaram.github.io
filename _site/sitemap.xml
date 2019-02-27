@@ -2,107 +2,107 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
     
     <url>
-        <loc>http://localhost:4000/android-animate/</loc>
+        <loc>http://localhost:4000/%EC%95%88%EB%93%9C%EB%A1%9C%EC%9D%B4%EB%93%9C/android-animate/</loc>
     </url>
     
     <url>
-        <loc>http://localhost:4000/android-drawable/</loc>
+        <loc>http://localhost:4000/%EC%95%88%EB%93%9C%EB%A1%9C%EC%9D%B4%EB%93%9C/android-drawable/</loc>
     </url>
     
     <url>
-        <loc>http://localhost:4000/android-LiveData/</loc>
+        <loc>http://localhost:4000/%EC%95%88%EB%93%9C%EB%A1%9C%EC%9D%B4%EB%93%9C/android-LiveData/</loc>
     </url>
     
     <url>
-        <loc>http://localhost:4000/android-mvvm-part2/</loc>
+        <loc>http://localhost:4000/%EC%95%88%EB%93%9C%EB%A1%9C%EC%9D%B4%EB%93%9C/android-mvvm-part2/</loc>
     </url>
     
     <url>
-        <loc>http://localhost:4000/android-viewModel/</loc>
+        <loc>http://localhost:4000/%EC%95%88%EB%93%9C%EB%A1%9C%EC%9D%B4%EB%93%9C/android-viewModel/</loc>
     </url>
     
     <url>
-        <loc>http://localhost:4000/android-mvvm/</loc>
+        <loc>http://localhost:4000/%EC%95%88%EB%93%9C%EB%A1%9C%EC%9D%B4%EB%93%9C/android-mvvm/</loc>
     </url>
     
     <url>
-        <loc>http://localhost:4000/jekyll-js-custom/</loc>
+        <loc>http://localhost:4000/%EB%B8%94%EB%A1%9C%EA%B7%B8/jekyll-js-custom/</loc>
     </url>
     
     <url>
-        <loc>http://localhost:4000/android-fragment/</loc>
+        <loc>http://localhost:4000/%EC%95%88%EB%93%9C%EB%A1%9C%EC%9D%B4%EB%93%9C/android-fragment/</loc>
     </url>
     
     <url>
-        <loc>http://localhost:4000/android-recycler/</loc>
+        <loc>http://localhost:4000/%EC%95%88%EB%93%9C%EB%A1%9C%EC%9D%B4%EB%93%9C/android-recycler/</loc>
     </url>
     
     <url>
-        <loc>http://localhost:4000/android-adapter/</loc>
+        <loc>http://localhost:4000/%EC%95%88%EB%93%9C%EB%A1%9C%EC%9D%B4%EB%93%9C/android-adapter/</loc>
     </url>
     
     <url>
-        <loc>http://localhost:4000/android-base/</loc>
+        <loc>http://localhost:4000/%EC%95%88%EB%93%9C%EB%A1%9C%EC%9D%B4%EB%93%9C/android-base/</loc>
     </url>
     
     <url>
-        <loc>http://localhost:4000/npmstart3/</loc>
+        <loc>http://localhost:4000/npm/npmstart3/</loc>
     </url>
     
     <url>
-        <loc>http://localhost:4000/npmstart2/</loc>
+        <loc>http://localhost:4000/npm/npmstart2/</loc>
     </url>
     
     <url>
-        <loc>http://localhost:4000/npmstart1/</loc>
+        <loc>http://localhost:4000/npm/npmstart1/</loc>
     </url>
     
     <url>
-        <loc>http://localhost:4000/vue2/</loc>
+        <loc>http://localhost:4000/frontend/vue2/</loc>
     </url>
     
     <url>
-        <loc>http://localhost:4000/mocha-unittest/</loc>
+        <loc>http://localhost:4000/tdd/mocha-unittest/</loc>
     </url>
     
     <url>
-        <loc>http://localhost:4000/javascript-opentutorials-object-2/</loc>
+        <loc>http://localhost:4000/%EC%9E%90%EB%B0%94%EC%8A%A4%ED%81%AC%EB%A6%BD%ED%8A%B8/javascript-opentutorials-object-2/</loc>
     </url>
     
     <url>
-        <loc>http://localhost:4000/javascript-opentutorials-object-1/</loc>
+        <loc>http://localhost:4000/%EC%9E%90%EB%B0%94%EC%8A%A4%ED%81%AC%EB%A6%BD%ED%8A%B8/javascript-opentutorials-object-1/</loc>
     </url>
     
     <url>
-        <loc>http://localhost:4000/javascript-opentutorials-function-4/</loc>
+        <loc>http://localhost:4000/%EC%9E%90%EB%B0%94%EC%8A%A4%ED%81%AC%EB%A6%BD%ED%8A%B8/javascript-opentutorials-function-4/</loc>
     </url>
     
     <url>
-        <loc>http://localhost:4000/javascript-opentutorials-function-3/</loc>
+        <loc>http://localhost:4000/%EC%9E%90%EB%B0%94%EC%8A%A4%ED%81%AC%EB%A6%BD%ED%8A%B8/javascript-opentutorials-function-3/</loc>
     </url>
     
     <url>
-        <loc>http://localhost:4000/javascript-opentutorials-function-2/</loc>
+        <loc>http://localhost:4000/%EC%9E%90%EB%B0%94%EC%8A%A4%ED%81%AC%EB%A6%BD%ED%8A%B8/javascript-opentutorials-function-2/</loc>
     </url>
     
     <url>
-        <loc>http://localhost:4000/javascript-opentutorials-function-1/</loc>
+        <loc>http://localhost:4000/%EC%9E%90%EB%B0%94%EC%8A%A4%ED%81%AC%EB%A6%BD%ED%8A%B8/javascript-opentutorials-function-1/</loc>
     </url>
     
     <url>
-        <loc>http://localhost:4000/javascript-opentutorials-3/</loc>
+        <loc>http://localhost:4000/%EC%9E%90%EB%B0%94%EC%8A%A4%ED%81%AC%EB%A6%BD%ED%8A%B8/javascript-opentutorials-3/</loc>
     </url>
     
     <url>
-        <loc>http://localhost:4000/javascript-opentutorials-2/</loc>
+        <loc>http://localhost:4000/%EC%9E%90%EB%B0%94%EC%8A%A4%ED%81%AC%EB%A6%BD%ED%8A%B8/javascript-opentutorials-2/</loc>
     </url>
     
     <url>
-        <loc>http://localhost:4000/javascript-opentutorials-1/</loc>
+        <loc>http://localhost:4000/%EC%9E%90%EB%B0%94%EC%8A%A4%ED%81%AC%EB%A6%BD%ED%8A%B8/javascript-opentutorials-1/</loc>
     </url>
     
     <url>
-        <loc>http://localhost:4000/javascript-callapply/</loc>
+        <loc>http://localhost:4000/%EC%9E%90%EB%B0%94%EC%8A%A4%ED%81%AC%EB%A6%BD%ED%8A%B8/javascript-callapply/</loc>
     </url>
     
 
@@ -111,6 +111,14 @@
     
     <url>
         <loc>http://localhost:4000/about/</loc>
+    </url>
+    
+    
+    
+    
+    
+    <url>
+        <loc>http://localhost:4000/categories/</loc>
     </url>
     
     
