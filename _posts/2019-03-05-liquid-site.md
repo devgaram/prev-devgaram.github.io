@@ -97,5 +97,21 @@ jekyll 블로그 운영시 알아야할 필수 liquid 문법
 		Laura <br/>
 		Adam</td>
 	</tr>
+	<tr>
+		<td>plus</td>
+		<td>
+		{ { 4 | plus: 2 } }
+		</td>
+		<td>6</td>
+	</tr>
+	<tr>
+		<td>limit</td>
+		<td>
+		{ % for item in array limit:2 % }<br/>
+	       &nbsp;&nbsp; { { item } }<br/>
+		{ % endfor % }
+		</td>
+		<td>limit를 통해 2개까지만 반복문을 돌린다.</td>
+	</tr>
 </tbody>
 </table>

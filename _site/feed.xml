@@ -5,8 +5,8 @@
     <description>라미의 블로그입니다.</description>
     <link>http://localhost:4000/</link>
     <atom:link href="http://localhost:4000/feed.xml" rel="self" type="application/rss+xml"/>
-    <pubDate>Tue, 05 Mar 2019 10:38:25 +0900</pubDate>
-    <lastBuildDate>Tue, 05 Mar 2019 10:38:25 +0900</lastBuildDate>
+    <pubDate>Tue, 05 Mar 2019 12:17:18 +0900</pubDate>
+    <lastBuildDate>Tue, 05 Mar 2019 12:17:18 +0900</lastBuildDate>
     <generator>Jekyll v3.8.5</generator>
     
       <item>
@@ -101,6 +101,22 @@
 		&lt;td&gt;Tobi &lt;br /&gt;
 		Laura &lt;br /&gt;
 		Adam&lt;/td&gt;
+	&lt;/tr&gt;
+	&lt;tr&gt;
+		&lt;td&gt;plus&lt;/td&gt;
+		&lt;td&gt;
+		{ { 4 | plus: 2 } }
+		&lt;/td&gt;
+		&lt;td&gt;6&lt;/td&gt;
+	&lt;/tr&gt;
+	&lt;tr&gt;
+		&lt;td&gt;limit&lt;/td&gt;
+		&lt;td&gt;
+		{ % for item in array limit:2 % }&lt;br /&gt;
+	       &amp;nbsp;&amp;nbsp; { { item } }&lt;br /&gt;
+		{ % endfor % }
+		&lt;/td&gt;
+		&lt;td&gt;limit를 통해 2개까지만 반복문을 돌린다.&lt;/td&gt;
 	&lt;/tr&gt;
 &lt;/tbody&gt;
 &lt;/table&gt;
