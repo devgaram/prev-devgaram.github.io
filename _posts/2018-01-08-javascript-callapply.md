@@ -4,7 +4,7 @@ title: (JS) call()과 apply()
 date: 2018-01-08
 tags:
  - javascript
-categories: [자바스크립트]
+categories: [Javascript]
 ---
 
 call() 과 apply() 메서드를 이용하여 명시적으로 this에 바인딩할 수 있습니다.

@@ -4,7 +4,7 @@ title: (생활코딩) Javascript 입문3
 date: 2018-01-11
 tags:
  - javascript
-categories: [자바스크립트]
+categories: [Javascript]
 ---
 
 생활코딩 javscript 과정 중 정규표현식 내용을 정리했습니다.

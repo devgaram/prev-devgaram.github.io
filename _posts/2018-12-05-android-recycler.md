@@ -4,7 +4,7 @@ title: (안드로이드) RecyclerView를 사용하자
 date: 2018-12-05
 tags:
  - android
-categories: [안드로이드]
+categories: [Android]
 ---
 
 [될 때까지 안드로이드]의 RecyclerView 파트를 정리한 내용입니다.

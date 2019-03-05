@@ -3,7 +3,7 @@ layout: post-content
 title: 안드로이드 LiveData 대해 알아보자
 date: 2019-01-09
 tags: [android, livedata, mvvm]
-categories: [안드로이드]
+categories: [Android]
 ---
 
 LiveData 클래스를 통해 데이터 변경을 감지해보자.

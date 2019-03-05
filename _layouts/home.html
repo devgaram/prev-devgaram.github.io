@@ -7,11 +7,12 @@ layout: archive
 <h3 class="archive__subtitle">{{ site.data.ui-text[site.locale].recent_posts | default: "Recent Posts" }}</h3>
 
 {% for category in site.categories %}
-<a href="/categories/#{{ category[0] }}">
-  <div class="category_home" >
-    <div>{{ category[0] }}</div>
-	<div class="category_home__size">({{ category[1].size }})</div>
-  </div>
-</a>
-  
+<div class="category_home">
+  <div><a href="/categories/#{{ category[0] }}">{{ category[0] }} ({{ category[1].size }})</a></div>
+  <ul>
+    {% for post in category[1] %}
+	  <li><a href="{{ post.url }}">{{ post.title }}</a></li>
+	{% endfor %}
+  </ul>
+</div>  
 {% endfor %}

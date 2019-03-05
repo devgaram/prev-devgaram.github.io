@@ -3,7 +3,7 @@ layout: post-content
 title: (Drawable 리소스) LayerDrawable과 ShapeDrawable을 이용해 둥근모서리와 그림자 있는 배경 만들기.
 date: 2019-01-16
 tags: [android, resource]
-categories: [안드로이드]
+categories: [Android]
 ---
 
 LayerDrawable과 ShapeDrawable을 이용해 둥근모서리+그림자+투명배경이 있는 디자인을 다른 XML 리소스의 background로 적용하는 방법입니다.

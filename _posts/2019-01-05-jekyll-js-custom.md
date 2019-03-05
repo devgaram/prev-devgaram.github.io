@@ -3,7 +3,7 @@ layout: post-content
 title: jekyll의 minimal-mistakes에서 자바스크립트 커스텀하는 방법
 date: 2019-01-05
 tags: [jekyll, github]
-categories: [블로그]
+categories: [Blog]
 ---
 
 minimal-mistakes 테마를 적용한 jekyll 블로그를 커스텀하는 과정에서 자바스크립트 코드를 추가하는 방법입니다.    
