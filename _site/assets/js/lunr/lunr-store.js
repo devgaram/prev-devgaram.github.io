@@ -133,4 +133,9 @@ var store = [{
         "excerpt":"jekyll 블로그 운영시 알아야할 필수 liquid 문법 liquid 문법 정리된 사이트 Liquid categoryInputOutput Objects { { page.title } } Introduction Tags { % if user % } &nbsp;&nbsp;Hello { { user.name } }! { % endif % } Hello Adam! Filters { { \"/my/fancy/url\" | append: \".html\" } } /my/fancy/url.html...","categories": ["Blog"],
         "tags": ["jekyll","liquid"],
         "url": "http://localhost:4000/blog/liquid-site/",
+        "teaser":"http://localhost:4000/assets/images/alhambra.jpg"},{
+        "title": "mssql 쿼리 팁 - group by 없이 카운트하는 방법 & 페이징 처리를 위한 전체 레코드 갯수 구하기",
+        "excerpt":"프로시저 속도 개선하는 과정에서 배웠던 sql 팁으로, group by 없이 칼럼과 함께 갯수를 출력하는 방법과 페이징 처리에 필요한 전체 레코드 갯수를 구하는 방법에 대한 내용입니다. 관리자 페이지 유지보수 중에 한 프로시저의 실행속도가 굉장히 느린 것을 발견했다. 실무자에게 확인해 본 결과 페이지 넘길 때마다 기본 일분은 기다린다는 답을 받았다. 이 프로시저는...","categories": ["sql"],
+        "tags": ["mssql"],
+        "url": "http://localhost:4000/sql/mssql-speed-improvement/",
         "teaser":"http://localhost:4000/assets/images/alhambra.jpg"}]
