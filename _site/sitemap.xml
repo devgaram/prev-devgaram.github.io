@@ -74,6 +74,10 @@
     </url>
     
     <url>
+        <loc>http://localhost:4000/sql/mssql-tip-1/</loc>
+    </url>
+    
+    <url>
         <loc>http://localhost:4000/javascript/javascript-opentutorials-object-2/</loc>
     </url>
     

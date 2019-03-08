@@ -49,6 +49,11 @@ var store = [{
         "tags": ["javascript"],
         "url": "http://localhost:4000/javascript/javascript-opentutorials-object-2/",
         "teaser":"http://localhost:4000/assets/images/alhambra.jpg"},{
+        "title": "mssql 쿼리 팁 - 여러 행의 데이터를 한 칼럼에 담기",
+        "excerpt":"IDXNAME 1A 1B 1C 2B 2D 위 테이블을 아래와 같이 출력하고 싶다. IDXNAME 1A,B,C 2B,D SELECT DISTINCT IDX, STUFF ( ( SELECT ',' + NAME FROM TB_NAME A WHERE A.IDX = B.IDX FOR XML PATH('') ),1,1,'') AS NAME FROM TB_NAME B STUFF(STRING,1,1,’’) - 맨 앞 문자 한개 제거 STUFF 함수...","categories": ["sql"],
+        "tags": ["mssql"],
+        "url": "http://localhost:4000/sql/mssql-tip-1/",
+        "teaser":"http://localhost:4000/assets/images/alhambra.jpg"},{
         "title": "(mocha) 자바스크립트 단위테스트 시작하기",
         "excerpt":"mocha 자바스크립트 테스트 프레임워크로 단위테스트 시작하는 방법입니다. 단위테스트(Unit Test)가 필요한 이유? 프로그램을 작은 단위로 쪼개서 내가 짠 프로그램이 내가 원하는 결과대로 동작하는 지 테스트할 수 있다. 단위테스트를 거치면 프로그램의 안정성이 높아지며, 단위테스트를 믿고 리팩토링을 할 수 있다. 자바스크립트로 짜여진 프로그램에서 오류를 찾을 때, 단위테스트를 거치지 않은 프로그램의 경우는 전체 흐름을...","categories": ["TDD"],
         "tags": ["mocha","javascript"],

@@ -5,8 +5,8 @@
     <description>라미의 블로그입니다.</description>
     <link>http://localhost:4000/</link>
     <atom:link href="http://localhost:4000/feed.xml" rel="self" type="application/rss+xml"/>
-    <pubDate>Fri, 08 Mar 2019 17:48:33 +0900</pubDate>
-    <lastBuildDate>Fri, 08 Mar 2019 17:48:33 +0900</lastBuildDate>
+    <pubDate>Fri, 08 Mar 2019 18:02:48 +0900</pubDate>
+    <lastBuildDate>Fri, 08 Mar 2019 18:02:48 +0900</lastBuildDate>
     <generator>Jekyll v3.8.5</generator>
     
       <item>
@@ -2030,6 +2030,76 @@ API&lt;/span&gt;&lt;/p&gt;
         
         
         <category>TDD</category>
+        
+      </item>
+    
+      <item>
+        <title>mssql 쿼리 팁 - 여러 행의 데이터를 한 칼럼에 담기</title>
+        <description>&lt;table class=&quot;half&quot;&gt;
+&lt;thead&gt;
+	&lt;tr&gt;&lt;th&gt;IDX&lt;/th&gt;&lt;th&gt;NAME &lt;/th&gt;&lt;/tr&gt;
+&lt;/thead&gt;
+&lt;tbody&gt;
+	&lt;tr&gt;&lt;td&gt;1&lt;/td&gt;&lt;td&gt;A&lt;/td&gt;&lt;/tr&gt;
+	&lt;tr&gt;&lt;td&gt;1&lt;/td&gt;&lt;td&gt;B&lt;/td&gt;&lt;/tr&gt;
+	&lt;tr&gt;&lt;td&gt;1&lt;/td&gt;&lt;td&gt;C&lt;/td&gt;&lt;/tr&gt;
+	&lt;tr&gt;&lt;td&gt;2&lt;/td&gt;&lt;td&gt;B&lt;/td&gt;&lt;/tr&gt;
+	&lt;tr&gt;&lt;td&gt;2&lt;/td&gt;&lt;td&gt;D&lt;/td&gt;&lt;/tr&gt;
+&lt;/tbody&gt;
+&lt;/table&gt;
+
+&lt;p&gt;위 테이블을 아래와 같이 출력하고 싶다.&lt;/p&gt;
+
+&lt;table class=&quot;half&quot;&gt;
+&lt;thead&gt;
+	&lt;tr&gt;&lt;th&gt;IDX&lt;/th&gt;&lt;th&gt;NAME &lt;/th&gt;&lt;/tr&gt;
+&lt;/thead&gt;
+&lt;tbody&gt;
+	&lt;tr&gt;&lt;td&gt;1&lt;/td&gt;&lt;td&gt;A,B,C&lt;/td&gt;&lt;/tr&gt;
+	&lt;tr&gt;&lt;td&gt;2&lt;/td&gt;&lt;td&gt;B,D&lt;/td&gt;&lt;/tr&gt;	
+&lt;/tbody&gt;
+&lt;/table&gt;
+
+&lt;p&gt;&lt;br /&gt;&lt;br /&gt;&lt;/p&gt;
+
+&lt;div class=&quot;language-sql highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;k&quot;&gt;SELECT&lt;/span&gt; 
+	&lt;span class=&quot;k&quot;&gt;DISTINCT&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;IDX&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;
+	&lt;span class=&quot;n&quot;&gt;STUFF&lt;/span&gt;
+	&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;
+		&lt;span class=&quot;k&quot;&gt;SELECT&lt;/span&gt; &lt;span class=&quot;s1&quot;&gt;','&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;+&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;NAME&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;FROM&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;TB_NAME&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;A&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;WHERE&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;A&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;IDX&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;B&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;IDX&lt;/span&gt;
+		&lt;span class=&quot;k&quot;&gt;FOR&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;XML&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;PATH&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s1&quot;&gt;''&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
+	&lt;span class=&quot;p&quot;&gt;),&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;1&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;1&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;&lt;span class=&quot;s1&quot;&gt;''&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;AS&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;NAME&lt;/span&gt;
+&lt;span class=&quot;k&quot;&gt;FROM&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;TB_NAME&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;B&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;STUFF(STRING,1,1,’’) - 맨 앞 문자 한개 제거&lt;/p&gt;
+
+&lt;h1 id=&quot;stuff-함수&quot;&gt;STUFF 함수&lt;/h1&gt;
+
+&lt;p&gt;&lt;a href=&quot;https://docs.microsoft.com/ko-kr/sql/t-sql/functions/stuff-transact-sql&quot;&gt;참고페이지&lt;/a&gt;&lt;/p&gt;
+
+&lt;p&gt;STUFF ( character_expression , start , length , replaceWith_expression )&lt;/p&gt;
+
+&lt;table&gt;
+&lt;thead&gt;
+	&lt;tr&gt;&lt;th&gt;인수&lt;/th&gt;&lt;th&gt;설명&lt;/th&gt;&lt;/tr&gt;
+&lt;/thead&gt;
+&lt;tbody&gt;
+	&lt;tr&gt;&lt;td&gt;start&lt;/td&gt;&lt;td&gt;삭제 및 삽입 시작 위치, 0, 음수면 NULL이 반환된다.&lt;/td&gt;&lt;/tr&gt;
+	&lt;tr&gt;&lt;td&gt;length&lt;/td&gt;&lt;td&gt;삭제 할 문자 수 지정, 0, 음수면 NULL이 반환된다.&lt;/td&gt;&lt;/tr&gt;	
+	&lt;tr&gt;&lt;td&gt;replaceWith_expression &lt;/td&gt;&lt;td&gt;''이면 아무것도 삽입하지 않고 문자를 제거&lt;/td&gt;&lt;/tr&gt;	
+&lt;/tbody&gt;
+&lt;/table&gt;
+
+</description>
+        <pubDate>Fri, 26 Jan 2018 00:00:00 +0900</pubDate>
+        <link>http://localhost:4000/sql/mssql-tip-1/</link>
+        <guid isPermaLink="true">http://localhost:4000/sql/mssql-tip-1/</guid>
+        
+        <category>mssql</category>
+        
+        
+        <category>sql</category>
         
       </item>
     
