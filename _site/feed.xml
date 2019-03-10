@@ -5,9 +5,48 @@
     <description>라미의 블로그입니다.</description>
     <link>http://localhost:4000/</link>
     <atom:link href="http://localhost:4000/feed.xml" rel="self" type="application/rss+xml"/>
-    <pubDate>Fri, 08 Mar 2019 18:02:48 +0900</pubDate>
-    <lastBuildDate>Fri, 08 Mar 2019 18:02:48 +0900</lastBuildDate>
+    <pubDate>Sun, 10 Mar 2019 22:38:18 +0900</pubDate>
+    <lastBuildDate>Sun, 10 Mar 2019 22:38:18 +0900</lastBuildDate>
     <generator>Jekyll v3.8.5</generator>
+    
+      <item>
+        <title>안드로이드 에러 - setText의 파라미터로 숫자를 전달했을 때</title>
+        <description>&lt;p&gt;android.content.res.Resources$NotFoundException: String resource ID #0x1f40&lt;/p&gt;
+
+&lt;hr /&gt;
+
+&lt;p&gt;에러로그&lt;/p&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;android.content.res.Resources$NotFoundException: String resource ID #0x1f40
+at android.content.res.Resources.getText(Resources.java:354)
+at android.widget.TextView.setText(TextView.java:6133)
+at org.androidtown.mybudgeter.pager.ExpenditureRecyclerAdapter.onBindViewHolder(ExpenditureRecyclerAdapter.java:30)
+at org.androidtown.mybudgeter.pager.ExpenditureRecyclerAdapter.onBindViewHolder(ExpenditureRecyclerAdapter.java:16)
+....      
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;div class=&quot;language-java highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;n&quot;&gt;expenditureAmount&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;na&quot;&gt;setText&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;currentExpenditure&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;na&quot;&gt;getAmount&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;());&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;에러로그는 위와 같은 코드에서 발생된 것으로, setText에 Integer 값을 전달했을 때 경우이다.  &lt;br /&gt;
+Integer값을 String으로 변환해주면 에러가 수정된다.&lt;/p&gt;
+
+&lt;div class=&quot;language-java highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;n&quot;&gt;expenditureAmount&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;na&quot;&gt;setText&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;Integer&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;na&quot;&gt;toString&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;currentExpenditure&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;na&quot;&gt;getAmount&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;()));&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+</description>
+        <pubDate>Sun, 10 Mar 2019 00:00:00 +0900</pubDate>
+        <link>http://localhost:4000/android/android-error-1/</link>
+        <guid isPermaLink="true">http://localhost:4000/android/android-error-1/</guid>
+        
+        <category>android</category>
+        
+        <category>error</category>
+        
+        
+        <category>Android</category>
+        
+      </item>
     
       <item>
         <title>mssql 쿼리 팁 - group by 없이 카운트하는 방법 &amp; 페이징 처리를 위한 전체 레코드 갯수 구하기</title>

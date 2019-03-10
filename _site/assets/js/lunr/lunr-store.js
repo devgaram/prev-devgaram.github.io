@@ -143,4 +143,9 @@ var store = [{
         "excerpt":"프로시저 속도 개선하는 과정에서 배웠던 sql 팁으로, group by 없이 칼럼과 함께 갯수를 출력하는 방법과 페이징 처리에 필요한 전체 레코드 갯수를 구하는 방법에 대한 내용입니다. 관리자 페이지 유지보수 중에 한 프로시저의 실행속도가 굉장히 느린 것을 발견했다. 실무자에게 확인해 본 결과 페이지 넘길 때마다 기본 일분은 기다린다는 답을 받았다. 이 프로시저는...","categories": ["sql"],
         "tags": ["mssql"],
         "url": "http://localhost:4000/sql/mssql-speed-improvement/",
+        "teaser":"http://localhost:4000/assets/images/alhambra.jpg"},{
+        "title": "안드로이드 에러 - setText의 파라미터로 숫자를 전달했을 때",
+        "excerpt":"android.content.res.Resources$NotFoundException: String resource ID #0x1f40     에러로그   android.content.res.Resources$NotFoundException: String resource ID #0x1f40 at android.content.res.Resources.getText(Resources.java:354) at android.widget.TextView.setText(TextView.java:6133) at org.androidtown.mybudgeter.pager.ExpenditureRecyclerAdapter.onBindViewHolder(ExpenditureRecyclerAdapter.java:30) at org.androidtown.mybudgeter.pager.ExpenditureRecyclerAdapter.onBindViewHolder(ExpenditureRecyclerAdapter.java:16) ....         expenditureAmount.setText(currentExpenditure.getAmount());   에러로그는 위와 같은 코드에서 발생된 것으로, setText에 Integer 값을 전달했을 때 경우이다.    Integer값을 String으로 변환해주면 에러가 수정된다.   expenditureAmount.setText(Integer.toString(currentExpenditure.getAmount()));   ","categories": ["Android"],
+        "tags": ["android","error"],
+        "url": "http://localhost:4000/android/android-error-1/",
         "teaser":"http://localhost:4000/assets/images/alhambra.jpg"}]
