@@ -4,7 +4,7 @@ title: (생활코딩) javascript 함수지향1
 date: 2018-01-11
 tags:
  - javascript
-categories: [Javascript]
+category: [javascript]
 ---
 
 생활코딩 함수지향 파트 중 변수의 유효범위에 대한 내용을 정리했습니다.

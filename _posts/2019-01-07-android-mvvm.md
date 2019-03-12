@@ -3,7 +3,7 @@ layout: post-content
 title: 안드로이드 MVVM에 대해 알아보자1
 date: 2019-01-07
 tags: [android, mvvm]
-categories: [Android]
+category: [android]
 ---
 
 Coding in Flow의  Room + ViewModel + LiveData + RecyclerView (MVVM) 튜토리얼을 정리했습니다.

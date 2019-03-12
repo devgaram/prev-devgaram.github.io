@@ -3,7 +3,7 @@ layout : post-content
 title : mssql 쿼리 팁 - group by 없이 카운트하는 방법 & 페이징 처리를 위한 전체 레코드 갯수 구하기
 date : 2019-03-07
 tags : [mssql]
-categories : [sql]
+category : [sql]
 ---
 
 프로시저 속도 개선하는 과정에서 배웠던 sql 팁으로, group by 없이 칼럼과 함께 갯수를 출력하는 방법과 

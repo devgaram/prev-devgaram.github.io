@@ -1,11 +1,6 @@
 # main links
 main:
-  - title: "About me"
-    url: /about/
-  - title: "Posts"
-    url: /month-archive/
-  - title: "Tags"
-    url: /tags/
-  - title: "Memory"
+  - title: "category"
+    url: /categories/
+  - title: "memory"
     url: /memory/
-   

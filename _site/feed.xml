@@ -5,8 +5,8 @@
     <description>라미의 블로그입니다.</description>
     <link>http://localhost:4000/</link>
     <atom:link href="http://localhost:4000/feed.xml" rel="self" type="application/rss+xml"/>
-    <pubDate>Sun, 10 Mar 2019 22:38:18 +0900</pubDate>
-    <lastBuildDate>Sun, 10 Mar 2019 22:38:18 +0900</lastBuildDate>
+    <pubDate>Tue, 12 Mar 2019 17:40:29 +0900</pubDate>
+    <lastBuildDate>Tue, 12 Mar 2019 17:40:29 +0900</lastBuildDate>
     <generator>Jekyll v3.8.5</generator>
     
       <item>
@@ -44,7 +44,7 @@ Integer값을 String으로 변환해주면 에러가 수정된다.&lt;/p&gt;
         <category>error</category>
         
         
-        <category>Android</category>
+        <category>android</category>
         
       </item>
     
@@ -248,7 +248,7 @@ Integer값을 String으로 변환해주면 에러가 수정된다.&lt;/p&gt;
         <category>liquid</category>
         
         
-        <category>Blog</category>
+        <category>blog</category>
         
       </item>
     
@@ -528,7 +528,7 @@ vectorDrawable 애니메이션을 구현하기 위해서는 3개의 xml 파일�
         <category>animation</category>
         
         
-        <category>Android</category>
+        <category>android</category>
         
       </item>
     
@@ -662,7 +662,7 @@ vectorDrawable 애니메이션을 구현하기 위해서는 3개의 xml 파일�
         <category>resource</category>
         
         
-        <category>Android</category>
+        <category>android</category>
         
       </item>
     
@@ -766,7 +766,7 @@ Observer 객체는 페어인 LifecycleOwner가 활성상태(&lt;code class=&quot
         <category>mvvm</category>
         
         
-        <category>Android</category>
+        <category>android</category>
         
       </item>
     
@@ -790,7 +790,7 @@ Observer 객체는 페어인 LifecycleOwner가 활성상태(&lt;code class=&quot
         <category>mvvm</category>
         
         
-        <category>Android</category>
+        <category>android</category>
         
       </item>
     
@@ -857,7 +857,7 @@ ViewModel 사용 시 ViewModel에 액티비티, 프래그먼트, 뷰에 대한 �
         <category>mvvm</category>
         
         
-        <category>Android</category>
+        <category>android</category>
         
       </item>
     
@@ -1090,7 +1090,7 @@ ViewModelProviders 클래스의 &lt;code class=&quot;codetainer&quot;&gt;of(this
         <category>mvvm</category>
         
         
-        <category>Android</category>
+        <category>android</category>
         
       </item>
     
@@ -1170,7 +1170,7 @@ package.json 파일을 아래와 같이 수정합니다.&lt;/p&gt;
         <category>github</category>
         
         
-        <category>Blog</category>
+        <category>blog</category>
         
       </item>
     
@@ -1296,7 +1296,7 @@ Button의 &lt;code class=&quot;codetainer&quot;&gt;onClick()&lt;/code&gt; 이벤
         <category>android</category>
         
         
-        <category>Android</category>
+        <category>android</category>
         
       </item>
     
@@ -1356,7 +1356,7 @@ Button의 &lt;code class=&quot;codetainer&quot;&gt;onClick()&lt;/code&gt; 이벤
         <category>android</category>
         
         
-        <category>Android</category>
+        <category>android</category>
         
       </item>
     
@@ -1508,7 +1508,7 @@ id : 클릭된 아이템 뷰의 row ID
         <category>android</category>
         
         
-        <category>Android</category>
+        <category>android</category>
         
       </item>
     
@@ -1625,7 +1625,7 @@ id : 클릭된 아이템 뷰의 row ID
         <category>android</category>
         
         
-        <category>Android</category>
+        <category>android</category>
         
       </item>
     
@@ -1968,7 +1968,7 @@ import Router from 'vue-router'
         <category>vuejs</category>
         
         
-        <category>Frontend</category>
+        <category>frontend</category>
         
       </item>
     
@@ -2068,7 +2068,7 @@ API&lt;/span&gt;&lt;/p&gt;
         <category>javascript</category>
         
         
-        <category>TDD</category>
+        <category>tdd</category>
         
       </item>
     
@@ -2271,7 +2271,7 @@ Person의 introduce를 상속받았기 때문이다.&lt;/p&gt;
         <category>javascript</category>
         
         
-        <category>Javascript</category>
+        <category>javascript</category>
         
       </item>
     
@@ -2420,7 +2420,7 @@ var a = [0,1,2] 배열 리터럴  &lt;br /&gt;
         <category>javascript</category>
         
         
-        <category>Javascript</category>
+        <category>javascript</category>
         
       </item>
     
@@ -2491,7 +2491,7 @@ this는 var this = o1; 과 암시적으로 같다.  &lt;br /&gt;
         <category>javascript</category>
         
         
-        <category>Javascript</category>
+        <category>javascript</category>
         
       </item>
     
@@ -2587,7 +2587,7 @@ factory_movie 호출 후, 함수의 생이 종료되어도 ghost, matrix를 통�
         <category>javascript</category>
         
         
-        <category>Javascript</category>
+        <category>javascript</category>
         
       </item>
     
@@ -2697,7 +2697,7 @@ array.sort (sortfunc)  &lt;br /&gt;
         <category>javascript</category>
         
         
-        <category>Javascript</category>
+        <category>javascript</category>
         
       </item>
     
@@ -2820,7 +2820,7 @@ Jquery와 같은 라이브러리에서 모듈화 기법으로 많이 사용한�
         <category>javascript</category>
         
         
-        <category>Javascript</category>
+        <category>javascript</category>
         
       </item>
     
@@ -2881,7 +2881,7 @@ console.log(result);
         <category>javascript</category>
         
         
-        <category>Javascript</category>
+        <category>javascript</category>
         
       </item>
     
@@ -3009,7 +3009,7 @@ grades.show_list();    //객체의 함수호출 aa,10 bb,6 cc,80 출력
         <category>javascript</category>
         
         
-        <category>Javascript</category>
+        <category>javascript</category>
         
       </item>
     
@@ -3054,7 +3054,7 @@ NaN   : 0/0 계산할 수 없음. false로 간주&lt;/p&gt;
         <category>javascript</category>
         
         
-        <category>Javascript</category>
+        <category>javascript</category>
         
       </item>
     
@@ -3139,7 +3139,7 @@ argArray는 fun 메서드에서 인자로 사용됩니다. &lt;br /&gt;
         <category>javascript</category>
         
         
-        <category>Javascript</category>
+        <category>javascript</category>
         
       </item>
     

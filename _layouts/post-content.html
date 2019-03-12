@@ -8,3 +8,20 @@ layout: archive-headeronly
 <div id="disqus_thread"></div>
 {% include comments-providers/disqus.html %}
 {% endif %}
+
+<div class="page__related">
+	<h4 class="page__related-title">{{ site.data.ui-text[site.locale].related_label | default: "You May Also Enjoy" }}</h4>
+	<div class="grid__wrapper">
+	{% capture page_category_name %} {{ page.category }} {% endcapture %}
+	{{ page_category_name }}
+	{% for category in site.categories %}			
+		{% capture cur_category %} {{ category[0] }} {% endcapture %}
+		{% if cur_category == page_category_name %}
+			{% for post in category[1] limit:4 %}			
+				{% include archive-single.html type="grid" %}
+			{% endfor %}		
+		{% endif %}
+	{% endfor %}
+	</div>
+</div>
+		
