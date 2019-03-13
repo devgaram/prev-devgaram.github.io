@@ -4,10 +4,6 @@ layout: archive-headeronly
 <span class="font-75" id="page__post-content">
 {{ content }}
 </span>
-{% if page.comments %}
-<div id="disqus_thread"></div>
-{% include comments-providers/disqus.html %}
-{% endif %}
 
 {% assign count = 0 %}
 <div class="page__related">
@@ -29,3 +25,10 @@ layout: archive-headeronly
 	{% endfor%}
 	</div>
 </div>
+
+
+{% if page.comments %}
+<div id="disqus_thread"></div>
+{% include comments-providers/disqus.html %}
+{% endif %}
+
