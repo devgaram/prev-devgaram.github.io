@@ -29,7 +29,7 @@ Observer 객체는 페어인 LifecycleOwner가 활성상태(<code class="codetai
 <span class="li-icon">LiveData를 상속받아 앱에서 자원 공유 가능</span>
 
 # LiveData 사용하기
-[예제로 바로가기](/android-mvvm/#LiveData).
+[예제로 바로가기](/android/android-mvvm/#LiveData).
 ## 1. LiveData 객체 생성하기
 LiveData는 보통 <code class="codetainer">Collections</code> 인터페이스를 구현한 클래스(List, Map, Set)를 사용하며, <code class="codetainer">ViewMoodel</code> 객체 안에 저장된다. 
 ```java

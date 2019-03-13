@@ -9,19 +9,23 @@ layout: archive-headeronly
 {% include comments-providers/disqus.html %}
 {% endif %}
 
+{% assign count = 0 %}
 <div class="page__related">
-	<h4 class="page__related-title">{{ site.data.ui-text[site.locale].related_label | default: "You May Also Enjoy" }}</h4>
+	<h4 class="page__related-title">{{ page.category }} 카테고리의 다른 글</h4>
 	<div class="grid__wrapper">
-	{% capture page_category_name %} {{ page.category }} {% endcapture %}
-	{{ page_category_name }}
-	{% for category in site.categories %}			
-		{% capture cur_category %} {{ category[0] }} {% endcapture %}
-		{% if cur_category == page_category_name %}
-			{% for post in category[1] limit:4 %}			
-				{% include archive-single.html type="grid" %}
-			{% endfor %}		
-		{% endif %}
-	{% endfor %}
+	{% for post in site.posts %}
+		{% for category in post.categories %}
+			{% if post.url != page.url %}
+				{% if page.categories contains category %}		
+					{% if count < 4 %}
+					{% include archive-single.html type="grid" %}					
+					{% assign count = count | plus: 1 %}
+					{% else %}
+						{% break %}
+					{% endif %}							
+				{% endif %}			
+			{% endif %}
+		{% endfor %}	
+	{% endfor%}
 	</div>
 </div>
-		

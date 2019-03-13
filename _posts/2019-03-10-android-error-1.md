@@ -6,7 +6,7 @@ tags: [android, error]
 category: [android]
 ---
 
-android.content.res.Resources$NotFoundException: String resource ID #0x1f40
+setText의 파라미터로 숫자를 전달했을 때 발생되는 에러로그
 
 ---
 

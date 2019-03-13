@@ -5,13 +5,13 @@
     <description>라미의 블로그입니다.</description>
     <link>http://localhost:4000/</link>
     <atom:link href="http://localhost:4000/feed.xml" rel="self" type="application/rss+xml"/>
-    <pubDate>Tue, 12 Mar 2019 17:40:29 +0900</pubDate>
-    <lastBuildDate>Tue, 12 Mar 2019 17:40:29 +0900</lastBuildDate>
+    <pubDate>Wed, 13 Mar 2019 10:57:32 +0900</pubDate>
+    <lastBuildDate>Wed, 13 Mar 2019 10:57:32 +0900</lastBuildDate>
     <generator>Jekyll v3.8.5</generator>
     
       <item>
         <title>안드로이드 에러 - setText의 파라미터로 숫자를 전달했을 때</title>
-        <description>&lt;p&gt;android.content.res.Resources$NotFoundException: String resource ID #0x1f40&lt;/p&gt;
+        <description>&lt;p&gt;setText의 파라미터로 숫자를 전달했을 때 발생되는 에러로그&lt;/p&gt;
 
 &lt;hr /&gt;
 
@@ -691,7 +691,7 @@ Observer 객체는 페어인 LifecycleOwner가 활성상태(&lt;code class=&quot
 &lt;span class=&quot;li-icon&quot;&gt;LiveData를 상속받아 앱에서 자원 공유 가능&lt;/span&gt;&lt;/p&gt;
 
 &lt;h1 id=&quot;livedata-사용하기&quot;&gt;LiveData 사용하기&lt;/h1&gt;
-&lt;p&gt;&lt;a href=&quot;/android-mvvm/#LiveData&quot;&gt;예제로 바로가기&lt;/a&gt;.&lt;/p&gt;
+&lt;p&gt;&lt;a href=&quot;/android/android-mvvm/#LiveData&quot;&gt;예제로 바로가기&lt;/a&gt;.&lt;/p&gt;
 &lt;h2 id=&quot;1-livedata-객체-생성하기&quot;&gt;1. LiveData 객체 생성하기&lt;/h2&gt;
 &lt;p&gt;LiveData는 보통 &lt;code class=&quot;codetainer&quot;&gt;Collections&lt;/code&gt; 인터페이스를 구현한 클래스(List, Map, Set)를 사용하며, &lt;code class=&quot;codetainer&quot;&gt;ViewMoodel&lt;/code&gt; 객체 안에 저장된다.&lt;/p&gt;
 &lt;div class=&quot;language-java highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;kd&quot;&gt;public&lt;/span&gt; &lt;span class=&quot;kd&quot;&gt;class&lt;/span&gt; &lt;span class=&quot;nc&quot;&gt;NameViewModel&lt;/span&gt; &lt;span class=&quot;kd&quot;&gt;extends&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;ViewModel&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;{&lt;/span&gt;
@@ -776,7 +776,7 @@ Observer 객체는 페어인 LifecycleOwner가 활성상태(&lt;code class=&quot
 
 &lt;hr /&gt;
 
-&lt;p&gt;&lt;a href=&quot;/android-mvvm/&quot;&gt;안드로이드 MVVM에 대해 알아보자1&lt;/a&gt;.에 이어지는 내용으로 노트 추가/수정/삭제를 다룬다.&lt;/p&gt;
+&lt;p&gt;&lt;a href=&quot;/android/android-mvvm/&quot;&gt;안드로이드 MVVM에 대해 알아보자1&lt;/a&gt;.에 이어지는 내용으로 노트 추가/수정/삭제를 다룬다.&lt;/p&gt;
 
 &lt;h1 id=&quot;노트-추가해보자&quot;&gt;노트 추가해보자.&lt;/h1&gt;
 
@@ -834,7 +834,7 @@ Observer 객체는 페어인 LifecycleOwner가 활성상태(&lt;code class=&quot
 
 &lt;h1 id=&quot;viewmodel-클래스-구현&quot;&gt;ViewModel 클래스 구현&lt;/h1&gt;
 
-&lt;p&gt;&lt;a href=&quot;/android-mvvm/#viewModel&quot;&gt;예제로 바로가기&lt;/a&gt;.&lt;/p&gt;
+&lt;p&gt;&lt;a href=&quot;/android/android-mvvm/#viewModel&quot;&gt;예제로 바로가기&lt;/a&gt;.&lt;/p&gt;
 
 &lt;p&gt;Architecture Components는 ViewModel 클래스를 제공한다. &lt;br /&gt;
 &lt;strong&gt;ViewModel 클래스의 인스턴스(객체)는 구성 변경에도 데이터를 유지하며, ViewModel 인스턴스는 재생성된 액티비티에서 즉시 사용될 수 있다.&lt;/strong&gt;
@@ -903,7 +903,7 @@ ViewModel 사용 시 ViewModel에 액티비티, 프래그먼트, 뷰에 대한 �
 
 &lt;p&gt;&lt;span id=&quot;viewModel&quot;&gt;&lt;/span&gt;&lt;/p&gt;
 &lt;h2 id=&quot;2-viewmodel과-livedata&quot;&gt;2. ViewModel과 LiveData&lt;/h2&gt;
-&lt;p&gt;&lt;a href=&quot;/android-viewModel/&quot;&gt;뷰모델 개념 익히러가기&lt;/a&gt;.&lt;/p&gt;
+&lt;p&gt;&lt;a href=&quot;/android/android-viewModel/&quot;&gt;뷰모델 개념 익히러가기&lt;/a&gt;.&lt;/p&gt;
 
 &lt;div class=&quot;language-java highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;n&quot;&gt;noteViewModel&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;ViewModelProviders&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;na&quot;&gt;of&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;k&quot;&gt;this&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;).&lt;/span&gt;&lt;span class=&quot;na&quot;&gt;get&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;NoteViewModel&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;na&quot;&gt;class&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;);&lt;/span&gt;
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
@@ -916,7 +916,7 @@ ViewModelProviders 클래스의 &lt;code class=&quot;codetainer&quot;&gt;of(this
 
 &lt;p&gt;&lt;span id=&quot;LiveData&quot;&gt;&lt;/span&gt;
 &lt;strong&gt;LiveData 사용&lt;/strong&gt;  &lt;br /&gt;
-&lt;a href=&quot;/android-LiveData/&quot;&gt;LiveData 개념 익히러가기&lt;/a&gt;.&lt;/p&gt;
+&lt;a href=&quot;/android/android-LiveData/&quot;&gt;LiveData 개념 익히러가기&lt;/a&gt;.&lt;/p&gt;
 
 &lt;p&gt;noteViewModel.java&lt;/p&gt;
 &lt;div class=&quot;language-java highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;kd&quot;&gt;public&lt;/span&gt; &lt;span class=&quot;kd&quot;&gt;class&lt;/span&gt; &lt;span class=&quot;nc&quot;&gt;NoteViewModel&lt;/span&gt; &lt;span class=&quot;kd&quot;&gt;extends&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;AndroidViewModel&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;{&lt;/span&gt;
