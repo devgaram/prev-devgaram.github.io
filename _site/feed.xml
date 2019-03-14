@@ -5,8 +5,8 @@
     <description>라미의 블로그입니다.</description>
     <link>http://localhost:4000/</link>
     <atom:link href="http://localhost:4000/feed.xml" rel="self" type="application/rss+xml"/>
-    <pubDate>Wed, 13 Mar 2019 11:25:17 +0900</pubDate>
-    <lastBuildDate>Wed, 13 Mar 2019 11:25:17 +0900</lastBuildDate>
+    <pubDate>Wed, 13 Mar 2019 15:20:48 +0900</pubDate>
+    <lastBuildDate>Wed, 13 Mar 2019 15:20:48 +0900</lastBuildDate>
     <generator>Jekyll v3.8.5</generator>
     
       <item>
@@ -240,15 +240,15 @@ Integer값을 String으로 변환해주면 에러가 수정된다.&lt;/p&gt;
 &lt;/table&gt;
 </description>
         <pubDate>Tue, 05 Mar 2019 00:00:00 +0900</pubDate>
-        <link>http://localhost:4000/blog/liquid-site/</link>
-        <guid isPermaLink="true">http://localhost:4000/blog/liquid-site/</guid>
+        <link>http://localhost:4000/jekyll/liquid-site/</link>
+        <guid isPermaLink="true">http://localhost:4000/jekyll/liquid-site/</guid>
         
         <category>jekyll</category>
         
         <category>liquid</category>
         
         
-        <category>blog</category>
+        <category>jekyll</category>
         
       </item>
     
@@ -1162,15 +1162,15 @@ package.json 파일을 아래와 같이 수정합니다.&lt;/p&gt;
 
 </description>
         <pubDate>Sat, 05 Jan 2019 00:00:00 +0900</pubDate>
-        <link>http://localhost:4000/blog/jekyll-js-custom/</link>
-        <guid isPermaLink="true">http://localhost:4000/blog/jekyll-js-custom/</guid>
+        <link>http://localhost:4000/jekyll/jekyll-js-custom/</link>
+        <guid isPermaLink="true">http://localhost:4000/jekyll/jekyll-js-custom/</guid>
         
         <category>jekyll</category>
         
         <category>github</category>
         
         
-        <category>blog</category>
+        <category>jekyll</category>
         
       </item>
     
@@ -1962,13 +1962,13 @@ import Router from 'vue-router'
 &lt;p&gt;동영상에서 진행한 프로젝트를 따라한 &lt;a href=&quot;https://github.com/devgaram/vueStudy&quot;&gt;깃으로 가기&lt;/a&gt;. 개인적인 주석이 포함되어있습니다.&lt;/p&gt;
 </description>
         <pubDate>Sat, 07 Apr 2018 00:00:00 +0900</pubDate>
-        <link>http://localhost:4000/frontend/vue2/</link>
-        <guid isPermaLink="true">http://localhost:4000/frontend/vue2/</guid>
+        <link>http://localhost:4000/javascript/vue2/</link>
+        <guid isPermaLink="true">http://localhost:4000/javascript/vue2/</guid>
         
         <category>vuejs</category>
         
         
-        <category>frontend</category>
+        <category>javascript</category>
         
       </item>
     
@@ -2060,15 +2060,15 @@ API&lt;/span&gt;&lt;/p&gt;
 &lt;/ul&gt;
 </description>
         <pubDate>Sat, 27 Jan 2018 00:00:00 +0900</pubDate>
-        <link>http://localhost:4000/tdd/mocha-unittest/</link>
-        <guid isPermaLink="true">http://localhost:4000/tdd/mocha-unittest/</guid>
+        <link>http://localhost:4000/javascript/mocha-unittest/</link>
+        <guid isPermaLink="true">http://localhost:4000/javascript/mocha-unittest/</guid>
         
         <category>mocha</category>
         
         <category>javascript</category>
         
         
-        <category>tdd</category>
+        <category>javascript</category>
         
       </item>
     

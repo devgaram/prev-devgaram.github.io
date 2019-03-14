@@ -3,7 +3,7 @@ layout: post-content
 title: (mocha) 자바스크립트 단위테스트 시작하기
 date: 2018-01-27
 tags: [mocha, javascript]
-category: [tdd]
+category: [javascript]
 ---
 
 mocha 자바스크립트 테스트 프레임워크로 단위테스트 시작하는 방법입니다.

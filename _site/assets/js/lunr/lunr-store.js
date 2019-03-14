@@ -55,14 +55,14 @@ var store = [{
         "url": "http://localhost:4000/sql/mssql-tip-1/",
         "teaser":"http://localhost:4000/assets/images/alhambra.jpg"},{
         "title": "(mocha) 자바스크립트 단위테스트 시작하기",
-        "excerpt":"mocha 자바스크립트 테스트 프레임워크로 단위테스트 시작하는 방법입니다. 단위테스트(Unit Test)가 필요한 이유? 프로그램을 작은 단위로 쪼개서 내가 짠 프로그램이 내가 원하는 결과대로 동작하는 지 테스트할 수 있다. 단위테스트를 거치면 프로그램의 안정성이 높아지며, 단위테스트를 믿고 리팩토링을 할 수 있다. 자바스크립트로 짜여진 프로그램에서 오류를 찾을 때, 단위테스트를 거치지 않은 프로그램의 경우는 전체 흐름을...","categories": ["tdd"],
+        "excerpt":"mocha 자바스크립트 테스트 프레임워크로 단위테스트 시작하는 방법입니다. 단위테스트(Unit Test)가 필요한 이유? 프로그램을 작은 단위로 쪼개서 내가 짠 프로그램이 내가 원하는 결과대로 동작하는 지 테스트할 수 있다. 단위테스트를 거치면 프로그램의 안정성이 높아지며, 단위테스트를 믿고 리팩토링을 할 수 있다. 자바스크립트로 짜여진 프로그램에서 오류를 찾을 때, 단위테스트를 거치지 않은 프로그램의 경우는 전체 흐름을...","categories": ["javascript"],
         "tags": ["mocha","javascript"],
-        "url": "http://localhost:4000/tdd/mocha-unittest/",
+        "url": "http://localhost:4000/javascript/mocha-unittest/",
         "teaser":"http://localhost:4000/assets/images/alhambra.jpg"},{
         "title": "Vue2 65분만에 배우기!",
-        "excerpt":"유튜브 영상 The Vue Tutorial for 2018 - Learn Vue 2 in 65 Minutes 중 몰랐던 내용 정리한 글입니다. 1. Vue-CLI 설치하기 Vue-CLI를 통해 Vue 프로젝트를 빠르고 쉽게 생성할 수 있다. &gt; mkdir vue-toy &gt; cd vue-toy &gt; npm install -g @vue/cli -- Vue-CLI 설치 &gt; vue create vue-voca --...","categories": ["frontend"],
+        "excerpt":"유튜브 영상 The Vue Tutorial for 2018 - Learn Vue 2 in 65 Minutes 중 몰랐던 내용 정리한 글입니다. 1. Vue-CLI 설치하기 Vue-CLI를 통해 Vue 프로젝트를 빠르고 쉽게 생성할 수 있다. &gt; mkdir vue-toy &gt; cd vue-toy &gt; npm install -g @vue/cli -- Vue-CLI 설치 &gt; vue create vue-voca --...","categories": ["javascript"],
         "tags": ["vuejs"],
-        "url": "http://localhost:4000/frontend/vue2/",
+        "url": "http://localhost:4000/javascript/vue2/",
         "teaser":"http://localhost:4000/assets/images/alhambra.jpg"},{
         "title": "npm 시작하기",
         "excerpt":"1. npm이란? npm은 어떻게 구성되어있을까? npm은 세 개의 컴포넌트로 구성되어있습니다. the website - 패키지 탐색, 프로파일 설정, 개인 npm histoty 관리 CLI ( the Command Line Interface ) - 개발자와 npm이 소통하는 방법으로 터미널에서 동작 the registry - 자바스크립트 소프트웨어의 공용 데이터베이스 및 메타 정보 npm은 언제 사용할까? 앱에 패키지를...","categories": ["npm"],
@@ -100,9 +100,9 @@ var store = [{
         "url": "http://localhost:4000/android/android-fragment/",
         "teaser":"http://localhost:4000/assets/images/alhambra.jpg"},{
         "title": "jekyll의 minimal-mistakes에서 자바스크립트 커스텀하는 방법",
-        "excerpt":"minimal-mistakes 테마를 적용한 jekyll 블로그를 커스텀하는 과정에서 자바스크립트 코드를 추가하는 방법입니다. minimal-mistakes 문서에 자바스크립트 커스텀 방법이 잘 정리되어있습니다. 공식문서 바로가기. 우리가 수정해야 할 파일은 /assets/js/ 에 위치한 _main.js 파일입니다. 하지만, jekyll은 _main.js 파일이 아닌 main.min.js 파일을 컴파일하여 화면에 반영합니다. main.min.js 는 _main.js 자바스크립트 코드를 압축화하고 난독화한 파일로 npm 패키지 중...","categories": ["blog"],
+        "excerpt":"minimal-mistakes 테마를 적용한 jekyll 블로그를 커스텀하는 과정에서 자바스크립트 코드를 추가하는 방법입니다. minimal-mistakes 문서에 자바스크립트 커스텀 방법이 잘 정리되어있습니다. 공식문서 바로가기. 우리가 수정해야 할 파일은 /assets/js/ 에 위치한 _main.js 파일입니다. 하지만, jekyll은 _main.js 파일이 아닌 main.min.js 파일을 컴파일하여 화면에 반영합니다. main.min.js 는 _main.js 자바스크립트 코드를 압축화하고 난독화한 파일로 npm 패키지 중...","categories": ["jekyll"],
         "tags": ["jekyll","github"],
-        "url": "http://localhost:4000/blog/jekyll-js-custom/",
+        "url": "http://localhost:4000/jekyll/jekyll-js-custom/",
         "teaser":"http://localhost:4000/assets/images/alhambra.jpg"},{
         "title": "안드로이드 MVVM에 대해 알아보자1",
         "excerpt":"Coding in Flow의 Room + ViewModel + LiveData + RecyclerView (MVVM) 튜토리얼을 정리했습니다. 파일 구성 MainActivity.java Note.java NoteAdapter.java NoteDao.interface NoteDatabase.java NoteRepository.java NoteViewModel.java MVVM - VIEW와 VIEWMODEL MainActivity.class : 앱의 시작점으로 RecyclerView 설정 및 ViewModel 생성하는 부분 NoteViewModel.class : UI 컴포넌트와 UI 데이터의 분리 NoteAdapter.class : 리사이클러뷰 어댑터 NoteRepository.class : 저장소,...","categories": ["android"],
@@ -135,9 +135,9 @@ var store = [{
         "url": "http://localhost:4000/android/android-animate/",
         "teaser":"http://localhost:4000/assets/images/alhambra.jpg"},{
         "title": "Liquid 문법",
-        "excerpt":"jekyll 블로그 운영시 알아야할 필수 liquid 문법 liquid 문법 정리된 사이트 Liquid categoryInputOutput Objects { { page.title } } Introduction Tags { % if user % } &nbsp;&nbsp;Hello { { user.name } }! { % endif % } Hello Adam! Filters { { \"/my/fancy/url\" | append: \".html\" } } /my/fancy/url.html...","categories": ["blog"],
+        "excerpt":"jekyll 블로그 운영시 알아야할 필수 liquid 문법 liquid 문법 정리된 사이트 Liquid categoryInputOutput Objects { { page.title } } Introduction Tags { % if user % } &nbsp;&nbsp;Hello { { user.name } }! { % endif % } Hello Adam! Filters { { \"/my/fancy/url\" | append: \".html\" } } /my/fancy/url.html...","categories": ["jekyll"],
         "tags": ["jekyll","liquid"],
-        "url": "http://localhost:4000/blog/liquid-site/",
+        "url": "http://localhost:4000/jekyll/liquid-site/",
         "teaser":"http://localhost:4000/assets/images/alhambra.jpg"},{
         "title": "mssql 쿼리 팁 - group by 없이 카운트하는 방법 & 페이징 처리를 위한 전체 레코드 갯수 구하기",
         "excerpt":"프로시저 속도 개선하는 과정에서 배웠던 sql 팁으로, group by 없이 칼럼과 함께 갯수를 출력하는 방법과 페이징 처리에 필요한 전체 레코드 갯수를 구하는 방법에 대한 내용입니다. 관리자 페이지 유지보수 중에 한 프로시저의 실행속도가 굉장히 느린 것을 발견했다. 실무자에게 확인해 본 결과 페이지 넘길 때마다 기본 일분은 기다린다는 답을 받았다. 이 프로시저는...","categories": ["sql"],
