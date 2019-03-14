@@ -148,4 +148,9 @@ var store = [{
         "excerpt":"setText의 파라미터로 숫자를 전달했을 때 발생되는 에러로그     에러로그   android.content.res.Resources$NotFoundException: String resource ID #0x1f40 at android.content.res.Resources.getText(Resources.java:354) at android.widget.TextView.setText(TextView.java:6133) at org.androidtown.mybudgeter.pager.ExpenditureRecyclerAdapter.onBindViewHolder(ExpenditureRecyclerAdapter.java:30) at org.androidtown.mybudgeter.pager.ExpenditureRecyclerAdapter.onBindViewHolder(ExpenditureRecyclerAdapter.java:16) ....         expenditureAmount.setText(currentExpenditure.getAmount());   에러로그는 위와 같은 코드에서 발생된 것으로, setText에 Integer 값을 전달했을 때 경우이다.    Integer값을 String으로 변환해주면 에러가 수정된다.   expenditureAmount.setText(Integer.toString(currentExpenditure.getAmount()));   ","categories": ["android"],
         "tags": ["android","error"],
         "url": "http://localhost:4000/android/android-error-1/",
+        "teaser":"http://localhost:4000/assets/images/alhambra.jpg"},{
+        "title": "html5 와 css3 와 관련된 에러 모음",
+        "excerpt":"   IE에서 CSS 적용 안되는 문제 (2019-03-14)     1. IE에서 CSS 적용 안되는 문제   HTML5, CSS3로 코딩된 페이지가 크롬과 IE 신형 버전에서는 정상적으로 적용되나, 구형 익스플로어에서 적용안되는 문제가 발생했다. 이는 페이지 head 안에 아래의 메타 태그만 추가하면 해결된다.   &lt;meta http-equiv=\"X-UA-Compatible\" content=\"IE=edge, chrome=1\"&gt;   ","categories": ["android"],
+        "tags": ["android","error"],
+        "url": "http://localhost:4000/android/html5-error/",
         "teaser":"http://localhost:4000/assets/images/alhambra.jpg"}]
