@@ -3,7 +3,7 @@ layout: post-content
 title: Liquid 문법
 date: 2019-03-05
 tags: [jekyll, liquid]
-categories: [Blog]
+category: [jekyll]
 ---
 
 jekyll 블로그 운영시 알아야할 필수 liquid 문법

@@ -1,10 +1,35 @@
 ---
 layout: archive-headeronly
 ---
+
 <span class="font-75" id="page__post-content">
 {{ content }}
 </span>
+
+{% assign count = 0 %}
+<div class="page__related">
+	<h4 class="page__related-title">{{ page.category }} 카테고리의 다른 글</h4>
+	<div class="grid__wrapper">
+	{% for post in site.posts %}
+		{% for category in post.categories %}
+			{% if post.url != page.url %}
+				{% if page.categories contains category %}		
+					{% if count < 4 %}
+					{% include archive-single.html type="grid" %}					
+					{% assign count = count | plus: 1 %}
+					{% else %}
+						{% break %}
+					{% endif %}							
+				{% endif %}			
+			{% endif %}
+		{% endfor %}	
+	{% endfor%}
+	</div>
+</div>
+
+
 {% if page.comments %}
 <div id="disqus_thread"></div>
 {% include comments-providers/disqus.html %}
 {% endif %}
+

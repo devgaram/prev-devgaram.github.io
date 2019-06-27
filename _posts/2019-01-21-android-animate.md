@@ -3,7 +3,7 @@ layout: post-content
 title: 안드로이드에서 이미지 애니메이션 구현 방법
 date: 2019-01-21
 tags: [android, animation]
-categories: [Android]
+category: [android]
 ---
 
 이미지 애니메이션 구현 방법에는 다음과 같이 1)Animation Drawable과 2)Animated vector Drawable 두가지 옵션이 있다. 

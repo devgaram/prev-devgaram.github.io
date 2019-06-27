@@ -3,7 +3,7 @@ layout: post-content
 title: 안드로이드 ViewModel에 대해 알아보자
 date: 2019-01-07
 tags: [android, viewmodel, mvvm]
-categories: [Android]
+category: [android]
 ---
 
 안드로이드 아키텍쳐 중 ViewModel 클래스에 대한 내용입니다.
@@ -41,7 +41,7 @@ UI 컨트롤러는 아래와 같은 작업을 다루는 경향이 있다.
 
 # ViewModel 클래스 구현
 
-[예제로 바로가기](/android-mvvm/#viewModel).
+[예제로 바로가기](/android/android-mvvm/#viewModel).
 
 Architecture Components는 ViewModel 클래스를 제공한다.   
 **ViewModel 클래스의 인스턴스(객체)는 구성 변경에도 데이터를 유지하며, ViewModel 인스턴스는 재생성된 액티비티에서 즉시 사용될 수 있다.**

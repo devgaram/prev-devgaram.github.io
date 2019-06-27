@@ -3,7 +3,7 @@ layout: post-content
 title: 안드로이드 MVVM에 대해 알아보자1
 date: 2019-01-07
 tags: [android, mvvm]
-categories: [Android]
+category: [android]
 ---
 
 Coding in Flow의  Room + ViewModel + LiveData + RecyclerView (MVVM) 튜토리얼을 정리했습니다.
@@ -47,7 +47,7 @@ recyclerView.setAdapter(adapter);   // 3-1)
 
 <span id="viewModel"></span>
 ## 2. ViewModel과 LiveData
-[뷰모델 개념 익히러가기](/android-viewModel/).
+[뷰모델 개념 익히러가기](/android/android-viewModel/).
 
 ```java
 noteViewModel = ViewModelProviders.of(this).get(NoteViewModel.class);
@@ -61,7 +61,7 @@ ViewModelProviders 클래스의 <code class="codetainer">of(this)</code> 를 통
 
 <span id="LiveData"></span>
 **LiveData 사용**    
-[LiveData 개념 익히러가기](/android-LiveData/).    
+[LiveData 개념 익히러가기](/android/android-LiveData/).    
 
 noteViewModel.java
 ```java

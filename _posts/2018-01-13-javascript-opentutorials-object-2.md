@@ -4,7 +4,7 @@ title: (생활코딩) javascript 객체지향2
 date: 2018-01-13
 tags:
  - javascript
-categories: [Javascript]
+category: [javascript]
 ---
 
 생활코딩 객체지향 파트 중 상속과 프로토타입에 대한 내용을 정리했습니다.

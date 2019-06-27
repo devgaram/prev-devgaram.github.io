@@ -2,7 +2,11 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
     
     <url>
+<<<<<<< HEAD
         <loc>http://localhost:4000/java/java-api-1/</loc>
+=======
+        <loc>http://localhost:4000/android/html5-error/</loc>
+>>>>>>> 25fa521191ed2024d8956797599d7e5222f64f60
     </url>
     
     <url>
@@ -14,7 +18,7 @@
     </url>
     
     <url>
-        <loc>http://localhost:4000/blog/liquid-site/</loc>
+        <loc>http://localhost:4000/jekyll/liquid-site/</loc>
     </url>
     
     <url>
@@ -42,7 +46,7 @@
     </url>
     
     <url>
-        <loc>http://localhost:4000/blog/jekyll-js-custom/</loc>
+        <loc>http://localhost:4000/jekyll/jekyll-js-custom/</loc>
     </url>
     
     <url>
@@ -74,11 +78,11 @@
     </url>
     
     <url>
-        <loc>http://localhost:4000/frontend/vue2/</loc>
+        <loc>http://localhost:4000/javascript/vue2/</loc>
     </url>
     
     <url>
-        <loc>http://localhost:4000/tdd/mocha-unittest/</loc>
+        <loc>http://localhost:4000/javascript/mocha-unittest/</loc>
     </url>
     
     <url>
@@ -138,6 +142,14 @@
     
     
     <url>
+        <loc>http://localhost:4000/categories/android/</loc>
+    </url>
+    
+    
+    
+    
+    
+    <url>
         <loc>http://localhost:4000/categories/</loc>
     </url>
     
@@ -149,6 +161,22 @@
     
     <url>
         <loc>http://localhost:4000/</loc>
+    </url>
+    
+    
+    
+    
+    
+    <url>
+        <loc>http://localhost:4000/categories/javascript/</loc>
+    </url>
+    
+    
+    
+    
+    
+    <url>
+        <loc>http://localhost:4000/categories/jekyll/</loc>
     </url>
     
     
@@ -176,6 +204,22 @@
     </url>
     
     
+    
+    
+    
+    <url>
+        <loc>http://localhost:4000/categories/npm/</loc>
+    </url>
+    
+    
+    
+    
+    
+    
+    
+    <url>
+        <loc>http://localhost:4000/categories/sql/</loc>
+    </url>
     
     
     

@@ -3,10 +3,10 @@ layout: post-content
 title: 안드로이드 에러 - setText의 파라미터로 숫자를 전달했을 때
 date: 2019-03-10
 tags: [android, error]
-categories: [Android]
+category: [android]
 ---
 
-android.content.res.Resources$NotFoundException: String resource ID #0x1f40
+setText의 파라미터로 숫자를 전달했을 때 발생되는 에러로그
 
 ---
 

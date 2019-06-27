@@ -5,6 +5,7 @@
     <description>라미의 블로그입니다.</description>
     <link>http://localhost:4000/</link>
     <atom:link href="http://localhost:4000/feed.xml" rel="self" type="application/rss+xml"/>
+<<<<<<< HEAD
     <pubDate>Thu, 27 Jun 2019 12:28:08 +0900</pubDate>
     <lastBuildDate>Thu, 27 Jun 2019 12:28:08 +0900</lastBuildDate>
     <generator>Jekyll v3.8.5</generator>
@@ -52,12 +53,45 @@ returnVal &amp;lt; 0, string1 &amp;lt; string2 사전적으로 string1이 string
         
         
         <category>Java</category>
+=======
+    <pubDate>Thu, 14 Mar 2019 16:04:36 +0900</pubDate>
+    <lastBuildDate>Thu, 14 Mar 2019 16:04:36 +0900</lastBuildDate>
+    <generator>Jekyll v3.8.5</generator>
+    
+      <item>
+        <title>html5 와 css3 와 관련된 에러 모음</title>
+        <description>&lt;ol&gt;
+  &lt;li&gt;IE에서 CSS 적용 안되는 문제 (2019-03-14)&lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;hr /&gt;
+
+&lt;h2 id=&quot;1-ie에서-css-적용-안되는-문제&quot;&gt;1. IE에서 CSS 적용 안되는 문제&lt;/h2&gt;
+
+&lt;p&gt;HTML5, CSS3로 코딩된 페이지가 크롬과 IE 신형 버전에서는 정상적으로 적용되나, 구형 익스플로어에서 적용안되는 문제가 발생했다.
+이는 페이지 head 안에 아래의 메타 태그만 추가하면 해결된다.&lt;/p&gt;
+
+&lt;div class=&quot;language-html highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;nt&quot;&gt;&amp;lt;meta&lt;/span&gt; &lt;span class=&quot;na&quot;&gt;http-equiv=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;X-UA-Compatible&quot;&lt;/span&gt; &lt;span class=&quot;na&quot;&gt;content=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;IE=edge, chrome=1&quot;&lt;/span&gt;&lt;span class=&quot;nt&quot;&gt;&amp;gt;&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+</description>
+        <pubDate>Thu, 14 Mar 2019 00:00:00 +0900</pubDate>
+        <link>http://localhost:4000/android/html5-error/</link>
+        <guid isPermaLink="true">http://localhost:4000/android/html5-error/</guid>
+        
+        <category>android</category>
+        
+        <category>error</category>
+        
+        
+        <category>android</category>
+>>>>>>> 25fa521191ed2024d8956797599d7e5222f64f60
         
       </item>
     
       <item>
         <title>안드로이드 에러 - setText의 파라미터로 숫자를 전달했을 때</title>
-        <description>&lt;p&gt;android.content.res.Resources$NotFoundException: String resource ID #0x1f40&lt;/p&gt;
+        <description>&lt;p&gt;setText의 파라미터로 숫자를 전달했을 때 발생되는 에러로그&lt;/p&gt;
 
 &lt;hr /&gt;
 
@@ -90,7 +124,7 @@ Integer값을 String으로 변환해주면 에러가 수정된다.&lt;/p&gt;
         <category>error</category>
         
         
-        <category>Android</category>
+        <category>android</category>
         
       </item>
     
@@ -286,15 +320,15 @@ Integer값을 String으로 변환해주면 에러가 수정된다.&lt;/p&gt;
 &lt;/table&gt;
 </description>
         <pubDate>Tue, 05 Mar 2019 00:00:00 +0900</pubDate>
-        <link>http://localhost:4000/blog/liquid-site/</link>
-        <guid isPermaLink="true">http://localhost:4000/blog/liquid-site/</guid>
+        <link>http://localhost:4000/jekyll/liquid-site/</link>
+        <guid isPermaLink="true">http://localhost:4000/jekyll/liquid-site/</guid>
         
         <category>jekyll</category>
         
         <category>liquid</category>
         
         
-        <category>Blog</category>
+        <category>jekyll</category>
         
       </item>
     
@@ -574,7 +608,7 @@ vectorDrawable 애니메이션을 구현하기 위해서는 3개의 xml 파일�
         <category>animation</category>
         
         
-        <category>Android</category>
+        <category>android</category>
         
       </item>
     
@@ -708,7 +742,7 @@ vectorDrawable 애니메이션을 구현하기 위해서는 3개의 xml 파일�
         <category>resource</category>
         
         
-        <category>Android</category>
+        <category>android</category>
         
       </item>
     
@@ -737,7 +771,7 @@ Observer 객체는 페어인 LifecycleOwner가 활성상태(&lt;code class=&quot
 &lt;span class=&quot;li-icon&quot;&gt;LiveData를 상속받아 앱에서 자원 공유 가능&lt;/span&gt;&lt;/p&gt;
 
 &lt;h1 id=&quot;livedata-사용하기&quot;&gt;LiveData 사용하기&lt;/h1&gt;
-&lt;p&gt;&lt;a href=&quot;/android-mvvm/#LiveData&quot;&gt;예제로 바로가기&lt;/a&gt;.&lt;/p&gt;
+&lt;p&gt;&lt;a href=&quot;/android/android-mvvm/#LiveData&quot;&gt;예제로 바로가기&lt;/a&gt;.&lt;/p&gt;
 &lt;h2 id=&quot;1-livedata-객체-생성하기&quot;&gt;1. LiveData 객체 생성하기&lt;/h2&gt;
 &lt;p&gt;LiveData는 보통 &lt;code class=&quot;codetainer&quot;&gt;Collections&lt;/code&gt; 인터페이스를 구현한 클래스(List, Map, Set)를 사용하며, &lt;code class=&quot;codetainer&quot;&gt;ViewMoodel&lt;/code&gt; 객체 안에 저장된다.&lt;/p&gt;
 &lt;div class=&quot;language-java highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;kd&quot;&gt;public&lt;/span&gt; &lt;span class=&quot;kd&quot;&gt;class&lt;/span&gt; &lt;span class=&quot;nc&quot;&gt;NameViewModel&lt;/span&gt; &lt;span class=&quot;kd&quot;&gt;extends&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;ViewModel&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;{&lt;/span&gt;
@@ -812,7 +846,7 @@ Observer 객체는 페어인 LifecycleOwner가 활성상태(&lt;code class=&quot
         <category>mvvm</category>
         
         
-        <category>Android</category>
+        <category>android</category>
         
       </item>
     
@@ -822,7 +856,7 @@ Observer 객체는 페어인 LifecycleOwner가 활성상태(&lt;code class=&quot
 
 &lt;hr /&gt;
 
-&lt;p&gt;&lt;a href=&quot;/android-mvvm/&quot;&gt;안드로이드 MVVM에 대해 알아보자1&lt;/a&gt;.에 이어지는 내용으로 노트 추가/수정/삭제를 다룬다.&lt;/p&gt;
+&lt;p&gt;&lt;a href=&quot;/android/android-mvvm/&quot;&gt;안드로이드 MVVM에 대해 알아보자1&lt;/a&gt;.에 이어지는 내용으로 노트 추가/수정/삭제를 다룬다.&lt;/p&gt;
 
 &lt;h1 id=&quot;노트-추가해보자&quot;&gt;노트 추가해보자.&lt;/h1&gt;
 
@@ -836,7 +870,7 @@ Observer 객체는 페어인 LifecycleOwner가 활성상태(&lt;code class=&quot
         <category>mvvm</category>
         
         
-        <category>Android</category>
+        <category>android</category>
         
       </item>
     
@@ -880,7 +914,7 @@ Observer 객체는 페어인 LifecycleOwner가 활성상태(&lt;code class=&quot
 
 &lt;h1 id=&quot;viewmodel-클래스-구현&quot;&gt;ViewModel 클래스 구현&lt;/h1&gt;
 
-&lt;p&gt;&lt;a href=&quot;/android-mvvm/#viewModel&quot;&gt;예제로 바로가기&lt;/a&gt;.&lt;/p&gt;
+&lt;p&gt;&lt;a href=&quot;/android/android-mvvm/#viewModel&quot;&gt;예제로 바로가기&lt;/a&gt;.&lt;/p&gt;
 
 &lt;p&gt;Architecture Components는 ViewModel 클래스를 제공한다. &lt;br /&gt;
 &lt;strong&gt;ViewModel 클래스의 인스턴스(객체)는 구성 변경에도 데이터를 유지하며, ViewModel 인스턴스는 재생성된 액티비티에서 즉시 사용될 수 있다.&lt;/strong&gt;
@@ -903,7 +937,7 @@ ViewModel 사용 시 ViewModel에 액티비티, 프래그먼트, 뷰에 대한 �
         <category>mvvm</category>
         
         
-        <category>Android</category>
+        <category>android</category>
         
       </item>
     
@@ -949,7 +983,7 @@ ViewModel 사용 시 ViewModel에 액티비티, 프래그먼트, 뷰에 대한 �
 
 &lt;p&gt;&lt;span id=&quot;viewModel&quot;&gt;&lt;/span&gt;&lt;/p&gt;
 &lt;h2 id=&quot;2-viewmodel과-livedata&quot;&gt;2. ViewModel과 LiveData&lt;/h2&gt;
-&lt;p&gt;&lt;a href=&quot;/android-viewModel/&quot;&gt;뷰모델 개념 익히러가기&lt;/a&gt;.&lt;/p&gt;
+&lt;p&gt;&lt;a href=&quot;/android/android-viewModel/&quot;&gt;뷰모델 개념 익히러가기&lt;/a&gt;.&lt;/p&gt;
 
 &lt;div class=&quot;language-java highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;n&quot;&gt;noteViewModel&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;ViewModelProviders&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;na&quot;&gt;of&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;k&quot;&gt;this&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;).&lt;/span&gt;&lt;span class=&quot;na&quot;&gt;get&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;NoteViewModel&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;na&quot;&gt;class&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;);&lt;/span&gt;
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
@@ -962,7 +996,7 @@ ViewModelProviders 클래스의 &lt;code class=&quot;codetainer&quot;&gt;of(this
 
 &lt;p&gt;&lt;span id=&quot;LiveData&quot;&gt;&lt;/span&gt;
 &lt;strong&gt;LiveData 사용&lt;/strong&gt;  &lt;br /&gt;
-&lt;a href=&quot;/android-LiveData/&quot;&gt;LiveData 개념 익히러가기&lt;/a&gt;.&lt;/p&gt;
+&lt;a href=&quot;/android/android-LiveData/&quot;&gt;LiveData 개념 익히러가기&lt;/a&gt;.&lt;/p&gt;
 
 &lt;p&gt;noteViewModel.java&lt;/p&gt;
 &lt;div class=&quot;language-java highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;kd&quot;&gt;public&lt;/span&gt; &lt;span class=&quot;kd&quot;&gt;class&lt;/span&gt; &lt;span class=&quot;nc&quot;&gt;NoteViewModel&lt;/span&gt; &lt;span class=&quot;kd&quot;&gt;extends&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;AndroidViewModel&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;{&lt;/span&gt;
@@ -1136,7 +1170,7 @@ ViewModelProviders 클래스의 &lt;code class=&quot;codetainer&quot;&gt;of(this
         <category>mvvm</category>
         
         
-        <category>Android</category>
+        <category>android</category>
         
       </item>
     
@@ -1208,15 +1242,15 @@ package.json 파일을 아래와 같이 수정합니다.&lt;/p&gt;
 
 </description>
         <pubDate>Sat, 05 Jan 2019 00:00:00 +0900</pubDate>
-        <link>http://localhost:4000/blog/jekyll-js-custom/</link>
-        <guid isPermaLink="true">http://localhost:4000/blog/jekyll-js-custom/</guid>
+        <link>http://localhost:4000/jekyll/jekyll-js-custom/</link>
+        <guid isPermaLink="true">http://localhost:4000/jekyll/jekyll-js-custom/</guid>
         
         <category>jekyll</category>
         
         <category>github</category>
         
         
-        <category>Blog</category>
+        <category>jekyll</category>
         
       </item>
     
@@ -1342,7 +1376,7 @@ Button의 &lt;code class=&quot;codetainer&quot;&gt;onClick()&lt;/code&gt; 이벤
         <category>android</category>
         
         
-        <category>Android</category>
+        <category>android</category>
         
       </item>
     
@@ -1402,7 +1436,7 @@ Button의 &lt;code class=&quot;codetainer&quot;&gt;onClick()&lt;/code&gt; 이벤
         <category>android</category>
         
         
-        <category>Android</category>
+        <category>android</category>
         
       </item>
     
@@ -1554,7 +1588,7 @@ id : 클릭된 아이템 뷰의 row ID
         <category>android</category>
         
         
-        <category>Android</category>
+        <category>android</category>
         
       </item>
     
@@ -1671,7 +1705,7 @@ id : 클릭된 아이템 뷰의 row ID
         <category>android</category>
         
         
-        <category>Android</category>
+        <category>android</category>
         
       </item>
     
@@ -2008,13 +2042,13 @@ import Router from 'vue-router'
 &lt;p&gt;동영상에서 진행한 프로젝트를 따라한 &lt;a href=&quot;https://github.com/devgaram/vueStudy&quot;&gt;깃으로 가기&lt;/a&gt;. 개인적인 주석이 포함되어있습니다.&lt;/p&gt;
 </description>
         <pubDate>Sat, 07 Apr 2018 00:00:00 +0900</pubDate>
-        <link>http://localhost:4000/frontend/vue2/</link>
-        <guid isPermaLink="true">http://localhost:4000/frontend/vue2/</guid>
+        <link>http://localhost:4000/javascript/vue2/</link>
+        <guid isPermaLink="true">http://localhost:4000/javascript/vue2/</guid>
         
         <category>vuejs</category>
         
         
-        <category>Frontend</category>
+        <category>javascript</category>
         
       </item>
     
@@ -2106,15 +2140,15 @@ API&lt;/span&gt;&lt;/p&gt;
 &lt;/ul&gt;
 </description>
         <pubDate>Sat, 27 Jan 2018 00:00:00 +0900</pubDate>
-        <link>http://localhost:4000/tdd/mocha-unittest/</link>
-        <guid isPermaLink="true">http://localhost:4000/tdd/mocha-unittest/</guid>
+        <link>http://localhost:4000/javascript/mocha-unittest/</link>
+        <guid isPermaLink="true">http://localhost:4000/javascript/mocha-unittest/</guid>
         
         <category>mocha</category>
         
         <category>javascript</category>
         
         
-        <category>TDD</category>
+        <category>javascript</category>
         
       </item>
     
@@ -2317,7 +2351,7 @@ Person의 introduce를 상속받았기 때문이다.&lt;/p&gt;
         <category>javascript</category>
         
         
-        <category>Javascript</category>
+        <category>javascript</category>
         
       </item>
     
@@ -2466,7 +2500,7 @@ var a = [0,1,2] 배열 리터럴  &lt;br /&gt;
         <category>javascript</category>
         
         
-        <category>Javascript</category>
+        <category>javascript</category>
         
       </item>
     
@@ -2537,7 +2571,7 @@ this는 var this = o1; 과 암시적으로 같다.  &lt;br /&gt;
         <category>javascript</category>
         
         
-        <category>Javascript</category>
+        <category>javascript</category>
         
       </item>
     
@@ -2633,7 +2667,7 @@ factory_movie 호출 후, 함수의 생이 종료되어도 ghost, matrix를 통�
         <category>javascript</category>
         
         
-        <category>Javascript</category>
+        <category>javascript</category>
         
       </item>
     
@@ -2743,7 +2777,7 @@ array.sort (sortfunc)  &lt;br /&gt;
         <category>javascript</category>
         
         
-        <category>Javascript</category>
+        <category>javascript</category>
         
       </item>
     
@@ -2866,7 +2900,7 @@ Jquery와 같은 라이브러리에서 모듈화 기법으로 많이 사용한�
         <category>javascript</category>
         
         
-        <category>Javascript</category>
+        <category>javascript</category>
         
       </item>
     
@@ -2927,7 +2961,7 @@ console.log(result);
         <category>javascript</category>
         
         
-        <category>Javascript</category>
+        <category>javascript</category>
         
       </item>
     
@@ -3055,7 +3089,7 @@ grades.show_list();    //객체의 함수호출 aa,10 bb,6 cc,80 출력
         <category>javascript</category>
         
         
-        <category>Javascript</category>
+        <category>javascript</category>
         
       </item>
     
@@ -3100,7 +3134,11 @@ NaN   : 0/0 계산할 수 없음. false로 간주&lt;/p&gt;
         <category>javascript</category>
         
         
+<<<<<<< HEAD
         <category>Javascript</category>
+=======
+        <category>javascript</category>
+>>>>>>> 25fa521191ed2024d8956797599d7e5222f64f60
         
       </item>
     
