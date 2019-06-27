@@ -2,6 +2,10 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
     
     <url>
+        <loc>http://localhost:4000/java/java-api-1/</loc>
+    </url>
+    
+    <url>
         <loc>http://localhost:4000/android/android-error-1/</loc>
     </url>
     
@@ -195,6 +199,14 @@
     
     <url>
         <loc>http://localhost:4000/page3/</loc>
+    </url>
+    
+    
+    
+    
+    
+    <url>
+        <loc>http://localhost:4000/page4/</loc>
     </url>
     
     

@@ -148,4 +148,9 @@ var store = [{
         "excerpt":"android.content.res.Resources$NotFoundException: String resource ID #0x1f40     에러로그   android.content.res.Resources$NotFoundException: String resource ID #0x1f40 at android.content.res.Resources.getText(Resources.java:354) at android.widget.TextView.setText(TextView.java:6133) at org.androidtown.mybudgeter.pager.ExpenditureRecyclerAdapter.onBindViewHolder(ExpenditureRecyclerAdapter.java:30) at org.androidtown.mybudgeter.pager.ExpenditureRecyclerAdapter.onBindViewHolder(ExpenditureRecyclerAdapter.java:16) ....         expenditureAmount.setText(currentExpenditure.getAmount());   에러로그는 위와 같은 코드에서 발생된 것으로, setText에 Integer 값을 전달했을 때 경우이다.    Integer값을 String으로 변환해주면 에러가 수정된다.   expenditureAmount.setText(Integer.toString(currentExpenditure.getAmount()));   ","categories": ["Android"],
         "tags": ["android","error"],
         "url": "http://localhost:4000/android/android-error-1/",
+        "teaser":"http://localhost:4000/assets/images/alhambra.jpg"},{
+        "title": "자바 API 정리",
+        "excerpt":"JAVA 공부하면서 알게 된 API 정리한 글 입니다. java.lang.String compareTo public int compareTo(String anotherString) 두 개의 String을 사전적으로 비교하는 함수다. 내부적으로 this.charAt(k) - anotherString.charAt(k) String을 구성하는 char의 유니코드 값으로 비교를 한다. this.length()-anotherString.length() 각 String의 각 char index의 값이 모두 동일하면, 길이가 더 짧은 스트링이 사전적으로 앞선다. 사용법 int returnVal =...","categories": ["Java"],
+        "tags": ["java"],
+        "url": "http://localhost:4000/java/java-api-1/",
         "teaser":"http://localhost:4000/assets/images/alhambra.jpg"}]
