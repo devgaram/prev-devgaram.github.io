@@ -165,22 +165,22 @@ var store = [{
         "url": "http://localhost:4000/codinginterview/coding-interview/",
         "teaser":"http://localhost:4000/assets/images/alhambra.jpg"},{
         "title": "(코딩인터뷰) 시스템 설계 및 규모 확장성 문제 1 - 중복 URL",
-        "excerpt":"Q. 중복 URL : 100억 개의 URL이 있다. 중복된 문서를 찾으려면 어떻게 해야 하는가? 여기서 ‘중복’이란 ‘같은 URL’이라는 뜻이다. 내풀이 만약 100억 개의 URL을 저장할 수 있는 충분한 공간이 있다면, 리스트를 정렬한 후 중복된 값 찾으면 될 것 같다. 아니면 100억 개의 URL을 해시테이블에 저장하는 전처리 과정을 하면 전처리 과정...","categories": ["codinginterview"],
+        "excerpt":"코딩 인터뷰 완전분석 (CRACKING THE CODING INTERVIEW 6/E) / 게일 라크만 맥도웰 지음 / 인사이트 Q. 중복 URL : 100억 개의 URL이 있다. 중복된 문서를 찾으려면 어떻게 해야 하는가? 여기서 ‘중복’이란 ‘같은 URL’이라는 뜻이다. 내풀이 만약 100억 개의 URL을 저장할 수 있는 충분한 공간이 있다면, 리스트를 정렬한 후 중복된 값...","categories": ["codinginterview"],
         "tags": [],
         "url": "http://localhost:4000/codinginterview/coding-interview-question-1/",
         "teaser":"http://localhost:4000/assets/images/alhambra.jpg"},{
         "title": "(코딩인터뷰) 시스템 설계 및 규모 확장성 문제 2 - 소셜네트워크",
-        "excerpt":"Q. 소셜 네트워크 : 페이스북이나 링크드인과 같은 대규모 소셜 네트워크를 위한 자료구조는 어떻게 설계하겠는가? 두 사람 사이의 최단 경로를 보여주는 알고리즘은 어떻게 설계하겠는가? (가령, 나-&gt;밥-&gt;수잔-&gt;제이슨-&gt;당신) 내풀이 ‘나’를 기준으로 ‘나’의 친구들을 연결할 필요가 있고, ‘친구’의 친구들을 연결할 필요가 있다. 각 사용자를 ‘노드’로 정의하고 관계를 ‘에지’로 정의한다고 하면 자료구조로 그래프를 사용하는 게...","categories": ["codinginterview"],
+        "excerpt":"코딩 인터뷰 완전분석 (CRACKING THE CODING INTERVIEW 6/E) / 게일 라크만 맥도웰 지음 / 인사이트 Q. 소셜 네트워크 : 페이스북이나 링크드인과 같은 대규모 소셜 네트워크를 위한 자료구조는 어떻게 설계하겠는가? 두 사람 사이의 최단 경로를 보여주는 알고리즘은 어떻게 설계하겠는가? (가령, 나-&gt;밥-&gt;수잔-&gt;제이슨-&gt;당신) 내풀이 ‘나’를 기준으로 ‘나’의 친구들을 연결할 필요가 있고, ‘친구’의 친구들을...","categories": ["codinginterview"],
         "tags": [],
         "url": "http://localhost:4000/codinginterview/coding-interview-question-2/",
         "teaser":"http://localhost:4000/assets/images/alhambra.jpg"},{
         "title": "(코딩인터뷰) 시스템 설계 및 규모 확장성 문제 3 - 웹 크롤러",
-        "excerpt":"Q. 웹 크롤러 : 웹에 있는 데이터를 긁어 오는 크롤러를 설계할 때, 무한루프에 빠지는 일을 방지하려면 어떻게 해야 하는가? 무한루프는 어떻게 발생하는가? 단순히 웹의 링크에 의해 만들어지는 그래프로 볼 경후, 사이클이 존재하면 무한루프가 발생할 수 있다. 따라서 무한루프를 막으려면 사이클을 탐지해야 한다. 그러기 위해선 해시테이블을 두고 이미 방문한 페이지 v의...","categories": ["codinginterview"],
+        "excerpt":"코딩 인터뷰 완전분석 (CRACKING THE CODING INTERVIEW 6/E) / 게일 라크만 맥도웰 지음 / 인사이트 Q. 웹 크롤러 : 웹에 있는 데이터를 긁어 오는 크롤러를 설계할 때, 무한루프에 빠지는 일을 방지하려면 어떻게 해야 하는가? 무한루프는 어떻게 발생하는가? 단순히 웹의 링크에 의해 만들어지는 그래프로 볼 경후, 사이클이 존재하면 무한루프가 발생할 수...","categories": ["codinginterview"],
         "tags": [],
         "url": "http://localhost:4000/codinginterview/coding-interview-question-3/",
         "teaser":"http://localhost:4000/assets/images/alhambra.jpg"},{
         "title": "(코딩인터뷰) 시스템 설계 및 규모 확장성 문제 4 - 캐시",
-        "excerpt":"Q. 캐시 : 간단한 검색 엔진으로 구현된 웹 서버를 생각해보자. 이 시스템에선 100개의 컴퓨터가 검색 요청을 처리하는 역할을 하고 있다. 예를 들어 하나의 컴퓨터 집단에 processSearch(string query)라는 요청을 보내면 그에 상응하는 검색 결과를 반환해 준다. 하지만 어떤 컴퓨터가 요청을 처리하게 될지는 그때그때 다르며, 따라서 같은 요청을 한다고 같은 컴퓨터가 처리할...","categories": ["codinginterview"],
+        "excerpt":"코딩 인터뷰 완전분석 (CRACKING THE CODING INTERVIEW 6/E) / 게일 라크만 맥도웰 지음 / 인사이트 Q. 캐시 : 간단한 검색 엔진으로 구현된 웹 서버를 생각해보자. 이 시스템에선 100개의 컴퓨터가 검색 요청을 처리하는 역할을 하고 있다. 예를 들어 하나의 컴퓨터 집단에 processSearch(string query)라는 요청을 보내면 그에 상응하는 검색 결과를 반환해 준다....","categories": ["codinginterview"],
         "tags": [],
         "url": "http://localhost:4000/codinginterview/coding-interview-question-4/",
         "teaser":"http://localhost:4000/assets/images/alhambra.jpg"}]

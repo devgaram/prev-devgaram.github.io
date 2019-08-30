@@ -5,18 +5,108 @@
     <description>라미의 블로그입니다.</description>
     <link>http://localhost:4000/</link>
     <atom:link href="http://localhost:4000/feed.xml" rel="self" type="application/rss+xml"/>
-    <pubDate>Fri, 30 Aug 2019 21:27:59 +0900</pubDate>
-    <lastBuildDate>Fri, 30 Aug 2019 21:27:59 +0900</lastBuildDate>
+    <pubDate>Sat, 31 Aug 2019 01:08:41 +0900</pubDate>
+    <lastBuildDate>Sat, 31 Aug 2019 01:08:41 +0900</lastBuildDate>
     <generator>Jekyll v3.8.5</generator>
     
       <item>
         <title>(코딩인터뷰) 시스템 설계 및 규모 확장성 문제 4 - 캐시</title>
-        <description>&lt;hr /&gt;
+        <description>&lt;p&gt;코딩 인터뷰 완전분석 (CRACKING THE CODING INTERVIEW 6/E) / 게일 라크만 맥도웰 지음 / 인사이트&lt;/p&gt;
+
+&lt;hr /&gt;
 
 &lt;h1 id=&quot;q-캐시--간단한-검색-엔진으로-구현된-웹-서버를-생각해보자-이-시스템에선-100개의-컴퓨터가-검색-요청을-처리하는-역할을-하고-있다-예를-들어-하나의-컴퓨터-집단에-processsearchstring-query라는-요청을-보내면-그에-상응하는-검색-결과를-반환해-준다-하지만-어떤-컴퓨터가-요청을-처리하게-될지는-그때그때-다르며-따라서-같은-요청을-한다고-같은-컴퓨터가-처리할-거라고-장담할-수-없다-processsearch-메서드는-아주-고비용이다-최근-검색-요청을-캐시에-저장하는-메커니즘을-설계하라-데이터가-바뀌었을-때-어떻게-캐시를-갱신할-것인지-반드시-설명하라&quot;&gt;Q. 캐시 : 간단한 검색 엔진으로 구현된 웹 서버를 생각해보자. 이 시스템에선 100개의 컴퓨터가 검색 요청을 처리하는 역할을 하고 있다. 예를 들어 하나의 컴퓨터 집단에 processSearch(string query)라는 요청을 보내면 그에 상응하는 검색 결과를 반환해 준다. 하지만 어떤 컴퓨터가 요청을 처리하게 될지는 그때그때 다르며, 따라서 같은 요청을 한다고 같은 컴퓨터가 처리할 거라고 장담할 수 없다. processSearch 메서드는 아주 고비용이다. 최근 검색 요청을 캐시에 저장하는 메커니즘을 설계하라. 데이터가 바뀌었을 때 어떻게 캐시를 갱신할 것인지 반드시 설명하라.&lt;/h1&gt;
 
-&lt;h2 id=&quot;내풀이&quot;&gt;내풀이&lt;/h2&gt;
-&lt;p&gt;그냥.. 캐시 서버 따로 두고 쿼리랑 결과 값 저장해두면 되지 않나.&lt;/p&gt;
+&lt;h2 id=&quot;가정을-통해-문제를-구체화하자&quot;&gt;가정을 통해 문제를 구체화하자&lt;/h2&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;필요할 때 processSearch를 호출하는 것 이외에도, 모든 쿼리는 최초로 호출된 서버에서 처리된다.&lt;/li&gt;
+  &lt;li&gt;캐시하고자 하는 쿼리의 수는 굉장히 크다(수백만 개)&lt;/li&gt;
+  &lt;li&gt;서버 간 호출은 상대적으로 빨리 처리된다.&lt;/li&gt;
+  &lt;li&gt;쿼리의 결과는 정렬된 URL 리스티이다. 각 원소에는 최대 50글자의 제목과 200글자의 요약문이 따라 붙는다.&lt;/li&gt;
+  &lt;li&gt;가장 인기 있는 쿼리의 경우 항상 캐시에 보관되어 있다.&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h2 id=&quot;시스템-요구-사항을-정리하자&quot;&gt;시스템 요구 사항을 정리하자&lt;/h2&gt;
+
+&lt;ol&gt;
+  &lt;li&gt;최근 검색 요청을 캐시에 저장해야 한다.&lt;/li&gt;
+  &lt;li&gt;캐시를 통해 빠른 탐색이 가능해야 한다.&lt;/li&gt;
+  &lt;li&gt;쿼리 결과가 변경될 경우 캐시를 변경하거나 삭제할 수 있어야 한다.&lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;h2 id=&quot;단순하게-생각하자---요구사항-1-2번&quot;&gt;단순하게 생각하자 - 요구사항 1, 2번&lt;/h2&gt;
+
+&lt;p&gt;단순하게 컴퓨터가 하나일 경우로 가정하여 설계해본다.&lt;/p&gt;
+
+&lt;p&gt;빠른 탐색이 가능하려면 key-value 쌍의 자료구조인 해시맵을 사용하는 게 적절할 것 같다.   &lt;br /&gt;
+쿼리를 해시 처리하여 key값을 생성하고 쿼리의 결과 값을 value로 해서 해시맵에 저장하면 될 듯 싶다.&lt;/p&gt;
+
+&lt;p&gt;첫번째 요구사항을 보면 캐시에 최신 검색 순으로 저장될 필요가 있다. 데이터를 순서대로 저장해야 한다.  &lt;br /&gt;
+하지만 해시맵은 데이터의 순서를 기억하기에는 적절치 못한 자료구조다.  &lt;br /&gt;
+순서를 위한 자료구조는 배열과 연결리스트가 있는데 최신 검색의 삽입과 오래된 검색의 삭제가 빈번하므로 연결리스트 자료구조가 적절하지 않을까?  &lt;br /&gt;
+그러나,,,, 연결리스트는 탐색 시 Q(N) 시간이라 빠른 탐색이 힘들다..&lt;/p&gt;
+
+&lt;p&gt;어떻게 할까?  &lt;br /&gt;
+두 자료구조를 합치면 어떨까?&lt;/p&gt;
+
+&lt;p&gt;이는 LRU 캐시를 구현하라는 것과 같다.  &lt;br /&gt;
+LRU는 OS의 페이지 교체 알고리즘의 하나로 최근에 가장 오랫동안 사용되지 않은 페이지를 교체하는 기법이다.
+다음은 LRU 캐시 구현 그림이다.&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;/assets/images/2019-08-30-img/4-1.jpg&quot; alt=&quot;1&quot; /&gt;    &lt;br /&gt;&lt;/p&gt;
+
+&lt;h2 id=&quot;이제-현실로-돌아와서-생각하자---여러-서버로-확장&quot;&gt;이제 현실로 돌아와서 생각하자 - 여러 서버로 확장&lt;/h2&gt;
+
+&lt;p&gt;&lt;strong&gt;방법1 - 각 서버에 별도의 캐시를 둔다&lt;/strong&gt;&lt;/p&gt;
+
+&lt;p&gt;서버 1에 같은 쿼리를 2번 보내면, 두 번째 처리 결과는 캐시에서 가져온다.  &lt;br /&gt;
+그러나 서버 1에 보냈다가 서버 2에 보내면 서버 2는 해당 쿼리를 새로운 쿼리로 처리한다.&lt;/p&gt;
+&lt;ul&gt;
+  &lt;li&gt;장점 : 서버 간 통신이 필요없기에 상대적으로 빠르다.&lt;/li&gt;
+  &lt;li&gt;단점 : 같은 쿼리가 반복되도 새로운 쿼리로 인식하기 때문에 최적화를 위한 방법으로 부적절&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;&lt;strong&gt;방법2 - 각 서버에 캐시 복사본을 둔다&lt;/strong&gt;&lt;/p&gt;
+
+&lt;p&gt;각 서버에 전체 캐시의 완전한 복사본을 유지하는 방법이다.  &lt;br /&gt;
+새로운 데이터가 캐시에 추가되는 순간 그 데이터는 모든 서버로 보내진다.  &lt;br /&gt;
+따라서 연결리스트와 해시테이블을 비롯한 모든 자료구조가 중복되어 저장된다.&lt;/p&gt;
+&lt;ul&gt;
+  &lt;li&gt;장점 : 어느 서버에서도 동일하게 존재하기 때문에 빈번하게 사용되는 쿼리와 실행 결과는 항상 캐시 내에 존재한다.&lt;/li&gt;
+  &lt;li&gt;단점1 : 캐시를 갱신할 때마다 데이터를 N개의 서로 다른 서버로 전송해야 한다는 점&lt;/li&gt;
+  &lt;li&gt;단점2 : 각 캐시를 저장하기 위해 N배 더 큰 공간이 필요하므로 캐시에 저장 가능한 항목의 수가 줄어든다.&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;&lt;strong&gt;방법3 - 각 서버에 캐시의 일부를 저장한다&lt;/strong&gt;&lt;/p&gt;
+
+&lt;p&gt;캐시를 분할하여 각 서버에 그 일부만을 보관한다.  &lt;br /&gt;
+예를 들어, 서버 i가 어떤 쿼리에 대한 결과를 알고 싶다고 하자.&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;/assets/images/2019-08-30-img/4-2.jpg&quot; alt=&quot;1&quot; /&gt;    &lt;br /&gt;&lt;/p&gt;
+
+&lt;h2 id=&quot;요구-사항-3번을-해결하자&quot;&gt;요구 사항 3번을 해결하자&lt;/h2&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;요구사항 3 : 쿼리 결과가 변경될 경우 캐시를 변경하거나 삭제할 수 있어야 한다.&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;캐시가 충분히 클 경우 어떤 쿼리는 너무 빈번해서 항상 캐시에 남아 있을 수 있다.  &lt;br /&gt;
+따라서 주기적으로 혹은 어떤 쿼리 결과가 변경되었을 때마다 캐시에 보관된 결과를 갱신할 수 있는 방법이 필요하다.&lt;/p&gt;
+
+&lt;p&gt;쿼리의 결과가 바뀌는 순간&lt;/p&gt;
+&lt;ol&gt;
+  &lt;li&gt;URL이 가리키는 페이지 내용이 바뀔 때(URL이 가리키는 페이지가 삭제되었을 때)&lt;/li&gt;
+  &lt;li&gt;페이지의 랭킹이 바뀌어서 결과의 순서가 변경될 때&lt;/li&gt;
+  &lt;li&gt;특정한 쿼리에 관련있는 새로운 페이지가 등장할 때&lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;p&gt;방법&lt;/p&gt;
+&lt;ol&gt;
+  &lt;li&gt;데이터가 수정되었을 때 곧바로 캐시를 갱신할 필요가 없다. -&amp;gt;각 서버에 저장된 캐시를 주기적으로 탐색한 뒤 갱신된 URL에 대해서는 캐시 결과를 비운다.&lt;/li&gt;
+  &lt;li&gt;X분이 지나면 자동으로 캐시가 버려지도록 한다.&lt;/li&gt;
+&lt;/ol&gt;
+
 </description>
         <pubDate>Fri, 30 Aug 2019 00:00:00 +0900</pubDate>
         <link>http://localhost:4000/codinginterview/coding-interview-question-4/</link>
@@ -29,7 +119,9 @@
     
       <item>
         <title>(코딩인터뷰) 시스템 설계 및 규모 확장성 문제 3 - 웹 크롤러</title>
-        <description>&lt;hr /&gt;
+        <description>&lt;p&gt;코딩 인터뷰 완전분석 (CRACKING THE CODING INTERVIEW 6/E) / 게일 라크만 맥도웰 지음 / 인사이트&lt;/p&gt;
+
+&lt;hr /&gt;
 
 &lt;h1 id=&quot;q-웹-크롤러--웹에-있는-데이터를-긁어-오는-크롤러를-설계할-때-무한루프에-빠지는-일을-방지하려면-어떻게-해야-하는가&quot;&gt;Q. 웹 크롤러 : 웹에 있는 데이터를 긁어 오는 크롤러를 설계할 때, 무한루프에 빠지는 일을 방지하려면 어떻게 해야 하는가?&lt;/h1&gt;
 
@@ -73,7 +165,9 @@
     
       <item>
         <title>(코딩인터뷰) 시스템 설계 및 규모 확장성 문제 2 - 소셜네트워크</title>
-        <description>&lt;hr /&gt;
+        <description>&lt;p&gt;코딩 인터뷰 완전분석 (CRACKING THE CODING INTERVIEW 6/E) / 게일 라크만 맥도웰 지음 / 인사이트&lt;/p&gt;
+
+&lt;hr /&gt;
 
 &lt;h1 id=&quot;q-소셜-네트워크--페이스북이나-링크드인과-같은-대규모-소셜-네트워크를-위한-자료구조는-어떻게-설계하겠는가-두-사람-사이의-최단-경로를-보여주는-알고리즘은-어떻게-설계하겠는가-가령-나-밥-수잔-제이슨-당신&quot;&gt;Q. 소셜 네트워크 : 페이스북이나 링크드인과 같은 대규모 소셜 네트워크를 위한 자료구조는 어떻게 설계하겠는가? 두 사람 사이의 최단 경로를 보여주는 알고리즘은 어떻게 설계하겠는가? (가령, 나-&amp;gt;밥-&amp;gt;수잔-&amp;gt;제이슨-&amp;gt;당신)&lt;/h1&gt;
 
@@ -142,7 +236,9 @@ S와 D가 친구 C를 공유할 때, (각 사용자는 K명의 친구가 있다,
     
       <item>
         <title>(코딩인터뷰) 시스템 설계 및 규모 확장성 문제 1 - 중복 URL</title>
-        <description>&lt;hr /&gt;
+        <description>&lt;p&gt;코딩 인터뷰 완전분석 (CRACKING THE CODING INTERVIEW 6/E) / 게일 라크만 맥도웰 지음 / 인사이트&lt;/p&gt;
+
+&lt;hr /&gt;
 
 &lt;h1 id=&quot;q-중복-url--100억-개의-url이-있다-중복된-문서를-찾으려면-어떻게-해야-하는가-여기서-중복이란-같은-url이라는-뜻이다&quot;&gt;Q. 중복 URL : 100억 개의 URL이 있다. 중복된 문서를 찾으려면 어떻게 해야 하는가? 여기서 ‘중복’이란 ‘같은 URL’이라는 뜻이다.&lt;/h1&gt;
 

@@ -5,6 +5,8 @@ date: 2019-08-30
 categories: [codinginterview]
 ---
 
+코딩 인터뷰 완전분석 (CRACKING THE CODING INTERVIEW 6/E) / 게일 라크만 맥도웰 지음 / 인사이트
+
 ---
 
 # Q. 중복 URL : 100억 개의 URL이 있다. 중복된 문서를 찾으려면 어떻게 해야 하는가? 여기서 '중복'이란 '같은 URL'이라는 뜻이다.
