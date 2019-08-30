@@ -149,15 +149,38 @@ var store = [{
         "tags": ["android","error"],
         "url": "http://localhost:4000/android/android-error-1/",
         "teaser":"http://localhost:4000/assets/images/alhambra.jpg"},{
-<<<<<<< HEAD
-        "title": "자바 API 정리",
-        "excerpt":"JAVA 공부하면서 알게 된 API 정리한 글 입니다. java.lang.String compareTo public int compareTo(String anotherString) 두 개의 String을 사전적으로 비교하는 함수다. 내부적으로 this.charAt(k) - anotherString.charAt(k) String을 구성하는 char의 유니코드 값으로 비교를 한다. this.length()-anotherString.length() 각 String의 각 char index의 값이 모두 동일하면, 길이가 더 짧은 스트링이 사전적으로 앞선다. 사용법 int returnVal =...","categories": ["Java"],
-        "tags": ["java"],
-        "url": "http://localhost:4000/java/java-api-1/",
-=======
         "title": "html5 와 css3 와 관련된 에러 모음",
         "excerpt":"   IE에서 CSS 적용 안되는 문제 (2019-03-14)     1. IE에서 CSS 적용 안되는 문제   HTML5, CSS3로 코딩된 페이지가 크롬과 IE 신형 버전에서는 정상적으로 적용되나, 구형 익스플로어에서 적용안되는 문제가 발생했다. 이는 페이지 head 안에 아래의 메타 태그만 추가하면 해결된다.   &lt;meta http-equiv=\"X-UA-Compatible\" content=\"IE=edge, chrome=1\"&gt;   ","categories": ["android"],
         "tags": ["android","error"],
         "url": "http://localhost:4000/android/html5-error/",
->>>>>>> 25fa521191ed2024d8956797599d7e5222f64f60
+        "teaser":"http://localhost:4000/assets/images/alhambra.jpg"},{
+        "title": "자바 API 정리",
+        "excerpt":"JAVA 공부하면서 알게 된 API 정리한 글 입니다. java.lang.String compareTo public int compareTo(String anotherString) 두 개의 String을 사전적으로 비교하는 함수다. 내부적으로 this.charAt(k) - anotherString.charAt(k) String을 구성하는 char의 유니코드 값으로 비교를 한다. this.length()-anotherString.length() 각 String의 각 char index의 값이 모두 동일하면, 길이가 더 짧은 스트링이 사전적으로 앞선다. 사용법 int returnVal =...","categories": ["Java"],
+        "tags": ["java"],
+        "url": "http://localhost:4000/java/java-api-1/",
+        "teaser":"http://localhost:4000/assets/images/alhambra.jpg"},{
+        "title": "(코딩인터뷰) 시스템 설계 및 규모 확장성 이론",
+        "excerpt":"(코딩인터뷰 완전분석) 책의 ‘시스템 설계 및 규모 확장성’ 파트를 정리한 글입니다. 이런 류의 질문에는 실제로 어떻게 행동할 것인지를 답하면 됩니다. 문제를 다루는 방법 면접관과 소통하기 처음에는 포괄적으로 접근하기 화이트보드에 제안하는 설계를 그리며 설명하기 면접관이 짚은 문제점을 인정하고 적절히 수정하기 가정을 할 때 주의하기 가정을 할 때 그것을 면접관에게 알리기 필요하다면...","categories": ["codinginterview"],
+        "tags": [],
+        "url": "http://localhost:4000/codinginterview/coding-interview/",
+        "teaser":"http://localhost:4000/assets/images/alhambra.jpg"},{
+        "title": "(코딩인터뷰) 시스템 설계 및 규모 확장성 문제 1 - 중복 URL",
+        "excerpt":"Q. 중복 URL : 100억 개의 URL이 있다. 중복된 문서를 찾으려면 어떻게 해야 하는가? 여기서 ‘중복’이란 ‘같은 URL’이라는 뜻이다. 내풀이 만약 100억 개의 URL을 저장할 수 있는 충분한 공간이 있다면, 리스트를 정렬한 후 중복된 값 찾으면 될 것 같다. 아니면 100억 개의 URL을 해시테이블에 저장하는 전처리 과정을 하면 전처리 과정...","categories": ["codinginterview"],
+        "tags": [],
+        "url": "http://localhost:4000/codinginterview/coding-interview-question-1/",
+        "teaser":"http://localhost:4000/assets/images/alhambra.jpg"},{
+        "title": "(코딩인터뷰) 시스템 설계 및 규모 확장성 문제 2 - 소셜네트워크",
+        "excerpt":"Q. 소셜 네트워크 : 페이스북이나 링크드인과 같은 대규모 소셜 네트워크를 위한 자료구조는 어떻게 설계하겠는가? 두 사람 사이의 최단 경로를 보여주는 알고리즘은 어떻게 설계하겠는가? (가령, 나-&gt;밥-&gt;수잔-&gt;제이슨-&gt;당신) 내풀이 ‘나’를 기준으로 ‘나’의 친구들을 연결할 필요가 있고, ‘친구’의 친구들을 연결할 필요가 있다. 각 사용자를 ‘노드’로 정의하고 관계를 ‘에지’로 정의한다고 하면 자료구조로 그래프를 사용하는 게...","categories": ["codinginterview"],
+        "tags": [],
+        "url": "http://localhost:4000/codinginterview/coding-interview-question-2/",
+        "teaser":"http://localhost:4000/assets/images/alhambra.jpg"},{
+        "title": "(코딩인터뷰) 시스템 설계 및 규모 확장성 문제 3 - 웹 크롤러",
+        "excerpt":"Q. 웹 크롤러 : 웹에 있는 데이터를 긁어 오는 크롤러를 설계할 때, 무한루프에 빠지는 일을 방지하려면 어떻게 해야 하는가? 무한루프는 어떻게 발생하는가? 단순히 웹의 링크에 의해 만들어지는 그래프로 볼 경후, 사이클이 존재하면 무한루프가 발생할 수 있다. 따라서 무한루프를 막으려면 사이클을 탐지해야 한다. 그러기 위해선 해시테이블을 두고 이미 방문한 페이지 v의...","categories": ["codinginterview"],
+        "tags": [],
+        "url": "http://localhost:4000/codinginterview/coding-interview-question-3/",
+        "teaser":"http://localhost:4000/assets/images/alhambra.jpg"},{
+        "title": "(코딩인터뷰) 시스템 설계 및 규모 확장성 문제 4 - 캐시",
+        "excerpt":"Q. 캐시 : 간단한 검색 엔진으로 구현된 웹 서버를 생각해보자. 이 시스템에선 100개의 컴퓨터가 검색 요청을 처리하는 역할을 하고 있다. 예를 들어 하나의 컴퓨터 집단에 processSearch(string query)라는 요청을 보내면 그에 상응하는 검색 결과를 반환해 준다. 하지만 어떤 컴퓨터가 요청을 처리하게 될지는 그때그때 다르며, 따라서 같은 요청을 한다고 같은 컴퓨터가 처리할...","categories": ["codinginterview"],
+        "tags": [],
+        "url": "http://localhost:4000/codinginterview/coding-interview-question-4/",
         "teaser":"http://localhost:4000/assets/images/alhambra.jpg"}]

@@ -5,10 +5,488 @@
     <description>라미의 블로그입니다.</description>
     <link>http://localhost:4000/</link>
     <atom:link href="http://localhost:4000/feed.xml" rel="self" type="application/rss+xml"/>
-<<<<<<< HEAD
-    <pubDate>Thu, 27 Jun 2019 12:28:08 +0900</pubDate>
-    <lastBuildDate>Thu, 27 Jun 2019 12:28:08 +0900</lastBuildDate>
+    <pubDate>Fri, 30 Aug 2019 21:27:59 +0900</pubDate>
+    <lastBuildDate>Fri, 30 Aug 2019 21:27:59 +0900</lastBuildDate>
     <generator>Jekyll v3.8.5</generator>
+    
+      <item>
+        <title>(코딩인터뷰) 시스템 설계 및 규모 확장성 문제 4 - 캐시</title>
+        <description>&lt;hr /&gt;
+
+&lt;h1 id=&quot;q-캐시--간단한-검색-엔진으로-구현된-웹-서버를-생각해보자-이-시스템에선-100개의-컴퓨터가-검색-요청을-처리하는-역할을-하고-있다-예를-들어-하나의-컴퓨터-집단에-processsearchstring-query라는-요청을-보내면-그에-상응하는-검색-결과를-반환해-준다-하지만-어떤-컴퓨터가-요청을-처리하게-될지는-그때그때-다르며-따라서-같은-요청을-한다고-같은-컴퓨터가-처리할-거라고-장담할-수-없다-processsearch-메서드는-아주-고비용이다-최근-검색-요청을-캐시에-저장하는-메커니즘을-설계하라-데이터가-바뀌었을-때-어떻게-캐시를-갱신할-것인지-반드시-설명하라&quot;&gt;Q. 캐시 : 간단한 검색 엔진으로 구현된 웹 서버를 생각해보자. 이 시스템에선 100개의 컴퓨터가 검색 요청을 처리하는 역할을 하고 있다. 예를 들어 하나의 컴퓨터 집단에 processSearch(string query)라는 요청을 보내면 그에 상응하는 검색 결과를 반환해 준다. 하지만 어떤 컴퓨터가 요청을 처리하게 될지는 그때그때 다르며, 따라서 같은 요청을 한다고 같은 컴퓨터가 처리할 거라고 장담할 수 없다. processSearch 메서드는 아주 고비용이다. 최근 검색 요청을 캐시에 저장하는 메커니즘을 설계하라. 데이터가 바뀌었을 때 어떻게 캐시를 갱신할 것인지 반드시 설명하라.&lt;/h1&gt;
+
+&lt;h2 id=&quot;내풀이&quot;&gt;내풀이&lt;/h2&gt;
+&lt;p&gt;그냥.. 캐시 서버 따로 두고 쿼리랑 결과 값 저장해두면 되지 않나.&lt;/p&gt;
+</description>
+        <pubDate>Fri, 30 Aug 2019 00:00:00 +0900</pubDate>
+        <link>http://localhost:4000/codinginterview/coding-interview-question-4/</link>
+        <guid isPermaLink="true">http://localhost:4000/codinginterview/coding-interview-question-4/</guid>
+        
+        
+        <category>codinginterview</category>
+        
+      </item>
+    
+      <item>
+        <title>(코딩인터뷰) 시스템 설계 및 규모 확장성 문제 3 - 웹 크롤러</title>
+        <description>&lt;hr /&gt;
+
+&lt;h1 id=&quot;q-웹-크롤러--웹에-있는-데이터를-긁어-오는-크롤러를-설계할-때-무한루프에-빠지는-일을-방지하려면-어떻게-해야-하는가&quot;&gt;Q. 웹 크롤러 : 웹에 있는 데이터를 긁어 오는 크롤러를 설계할 때, 무한루프에 빠지는 일을 방지하려면 어떻게 해야 하는가?&lt;/h1&gt;
+
+&lt;h2 id=&quot;무한루프는-어떻게-발생하는가&quot;&gt;무한루프는 어떻게 발생하는가?&lt;/h2&gt;
+
+&lt;p&gt;단순히 웹의 링크에 의해 만들어지는 그래프로 볼 경후, 사이클이 존재하면 무한루프가 발생할 수 있다.  &lt;br /&gt;
+따라서 무한루프를 막으려면 사이클을 탐지해야 한다.  &lt;br /&gt;
+그러기 위해선 해시테이블을 두고 이미 방문한 페이지 v의 hash[v] 값을 true로 바꿔줘야 한다. &lt;br /&gt;
+이 해법은 웹을 너비 우선으로 탐색한다는 것을 의미한다.&lt;/p&gt;
+
+&lt;h2 id=&quot;페이지-v를-방문한다는-것의-의미&quot;&gt;페이지 v를 방문한다는 것의 의미&lt;/h2&gt;
+
+&lt;ol&gt;
+  &lt;li&gt;단순히 URL 기준으로 판단해야 할까?&lt;/li&gt;
+  &lt;li&gt;페이지 내용에 따라 방문 여부를 확인해야 할까?&lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;p&gt;1번의 경우는 URL의 파라미타 값이 달라졌을 때 실제로 페이지는 달라지지 않을 때를 생각해야한다.  &lt;br /&gt;
+2번의 경우 같은 페이지라 할지라도 내용이 무작위로 생성된다면 다른 페이지라고 해야하는 지를 생각해봐야한다.  &lt;br /&gt;
+즉, 이 페이지가 저 페이지와 ‘다른’ 페이지인지 판단하는 완벽한 방법은 없는 셈이다.&lt;/p&gt;
+
+&lt;p&gt;이 문제를 해결하는 방법은 페이지 내용과 URL을 토대로 페이지 간의 유사성을 가늠해 보는 것이다.&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;크롤러가 탐색해야 하는 항목들을 데이터베이스에 저장해 둔다.&lt;/li&gt;
+  &lt;li&gt;탐색 우선순위가 가장 높은 페이지를 고른다.&lt;/li&gt;
+  &lt;li&gt;페이지를 열어 해당 페이지의 특정한 섹션과 URL을 토대로 시그니처를 생성한다.&lt;/li&gt;
+  &lt;li&gt;데이터베이스 쿼리를 통해 해당 시그니처의 페이지가 최근에 탐색된 적 있는지 살핀다.&lt;/li&gt;
+  &lt;li&gt;만일 해당 시그니처를 갖는 페이지가 최근에 탐색된 적이 있으면 해당 페이지의 우선순위를 낮춰서 데이터베이스에 추가한다.&lt;/li&gt;
+  &lt;li&gt;그렇지 않다면 해당 페이지를 탐색하고, 그 페이지에 연결된 링크를 데이터베이스에 추가한다.&lt;/li&gt;
+&lt;/ul&gt;
+</description>
+        <pubDate>Fri, 30 Aug 2019 00:00:00 +0900</pubDate>
+        <link>http://localhost:4000/codinginterview/coding-interview-question-3/</link>
+        <guid isPermaLink="true">http://localhost:4000/codinginterview/coding-interview-question-3/</guid>
+        
+        
+        <category>codinginterview</category>
+        
+      </item>
+    
+      <item>
+        <title>(코딩인터뷰) 시스템 설계 및 규모 확장성 문제 2 - 소셜네트워크</title>
+        <description>&lt;hr /&gt;
+
+&lt;h1 id=&quot;q-소셜-네트워크--페이스북이나-링크드인과-같은-대규모-소셜-네트워크를-위한-자료구조는-어떻게-설계하겠는가-두-사람-사이의-최단-경로를-보여주는-알고리즘은-어떻게-설계하겠는가-가령-나-밥-수잔-제이슨-당신&quot;&gt;Q. 소셜 네트워크 : 페이스북이나 링크드인과 같은 대규모 소셜 네트워크를 위한 자료구조는 어떻게 설계하겠는가? 두 사람 사이의 최단 경로를 보여주는 알고리즘은 어떻게 설계하겠는가? (가령, 나-&amp;gt;밥-&amp;gt;수잔-&amp;gt;제이슨-&amp;gt;당신)&lt;/h1&gt;
+
+&lt;h2 id=&quot;내풀이&quot;&gt;내풀이&lt;/h2&gt;
+
+&lt;p&gt;‘나’를 기준으로 ‘나’의 친구들을 연결할 필요가 있고, ‘친구’의 친구들을 연결할 필요가 있다.  &lt;br /&gt;
+각 사용자를 ‘노드’로 정의하고 관계를 ‘에지’로 정의한다고 하면 자료구조로 그래프를 사용하는 게 적절하다고 생각한다. &lt;br /&gt;
+사용자 간의 경로 탐색은 너비우선탐색(BFS)로 하는 것이 적절하다고 생각한다.
+‘나’를 기준으로 동심원을 그리며 찾는 것이 깊이우선탐색(DFS)보다 낫다.
+DFS는 ‘노드’를 기준으로 방문하지않은 노드 끝까지 갔다가 돌아가는 식으로 탐색하므로 최단경로가 아닐 수도 있다.&lt;/p&gt;
+
+&lt;h2 id=&quot;책풀이&quot;&gt;책풀이&lt;/h2&gt;
+
+&lt;h2 id=&quot;단계1--문제를-단순화하기---수백만이-아닌-10명의-사용자로-생각해보기&quot;&gt;단계1 : 문제를 단순화하기 - 수백만이 아닌 10명의 사용자로 생각해보기&lt;/h2&gt;
+
+&lt;p&gt;각 사용자를 노드, 친구 관계를 간선으로 설정하여 하나의 그래프를 만들 수 있다.  &lt;br /&gt;
+두 사용자 간의 경로는 한 사용자에서 시작해서 너비 우선 탐색을 돌려보면된다.
+혹은 양방향 너비 우선 탐색을 할 수도 있다.   &lt;br /&gt;
+하나는 출발지에서, 나머지 하나는 도착지에서 시작해서 너비 우선 탐색 두 개를 동시에 돌리는 것을 말한다.   &lt;br /&gt;
+두 탐색이 어느 지점에서 충돌하는 순간 경로를 찾은 것이다.&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;깊이우선탐색을 사용하지 않는 이유는?&lt;/strong&gt;   &lt;br /&gt;
+깊이 우선 탐색은 단순히 경로 하나를 찾기 때문이고, 이 경로가 가장 짧은 경로가 아닐 수도 있다.  &lt;br /&gt;
+또한, 경로 하나를 찾는 과정도 비효율적이다. 두 사용자가 1촌 관계라 하더라도 하위 트리에 존재하는 수백만 개의 노드를 탐색하게 될 수 있기 때문이다.&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;구현방법&lt;/strong&gt;  &lt;br /&gt;
+&lt;img src=&quot;/assets/images/2019-08-30-img/2-1.jpg&quot; alt=&quot;1&quot; /&gt;    &lt;br /&gt; 
+&lt;img src=&quot;/assets/images/2019-08-30-img/2-2.jpg&quot; alt=&quot;2&quot; /&gt;     &lt;br /&gt;
+&lt;img src=&quot;/assets/images/2019-08-30-img/2-3.jpg&quot; alt=&quot;3&quot; /&gt;     &lt;br /&gt;
+&lt;img src=&quot;/assets/images/2019-08-30-img/2-4.jpg&quot; alt=&quot;4&quot; /&gt;     &lt;br /&gt;&lt;/p&gt;
+
+&lt;p&gt;양방향 너비 우선 탐색이 일반 너비 우선 탐색보다 빠르다.  &lt;br /&gt;
+S와 D가 친구 C를 공유할 때, (각 사용자는 K명의 친구가 있다, q는 경로의 길이)&lt;/p&gt;
+&lt;ul&gt;
+  &lt;li&gt;일반적인 너비 우선 탐색으로 S -&amp;gt; D로 가려면 대략 K + K*K개의 노드를 거쳐야 한다. = Q(K&lt;sup&gt;q&lt;/sup&gt;)&lt;/li&gt;
+  &lt;li&gt;양방향 너비 우선 탐색은 S 친구 K, D친구 K로 2K 노드만 거치면 된다. = Q(K&lt;sup&gt;q/2&lt;/sup&gt;)&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;단, 양방향 너비 우선 탐색은 시작 지점과 도착 지점 모두 접근 가능할 때에나 사용 가능하다.&lt;/p&gt;
+
+&lt;h2 id=&quot;단계2--수백만-사용자의-처리&quot;&gt;단계2 : 수백만 사용자의 처리&lt;/h2&gt;
+
+&lt;p&gt;링크드인이나 페이스북 규모의 서비스를 만들 때에는 컴퓨터 하나만으로는 부족하다.  &lt;br /&gt;
+다시 말해 Person을 위와 같이 단순하게 설계해서는 제대로 동작하지 않을 것이라는 뜻이다.   &lt;br /&gt;
+우리가 찾는 ‘친구’는 같은 서버에 있지 않을 수도 있다.  &lt;br /&gt;
+따라서 ID로 구성되는 친구 리스트를 만들고, ID를 통해 해당 사용자 정보가 있는 컴퓨터 정보를 얻는다.   &lt;br /&gt;
+얻은 컴퓨터 정보 안에서 사용자 정보를 다시 탐색한다.  &lt;br /&gt;
+효율적 탐색을 위해서 해시테이블을 사용한다.&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;최적화하기&lt;/strong&gt;&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;다른 서버에 대한 탐색을 줄인다.&lt;/li&gt;
+  &lt;li&gt;컴퓨터에 사용자 정보를 분배할 때, 무작위로 나누는 것이 아닌 사용자가 거주하는 나라나 시, 도, 군 등의 정보를 이용한다.&lt;/li&gt;
+&lt;/ul&gt;
+
+</description>
+        <pubDate>Fri, 30 Aug 2019 00:00:00 +0900</pubDate>
+        <link>http://localhost:4000/codinginterview/coding-interview-question-2/</link>
+        <guid isPermaLink="true">http://localhost:4000/codinginterview/coding-interview-question-2/</guid>
+        
+        
+        <category>codinginterview</category>
+        
+      </item>
+    
+      <item>
+        <title>(코딩인터뷰) 시스템 설계 및 규모 확장성 문제 1 - 중복 URL</title>
+        <description>&lt;hr /&gt;
+
+&lt;h1 id=&quot;q-중복-url--100억-개의-url이-있다-중복된-문서를-찾으려면-어떻게-해야-하는가-여기서-중복이란-같은-url이라는-뜻이다&quot;&gt;Q. 중복 URL : 100억 개의 URL이 있다. 중복된 문서를 찾으려면 어떻게 해야 하는가? 여기서 ‘중복’이란 ‘같은 URL’이라는 뜻이다.&lt;/h1&gt;
+
+&lt;h2 id=&quot;내풀이&quot;&gt;내풀이&lt;/h2&gt;
+
+&lt;p&gt;만약 100억 개의 URL을 저장할 수 있는 충분한 공간이 있다면, 리스트를 정렬한 후 중복된 값 찾으면 될 것 같다.  &lt;br /&gt;
+아니면 100억 개의 URL을 해시테이블에 저장하는 전처리 과정을 하면 전처리 과정 중에도 중복된 문서를 찾을 수 있고 
+그 후 데이터가 추가될 때도 쉽게 중복 여부를 확인할 수 있을 것 같다.&lt;/p&gt;
+
+&lt;h2 id=&quot;책풀이&quot;&gt;책풀이&lt;/h2&gt;
+
+&lt;h2 id=&quot;1단계--합당한-가정을-세운다&quot;&gt;1단계 : 합당한 가정을 세운다.&lt;/h2&gt;
+
+&lt;p&gt;책은 100억 개의 URL을 처리하기위한 공간을 계산하기위해 다음과 같은 합당한 가정을 세운다.&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;각 URL이 평균적으로 100개의 문자로 구성되어 있고 각 문자는 4바이트라고 가정한다.&lt;/li&gt;
+  &lt;li&gt;100(문자) * 4(bytes) * 100억(url개수) = 4,000,000,000,000 bytes = 4 * 10&lt;sup&gt;12&lt;/sup&gt; = 4TB&lt;/li&gt;
+  &lt;li&gt;즉, 100억 개의 URL을 처리하기위해서는 4TB 정도의 메모리 공간이 필요하다.&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h2 id=&quot;2단계--현실적-제약을-무시한다&quot;&gt;2단계 : 현실적 제약을 무시한다.&lt;/h2&gt;
+
+&lt;p&gt;모든 데이터를 메모리에 보관할 수 있다고 가정한 후 문제에 접근한다.&lt;/p&gt;
+
+&lt;p&gt;이미 살펴본 URL에 대해 true를 반환하는 해시테이블을 사용하여 문제를 해결할 수 있다.  &lt;br /&gt;
+리스트를 정렬하는 방식은 시간도 더 들고 장점도 없다.&lt;/p&gt;
+
+&lt;h2 id=&quot;3단계--현실로-돌아온다&quot;&gt;3단계 : 현실로 돌아온다.&lt;/h2&gt;
+
+&lt;p&gt;4TB의 데이터를 메모리(RAM)에 전부 올릴 수 없는 상황에서 어떻게 해야하는지 생각한다.&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;해법 #1 : 디스크 저장&lt;/strong&gt;&lt;/p&gt;
+
+&lt;p&gt;각 URL을 .txt 파일에 저장한다.  &lt;br /&gt;
+.txt 파일의 크기는 1GB(10&lt;sup&gt;9&lt;/sup&gt;)로 4TB URL을 저장하기위해서는 4000개의 파일이 필요하다.  &lt;br /&gt;
+x = hash(u) % 4000로 저장할 .txt 파일을 결정한다.   &lt;br /&gt;
+같은 해시값을 갖는 URL은 같은 파일에 저장된다.   &lt;br /&gt;
+각 파일을 메모리에 올려 URL의 해시테이블을 생성한 다음에 중복이 존재하는 지 확인하면 된다.&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;해법 #2 : 데이터를 여러 서버에 분할&lt;/strong&gt;&lt;/p&gt;
+
+&lt;p&gt;본질적으로는 해법1과 같으나, 여러 서버를 사용한다는 차이가 있다.  &lt;br /&gt;
+URL을 .txt라는 파일에 저장하는 대신 서버 x에 전송하는 것이다.&lt;/p&gt;
+&lt;ul&gt;
+  &lt;li&gt;장점 : 병렬처리가능&lt;/li&gt;
+  &lt;li&gt;단점 : 4000개의 서버가 완벽 동작해야함(비현실적)&lt;/li&gt;
+&lt;/ul&gt;
+
+</description>
+        <pubDate>Fri, 30 Aug 2019 00:00:00 +0900</pubDate>
+        <link>http://localhost:4000/codinginterview/coding-interview-question-1/</link>
+        <guid isPermaLink="true">http://localhost:4000/codinginterview/coding-interview-question-1/</guid>
+        
+        
+        <category>codinginterview</category>
+        
+      </item>
+    
+      <item>
+        <title>(코딩인터뷰) 시스템 설계 및 규모 확장성 이론</title>
+        <description>&lt;p&gt;(코딩인터뷰 완전분석) 책의 ‘시스템 설계 및 규모 확장성’ 파트를 정리한 글입니다.  &lt;br /&gt;
+이런 류의 질문에는 실제로 어떻게 행동할 것인지를 답하면 됩니다.&lt;/p&gt;
+
+&lt;hr /&gt;
+
+&lt;h1 id=&quot;문제를-다루는-방법&quot;&gt;문제를 다루는 방법&lt;/h1&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;면접관과 소통하기&lt;/li&gt;
+  &lt;li&gt;처음에는 포괄적으로 접근하기&lt;/li&gt;
+  &lt;li&gt;화이트보드에 제안하는 설계를 그리며 설명하기&lt;/li&gt;
+  &lt;li&gt;면접관이 짚은 문제점을 인정하고 적절히 수정하기&lt;/li&gt;
+  &lt;li&gt;가정을 할 때 주의하기&lt;/li&gt;
+  &lt;li&gt;가정을 할 때 그것을 면접관에게 알리기&lt;/li&gt;
+  &lt;li&gt;필요하다면 어림잡아 보기 예) 공간&lt;/li&gt;
+  &lt;li&gt;계속해서 깊이 파고들고 질문하기&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h1 id=&quot;시스템-설계--단계별-접근법&quot;&gt;시스템 설계 : 단계별 접근법&lt;/h1&gt;
+
+&lt;p&gt;면접관 : TinyUrl과 같은 시스템을 설계해보세요.  &lt;br /&gt;
+지원자 : ???&lt;/p&gt;
+
+&lt;h2 id=&quot;1단계--문제의-범위를-한정하라&quot;&gt;1단계 : 문제의 범위를 한정하라&lt;/h2&gt;
+
+&lt;p&gt;지원자 : 정확히 무엇을 구현해야 하는거지?..&lt;/p&gt;
+
+&lt;p&gt;지원자는 위와 같은 물음이 생기기 마련이다.  &lt;br /&gt;
+질문을 통해 물음을 해결하지 않으면 지원자가 만들 시스템과 면접관이 원하는 것이 다를 수 있다.  &lt;br /&gt;
+아래와 같은 질문을 던지면서 문제의 범위를 한정해나가는 게 필요하다.&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;개개인이 원하는 대로 축약된 URL을 만들 수 있어야 하나? 아니면 축약된 URL이 항상 자동으로 생성되는 건가?&lt;/li&gt;
+  &lt;li&gt;클릭에 관한 통계 정보를 기록할 필요가 있나?&lt;/li&gt;
+  &lt;li&gt;한번 설정된 URL은 영원히 없어지지 않는건가? 아니면 일정 시간이 지나면 삭제되는건가?&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h2 id=&quot;2단계--필요하다면-가정을-세워라-단-합당해야-한다&quot;&gt;2단계 : 필요하다면 가정을 세워라, 단 합당해야 한다.&lt;/h2&gt;
+
+&lt;p&gt;이러한 가정은 합당하지 않다.&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;시스템이 하루에 100명의 사용자를 처리할 수 있으면 된다.&lt;/li&gt;
+  &lt;li&gt;메모리에 제약이 없다.&lt;/li&gt;
+  &lt;li&gt;URL이 제대로 동작하기까지 10분 걸린다.&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;이러한 가정은 합당하다.&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;하루에 최대 백만 개의 URL을 생성한다.&lt;/li&gt;
+  &lt;li&gt;최근 데이터에 대해 최대 10분 정도 오차가 있다.&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h2 id=&quot;3단계--중요한-부분을-먼저-그려라&quot;&gt;3단계 : 중요한 부분을 먼저 그려라&lt;/h2&gt;
+
+&lt;p&gt;화이트보드에 시스템의 주요 부분을 다이어그램으로 그린다.&lt;/p&gt;
+
+&lt;p&gt;예시&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;여러 개의 프론트엔드 서버가 백엔드에서 데이터를 받아 오는 시스템&lt;/li&gt;
+  &lt;li&gt;한 서버군은 크롤링, 다른 서버군은 크롤링 데이터를 분석하는 시스템&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;예를 들어 TinyURL을 설계한다면&lt;/p&gt;
+
+&lt;p&gt;지원자 : (사용자가 URL을 입력했을 때 어떤 식으로 진행되는 지 그린다) …&lt;/p&gt;
+
+&lt;h2 id=&quot;4단계--핵심-문제점을-찾아라&quot;&gt;4단계 : 핵심 문제점을 찾아라&lt;/h2&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;어느 부분이 병목지점일까?&lt;/li&gt;
+  &lt;li&gt;이 시스템이 풀어야 할 주된 문제는 무엇인가?&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;예를 들어 TinyURL을 설계한다면 아래와 같은 문제점을 찾아내야한다.&lt;/p&gt;
+
+&lt;p&gt;지원자 : 어떤 URL은 드물게 사용되는 반면 특정 URL의 사용량이 갑자기 치솟는 상황이라면..
+시스템이 끊임없이 데이터베이스를 읽어오면 안될텐데….&lt;/p&gt;
+
+&lt;h2 id=&quot;5단계--핵심-문제점을-해결할-수-있도록-다시-설계하라&quot;&gt;5단계 : 핵심 문제점을 해결할 수 있도록 다시 설계하라&lt;/h2&gt;
+
+&lt;p&gt;핵심 문제에 맞게 설계를 수정한다. 전체를 갈아 엎을 수도 있고 자잘한 부분만 수정해서 해결할 수도 있다.&lt;/p&gt;
+
+&lt;p&gt;지원자 : 캐시를 사용해서 해결하면 되려나..&lt;/p&gt;
+
+&lt;h1 id=&quot;규모-확장을-위한-알고리즘--단계별-접근법&quot;&gt;규모 확장을 위한 알고리즘 : 단계별 접근법&lt;/h1&gt;
+
+&lt;p&gt;면접관 : 시스템의 한 부분 혹은 알고리즘을 설계해보세요&lt;/p&gt;
+
+&lt;h2 id=&quot;1단계--질문하라&quot;&gt;1단계 : 질문하라&lt;/h2&gt;
+
+&lt;p&gt;질문을 통해 문제를 확실히 이해해야한다.&lt;/p&gt;
+
+&lt;h2 id=&quot;2단계--현실적-제약을-무시하라&quot;&gt;2단계 : 현실적 제약을 무시하라&lt;/h2&gt;
+
+&lt;p&gt;메모리 제약 없고, 컴퓨터 한 대에서 모든 데이터를 다 처리할 수 있다고 가정해서 풀어본다.&lt;/p&gt;
+
+&lt;h2 id=&quot;3단계--현실로-돌아오라&quot;&gt;3단계 : 현실로 돌아오라&lt;/h2&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;컴퓨터 한 대에 저장할 수 있는 데이터 크기에 대해 생각하기&lt;/li&gt;
+  &lt;li&gt;데이터를 여러 조각으로 쪼갰을 때 어떤 문제가 발생할지 생각하기&lt;/li&gt;
+  &lt;li&gt;데이터를 여러 조각으로 쪼갤 때 어떤 논리로 데이터를 나눌 것인지 생각하기&lt;/li&gt;
+  &lt;li&gt;데이터를 여러 조각으로 쪼갤 때 특정 컴퓨터가 어느 데이터 조각을 사용했는지 어떻게 알 수 있을 것인지&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h2 id=&quot;4단계--문제를-풀어라&quot;&gt;4단계 : 문제를 풀어라&lt;/h2&gt;
+
+&lt;p&gt;순환적 접근법을 이용한다.&lt;/p&gt;
+
+&lt;h1 id=&quot;시스템-설계의-핵심-개념&quot;&gt;시스템 설계의 핵심 개념&lt;/h1&gt;
+
+&lt;h2 id=&quot;수평적-vs-수직적-규모-확장&quot;&gt;수평적 vs 수직적 규모 확장&lt;/h2&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;수직적 규모 확장 : 특정 노드의 자원의 양을 늘리는 방법 예) 서버에 메모리 추가&lt;/li&gt;
+  &lt;li&gt;수평적 규모 확장 : 노드의 개수를 늘리는 방법 예) 서버를 추가해서 서버 한 대가 다루는 부하를 줄인다.&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h2 id=&quot;서버-부하-분산-장치load-balancer&quot;&gt;서버 부하 분산 장치(load balancer)&lt;/h2&gt;
+
+&lt;p&gt;일반적으로 규모 확장성이 있는 웹사이트의 프론트엔드 부분은 서버 부하 분산 장치를 통해서 제공된다.   &lt;br /&gt;
+이렇게 해야 서버에 걸리는 부하를 여러 대의 서버에 균일하게 분신시킬 수 있고 서버 한대 때문에 전체 시스템이 죽거나
+다운되는 상황을 방지할 수 있다.  &lt;br /&gt;
+물론 서버 여러 대가 근본적으로 똑같은 코드와 데이터를 사용하도록 하는 네트워크를 구현해놔야 한다.&lt;/p&gt;
+
+&lt;h2 id=&quot;데이터베이스-역정규화denormalization와-nosql&quot;&gt;데이터베이스 역정규화(denormalization)와 NoSQL&lt;/h2&gt;
+
+&lt;p&gt;SQL 같은 RDMS의 조인 연산은 시스템이 커질수록 굉장히 느려지므로 가능하면 피해야 한다.&lt;/p&gt;
+
+&lt;p&gt;역정규화란?  &lt;br /&gt;
+데이터베이스에 여분의 정보를 추가해서 읽기 연산 속도를 향상시킨 것을 의미한다.&lt;/p&gt;
+
+&lt;p&gt;예를 들어, 한 프로젝트가 여러 과제를 수행하도록 설계된 데이터베이스를 생각해보자.  &lt;br /&gt;
+이 데이터베이스에서 프로젝트 이름이랑 과제 정보를 함께 알고 싶은 경우에 두 테이블을 조인하기보단 
+애초에 과제 테이블에 프로젝트 이름 정보를 추가로 저장해 놓으면 더 빠르게 작업을 수행할 수 있다.&lt;/p&gt;
+
+&lt;p&gt;혹은, NoSQL 데이터베이스를 이용하면 된다. 
+NoSQL은 초고용량 데이터 처리 등 성능에 특화된 목적을 위해, 비관계형 데이터 저장소에, 비구조적인 데이터를 저장하기 위한 분산 저장 시스템이다.  &lt;br /&gt;
+저장되는 데이터 구조는 주로 Key-Value 형태이다. &lt;br /&gt;
+예) 몽고DB  &lt;br /&gt;
+NoSQL의 특징&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;관계형 모델을 사용하지 않으며 테이블간의 조인 기능 없음&lt;/li&gt;
+  &lt;li&gt;직접 프로그래밍을 하는 등의 비SQL 인터페이스를 통한 데이터 액세스&lt;/li&gt;
+  &lt;li&gt;대부분 여러 대의 데이터베이스 서버를 묶어서(클러스터링) 하나의 데이터베이스를 구성&lt;/li&gt;
+  &lt;li&gt;관계형 데이터베이스에서는 지원하는 Data처리 완결성(Transaction ACID 지원) 미보장&lt;/li&gt;
+  &lt;li&gt;데이터의 스키마와 속성들을 다양하게 수용 및 동적 정의 (Schema-less)&lt;/li&gt;
+  &lt;li&gt;데이터베이스의 중단 없는 서비스와 자동 복구 기능지원&lt;/li&gt;
+  &lt;li&gt;다수가 Open Source로 제공&lt;/li&gt;
+  &lt;li&gt;확장성, 가용성, 높은 성능&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h1 id=&quot;데이터베이스-분할샤딩&quot;&gt;데이터베이스 분할(샤딩)&lt;/h1&gt;
+
+&lt;p&gt;샤딩(sharding)은 데이터를 여러 컴퓨터에 나눠서 저장하는 동시에 어떤 데이터가 어떤 컴퓨터에 저장되어 있는지 알 수 있는 방식을 말한다.&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;수직적 분할 : 자료의 특성별로 분할 예) SNS를 만든다면, 개인정보 부분과 메시지 부분으로 자료를 분할 (특정 테이블의 크기가 일정 수준 이상으로 커질 수 있음)&lt;/li&gt;
+  &lt;li&gt;키 혹은 해시 기반 분할 : mod(key, n)의 값을 이용해서 N개의 서버에 분할 (서버의 개수가 고정되어 있어야 하며, 서버를 새로 추가할 때마다 모든 데이터를 재분배 해야함)&lt;/li&gt;
+  &lt;li&gt;디렉터리 기반 분할 : 데이터를 찾을 때 사용되는 조회 테이블(lookup table)을 유지하는 방법, 서버 추가하기는 쉬움 (조회 테이블이 *단일 장애 지점이 될 수 있음, 지속적으로 테이블 읽는 행위가 전체 성능에 영향을 미칠 수 있음)&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;&lt;span class=&quot;clr-grey&quot;&gt;*단일 장애 지점 : 네트워크의 한 지점(노드)의 장애가 전체 네트워크(시스템)의 장애를 초래하는 것&lt;/span&gt;&lt;/p&gt;
+
+&lt;h2 id=&quot;캐싱caching&quot;&gt;캐싱(caching)&lt;/h2&gt;
+
+&lt;p&gt;인메모리(in-memory) 캐시를 사용하면 결과를 빠르게 가져올 수 있다.&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;KEY-VALUE 쌍의 구조&lt;/li&gt;
+  &lt;li&gt;애플리케이션과 데이터 저장소 사이에 자리잡고 있음&lt;/li&gt;
+  &lt;li&gt;쿼리와 그 결과를 캐시하는 경우가 많음&lt;/li&gt;
+  &lt;li&gt;특정 객체를 캐시에 저장할 수 있음&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;애플리케이션이 어떤 자료를 요청 -&amp;gt; 캐시를 먼저 확인 -&amp;gt; 캐시가 해당 키 값을 갖고 있지 않음 -&amp;gt; 데이터 저장소에서 자료 가져옴&lt;/p&gt;
+
+&lt;p&gt;예) 웹 페이지의 어떤 부분을 렌더링한 결과나 블로그에 올라온 최근 포스팅 리스트를 캐시에 갖고 있음&lt;/p&gt;
+
+&lt;h2 id=&quot;비동기식-처리--큐&quot;&gt;비동기식 처리 &amp;amp; 큐&lt;/h2&gt;
+
+&lt;p&gt;이상적이라면, 속도가 느린 연산은 비동기식으로 처리해야 한다.  &lt;br /&gt;
+그렇지 않으면 해당 연산이 끝나기까지 하염없이 기다려야 할 수도 있기 때문이다.&lt;/p&gt;
+
+&lt;p&gt;어떤 경우에는 연산을 미리 해 큐에 넣을 수도 있다.&lt;/p&gt;
+
+&lt;p&gt;예) 포럼 웹사이트에서 큐에 들어 있는 작업 중 하나는 가장 최근의 글들과 몇가지 코멘트를 보여주는 페이지를 다시 만들어 주는 일이다.  &lt;br /&gt;
+새로운 코멘트 하나 때문에 캐시미스가 나서 웹사이트를 새로 불러오는 것보다 큐의 데이터를 이용해 약간 오래되어 덜 정확한 최신 글 리스트를 
+보여주는 것이 낫다.&lt;/p&gt;
+
+&lt;h2 id=&quot;네트워크-성능-척도&quot;&gt;네트워크 성능 척도&lt;/h2&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;대역폭(bandwidth) : 단위 시간에 전송할 수 있는 데이터의 최대치 (초당 몇 비트(혹은, 몇 기가 바이트)를 보낼 수 있는 가)&lt;/li&gt;
+  &lt;li&gt;처리량(throughput) : 단위 시간에 실제로 전송된 데이터의 양&lt;/li&gt;
+  &lt;li&gt;지연 속도(latency) : 데이터를 전송하는 데 걸리는 시간 (발송자가 데이터를 보낸 시점 - 수신자가 데이터를 받는 지점)&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h2 id=&quot;mapreduce&quot;&gt;MapReduce&lt;/h2&gt;
+
+&lt;p&gt;많은 과정을 병렬로 처리할 수 있게 도와주며 굉장히 커다란 데이터를 처리하는 데 사용&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;Map은 데이터를 입력으로 받은 뒤 key-value 쌍을 반환한다.&lt;/li&gt;
+  &lt;li&gt;Reduce는 키와 관련된 값들을 입력으로 받은 뒤 나름의 처리 과정을 거친 뒤 새로운 키와 값을 반환하다.&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h1 id=&quot;시스템-설계-시-고려할-점&quot;&gt;시스템 설계 시 고려할 점&lt;/h1&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;실패 : 실패에 대한 대비책&lt;/li&gt;
+  &lt;li&gt;가용성 및 신뢰성 : 가용성은 사용 가능한 시스템의 시간을 백분율로 나타낸 것, 신뢰성은 특정 단위 시간에 시스템이 사용 가능할 확률&lt;/li&gt;
+  &lt;li&gt;읽기 중심 vs 쓰기 중심 : 쓰는 연산이 많으면 큐를 사용하는 방법이 좋음, 읽는 연산이 많으면 캐시를 사용하는 것이 좋음&lt;/li&gt;
+  &lt;li&gt;보안&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h1 id=&quot;연습문제&quot;&gt;연습문제&lt;/h1&gt;
+
+&lt;p&gt;수백만 개의 문서가 주어졌을 때, 특정 단어 리스트가 포함된 문서를 찾으려고 한다.  &lt;br /&gt;
+어떻게 할 수 있을까? 단어가 등장하는 순서는 중요하지 않지만, 해당 단어가 완벽하게 나타나야 한다.&lt;/p&gt;
+
+&lt;p&gt;findwords를 같은 문서 집합에 대해서 여러 번 호출한다고 가정한다.&lt;/p&gt;
+
+&lt;h2 id=&quot;1단계&quot;&gt;1단계&lt;/h2&gt;
+
+&lt;p&gt;현실적 제약을 무시해보고 문서가 수십 개 있을 때로 가정하여 문제를 풀어본다.  &lt;br /&gt;
+findWords를 어떻게 구현할까…?&lt;/p&gt;
+
+&lt;p&gt;전처리 과정을 통해 모든 문서에 대한 해시테이블을 만든다.  &lt;br /&gt;
+해시테이블은 단어와 해당 단어를 포함하는 문서 리스트에 대한 정보를 담고 있다.&lt;/p&gt;
+
+&lt;p&gt;“books” -&amp;gt; {doc2, doc3, doc6, doc8}  &lt;br /&gt;
+“many” -&amp;gt; {doc1, dod3, doc7, doc8, doc9}&lt;/p&gt;
+
+&lt;p&gt;“many books”를 탐색한다면, “books”와 “many”의 교집합을 구하면 된다. {doc3, doc8}&lt;/p&gt;
+
+&lt;h2 id=&quot;2단계&quot;&gt;2단계&lt;/h2&gt;
+
+&lt;p&gt;현실로 돌아와 문서의 개수를 수백만 개로 늘려본다.  &lt;br /&gt;
+어떻게 해야할까?  &lt;br /&gt;
+일단, 문서를 여러 대의 컴퓨터로 나눠서 보내야 할 것이다.  &lt;br /&gt;
+또한 단어의 수나 출현 빈도 등 때문에 해시테이블조차도 한 컴퓨터에 온전히 보관할 수 없을 수 있다.&lt;/p&gt;
+
+&lt;p&gt;실제로 해시테이블도 분할해서 저장해야 하는 상황이 벌어졌다고 가정해보자.  &lt;br /&gt;
+그러면 다음과 같은 고민을 해야한다.&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;해시테이블은 어떻게 분할하지? 키워드에 따라? 문서에 따라?&lt;/li&gt;
+  &lt;li&gt;데이터를 분할하기로 결정하면, 어떤 컴퓨터에서는 문서를 처리하고 그 처리 결과를 다른 컴퓨터로 옮겨야 할텐데 어떻게 정의할 수 있을까?&lt;/li&gt;
+  &lt;li&gt;어떤 컴퓨터에 어떤 데이터가 보관되어 있는지 알 수 있어야 할텐데.. 그리고 조회 테이블의 형태는? 조회 테이블은 어디에 두어야 되지?&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h2 id=&quot;3단계&quot;&gt;3단계&lt;/h2&gt;
+
+&lt;p&gt;문제점에 대한 해법을 찾아야 한다.
+한 가지 방법은 키워드를 알파벳 순서에 따라 분할하는 것이다.   &lt;br /&gt;
+즉, 한 컴퓨터가 특정한 범위의 단어들(예, after~apple)만 통제하게 하는 것이다.  &lt;br /&gt;
+키워드를 알파벳 순서로 돌면서 가능한 데이터를 저장하는 알고리즘은 쉽게 구현할 수 있다. 용량이 꽉 차면, 다른 컴퓨터로 옮겨 가야 한다.&lt;/p&gt;
+
+&lt;p&gt;장점 : 조회 테이블을 작고 단순하게 만들 수 있음, 각 컴퓨터에 조회 테이블의 복사본을 저장할 수 있음  &lt;br /&gt;
+단점 : 새로운 문서나 단어 추가시 키워드를 굉장히 많이 이동시킴&lt;/p&gt;
+
+&lt;p&gt;“after builds boat amaze banana”&lt;/p&gt;
+
+&lt;p&gt;컴퓨터에 키워드가 알파벳 순서로 분할되어 있으니 문자열을 정렬한 후 요청을 보낸다.&lt;/p&gt;
+
+&lt;p&gt;일번 컴퓨터는 “after~apple” 범위의 키워드가 있으니 after와 amaze에 대한 요청을 보내고, builds, boat, banana는 삼번 컴퓨터 범위에 해당되므로
+삼번 컴퓨터로 요청을 보낸다.  &lt;br /&gt;
+각 컴퓨터에서 요청 사항에 대한 교집합을 구하여 반환한다.  &lt;br /&gt;
+마지막으로, 초반에 전체 요청을 보낸 컴퓨터는 일번과 삼번의 컴퓨터로 부터 받은 결과의 교집합을 구하면 된다.&lt;/p&gt;
+</description>
+        <pubDate>Wed, 28 Aug 2019 00:00:00 +0900</pubDate>
+        <link>http://localhost:4000/codinginterview/coding-interview/</link>
+        <guid isPermaLink="true">http://localhost:4000/codinginterview/coding-interview/</guid>
+        
+        
+        <category>codinginterview</category>
+        
+      </item>
     
       <item>
         <title>자바 API 정리</title>
@@ -53,10 +531,8 @@ returnVal &amp;lt; 0, string1 &amp;lt; string2 사전적으로 string1이 string
         
         
         <category>Java</category>
-=======
-    <pubDate>Thu, 14 Mar 2019 16:04:36 +0900</pubDate>
-    <lastBuildDate>Thu, 14 Mar 2019 16:04:36 +0900</lastBuildDate>
-    <generator>Jekyll v3.8.5</generator>
+        
+      </item>
     
       <item>
         <title>html5 와 css3 와 관련된 에러 모음</title>
@@ -85,7 +561,6 @@ returnVal &amp;lt; 0, string1 &amp;lt; string2 사전적으로 string1이 string
         
         
         <category>android</category>
->>>>>>> 25fa521191ed2024d8956797599d7e5222f64f60
         
       </item>
     
@@ -2572,573 +3047,6 @@ this는 var this = o1; 과 암시적으로 같다.  &lt;br /&gt;
         
         
         <category>javascript</category>
-        
-      </item>
-    
-      <item>
-        <title>(생활코딩) javascript 함수지향3</title>
-        <description>&lt;p&gt;생활코딩 함수지향 파트 중 클로저에 대한 내용을 정리했습니다.&lt;/p&gt;
-
-&lt;hr /&gt;
-
-&lt;h1 id=&quot;1-클로저의-개념&quot;&gt;1. 클로저의 개념&lt;/h1&gt;
-&lt;div class=&quot;language-javascript highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;kd&quot;&gt;function&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;outter&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;()&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt; 
-  &lt;span class=&quot;kd&quot;&gt;var&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;title&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;s1&quot;&gt;'coding everybody'&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt; 
-  &lt;span class=&quot;k&quot;&gt;return&lt;/span&gt; &lt;span class=&quot;kd&quot;&gt;function&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(){&lt;/span&gt; 
-    &lt;span class=&quot;nx&quot;&gt;alert&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;title&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;);&lt;/span&gt; 
-  &lt;span class=&quot;p&quot;&gt;}&lt;/span&gt; 
-&lt;span class=&quot;p&quot;&gt;}&lt;/span&gt; 
-&lt;span class=&quot;nx&quot;&gt;inner&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;outter&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;();&lt;/span&gt; 
-&lt;span class=&quot;nx&quot;&gt;inner&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;();&lt;/span&gt;
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
-&lt;p&gt;함수 outter의 리턴 값은 내부함수이며 변수 inner에 내부함수가 값으로 저장된다.  &lt;br /&gt;
-outter 호출이 종료된 순간, outter는 사라진다.  &lt;br /&gt;
-하지만, inner()를 실행했을 때 알럿창에 coding everybody가 보인다.&lt;/p&gt;
-
-&lt;p&gt;왜?  &lt;br /&gt;
-&lt;span class=&quot;clr-note&quot;&gt;내부함수는 외부함수가 종료되도 외부함수에 접근할 수 있다.&lt;/span&gt;&lt;/p&gt;
-
-&lt;h1 id=&quot;2-private-variable&quot;&gt;2. private variable&lt;/h1&gt;
-&lt;div class=&quot;language-javascript highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;kd&quot;&gt;function&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;factory_movie&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;title&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;){&lt;/span&gt; 
-    &lt;span class=&quot;k&quot;&gt;return&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;{&lt;/span&gt; 
-        &lt;span class=&quot;na&quot;&gt;get_title&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;kd&quot;&gt;function&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(){&lt;/span&gt; 
-            &lt;span class=&quot;k&quot;&gt;return&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;title&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt; 
-        &lt;span class=&quot;p&quot;&gt;},&lt;/span&gt; 
-        &lt;span class=&quot;na&quot;&gt;set_tile&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;kd&quot;&gt;function&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;_title&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;){&lt;/span&gt; 
-            &lt;span class=&quot;k&quot;&gt;if&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;k&quot;&gt;typeof&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;_title&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;===&lt;/span&gt; &lt;span class=&quot;s1&quot;&gt;'String'&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;){&lt;/span&gt; 
-                &lt;span class=&quot;nx&quot;&gt;title&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;_title&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt; 
-            &lt;span class=&quot;p&quot;&gt;}&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;else&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;{&lt;/span&gt; 
-                &lt;span class=&quot;nx&quot;&gt;alert&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s1&quot;&gt;'제목은 문자열이여야 합니다.'&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;);&lt;/span&gt; 
-            &lt;span class=&quot;p&quot;&gt;}&lt;/span&gt; 
-        &lt;span class=&quot;p&quot;&gt;}&lt;/span&gt; 
-    &lt;span class=&quot;p&quot;&gt;}&lt;/span&gt; 
-&lt;span class=&quot;p&quot;&gt;}&lt;/span&gt; 
-&lt;span class=&quot;nx&quot;&gt;ghost&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;factory_movie&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s1&quot;&gt;'Ghost in the shell'&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;);&lt;/span&gt; 
-&lt;span class=&quot;nx&quot;&gt;matrix&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;factory_movie&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s1&quot;&gt;'Matrix'&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;);&lt;/span&gt; 
-&lt;span class=&quot;nx&quot;&gt;alert&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;ghost&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;get_title&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;());&lt;/span&gt;    &lt;span class=&quot;c1&quot;&gt;//Ghost in the shell &lt;/span&gt;
-&lt;span class=&quot;nx&quot;&gt;alert&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;matrix&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;get_tiel&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;());&lt;/span&gt;    &lt;span class=&quot;c1&quot;&gt;//Matrix&lt;/span&gt;
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
-&lt;p&gt;factory_movie의 리턴 값은 get_title, set_title 메소드를 속성으로 가지고 있는 객체이다.  &lt;br /&gt;
-ghost, matrix 변수는 객체를 담게된다.  &lt;br /&gt;
-factory_movie 호출 후, 함수의 생이 종료되어도 ghost, matrix를 통해 함수의 지역변수인 title에 접근할 수 있다.&lt;/p&gt;
-
-&lt;p&gt;왜 private variable을 사용해야 하는가?  &lt;br /&gt;
-&lt;span class=&quot;clr-note&quot;&gt;외부에서 title 변수를 수정해도 ghost, matrix가 가진 title의 맥락에는 영향을 주지 않는다.    즉, 데이터의 수정과 저장을 안전하게 할 수 있다.&lt;/span&gt;&lt;/p&gt;
-
-&lt;h1 id=&quot;3-클로저의-응용&quot;&gt;3. 클로저의 응용&lt;/h1&gt;
-&lt;div class=&quot;language-javascript highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;kd&quot;&gt;var&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;arr&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;[];&lt;/span&gt; 
-&lt;span class=&quot;k&quot;&gt;for&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt; &lt;span class=&quot;kd&quot;&gt;var&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;i&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;0&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;i&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;&amp;lt;&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;5&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;i&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;++&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;){&lt;/span&gt;
-     &lt;span class=&quot;nx&quot;&gt;arr&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;i&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;]&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;kd&quot;&gt;function&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(){&lt;/span&gt; 
-        &lt;span class=&quot;nx&quot;&gt;console&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;log&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;i&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;);&lt;/span&gt;
-     &lt;span class=&quot;p&quot;&gt;}&lt;/span&gt; 
-&lt;span class=&quot;p&quot;&gt;}&lt;/span&gt; 
- 
-&lt;span class=&quot;k&quot;&gt;for&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt; &lt;span class=&quot;kd&quot;&gt;var&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;index&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;in&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;arr&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;){&lt;/span&gt; 
-    &lt;span class=&quot;nx&quot;&gt;console&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;log&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;arr&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;index&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;]());&lt;/span&gt; 
-&lt;span class=&quot;p&quot;&gt;}&lt;/span&gt; 
-&lt;span class=&quot;c1&quot;&gt;//결과는 5 5 5 5 5&lt;/span&gt;
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
-&lt;p&gt;함수가 실행되는 시점의 변수가 내부함수에 저장된다.  &lt;br /&gt;
-두번째 반목문에서 배열객체의 함수를 실행하는 순간의 i가 콘솔에 찍히게 된다.  &lt;br /&gt;
-그러나, i는 첫번째 포문에 의해 이미 5가 되어버린 상태이므로 5만 다섯번 찍히게 된다.&lt;/p&gt;
-
-&lt;div class=&quot;language-javascript highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;kd&quot;&gt;var&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;arr&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;[];&lt;/span&gt; 
-&lt;span class=&quot;k&quot;&gt;for&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;kd&quot;&gt;var&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;i&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;0&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;i&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;&amp;lt;&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;5&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;i&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;++&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;){&lt;/span&gt; 
-    &lt;span class=&quot;nx&quot;&gt;arr&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;i&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;]&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;kd&quot;&gt;function&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;id&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;){&lt;/span&gt; 
-        &lt;span class=&quot;k&quot;&gt;return&lt;/span&gt; &lt;span class=&quot;kd&quot;&gt;function&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(){&lt;/span&gt; 
-            &lt;span class=&quot;k&quot;&gt;return&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;id&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt; 
-        &lt;span class=&quot;p&quot;&gt;}&lt;/span&gt; 
-    &lt;span class=&quot;p&quot;&gt;}(&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;i&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;);&lt;/span&gt; 
-&lt;span class=&quot;p&quot;&gt;}&lt;/span&gt; 
- 
-&lt;span class=&quot;k&quot;&gt;for&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt; &lt;span class=&quot;kd&quot;&gt;var&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;index&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;in&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;arr&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;){&lt;/span&gt; 
-    &lt;span class=&quot;nx&quot;&gt;console&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;log&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;arr&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;index&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;]());&lt;/span&gt;  
-&lt;span class=&quot;p&quot;&gt;}&lt;/span&gt; 
-&lt;span class=&quot;c1&quot;&gt;//결과는 0,1,2,3,4&lt;/span&gt;
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
-&lt;p&gt;외부함수의 인자 값으로 i가 전달되고, 내부함수는 이 시점의 i를 저장한다.  &lt;br /&gt;
-첫번째 포문에서 외부함수가 i를 인자값으로 하면서 실행되는 시점에서 내부함수가 정의된다.&lt;/p&gt;
-
-</description>
-        <pubDate>Sat, 13 Jan 2018 00:00:00 +0900</pubDate>
-        <link>http://localhost:4000/javascript/javascript-opentutorials-function-3/</link>
-        <guid isPermaLink="true">http://localhost:4000/javascript/javascript-opentutorials-function-3/</guid>
-        
-        <category>javascript</category>
-        
-        
-        <category>javascript</category>
-        
-      </item>
-    
-      <item>
-        <title>(생활코딩) javascript 함수지향2</title>
-        <description>&lt;p&gt;생활코딩 함수지향 파트 중 값으로서의 함수와 콜백에 대한 내용을 정리했습니다.&lt;/p&gt;
-
-&lt;hr /&gt;
-
-&lt;h1 id=&quot;1-값으로서-함수&quot;&gt;1. 값으로서 함수&lt;/h1&gt;
-
-&lt;p&gt;예제1) 자바스크립트에서는 함수도 객체이며, 함수도 값이 될 수 있다.&lt;/p&gt;
-&lt;div class=&quot;language-javascript highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;kd&quot;&gt;function&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;a&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(){}&lt;/span&gt;     &lt;span class=&quot;c1&quot;&gt;//함수는 a라는 변수에 담겨진 값.&lt;/span&gt;
-&lt;span class=&quot;kd&quot;&gt;var&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;a&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;kd&quot;&gt;function&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(){}&lt;/span&gt;
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
-
-&lt;p&gt;예제2) 함수는 객체 안에 저장될 수 있다.&lt;/p&gt;
-&lt;div class=&quot;language-javascript highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;nx&quot;&gt;a&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
-    &lt;span class=&quot;na&quot;&gt;b&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;kd&quot;&gt;function&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(){&lt;/span&gt;
-    &lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
-&lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
-&lt;p&gt;b는 key, 객체 안에서 변수 역할(어떤 값을 저장하고 있기 때문) = 속성(property)  &lt;br /&gt;
-속성에 저장된 값이 함수면 메소드라 부름.  &lt;br /&gt;
-즉, a라는 객체에 b라는 속성이 있는데, 이 속성의 값은 함수(메소드)다.&lt;/p&gt;
-
-&lt;p&gt;예제3) 함수는 변수, 객체에 저장될 수 있고 인자로도 사용할 수 있다.&lt;/p&gt;
-&lt;div class=&quot;language-javascript highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;kd&quot;&gt;function&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;cal&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;func&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;num&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;){&lt;/span&gt;
-    &lt;span class=&quot;k&quot;&gt;return&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;func&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;num&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
-&lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
- 
-&lt;span class=&quot;kd&quot;&gt;function&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;increase&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;num&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;){&lt;/span&gt;
-    &lt;span class=&quot;k&quot;&gt;return&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;num&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;+&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;1&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
-&lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
-&lt;span class=&quot;nx&quot;&gt;alert&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;cal&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;increase&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;1&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;);&lt;/span&gt;
- 
-&lt;span class=&quot;c1&quot;&gt;// 위 코드는 아래와 같이 해석될 수 있다.&lt;/span&gt;
-&lt;span class=&quot;kd&quot;&gt;function&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;cal&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;(&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;func&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;num&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;){&lt;/span&gt;
-    &lt;span class=&quot;kd&quot;&gt;var&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;func&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;increase&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;num&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;){&lt;/span&gt;
-        &lt;span class=&quot;k&quot;&gt;return&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;num&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;+&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;1&lt;/span&gt;
-    &lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
-&lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
-&lt;span class=&quot;c1&quot;&gt;// 즉, func(1) =&amp;gt; 2가 출력됨.&lt;/span&gt;
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
-
-&lt;p&gt;예제4) 함수를 리턴 값으로도 사용할 수 있다.&lt;/p&gt;
-&lt;div class=&quot;language-javascript highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt; &lt;span class=&quot;kd&quot;&gt;function&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;cal&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;mode&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;){&lt;/span&gt;
-  &lt;span class=&quot;nx&quot;&gt;val&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;funcs&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
-   &lt;span class=&quot;s1&quot;&gt;'plus'&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;kd&quot;&gt;function&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;left&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;right&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;return&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;left&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;+&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;right&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;},&lt;/span&gt;
-   &lt;span class=&quot;s1&quot;&gt;'minus'&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;kd&quot;&gt;function&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;left&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;right&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;return&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;left&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;-&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;right&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
-  &lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
-  &lt;span class=&quot;k&quot;&gt;return&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;funcs&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;mode&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;];&lt;/span&gt;
-&lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
-&lt;span class=&quot;nx&quot;&gt;alert&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;cal&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s1&quot;&gt;'plus'&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)(&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;2&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;1&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;));&lt;/span&gt;
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
-&lt;p&gt;return funcs[‘plus’] 는 funcs 객체의 plus 속성의 값인 function(left, right) {return left+right} 메소드를 리턴시킨다.  &lt;br /&gt;
-cal(‘plus’)(2,1)은 cal(‘plus’)함수의 인자 값으로 2, 1을 전달하겠다는 의미이다. &lt;br /&gt;
-cal(‘plus’)는 function(left, right) {return left+right} 이므로 알럿창에 3이 뜬다.&lt;/p&gt;
-
-&lt;p&gt;예제5) 함수를 배열의 값으로 사용할 수 있다.&lt;/p&gt;
-&lt;div class=&quot;language-javascript highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt; &lt;span class=&quot;kd&quot;&gt;var&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;process&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;
-    &lt;span class=&quot;kd&quot;&gt;function&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;input&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;&lt;span class=&quot;k&quot;&gt;return&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;input&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;+&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;10&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;},&lt;/span&gt;
-    &lt;span class=&quot;kd&quot;&gt;function&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;input&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;&lt;span class=&quot;k&quot;&gt;return&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;input&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;*&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;input&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;},&lt;/span&gt;
-    &lt;span class=&quot;kd&quot;&gt;function&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;input&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;&lt;span class=&quot;k&quot;&gt;return&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;input&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;/&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;2&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;}&lt;/span&gt;
-&lt;span class=&quot;p&quot;&gt;];&lt;/span&gt;
-&lt;span class=&quot;kd&quot;&gt;var&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;input&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;1&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
-&lt;span class=&quot;k&quot;&gt;for&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;kd&quot;&gt;var&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;i&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;0&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;i&lt;/span&gt;  &lt;span class=&quot;o&quot;&gt;&amp;lt;&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;process&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;length&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;i&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;++&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
-    &lt;span class=&quot;nx&quot;&gt;input&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;process&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;i&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;](&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;input&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;);&lt;/span&gt;
- 
-&lt;span class=&quot;nx&quot;&gt;alert&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;input&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;);&lt;/span&gt; &lt;span class=&quot;c1&quot;&gt;//60.5&lt;/span&gt;
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
-
-&lt;h1 id=&quot;2-콜백&quot;&gt;2. 콜백&lt;/h1&gt;
-&lt;div class=&quot;language-javascript highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;kd&quot;&gt;var&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;numbers&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;20&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;10&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;9&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;8&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;7&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;6&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;5&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;4&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;3&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;2&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;1&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;];&lt;/span&gt;
-&lt;span class=&quot;nx&quot;&gt;numbers&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;sort&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;();&lt;/span&gt;    &lt;span class=&quot;c1&quot;&gt;// numbers는 배열객체, sort()는 메소드(내장메소드)&lt;/span&gt;
-&lt;span class=&quot;nx&quot;&gt;console&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;log&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;numbers&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;c1&quot;&gt;// 1, 10, 2, 20, 3, 4, 5, 6, 7, 8, 9 - 문자 기준으로 정렬한 듯.&lt;/span&gt;
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
-&lt;p&gt;&lt;span class=&quot;clr-grey&quot;&gt;
-sort()  &lt;br /&gt;
-array.sort (sortfunc)  &lt;br /&gt;
-반환값 : 정렬된 배열
-&lt;/span&gt;&lt;/p&gt;
-
-&lt;div class=&quot;language-javascript highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;kd&quot;&gt;var&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;numbers&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;20&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;10&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;9&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;8&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;7&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;6&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;5&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;4&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;3&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;2&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;1&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;];&lt;/span&gt;
-&lt;span class=&quot;kd&quot;&gt;var&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;sortfunc&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;kd&quot;&gt;function&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;a&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;b&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;){&lt;/span&gt;
-    &lt;span class=&quot;k&quot;&gt;if&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;a&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;&amp;gt;&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;b&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
-        &lt;span class=&quot;k&quot;&gt;return&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;1&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
-    &lt;span class=&quot;k&quot;&gt;else&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;if&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;a&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;&amp;lt;&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;b&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
-        &lt;span class=&quot;k&quot;&gt;return&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;-&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;1&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
-    &lt;span class=&quot;k&quot;&gt;else&lt;/span&gt;
-        &lt;span class=&quot;k&quot;&gt;return&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;0&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
-&lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
-&lt;span class=&quot;kd&quot;&gt;var&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;sortfunc&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;kd&quot;&gt;function&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;a&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;b&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;){&lt;/span&gt;
-    &lt;span class=&quot;k&quot;&gt;return&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;a&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;-&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;b&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;    &lt;span class=&quot;c1&quot;&gt;//역순은 return b-a;&lt;/span&gt;
-&lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;   
-    &lt;span class=&quot;nx&quot;&gt;numbers&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;sort&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;sortfunc&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;);&lt;/span&gt;    &lt;span class=&quot;c1&quot;&gt;// 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 20&lt;/span&gt;
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
-&lt;p&gt;sortfunc가 콜백함수가 된다.  &lt;br /&gt;
-함수는 값으로서 사용할 수 있기 때문에 sortfunc를 sort에 인자로 전달함으로서 sort 메소드를 사용자가 원하는 방식으로 바꿀 수 있다.&lt;/p&gt;
-
-&lt;p&gt;&lt;span class=&quot;clr-note&quot;&gt;**콜백은 비동기처리에서 유용하게 사용된다.&lt;/span&gt;&lt;/p&gt;
-</description>
-        <pubDate>Sat, 13 Jan 2018 00:00:00 +0900</pubDate>
-        <link>http://localhost:4000/javascript/javascript-opentutorials-function-2/</link>
-        <guid isPermaLink="true">http://localhost:4000/javascript/javascript-opentutorials-function-2/</guid>
-        
-        <category>javascript</category>
-        
-        
-        <category>javascript</category>
-        
-      </item>
-    
-      <item>
-        <title>(생활코딩) javascript 함수지향1</title>
-        <description>&lt;p&gt;생활코딩 함수지향 파트 중 변수의 유효범위에 대한 내용을 정리했습니다.&lt;/p&gt;
-
-&lt;hr /&gt;
-
-&lt;h1 id=&quot;변수의-유효범위&quot;&gt;변수의 유효범위&lt;/h1&gt;
-
-&lt;p&gt;예제1) 지역변수와 전역변수의 구분1&lt;/p&gt;
-&lt;div class=&quot;language-javascript highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;kd&quot;&gt;var&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;vscope&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;s1&quot;&gt;'global'&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;    &lt;span class=&quot;c1&quot;&gt;//전역변수&lt;/span&gt;
-&lt;span class=&quot;kd&quot;&gt;function&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;fscope&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(){&lt;/span&gt;
-   &lt;span class=&quot;nx&quot;&gt;alert&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;vscope&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;);&lt;/span&gt;
-&lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
-&lt;span class=&quot;nx&quot;&gt;fscope&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;();&lt;/span&gt;    &lt;span class=&quot;c1&quot;&gt;//global&lt;/span&gt;
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
-&lt;p&gt;&lt;span class=&quot;clr-grey&quot;&gt;
-&lt;strong&gt;Note:&lt;/strong&gt; 전역변수 : 애플리케이션 전역에서 접근 가능한 변수  &lt;br /&gt;
-&lt;strong&gt;Note:&lt;/strong&gt; 지역변수 : 함수 내에서만 접근 가능한 변수  &lt;br /&gt;
-*변수에 접근할 때, 지역변수를 우선적으로 찾는다.
-&lt;/span&gt;&lt;/p&gt;
-
-&lt;p&gt;&amp;lt;/br&amp;gt;
-예제2) 지역변수와 전역변수의 구분2&lt;/p&gt;
-&lt;div class=&quot;language-javascript highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;kd&quot;&gt;var&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;vscope&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;s1&quot;&gt;'global'&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;   
-&lt;span class=&quot;kd&quot;&gt;function&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;fscope&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(){&lt;/span&gt;
-   &lt;span class=&quot;kd&quot;&gt;var&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;vscope&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;s1&quot;&gt;'local'&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;    &lt;span class=&quot;c1&quot;&gt;//지역변수&lt;/span&gt;
-   &lt;span class=&quot;kd&quot;&gt;var&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;lv&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;s1&quot;&gt;'local value'&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;   &lt;span class=&quot;c1&quot;&gt;//지역변수&lt;/span&gt;
-   &lt;span class=&quot;nx&quot;&gt;alert&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;vscope&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;);&lt;/span&gt;
-&lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
-&lt;span class=&quot;nx&quot;&gt;fscope&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;();&lt;/span&gt;    &lt;span class=&quot;c1&quot;&gt;//local&lt;/span&gt;
-&lt;span class=&quot;nx&quot;&gt;alert&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;lv&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;);&lt;/span&gt;    &lt;span class=&quot;c1&quot;&gt;//undefined&lt;/span&gt;
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
-
-&lt;p&gt;예제3) 지역변수와 전역변수의 구분3&lt;/p&gt;
-&lt;div class=&quot;language-javascript highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;kd&quot;&gt;function&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;a&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(){&lt;/span&gt;
-   &lt;span class=&quot;nx&quot;&gt;i&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;0&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
-&lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
-&lt;span class=&quot;k&quot;&gt;for&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;kd&quot;&gt;var&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;i&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;0&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;i&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;&amp;lt;&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;5&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;i&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;++&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;){&lt;/span&gt;    &lt;span class=&quot;c1&quot;&gt;// i는 전역변수&lt;/span&gt;
-    &lt;span class=&quot;nx&quot;&gt;a&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;();&lt;/span&gt;
-    &lt;span class=&quot;nb&quot;&gt;document&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;write&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;i&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;);&lt;/span&gt;
-&lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
-&lt;p&gt;for문의 i는 전역변수기 때문에 해당 코드는 계속 실행되다가 브라우저가 멈춘다.&lt;/p&gt;
-
-&lt;p&gt;예제4) 전역변수 안쓰는 방법1&lt;/p&gt;
-&lt;div class=&quot;language-javascript highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;kd&quot;&gt;var&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;MYAPP&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{}&lt;/span&gt;
-&lt;span class=&quot;nx&quot;&gt;MYAPP&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;calculator&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt; &lt;span class=&quot;c1&quot;&gt;//객체의 속성(calculator)에도 객체를 생성.&lt;/span&gt;
-  &lt;span class=&quot;s1&quot;&gt;'left'&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;kc&quot;&gt;null&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;
-  &lt;span class=&quot;s1&quot;&gt;'right'&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;kc&quot;&gt;null&lt;/span&gt;
-&lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
-&lt;span class=&quot;nx&quot;&gt;MYAPP&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;coordinate&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
-   &lt;span class=&quot;s1&quot;&gt;'left'&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;kc&quot;&gt;null&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;
-   &lt;span class=&quot;s1&quot;&gt;'right'&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;kc&quot;&gt;null&lt;/span&gt;
-&lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
-
-&lt;span class=&quot;nx&quot;&gt;MYAPP&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;calculator&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;left&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;10&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
-&lt;span class=&quot;nx&quot;&gt;MYAPP&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;calculator&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;right&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;20&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
-&lt;span class=&quot;kd&quot;&gt;function&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;sum&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(){&lt;/span&gt;
-  &lt;span class=&quot;k&quot;&gt;return&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;MYAPP&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;calculator&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;left&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;+&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;MYAPP&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;calculator&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;right&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
-&lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
-&lt;span class=&quot;nb&quot;&gt;document&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;write&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;sum&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;());&lt;/span&gt;    &lt;span class=&quot;c1&quot;&gt;//30&lt;/span&gt;
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
-&lt;p&gt;MYAPP 전역변수 하나만 생성하고, 그 안에 필요한 전역변수를 정의한다.&lt;/p&gt;
-
-&lt;p&gt;예제5) 전역변수 안쓰는 방법2&lt;/p&gt;
-&lt;div class=&quot;language-javascript highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;kd&quot;&gt;function&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(){&lt;/span&gt;
-&lt;span class=&quot;kd&quot;&gt;var&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;MYAPP&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{}&lt;/span&gt;
-&lt;span class=&quot;nx&quot;&gt;MYAPP&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;calculator&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt; &lt;span class=&quot;c1&quot;&gt;//객체의 속성(calculator)에도 객체를 생성.&lt;/span&gt;
-  &lt;span class=&quot;s1&quot;&gt;'left'&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;kc&quot;&gt;null&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;
-  &lt;span class=&quot;s1&quot;&gt;'right'&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;kc&quot;&gt;null&lt;/span&gt;
-&lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
-&lt;span class=&quot;nx&quot;&gt;MYAPP&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;coordinate&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
-   &lt;span class=&quot;s1&quot;&gt;'left'&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;kc&quot;&gt;null&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;
-   &lt;span class=&quot;s1&quot;&gt;'right'&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;kc&quot;&gt;null&lt;/span&gt;
-&lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
-
-&lt;span class=&quot;nx&quot;&gt;MYAPP&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;calculator&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;left&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;10&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
-&lt;span class=&quot;nx&quot;&gt;MYAPP&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;calculator&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;right&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;20&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
-&lt;span class=&quot;kd&quot;&gt;function&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;sum&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(){&lt;/span&gt;
-  &lt;span class=&quot;k&quot;&gt;return&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;MYAPP&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;calculator&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;left&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;+&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;MYAPP&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;calculator&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;right&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
-&lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
-&lt;span class=&quot;nb&quot;&gt;document&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;write&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;sum&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;());&lt;/span&gt;    &lt;span class=&quot;c1&quot;&gt;//30&lt;/span&gt;
-&lt;span class=&quot;p&quot;&gt;}());&lt;/span&gt;    &lt;span class=&quot;c1&quot;&gt;//익명함수&lt;/span&gt;
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
-&lt;p&gt;전역변수가 절대 존재하지 않게 개발할 때, 익명함수. 일회성함수를 이용한다.  &lt;br /&gt;
-Jquery와 같은 라이브러리에서 모듈화 기법으로 많이 사용한다.&lt;/p&gt;
-
-&lt;p&gt;예제6) 자바와의 차이점. for문 안에서의 변수.&lt;/p&gt;
-&lt;div class=&quot;language-javascript highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;k&quot;&gt;for&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt; &lt;span class=&quot;kd&quot;&gt;var&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;i&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;0&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;i&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;&amp;lt;&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;1&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;i&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;++&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;){&lt;/span&gt;
-  &lt;span class=&quot;kd&quot;&gt;var&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;name&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;s2&quot;&gt;&quot;local no!&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
-&lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
-&lt;span class=&quot;nx&quot;&gt;alert&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;name&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;);&lt;/span&gt;    &lt;span class=&quot;c1&quot;&gt;//local no!&lt;/span&gt;
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
-&lt;p&gt;자바는 반복문, 조건문 안에서 선언된 변수를 지역변수 취급하기 때문에 위와 같은 로직으로 실행시키면 에러가 난다.  &lt;br /&gt;
-그러나 자바스크립트에서 해당 변수는 전역변수이다.&lt;/p&gt;
-
-&lt;p&gt;예제7) 정적 유효범위&lt;/p&gt;
-&lt;div class=&quot;language-javascript highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;kd&quot;&gt;var&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;i&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;5&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
-&lt;span class=&quot;kd&quot;&gt;function&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;a&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(){&lt;/span&gt;
-  &lt;span class=&quot;kd&quot;&gt;var&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;i&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;10&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
-  &lt;span class=&quot;nx&quot;&gt;b&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;();&lt;/span&gt;
-&lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
-&lt;span class=&quot;kd&quot;&gt;function&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;b&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(){&lt;/span&gt;
-  &lt;span class=&quot;nb&quot;&gt;document&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;write&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;i&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;);&lt;/span&gt;    &lt;span class=&quot;c1&quot;&gt;//누구의 i일까?&lt;/span&gt;
-&lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
-&lt;span class=&quot;nx&quot;&gt;a&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;();&lt;/span&gt;    &lt;span class=&quot;c1&quot;&gt;//5가 출력된다!&lt;/span&gt;
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
-&lt;p&gt;함수에서 변수를 찾을 때, 함수 내 지역변수를 먼저 찾고. 전역변수를 찾는다.  &lt;br /&gt;
-&lt;span class=&quot;clr-note&quot;&gt;
-**사용(호출)될 때가 아니라 정의될 때의 전역변수가 사용된다. -&amp;gt; 정적 유효범위
-&lt;/span&gt;&lt;/p&gt;
-</description>
-        <pubDate>Thu, 11 Jan 2018 00:00:00 +0900</pubDate>
-        <link>http://localhost:4000/javascript/javascript-opentutorials-function-1/</link>
-        <guid isPermaLink="true">http://localhost:4000/javascript/javascript-opentutorials-function-1/</guid>
-        
-        <category>javascript</category>
-        
-        
-        <category>javascript</category>
-        
-      </item>
-    
-      <item>
-        <title>(생활코딩) Javascript 입문3</title>
-        <description>&lt;p&gt;생활코딩 javscript 과정 중 정규표현식 내용을 정리했습니다.&lt;/p&gt;
-
-&lt;hr /&gt;
-
-&lt;h1 id=&quot;정규표현식regular-expression&quot;&gt;정규표현식(Regular Expression)&lt;/h1&gt;
-&lt;ul&gt;
-  &lt;li&gt;문자열에서 특정 문자를 찾을 때 사용 .. * 나중에 생활코딩 정규표현식 강의도 듣기!! &amp;amp; 전화번호 때 사용했던 경험 넣기&lt;/li&gt;
-  &lt;li&gt;컴파일 -&amp;gt; 실행 단계로 이뤄진다.&lt;/li&gt;
-  &lt;li&gt;컴파일 : 찾고 싶은 패턴을 만듬.&lt;/li&gt;
-  &lt;li&gt;실행 : 문자열에서 패턴을 추출.&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;h2 id=&quot;정규표현식-객체를-만드는-방법&quot;&gt;정규표현식 객체를 만드는 방법&lt;/h2&gt;
-&lt;p&gt;1) var pattern = /a/  &lt;br /&gt;
-2) var pattern = new RegExp(‘a’);&lt;/p&gt;
-
-&lt;h2 id=&quot;패턴-추출&quot;&gt;패턴 추출&lt;/h2&gt;
-&lt;p&gt;1) pattern.exec(‘abcdef’)    // [“a”]; a배열 추출  &lt;br /&gt;
-2) pattern.exec(‘bcdefg’)    // null a가 없어서.  &lt;br /&gt;
-3) pattern.test(‘abcdef’)     // true  &lt;br /&gt;
-4) pattern.test(‘bcdefg’)     // false&lt;/p&gt;
-
-&lt;h2 id=&quot;문자열-객체의-메소드에서-정규표현식-사용하기&quot;&gt;문자열 객체의 메소드에서 정규표현식 사용하기&lt;/h2&gt;
-&lt;p&gt;String.match()  &lt;br /&gt;
-String.replace()&lt;/p&gt;
-&lt;div class=&quot;language-javascript highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;s1&quot;&gt;'abcdef'&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;match&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;pattern&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;    &lt;span class=&quot;c1&quot;&gt;// [&quot;a&quot;]&lt;/span&gt;
-&lt;span class=&quot;s1&quot;&gt;'bcdefg'&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;match&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;pattern&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;    &lt;span class=&quot;c1&quot;&gt;// null&lt;/span&gt;
-&lt;span class=&quot;s1&quot;&gt;'abcdef'&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;replace&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;pattern&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;&lt;span class=&quot;s1&quot;&gt;'A'&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;    &lt;span class=&quot;c1&quot;&gt;// Abcdef&lt;/span&gt;
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
-
-&lt;h2 id=&quot;옵션&quot;&gt;옵션&lt;/h2&gt;
-&lt;p&gt;i 대소문자 구분 안함&lt;/p&gt;
-&lt;div class=&quot;language-javascript highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;kd&quot;&gt;var&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;oi&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;sr&quot;&gt;/a/i&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
-&lt;span class=&quot;s2&quot;&gt;&quot;Abcdef&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;match&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;oi&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;);&lt;/span&gt;    &lt;span class=&quot;c1&quot;&gt;//[&quot;A&quot;]&lt;/span&gt;
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
-
-&lt;p&gt;g 검색된 모든 결과 리턴&lt;/p&gt;
-&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;var og = /a/g;
-&quot;abcdea&quot;.match(og);    //[&quot;a&quot;,&quot;a&quot;]
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
-
-&lt;h2 id=&quot;치환&quot;&gt;치환&lt;/h2&gt;
-&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;var pattern = /(\w+)\s(\w+)/;    //()는 그룹, \s는 공백, +는 1개이상, \w는 문자(0-9,a-z,A-Z)
-var str = &quot;coding everybody&quot;;
-var result = str.replace(pattern, &quot;$2, $1&quot;);    //$N는 N번째 그룹.
-console.log(result);
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
-</description>
-        <pubDate>Thu, 11 Jan 2018 00:00:00 +0900</pubDate>
-        <link>http://localhost:4000/javascript/javascript-opentutorials-3/</link>
-        <guid isPermaLink="true">http://localhost:4000/javascript/javascript-opentutorials-3/</guid>
-        
-        <category>javascript</category>
-        
-        
-        <category>javascript</category>
-        
-      </item>
-    
-      <item>
-        <title>(생활코딩) Javascript 입문2</title>
-        <description>&lt;p&gt;생활코딩 URL https://opentutorials.org/course/743/  &lt;br /&gt;
-반복문, 함수 정의방법, 배열, 객체&lt;/p&gt;
-
-&lt;hr /&gt;
-
-&lt;h1 id=&quot;반복문&quot;&gt;반복문&lt;/h1&gt;
-&lt;div class=&quot;language-javascript highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;k&quot;&gt;for&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt; &lt;span class=&quot;kd&quot;&gt;var&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;i&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;0&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;i&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;&amp;lt;&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;10&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;i&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;++&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;){&lt;/span&gt;
-    &lt;span class=&quot;k&quot;&gt;if&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;i&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;===&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;5&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;break&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;     &lt;span class=&quot;c1&quot;&gt;// 그 즉시, for문 중단 - coding1~4 까지만 출력됨&lt;/span&gt;
-    &lt;span class=&quot;k&quot;&gt;if&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;i&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;===&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;5&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;continue&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt; &lt;span class=&quot;c1&quot;&gt;// 실행을 중단하고 반복문 이어서 함. - coding1~4/6~9까지 출력됨.&lt;/span&gt;
-    &lt;span class=&quot;nb&quot;&gt;document&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;write&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;coding&quot;&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;+&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;i&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;+&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;);&lt;/span&gt;
-&lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
-
-&lt;h1 id=&quot;함수-정의-방법&quot;&gt;함수 정의 방법&lt;/h1&gt;
-&lt;div class=&quot;language-javascript highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;c1&quot;&gt;// [첫번째 방법]&lt;/span&gt;
-&lt;span class=&quot;kd&quot;&gt;function&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;numbering&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;arg&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;){&lt;/span&gt;
-   &lt;span class=&quot;c1&quot;&gt;//statement&lt;/span&gt;
-&lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
-
-&lt;span class=&quot;c1&quot;&gt;// [두번째 방법]&lt;/span&gt;
-&lt;span class=&quot;kd&quot;&gt;var&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;numbering&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;kd&quot;&gt;function&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(){&lt;/span&gt;
- &lt;span class=&quot;c1&quot;&gt;//statement &lt;/span&gt;
- &lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
-
- &lt;span class=&quot;c1&quot;&gt;// [세번째 방법-익명함수]&lt;/span&gt;
- &lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;kd&quot;&gt;function&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(){&lt;/span&gt;
-    &lt;span class=&quot;c1&quot;&gt;//statement &lt;/span&gt;
- &lt;span class=&quot;p&quot;&gt;})();&lt;/span&gt;
- &lt;span class=&quot;c1&quot;&gt;//*일회성 함수&lt;/span&gt;
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
-
-&lt;h1 id=&quot;배열&quot;&gt;배열&lt;/h1&gt;
-&lt;div class=&quot;language-javascript highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;kd&quot;&gt;var&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;member&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;s1&quot;&gt;'a'&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;s1&quot;&gt;'b'&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;s1&quot;&gt;'c'&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;];&lt;/span&gt;    &lt;span class=&quot;c1&quot;&gt;//생성&lt;/span&gt;
-&lt;span class=&quot;nx&quot;&gt;alert&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;member&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;0&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;]);&lt;/span&gt;                &lt;span class=&quot;c1&quot;&gt;// 'a' &lt;/span&gt;
-
-&lt;span class=&quot;k&quot;&gt;for&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;kd&quot;&gt;var&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;i&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;0&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;i&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;&amp;lt;&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;member&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;length&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;i&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;++&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;){&lt;/span&gt;    &lt;span class=&quot;c1&quot;&gt;// 배열의 크기만큼 반복&lt;/span&gt;
-  &lt;span class=&quot;nb&quot;&gt;document&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;write&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;member&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;i&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;].&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;toUpperCase&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;())&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;+&lt;/span&gt; &lt;span class=&quot;s2&quot;&gt;&quot;&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
-&lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
-&lt;span class=&quot;cm&quot;&gt;/*배열의 원소 추가하는 방법*/&lt;/span&gt;
-&lt;span class=&quot;nx&quot;&gt;member&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;push&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s1&quot;&gt;'f'&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;);&lt;/span&gt;        &lt;span class=&quot;c1&quot;&gt;// a,b,c,f - 배열의 맨 뒤에 삽입&lt;/span&gt;
-&lt;span class=&quot;nx&quot;&gt;member&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;concat&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;([&lt;/span&gt;&lt;span class=&quot;s1&quot;&gt;'e'&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;&lt;span class=&quot;s1&quot;&gt;'f'&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;]);&lt;/span&gt; &lt;span class=&quot;c1&quot;&gt;// a,b,c,f,e,f - 복수의 원소 추가&lt;/span&gt;
-&lt;span class=&quot;nx&quot;&gt;member&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;unshift&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s1&quot;&gt;'g'&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;);&lt;/span&gt;     &lt;span class=&quot;c1&quot;&gt;// g,a,b,c,f,e,f - 배열의 맨 앞에 삽입&lt;/span&gt;
-&lt;span class=&quot;nx&quot;&gt;member&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;splice&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;2&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;0&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;s1&quot;&gt;'B'&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;);&lt;/span&gt; &lt;span class=&quot;c1&quot;&gt;// g,a,B,b,c,f,e,f - 배열의 2번째 인덱스 0(앞에) B를 추가&lt;/span&gt;
-
-&lt;span class=&quot;cm&quot;&gt;/*배열의 원소 삭제하는 방법 및 정렬 */&lt;/span&gt;
-&lt;span class=&quot;nx&quot;&gt;member&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;shift&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;();&lt;/span&gt;        &lt;span class=&quot;c1&quot;&gt;// 배열의 첫번째 원소 삭제&lt;/span&gt;
-&lt;span class=&quot;nx&quot;&gt;member&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;pop&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;();&lt;/span&gt;        &lt;span class=&quot;c1&quot;&gt;// 배열의 마지막 원소 삭제&lt;/span&gt;
-&lt;span class=&quot;nx&quot;&gt;member&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;sort&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;();&lt;/span&gt;        &lt;span class=&quot;c1&quot;&gt;// 오름차순 정렬&lt;/span&gt;
-&lt;span class=&quot;nx&quot;&gt;member&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;reverse&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;();&lt;/span&gt;    &lt;span class=&quot;c1&quot;&gt;// 내림차순 정렬&lt;/span&gt;
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
-
-&lt;h2 id=&quot;배열의-함수-splice&quot;&gt;배열의 함수. splice&lt;/h2&gt;
-&lt;ul&gt;
-  &lt;li&gt;배열의 특정구간을 추출하거나, 특정 구간에 특정 배열을 추가한다.&lt;/li&gt;
-  &lt;li&gt;array.splice( index, howmany, [element1…N])  &lt;br /&gt;
-&lt;span class=&quot;clr-grey&quot;&gt;
-index : 배열의 위치  &lt;br /&gt;
-howmany : index에서부터 제거될 원소의 수로, 1이면 index 값만 제거되어 값이 추가된다. &lt;br /&gt;
-0일 때는 삭제 없이 인덱스 앞쪽에 값이 추가됨. 없으면 배열 끝까지(길이)  &lt;br /&gt;
-element1…N : 추가될 Value
-&lt;/span&gt;&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;h2 id=&quot;배열의-정렬-sort---사용자정의가능&quot;&gt;배열의 정렬. sort - 사용자정의가능&lt;/h2&gt;
-&lt;div class=&quot;language-javascript highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;kd&quot;&gt;function&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;sortNumber&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;a&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;b&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;){&lt;/span&gt;
-    &lt;span class=&quot;k&quot;&gt;return&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;a&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;-&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;b&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;    &lt;span class=&quot;c1&quot;&gt;//리턴값이 음수, 양수, 0인지에 따라 순서 정함.&lt;/span&gt;
-&lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
-&lt;span class=&quot;kd&quot;&gt;var&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;numbers&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;20&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;10&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;8&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;15&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;]&lt;/span&gt;
-&lt;span class=&quot;nx&quot;&gt;numbers&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;sort&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;sortNumber&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;);&lt;/span&gt; &lt;span class=&quot;c1&quot;&gt;// 8,10,15,20&lt;/span&gt;
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
-
-&lt;h1 id=&quot;객체&quot;&gt;객체&lt;/h1&gt;
-&lt;p&gt;배열 - 자동으로 색인 추가[number], 순서존재  &lt;br /&gt;
-객체 - 인덱스의 값을 숫자 뿐만 아니라 문자 등 원하는 이름으로 지정 가능 (데이터타입 : 연관배열, 맵, 딕셔너리), 순서존재X&lt;/p&gt;
-&lt;div class=&quot;language-javascript highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;cm&quot;&gt;/*객체의 생성*/&lt;/span&gt;
-&lt;span class=&quot;kd&quot;&gt;var&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;grades&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;&lt;span class=&quot;s1&quot;&gt;'aa'&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;10&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;s1&quot;&gt;'bb'&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;6&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;s1&quot;&gt;'cc'&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;80&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;};&lt;/span&gt;    &lt;span class=&quot;c1&quot;&gt;//객체의 생성&lt;/span&gt;
-&lt;span class=&quot;kd&quot;&gt;var&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;grades&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{};&lt;/span&gt;    &lt;span class=&quot;c1&quot;&gt;//비어있는 객체의 생성&lt;/span&gt;
-&lt;span class=&quot;kd&quot;&gt;var&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;grades&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;new&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;object&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;();&lt;/span&gt;    &lt;span class=&quot;c1&quot;&gt;//비어있는 객체의 생성&lt;/span&gt;
-
-&lt;span class=&quot;cm&quot;&gt;/*객체의 할당*/&lt;/span&gt;
-&lt;span class=&quot;nx&quot;&gt;grades&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;s1&quot;&gt;'aa'&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;]&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;10&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
-&lt;span class=&quot;nx&quot;&gt;grades&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;s1&quot;&gt;'bb'&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;]&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;6&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
-&lt;span class=&quot;nx&quot;&gt;grades&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;s1&quot;&gt;'cc'&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;]&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;80&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
-
-&lt;span class=&quot;cm&quot;&gt;/*객체의 접근 key/value*/&lt;/span&gt;
-&lt;span class=&quot;nx&quot;&gt;grades&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;s1&quot;&gt;'bb'&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;]&lt;/span&gt;    &lt;span class=&quot;c1&quot;&gt;//6&lt;/span&gt;
-&lt;span class=&quot;nx&quot;&gt;grades&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;bb&lt;/span&gt;       &lt;span class=&quot;c1&quot;&gt;//6&lt;/span&gt;
-&lt;span class=&quot;nx&quot;&gt;grades&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;s1&quot;&gt;'b'&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;+&lt;/span&gt;&lt;span class=&quot;s1&quot;&gt;'b'&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;]&lt;/span&gt; &lt;span class=&quot;c1&quot;&gt;//6&lt;/span&gt;
-&lt;span class=&quot;nx&quot;&gt;grades&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;s1&quot;&gt;'b'&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;+&lt;/span&gt;&lt;span class=&quot;s1&quot;&gt;'b'&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;  &lt;span class=&quot;c1&quot;&gt;//에러 남&lt;/span&gt;
-
-&lt;span class=&quot;cm&quot;&gt;/*객체의 값 가져오기*/&lt;/span&gt;
-&lt;span class=&quot;k&quot;&gt;for&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;kd&quot;&gt;var&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;key&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;in&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;grades&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;){&lt;/span&gt;    &lt;span class=&quot;c1&quot;&gt;//객체를 구성하는 값들의 키값만 하나씩 가져옴&lt;/span&gt;
- &lt;span class=&quot;nb&quot;&gt;document&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;write&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;key : &quot;&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;+&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;key&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;+&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot; value : &quot;&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;+&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;grades&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;key&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;]&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;+&lt;/span&gt; &lt;span class=&quot;s2&quot;&gt;&quot;&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;);&lt;/span&gt;
-&lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
-
-&lt;span class=&quot;cm&quot;&gt;/*객체지향 프로그래밍 - 서로 연관된 데이터, 처리를 하나의 그릇안에 그룹핑 한것*/&lt;/span&gt;
-&lt;span class=&quot;kd&quot;&gt;var&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;grades&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
- &lt;span class=&quot;s1&quot;&gt;'list'&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;&lt;span class=&quot;s1&quot;&gt;'aa'&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;10&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;s1&quot;&gt;'bb'&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;6&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;s1&quot;&gt;'cc'&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;80&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;},&lt;/span&gt;
- &lt;span class=&quot;s1&quot;&gt;'show'&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;kd&quot;&gt;function&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(){&lt;/span&gt;
-      &lt;span class=&quot;nx&quot;&gt;alert&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;hello world&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;);&lt;/span&gt; 
-  &lt;span class=&quot;p&quot;&gt;},&lt;/span&gt;
-&lt;span class=&quot;s1&quot;&gt;'show2'&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;kd&quot;&gt;function&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(){&lt;/span&gt;
-      &lt;span class=&quot;nx&quot;&gt;console&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;log&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;k&quot;&gt;this&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;list&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;);&lt;/span&gt;     &lt;span class=&quot;c1&quot;&gt;//this란? 함수가 속해있는 객체를 가리킨다. 여기선 grades를 가리킴.&lt;/span&gt;
- &lt;span class=&quot;p&quot;&gt;},&lt;/span&gt;
-&lt;span class=&quot;s1&quot;&gt;'show_list'&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;kd&quot;&gt;function&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(){&lt;/span&gt;
-  &lt;span class=&quot;k&quot;&gt;for&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;kd&quot;&gt;var&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;name&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;in&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;this&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;list&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;){&lt;/span&gt;
-   &lt;span class=&quot;nx&quot;&gt;console&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;log&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;name&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;  &lt;span class=&quot;k&quot;&gt;this&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;list&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;name&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;]);&lt;/span&gt;
-  &lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
- &lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
-&lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
-&lt;span class=&quot;nx&quot;&gt;alert&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;grades&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;s1&quot;&gt;'list]['&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;aa&lt;/span&gt;&lt;span class=&quot;s1&quot;&gt;']); //10
-grades['&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;show&lt;/span&gt;&lt;span class=&quot;s1&quot;&gt;']();       //객체의 함수호출. alert창 뜸.
-grades.show_list();    //객체의 함수호출 aa,10 bb,6 cc,80 출력
-&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
-</description>
-        <pubDate>Wed, 10 Jan 2018 00:00:00 +0900</pubDate>
-        <link>http://localhost:4000/javascript/javascript-opentutorials-2/</link>
-        <guid isPermaLink="true">http://localhost:4000/javascript/javascript-opentutorials-2/</guid>
-        
-        <category>javascript</category>
-        
-        
-        <category>javascript</category>
-        
-      </item>
-    
-      <item>
-        <title>(생활코딩) Javascript 입문1</title>
-        <description>&lt;p&gt;생활코딩 URL : https://opentutorials.org/course/743  &lt;br /&gt;
-생활코딩 강의에서 기억하고 싶었던 내용을 포스팅해보았다.&lt;/p&gt;
-
-&lt;hr /&gt;
-
-&lt;h1 id=&quot;변수의-효용을-이해하자&quot;&gt;변수의 효용을 이해하자.&lt;/h1&gt;
-&lt;ul&gt;
-  &lt;li&gt;필요에 의해서 변할 수 있는 영역과 변하지 않는 영역을 구분해서 코딩해야한다.&lt;/li&gt;
-  &lt;li&gt;재활용 가능해진다. 유지보수 용이해진다.&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;h1 id=&quot;비교&quot;&gt;비교&lt;/h1&gt;
-&lt;div class=&quot;language-javascript highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;nx&quot;&gt;alert&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;1&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;===&lt;/span&gt; &lt;span class=&quot;s2&quot;&gt;&quot;1&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;);&lt;/span&gt;   &lt;span class=&quot;c1&quot;&gt;//false    데이터타입[형식]도 동일해야함.**이걸쓰자!&lt;/span&gt;
-&lt;span class=&quot;nx&quot;&gt;alert&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;1&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;==&lt;/span&gt; &lt;span class=&quot;s2&quot;&gt;&quot;1&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;);&lt;/span&gt;     &lt;span class=&quot;c1&quot;&gt;//true     버그발생 가능성 높음..&lt;/span&gt;
-
-&lt;span class=&quot;kd&quot;&gt;var&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;a&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
-&lt;span class=&quot;nx&quot;&gt;alert&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;a&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;);&lt;/span&gt;    &lt;span class=&quot;c1&quot;&gt;//undefined 값이 정의되지 않음&lt;/span&gt;
-&lt;span class=&quot;nx&quot;&gt;alert&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;kc&quot;&gt;undefined&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;==&lt;/span&gt; &lt;span class=&quot;kc&quot;&gt;null&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;      &lt;span class=&quot;c1&quot;&gt;//true&lt;/span&gt;
-&lt;span class=&quot;nx&quot;&gt;alert&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;kc&quot;&gt;undefined&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;===&lt;/span&gt; &lt;span class=&quot;kc&quot;&gt;null&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;    &lt;span class=&quot;c1&quot;&gt;//false&lt;/span&gt;
-&lt;span class=&quot;nx&quot;&gt;alert&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt; &lt;span class=&quot;kc&quot;&gt;true&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;==&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;1&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;    &lt;span class=&quot;c1&quot;&gt;//true **숫자 1은 true로 간주, 그 외는 false로.&lt;/span&gt;
-&lt;span class=&quot;nx&quot;&gt;alert&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt; &lt;span class=&quot;kc&quot;&gt;true&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;===&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;1&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;    &lt;span class=&quot;c1&quot;&gt;//false &lt;/span&gt;
-&lt;span class=&quot;nx&quot;&gt;alert&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;kc&quot;&gt;NaN&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;===&lt;/span&gt; &lt;span class=&quot;kc&quot;&gt;NaN&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;);&lt;/span&gt;    &lt;span class=&quot;c1&quot;&gt;//false&lt;/span&gt;
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
-
-&lt;h2 id=&quot;데이터타입&quot;&gt;[데이터타입]&lt;/h2&gt;
-&lt;p&gt;undefined : 값이 정의되지 않은 상태, 프로그래머가 의도하지 않음 false로 간주  &lt;br /&gt;
-null    :    값이 없는 상태, 프로그래머가 의도함. false로 간주  &lt;br /&gt;
-NaN   : 0/0 계산할 수 없음. false로 간주&lt;/p&gt;
-
-&lt;h1 id=&quot;조건문&quot;&gt;조건문&lt;/h1&gt;
-&lt;p&gt;if(‘’) alert(‘빈문자열’); //false 빈문자열은 false/ 문자열있으면 true로 간주&lt;/p&gt;
-</description>
-        <pubDate>Tue, 09 Jan 2018 00:00:00 +0900</pubDate>
-        <link>http://localhost:4000/javascript/javascript-opentutorials-1/</link>
-        <guid isPermaLink="true">http://localhost:4000/javascript/javascript-opentutorials-1/</guid>
-        
-        <category>javascript</category>
-        
-        
-<<<<<<< HEAD
-        <category>Javascript</category>
-=======
-        <category>javascript</category>
->>>>>>> 25fa521191ed2024d8956797599d7e5222f64f60
         
       </item>
     

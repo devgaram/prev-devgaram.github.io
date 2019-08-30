@@ -2,11 +2,31 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
     
     <url>
-<<<<<<< HEAD
+        <loc>http://localhost:4000/codinginterview/coding-interview-question-4/</loc>
+    </url>
+    
+    <url>
+        <loc>http://localhost:4000/codinginterview/coding-interview-question-3/</loc>
+    </url>
+    
+    <url>
+        <loc>http://localhost:4000/codinginterview/coding-interview-question-2/</loc>
+    </url>
+    
+    <url>
+        <loc>http://localhost:4000/codinginterview/coding-interview-question-1/</loc>
+    </url>
+    
+    <url>
+        <loc>http://localhost:4000/codinginterview/coding-interview/</loc>
+    </url>
+    
+    <url>
         <loc>http://localhost:4000/java/java-api-1/</loc>
-=======
+    </url>
+    
+    <url>
         <loc>http://localhost:4000/android/html5-error/</loc>
->>>>>>> 25fa521191ed2024d8956797599d7e5222f64f60
     </url>
     
     <url>
