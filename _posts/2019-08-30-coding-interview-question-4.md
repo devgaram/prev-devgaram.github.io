@@ -88,3 +88,144 @@ LRU는 OS의 페이지 교체 알고리즘의 하나로 최근에 가장 오랫�
 2. X분이 지나면 자동으로 캐시가 버려지도록 한다.
 
 
+## 관련문제
+
+[카카오 코딩테스트 문제](https://tech.kakao.com/2017/09/27/kakao-blind-recruitment-round-1/).
+
+## 캐시(난이도: 하)
+지도개발팀에서 근무하는 제이지는 지도에서 도시 이름을 검색하면 해당 도시와 관련된 맛집 게시물들을 데이터베이스에서 읽어 보여주는 서비스를 개발하고 있다. <br/>
+이 프로그램의 테스팅 업무를 담당하고 있는 어피치는 서비스를 오픈하기 전 각 로직에 대한 성능 측정을 수행하였는데, 제이지가 작성한 부분 중 데이터베이스에서 게시물을 가져오는 부분의 실행시간이 너무 오래 걸린다는 것을 알게 되었다.<br/>
+어피치는 제이지에게 해당 로직을 개선하라고 닦달하기 시작하였고, 제이지는 DB 캐시를 적용하여 성능 개선을 시도하고 있지만 캐시 크기를 얼마로 해야 효율적인지 몰라 난감한 상황이다.<br/>
+
+어피치에게 시달리는 제이지를 도와, DB 캐시를 적용할 때 캐시 크기에 따른 실행시간 측정 프로그램을 작성하시오.
+
+### 입력 형식
+- 캐시 크기(cacheSize)와 도시이름 배열(cities)을 입력받는다.
+- cacheSize는 정수이며, 범위는 0 ≦ cacheSize ≦ 30 이다.
+- cities는 도시 이름으로 이뤄진 문자열 배열로, 최대 도시 수는 100,000개이다.
+- 각 도시 이름은 공백, 숫자, 특수문자 등이 없는 영문자로 구성되며, 대소문자 구분을 하지 않는다. 도시 이름은 최대 20자로 이루어져 있다.
+
+### 출력 형식
+입력된 도시이름 배열을 순서대로 처리할 때, “총 실행시간”을 출력한다.
+
+### 조건
+- 캐시 교체 알고리즘은 LRU(Least Recently Used)를 사용한다.
+- cache hit일 경우 실행시간은 1이다.
+- cache miss일 경우 실행시간은 5이다.
+
+### 입출력 예제
+
+<table>
+<thead>
+	<tr><th>캐시크기</th><th>도시이름</th><th>실행시간</th></tr>
+</thead>
+<tbody>
+	<tr>
+    <td>3	</td><td>[“Jeju”, “Pangyo”, “Seoul”, “NewYork”, “LA”, “Jeju”, “Pangyo”, “Seoul”, “NewYork”, “LA”]	</td><td>50</td>
+    </tr>
+    <tr>
+<td>3	</td><td>[“Jeju”, “Pangyo”, “Seoul”, “Jeju”, “Pangyo”, “Seoul”, “Jeju”, “Pangyo”, “Seoul”]</td>	<td>21</td>
+</tr>
+<tr>
+<td>2	</td><td>[“Jeju”, “Pangyo”, “Seoul”, “NewYork”, “LA”, “SanFrancisco”, “Seoul”, “Rome”, “Paris”, “Jeju”, “NewYork”, “Rome”]</td><td>	60</td>
+</tr>
+<tr>
+<td>5</td><td>	[“Jeju”, “Pangyo”, “Seoul”, “NewYork”, “LA”, “SanFrancisco”, “Seoul”, “Rome”, “Paris”, “Jeju”, “NewYork”, “Rome”]</td><td>	52</td>
+</tr>
+<tr>
+<td>2</td><td>	[“Jeju”, “Pangyo”, “NewYork”, “newyork”]</td>	<td>16</td>
+</tr>
+<tr>
+<td>0	</td><td>[“Jeju”, “Pangyo”, “Seoul”, “NewYork”, “LA”]	</td><td>25</td>
+</tr>
+</tbody>
+</table>
+
+```java
+import java.util.*;
+public class Cache {
+	private int cacheSize;
+	private HashMap<String, Node> map;
+	private LinkedList<Node> list;
+	private int time;
+
+	public Cache(int cacheSize) {
+		this.cacheSize = cacheSize;
+		map = new HashMap<String, Node>();
+		list = new LinkedList<Node>();
+		time = 0;
+	}
+
+	public void insertResults(String city) {
+		city = city.toLowerCase();
+		if (map.containsKey(city)) {
+			time+=1;
+			Node node = map.get(city);
+			list.remove(node);
+			list.addFirst(node);
+			return;
+		}
+		
+		time+=5;
+		Node node = new Node(city);
+		map.put(city, node);
+		list.addFirst(node);
+		
+		if (list.size() > cacheSize) {
+			Node lastNode = list.removeLast();
+			map.remove(lastNode.cityName);
+		}
+	}
+	
+	public void printCache() {
+		Iterator<Node> i = list.iterator();
+		while (i.hasNext()) {
+			System.out.print(i.next().cityName + " ");
+		}
+	}
+	
+	public int getTime() {
+		return time;
+	}
+
+	class Node {
+		String cityName;
+		Node next;
+
+		public Node(String cityName) {
+			this.cityName = cityName;
+			this.next = null;
+		}
+	}
+
+
+}
+```
+
+```java
+public class LRUQuestion {
+	public static void main(String[] args) {
+		
+		String[] cities1 = {"Jeju", "Pangyo", "Seoul", "NewYork", "LA", "Jeju", "Pangyo", "Seoul", "NewYork", "LA"};
+		System.out.println("실행시간 : " + testCache(3,cities1));
+		String[] cities2 = {"Jeju", "Pangyo", "Seoul", "Jeju", "Pangyo", "Seoul", "Jeju", "Pangyo", "Seoul"};
+		System.out.println("실행시간 : " + testCache(3,cities2));
+		String[] cities3 = {"Jeju", "Pangyo", "Seoul", "NewYork", "LA", "SanFrancisco", "Seoul", "Rome", "Paris", "Jeju", "NewYork", "Rome"};
+		System.out.println("실행시간 : " + testCache(2,cities3));
+		String[] cities4 = {"Jeju", "Pangyo", "Seoul", "NewYork", "LA", "SanFrancisco", "Seoul", "Rome", "Paris", "Jeju", "NewYork", "Rome"};
+		System.out.println("실행시간 : " + testCache(5,cities4));
+		String[] cities5 = {"Jeju", "Pangyo", "NewYork", "newyork"};
+		System.out.println("실행시간 : " + testCache(2,cities5));
+		String[] cities6 = {"Jeju", "Pangyo", "Seoul", "NewYork", "LA"};
+		System.out.println("실행시간 : " + testCache(0,cities6));
+	}
+	
+	public static int testCache(int cacheSize, String[] cities) {
+		Cache cache = new Cache(cacheSize);
+		for (String city : cities)
+			cache.insertResults(city);
+		
+		return cache.getTime();
+	}
+}
+```
