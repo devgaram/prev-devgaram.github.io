@@ -2,7 +2,8 @@
 layout: post-content
 title: JVM 메모리 구조
 date: 2019-10-16
-categories: [java]
+tags: [java]
+categories: [Java]
 ---
 
 예전 면접에서 JVM 메모리 구조에 관한 질문을 받은 적이 있었다...    
