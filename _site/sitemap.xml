@@ -2,6 +2,14 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
     
     <url>
+        <loc>http://localhost:4000/java/java-jvm-memory/</loc>
+    </url>
+    
+    <url>
+        <loc>http://localhost:4000/codinginterview/coding-interview-question-5/</loc>
+    </url>
+    
+    <url>
         <loc>http://localhost:4000/codinginterview/coding-interview-question-4/</loc>
     </url>
     

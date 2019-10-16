@@ -183,4 +183,14 @@ var store = [{
         "excerpt":"코딩 인터뷰 완전분석 (CRACKING THE CODING INTERVIEW 6/E) / 게일 라크만 맥도웰 지음 / 인사이트 Q. 캐시 : 간단한 검색 엔진으로 구현된 웹 서버를 생각해보자. 이 시스템에선 100개의 컴퓨터가 검색 요청을 처리하는 역할을 하고 있다. 예를 들어 하나의 컴퓨터 집단에 processSearch(string query)라는 요청을 보내면 그에 상응하는 검색 결과를 반환해 준다....","categories": ["codinginterview"],
         "tags": [],
         "url": "http://localhost:4000/codinginterview/coding-interview-question-4/",
+        "teaser":"http://localhost:4000/assets/images/alhambra.jpg"},{
+        "title": "(코딩인터뷰) 시스템 설계 및 규모 확장성 문제 5 - 판매순위",
+        "excerpt":"코딩 인터뷰 완전분석 (CRACKING THE CODING INTERVIEW 6/E) / 게일 라크만 맥도웰 지음 / 인사이트 Q. 판매순위 : 한 전자상거래 회사는 가장 잘 팔리는 제품의 리스트(전체에서 그리고 각 목록별로)를 알고 싶어 한다. 예를 들어, 어떤 제품은 전체 제품 중에서 1,506번째로 잘 팔리지만 운동 장비 중에서는 13번째로 잘 팔리고, 안전용품 중에서는...","categories": ["codinginterview"],
+        "tags": [],
+        "url": "http://localhost:4000/codinginterview/coding-interview-question-5/",
+        "teaser":"http://localhost:4000/assets/images/alhambra.jpg"},{
+        "title": "JVM 메모리 구조",
+        "excerpt":"예전 면접에서 JVM 메모리 구조에 관한 질문을 받은 적이 있었다… 횡설수설하며 대답하긴 했지만 좀 더 깔끔한 답변을 위해 정리해야할 필요성을 느꼈다..!!! 우선, JVM이 뭘까? JVM(Java Virtual Machine) 은 자바로 작성된 애플리케이션을 실행하기 위해서 반드시 필요한 가상머신이다! 위 그림을 보면 일반 애플리케이션 코드는 OS만 거치고 하드웨어로 전달되지만 자바 애플리케이션은 JVM을 한번...","categories": ["java"],
+        "tags": [],
+        "url": "http://localhost:4000/java/java-jvm-memory/",
         "teaser":"http://localhost:4000/assets/images/alhambra.jpg"}]
