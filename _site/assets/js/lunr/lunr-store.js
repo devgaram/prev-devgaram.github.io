@@ -190,7 +190,12 @@ var store = [{
         "url": "http://localhost:4000/codinginterview/coding-interview-question-5/",
         "teaser":"http://localhost:4000/assets/images/alhambra.jpg"},{
         "title": "JVM 메모리 구조",
-        "excerpt":"예전 면접에서 JVM 메모리 구조에 관한 질문을 받은 적이 있었다… 횡설수설하며 대답하긴 했지만 좀 더 깔끔한 답변을 위해 정리해야할 필요성을 느꼈다..!!! 우선, JVM이 뭘까? JVM(Java Virtual Machine) 은 자바로 작성된 애플리케이션을 실행하기 위해서 반드시 필요한 가상머신이다! 위 그림을 보면 일반 애플리케이션 코드는 OS만 거치고 하드웨어로 전달되지만 자바 애플리케이션은 JVM을 한번...","categories": ["java"],
-        "tags": [],
+        "excerpt":"예전 면접에서 JVM 메모리 구조에 관한 질문을 받은 적이 있었다… 횡설수설하며 대답하긴 했지만 좀 더 깔끔한 답변을 위해 정리해야할 필요성을 느꼈다..!!! 우선, JVM이 뭘까? JVM(Java Virtual Machine) 은 자바로 작성된 애플리케이션을 실행하기 위해서 반드시 필요한 가상머신이다! 위 그림을 보면 일반 애플리케이션 코드는 OS만 거치고 하드웨어로 전달되지만 자바 애플리케이션은 JVM을 한번...","categories": ["Java"],
+        "tags": ["java"],
         "url": "http://localhost:4000/java/java-jvm-memory/",
+        "teaser":"http://localhost:4000/assets/images/alhambra.jpg"},{
+        "title": "Java Comparator과 Comparable",
+        "excerpt":"PS 문제를 풀다가 Arrays.sort()와 Collections.sort()를 오름차순(디폴트)이 아닌 다른 기준으로 정렬하고 싶을 때가 있었다. 찾아보니 Comparator 또는 Comparable을 사용하면 된다고 한다. 음.. 알아본 김에 잊어버리지않게 기록을 해야겠다! 컬렉션을 입맛대로 정렬하고 싶다면? 내맘대로 컬렉션의 정렬 기준을 정하고 싶다면 Comparator과 Comparable 인터페이스를 사용하면 된다. import java.util.Comparator; public interface Comparator { int compare(Object o1,...","categories": ["Java"],
+        "tags": ["java"],
+        "url": "http://localhost:4000/java/java-compare/",
         "teaser":"http://localhost:4000/assets/images/alhambra.jpg"}]
