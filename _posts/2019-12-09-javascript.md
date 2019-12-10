@@ -2,7 +2,7 @@
 layout: post-content
 title: 자바스크립트의 실행 컨텍스트
 date: 2019-12-09
-categories: [algorithm]
+categories: [javascript]
 ---
 
 인사이드 자바스크립트를 정리하며 작성한 포스팅입니다.     

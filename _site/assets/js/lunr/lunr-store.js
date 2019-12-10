@@ -198,4 +198,69 @@ var store = [{
         "excerpt":"PS 문제를 풀다가 Arrays.sort()와 Collections.sort()를 오름차순(디폴트)이 아닌 다른 기준으로 정렬하고 싶을 때가 있었다. 찾아보니 Comparator 또는 Comparable을 사용하면 된다고 한다. 음.. 알아본 김에 잊어버리지않게 기록을 해야겠다! 컬렉션을 입맛대로 정렬하고 싶다면? 내맘대로 컬렉션의 정렬 기준을 정하고 싶다면 Comparator과 Comparable 인터페이스를 사용하면 된다. import java.util.Comparator; public interface Comparator { int compare(Object o1,...","categories": ["Java"],
         "tags": ["java"],
         "url": "http://localhost:4000/java/java-compare/",
+        "teaser":"http://localhost:4000/assets/images/alhambra.jpg"},{
+        "title": "electron과 vue로 데스크탑 앱 만들기",
+        "excerpt":"간단한 타이머 기능이 있는 데스크탑 앱을 만들고 싶어서 방법을 찾던 중 electron을 통해 웹 개발하는 것처럼 데스크탑 앱을 만들 수 있다는 것을 알게 되었다.  ","categories": ["javascript"],
+        "tags": ["electron"],
+        "url": "http://localhost:4000/javascript/electron-vue/",
+        "teaser":"http://localhost:4000/assets/images/alhambra.jpg"},{
+        "title": "네트워크 구조",
+        "excerpt":"TCP/IP 4계층 모델을 낱낱이 파헤쳐봅시다..! 애플리케이션(응용) 계층 애플리케이션 계층의 HTTP 프로토콜에 잠시 집중해보자. 우리가 브라우저에 URL을 입력하면 웹 서버가 HTML 파일을 반환하며 응답을 한다. 이 과정에서 HTTP 프로토콜을 사용하는 데 클라이언트 클라이언트 프로세스와 웹서버의 httpd 간의 통신이 필요한 애플리케이션이 사용하는 프로토콜을 모두 애플리케이션 계층 프로토콜이라 부른다. 애플리케이션 계층 프로토콜은 자신이...","categories": ["network"],
+        "tags": ["osi"],
+        "url": "http://localhost:4000/network/network-1/",
+        "teaser":"http://localhost:4000/assets/images/alhambra.jpg"},{
+        "title": "프론트엔드 개발자가 되자!",
+        "excerpt":"직장 생활 중, 자바스크립트에 대한 관심이 급 폭발해서 개념서도 보고 Vue.js도 건드려보고 Node.js도 건드려봤다. 너무나 재밌어서 아. 나는 프론트엔드 개발자가 되어야지 라는 생각을 하며 아무 준비없이 퇴사를 해버렸다. 퇴사 후, 그래도 공고가 많은 자바를 공부해야겠지? 라는 생각에 안드로이드도 건드려보고 스프링도 건드려보고 했다. 결국 지금은 각 분야에 깊이는 없는.. 수준이란 걸...","categories": ["frontend"],
+        "tags": [],
+        "url": "http://localhost:4000/frontend/front/",
+        "teaser":"http://localhost:4000/assets/images/alhambra.jpg"},{
+        "title": "프로그래머스 모의고사 Javascript",
+        "excerpt":"문제 설명 수포자는 수학을 포기한 사람의 준말입니다. 수포자 삼인방은 모의고사에 수학 문제를 전부 찍으려 합니다. 수포자는 1번 문제부터 마지막 문제까지 다음과 같이 찍습니다. 1번 수포자가 찍는 방식: 1, 2, 3, 4, 5, 1, 2, 3, 4, 5, … 2번 수포자가 찍는 방식: 2, 1, 2, 3, 2, 4, 2, 5,...","categories": ["algorithm"],
+        "tags": [],
+        "url": "http://localhost:4000/algorithm/algorithm-1/",
+        "teaser":"http://localhost:4000/assets/images/alhambra.jpg"},{
+        "title": "프로그래머스 조이스틱 Javascript",
+        "excerpt":"문제 설명 조이스틱으로 알파벳 이름을 완성하세요. 맨 처음엔 A로만 이루어져 있습니다. ex) 완성해야 하는 이름이 세 글자면 AAA, 네 글자면 AAAA 조이스틱을 각 방향으로 움직이면 아래와 같습니다. ▲ - 다음 알파벳 ▼ - 이전 알파벳 (A에서 아래쪽으로 이동하면 Z로) ◀ - 커서를 왼쪽으로 이동 (첫 번째 위치에서 왼쪽으로 이동하면 마지막...","categories": ["algorithm"],
+        "tags": [],
+        "url": "http://localhost:4000/algorithm/algorithm-2/",
+        "teaser":"http://localhost:4000/assets/images/alhambra.jpg"},{
+        "title": "프로그래머스 [3차] n진수게임 Javascript",
+        "excerpt":"문제 설명 튜브가 활동하는 코딩 동아리에서는 전통적으로 해오는 게임이 있다. 이 게임은 여러 사람이 둥글게 앉아서 숫자를 하나씩 차례대로 말하는 게임인데, 규칙은 다음과 같다. 숫자를 0부터 시작해서 차례대로 말한다. 첫 번째 사람은 0, 두 번째 사람은 1, … 열 번째 사람은 9를 말한다. 10 이상의 숫자부터는 한 자리씩 끊어서 말한다....","categories": ["algorithm"],
+        "tags": [],
+        "url": "http://localhost:4000/algorithm/algorithm-3/",
+        "teaser":"http://localhost:4000/assets/images/alhambra.jpg"},{
+        "title": "프로그래머스 2xn 타일링 Javascript",
+        "excerpt":"문제 설명 가로 길이가 2이고 세로의 길이가 1인 직사각형모양의 타일이 있습니다. 이 직사각형 타일을 이용하여 세로의 길이가 2이고 가로의 길이가 n인 바닥을 가득 채우려고 합니다. 타일을 채울 때는 다음과 같이 2가지 방법이 있습니다. 타일을 가로로 배치 하는 경우 타일을 세로로 배치 하는 경우 직사각형의 가로의 길이 n이 매개변수로 주어질 때,...","categories": ["algorithm"],
+        "tags": [],
+        "url": "http://localhost:4000/algorithm/algorithm-4/",
+        "teaser":"http://localhost:4000/assets/images/alhambra.jpg"},{
+        "title": "프로그래머스 2016년 Javascript",
+        "excerpt":"문제 설명 2016년 1월 1일은 금요일입니다. 2016년 a월 b일은 무슨 요일일까요? 두 수 a ,b를 입력받아 2016년 a월 b일이 무슨 요일인지 리턴하는 함수, solution을 완성하세요. 요일의 이름은 일요일부터 토요일까지 각각 SUN,MON,TUE,WED,THU,FRI,SAT 입니다. 를 들어 a=5, b=24라면 5월 24일은 화요일이므로 문자열 TUE를 반환하세요. 제한 조건 2016년은 윤년입니다. 2016년 a월 b일은 실제로...","categories": ["algorithm"],
+        "tags": [],
+        "url": "http://localhost:4000/algorithm/algorithm-5/",
+        "teaser":"http://localhost:4000/assets/images/alhambra.jpg"},{
+        "title": "프로그래머스 다음 큰 숫자 Javascript",
+        "excerpt":"문제 설명 자연수 n이 주어졌을 때, n의 다음 큰 숫자는 다음과 같이 정의 합니다. 조건 1. n의 다음 큰 숫자는 n보다 큰 자연수 입니다. 조건 2. n의 다음 큰 숫자와 n은 2진수로 변환했을 때 1의 갯수가 같습니다. *조건 3. n의 다음 큰 숫자는 조건 1, 2를 만족하는 수 중 가장...","categories": ["algorithm"],
+        "tags": [],
+        "url": "http://localhost:4000/algorithm/algorithm-1/",
+        "teaser":"http://localhost:4000/assets/images/alhambra.jpg"},{
+        "title": "(수학1) 설탕배달 - 백준 Java",
+        "excerpt":"문제 설명 상근이는 요즘 설탕공장에서 설탕을 배달하고 있다. 상근이는 지금 사탕가게에 설탕을 정확하게 N킬로그램을 배달해야 한다. 설탕공장에서 만드는 설탕은 봉지에 담겨져 있다. 봉지는 3킬로그램 봉지와 5킬로그램 봉지가 있다. 상근이는 귀찮기 때문에, 최대한 적은 봉지를 들고 가려고 한다. 예를 들어, 18킬로그램 설탕을 배달해야 할 때, 3킬로그램 봉지 6개를 가져가도 되지만, 5킬로그램...","categories": ["algorithm"],
+        "tags": [],
+        "url": "http://localhost:4000/algorithm/algorithm-2/",
+        "teaser":"http://localhost:4000/assets/images/alhambra.jpg"},{
+        "title": "(수학1) 벌집 - 백준 Java",
+        "excerpt":"문제 설명 (https://www.acmicpc.net/problem/2292)[https://www.acmicpc.net/problem/2292] 내 풀이 규칙을 찾아보았다. 1 (1개) =&gt; 1칸 2 ~ 7 (6개) =&gt; 2칸 8 ~ 19 (12개) =&gt; 3칸 20 ~ 37 (18개) =&gt; 4칸 즉, 방의 수를 1부터 6*count(1,2,3..) 값을 누적시켰을 때 방의 수가 N보다 크거나 같아지는 순간이 답이 된다. import java.util.Scanner; public class Main...","categories": ["algorithm"],
+        "tags": [],
+        "url": "http://localhost:4000/algorithm/algorithm-3/",
+        "teaser":"http://localhost:4000/assets/images/alhambra.jpg"},{
+        "title": "자바스크립트의 실행 컨텍스트",
+        "excerpt":"인사이드 자바스크립트를 정리하며 작성한 포스팅입니다. 이 포스팅은 실행 컨텍스트의 개념과 생성 과정에 대해 정리한 내용이며 실행 컨텍스트 이해를 위한 필수 개념인 스코프 체인과 this 바인딩에 대해서는 추후 정리할 예정입니다. 실행 컨텍스트란? 콜 스택에 쌓이는 각각의 정보들이 하나의 실행 컨텍스트라고 생각하며 아래의 문구를 읽어보자. ECMAScript는 실행 가능한 코드를 형상화하고 구분하는 추상적인...","categories": ["javascript"],
+        "tags": [],
+        "url": "http://localhost:4000/javascript/javascript/",
+        "teaser":"http://localhost:4000/assets/images/alhambra.jpg"},{
+        "title": "프로그래머스 기지국 설치 javascript",
+        "excerpt":"문제 프로그래머스 기지국 설치 아파트의 개수 N, 현재 기지국이 설치된 아파트의 번호가 담긴 1차원 배열 stations, 전파의 도달 거리 W가 매개변수로 주어질 때, 모든 아파트에 전파를 전달하기 위해 증설해야 할 기지국 개수의 최솟값을 리턴하는 solution 함수를 완성하는 문제다. 내 풀이 떠올린 아이디어는 현재 설치된 기지국의 영향이 끼치는 곳에서 범위를 잘라주는...","categories": ["algorithm"],
+        "tags": [],
+        "url": "http://localhost:4000/algorithm/algorithm-1/",
         "teaser":"http://localhost:4000/assets/images/alhambra.jpg"}]

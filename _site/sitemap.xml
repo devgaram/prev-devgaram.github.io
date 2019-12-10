@@ -2,6 +2,58 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
     
     <url>
+        <loc>http://localhost:4000/algorithm/algorithm-1/</loc>
+    </url>
+    
+    <url>
+        <loc>http://localhost:4000/javascript/javascript/</loc>
+    </url>
+    
+    <url>
+        <loc>http://localhost:4000/algorithm/algorithm-3/</loc>
+    </url>
+    
+    <url>
+        <loc>http://localhost:4000/algorithm/algorithm-2/</loc>
+    </url>
+    
+    <url>
+        <loc>http://localhost:4000/algorithm/algorithm-1/</loc>
+    </url>
+    
+    <url>
+        <loc>http://localhost:4000/algorithm/algorithm-5/</loc>
+    </url>
+    
+    <url>
+        <loc>http://localhost:4000/algorithm/algorithm-4/</loc>
+    </url>
+    
+    <url>
+        <loc>http://localhost:4000/algorithm/algorithm-3/</loc>
+    </url>
+    
+    <url>
+        <loc>http://localhost:4000/algorithm/algorithm-2/</loc>
+    </url>
+    
+    <url>
+        <loc>http://localhost:4000/algorithm/algorithm-1/</loc>
+    </url>
+    
+    <url>
+        <loc>http://localhost:4000/frontend/front/</loc>
+    </url>
+    
+    <url>
+        <loc>http://localhost:4000/network/network-1/</loc>
+    </url>
+    
+    <url>
+        <loc>http://localhost:4000/javascript/electron-vue/</loc>
+    </url>
+    
+    <url>
         <loc>http://localhost:4000/java/java-compare/</loc>
     </url>
     
@@ -283,6 +335,22 @@
     
     <url>
         <loc>http://localhost:4000/page4/</loc>
+    </url>
+    
+    
+    
+    
+    
+    <url>
+        <loc>http://localhost:4000/page5/</loc>
+    </url>
+    
+    
+    
+    
+    
+    <url>
+        <loc>http://localhost:4000/page6/</loc>
     </url>
     
     
