@@ -2,7 +2,19 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
     
     <url>
-        <loc>http://localhost:4000/algorithm/algorithm-1/</loc>
+        <loc>http://localhost:4000/algorithm/coding-interview-linkedlist-1/</loc>
+    </url>
+    
+    <url>
+        <loc>http://localhost:4000/algorithm/algorithm-9/</loc>
+    </url>
+    
+    <url>
+        <loc>http://localhost:4000/algorithm/algorithm-11/</loc>
+    </url>
+    
+    <url>
+        <loc>http://localhost:4000/algorithm/algorithm-10/</loc>
     </url>
     
     <url>
@@ -10,15 +22,15 @@
     </url>
     
     <url>
-        <loc>http://localhost:4000/algorithm/algorithm-3/</loc>
+        <loc>http://localhost:4000/algorithm/algorithm-8/</loc>
     </url>
     
     <url>
-        <loc>http://localhost:4000/algorithm/algorithm-2/</loc>
+        <loc>http://localhost:4000/algorithm/algorithm-7/</loc>
     </url>
     
     <url>
-        <loc>http://localhost:4000/algorithm/algorithm-1/</loc>
+        <loc>http://localhost:4000/algorithm/algorithm-6/</loc>
     </url>
     
     <url>

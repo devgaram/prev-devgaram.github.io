@@ -242,25 +242,40 @@ var store = [{
         "title": "프로그래머스 다음 큰 숫자 Javascript",
         "excerpt":"문제 설명 자연수 n이 주어졌을 때, n의 다음 큰 숫자는 다음과 같이 정의 합니다. 조건 1. n의 다음 큰 숫자는 n보다 큰 자연수 입니다. 조건 2. n의 다음 큰 숫자와 n은 2진수로 변환했을 때 1의 갯수가 같습니다. *조건 3. n의 다음 큰 숫자는 조건 1, 2를 만족하는 수 중 가장...","categories": ["algorithm"],
         "tags": [],
-        "url": "http://localhost:4000/algorithm/algorithm-1/",
+        "url": "http://localhost:4000/algorithm/algorithm-6/",
         "teaser":"http://localhost:4000/assets/images/alhambra.jpg"},{
         "title": "(수학1) 설탕배달 - 백준 Java",
         "excerpt":"문제 설명 상근이는 요즘 설탕공장에서 설탕을 배달하고 있다. 상근이는 지금 사탕가게에 설탕을 정확하게 N킬로그램을 배달해야 한다. 설탕공장에서 만드는 설탕은 봉지에 담겨져 있다. 봉지는 3킬로그램 봉지와 5킬로그램 봉지가 있다. 상근이는 귀찮기 때문에, 최대한 적은 봉지를 들고 가려고 한다. 예를 들어, 18킬로그램 설탕을 배달해야 할 때, 3킬로그램 봉지 6개를 가져가도 되지만, 5킬로그램...","categories": ["algorithm"],
         "tags": [],
-        "url": "http://localhost:4000/algorithm/algorithm-2/",
+        "url": "http://localhost:4000/algorithm/algorithm-7/",
         "teaser":"http://localhost:4000/assets/images/alhambra.jpg"},{
         "title": "(수학1) 벌집 - 백준 Java",
         "excerpt":"문제 설명 (https://www.acmicpc.net/problem/2292)[https://www.acmicpc.net/problem/2292] 내 풀이 규칙을 찾아보았다. 1 (1개) =&gt; 1칸 2 ~ 7 (6개) =&gt; 2칸 8 ~ 19 (12개) =&gt; 3칸 20 ~ 37 (18개) =&gt; 4칸 즉, 방의 수를 1부터 6*count(1,2,3..) 값을 누적시켰을 때 방의 수가 N보다 크거나 같아지는 순간이 답이 된다. import java.util.Scanner; public class Main...","categories": ["algorithm"],
         "tags": [],
-        "url": "http://localhost:4000/algorithm/algorithm-3/",
+        "url": "http://localhost:4000/algorithm/algorithm-8/",
         "teaser":"http://localhost:4000/assets/images/alhambra.jpg"},{
         "title": "자바스크립트의 실행 컨텍스트",
         "excerpt":"인사이드 자바스크립트를 정리하며 작성한 포스팅입니다. 이 포스팅은 실행 컨텍스트의 개념과 생성 과정에 대해 정리한 내용이며 실행 컨텍스트 이해를 위한 필수 개념인 스코프 체인과 this 바인딩에 대해서는 추후 정리할 예정입니다. 실행 컨텍스트란? 콜 스택에 쌓이는 각각의 정보들이 하나의 실행 컨텍스트라고 생각하며 아래의 문구를 읽어보자. ECMAScript는 실행 가능한 코드를 형상화하고 구분하는 추상적인...","categories": ["javascript"],
         "tags": [],
         "url": "http://localhost:4000/javascript/javascript/",
         "teaser":"http://localhost:4000/assets/images/alhambra.jpg"},{
+        "title": "(수학1) 분수찾기 백준",
+        "excerpt":"문제 분수찾기 내 풀이 자세히 살펴보면 다음과 같은 규칙이 있다. 1/1 =&gt; 1 layer (이 라인에서 제일 큰 번호 : 1) 1/2 2/1 =&gt; 2 layer (이 라인에서 제일 큰 번호 : 3) 3/1 2/2 1/3 =&gt; 3 layer (이 라인에서 제일 큰 번호 : 6) 1/4 2/3 3/2 4/1...","categories": ["algorithm"],
+        "tags": [],
+        "url": "http://localhost:4000/algorithm/algorithm-10/",
+        "teaser":"http://localhost:4000/assets/images/alhambra.jpg"},{
+        "title": "(수학1) 달팽이는 올라가고 싶다 2869 - 백준 java",
+        "excerpt":"문제 달팽이는 올라가고 싶다 내 풀이 하루에 a 만큼 올라가고 b 만큼 내려오므로 하루에 a-b 만큼 막대기에 올라가는 거와 같다. 정상에 도착하면 내려가지않으므로 c-a를 한다. (c-a) / (a-b) 의 값을 올림한 것이 소요된 일 수 이며 c-a를 했으므로 구한 값에 1을 더하면 된다. import java.util.Scanner; public class P2869 { public...","categories": ["algorithm"],
+        "tags": [],
+        "url": "http://localhost:4000/algorithm/algorithm-11/",
+        "teaser":"http://localhost:4000/assets/images/alhambra.jpg"},{
         "title": "프로그래머스 기지국 설치 javascript",
         "excerpt":"문제 프로그래머스 기지국 설치 아파트의 개수 N, 현재 기지국이 설치된 아파트의 번호가 담긴 1차원 배열 stations, 전파의 도달 거리 W가 매개변수로 주어질 때, 모든 아파트에 전파를 전달하기 위해 증설해야 할 기지국 개수의 최솟값을 리턴하는 solution 함수를 완성하는 문제다. 내 풀이 떠올린 아이디어는 현재 설치된 기지국의 영향이 끼치는 곳에서 범위를 잘라주는...","categories": ["algorithm"],
         "tags": [],
-        "url": "http://localhost:4000/algorithm/algorithm-1/",
+        "url": "http://localhost:4000/algorithm/algorithm-9/",
+        "teaser":"http://localhost:4000/assets/images/alhambra.jpg"},{
+        "title": "(코딩인터뷰) 연결리스트 면접 문제",
+        "excerpt":"코딩 인터뷰 예제 문제 풀이 2.1 중복 없애기 : 정렬되어 있지 않은 연결리스트가 주어졌을 때 이 리스트에서 중복되는 원소를 제거하는 코드를 작성하자. 임시 버퍼를 사용할 수 없는 경우도 생각해보자. 임시버퍼를 사용할 수 있다면, 중복을 허용하지 않는 Set 컬렉션을 이용해서 해결할 수 있다. 이 경우는 O(N)의 시간 복잡도를 갖는다. 임시버퍼를 사용할...","categories": ["algorithm"],
+        "tags": [],
+        "url": "http://localhost:4000/algorithm/coding-interview-linkedlist-1/",
         "teaser":"http://localhost:4000/assets/images/alhambra.jpg"}]
