@@ -5,7 +5,7 @@ date: 2019-12-12
 categories: [algorithm]
 ---
 
-코딩 인터뷰 예제 문제 풀이
+코딩 인터뷰 완전분석 연결리스트 파트 예제 문제 풀이
 
 # 2.1 중복 없애기 : 정렬되어 있지 않은 연결리스트가 주어졌을 때 이 리스트에서 중복되는 원소를 제거하는 코드를 작성하자. 임시 버퍼를 사용할 수 없는 경우도 생각해보자.
 
@@ -229,6 +229,32 @@ function solution_3() {
 }
 ```
 
+```javascript
+function solution_3() {
+  const list = makeList();
+
+  let cur = list.head;
+  let prerunner = null;
+  let runner = list.head;
+  let len = 0;
+  while (cur != null && cur.next != null) {
+      cur = cur.next.next;   
+      prerunner = runner; 
+      runner = runner.next;
+  }
+  if (cur != null) {
+    prerunner = runner;
+    runner = runner.next;
+  }
+  // 노드 갯수가 2 이하일 때, 처음/끝 노드가 삭제되는 것을 막기 위해
+  if (prerunner == null || runner.next == null) return;
+
+  prerunner.next = runner.next; 
+  list.display();
+  
+}
+```
+
 # 2.4 분할: 값 x가 주어졌을 때 x보다 작은 노드들을 x보다 크거나 같은 노드들보다 앞에 오도록 하는 코드를 작성하라. 만약 x가 리스트에 있다면 x는 그보다 작은 원소들보다 뒤에 나오기만 하면 된다. 즉, 원소 x는 '오른쪽 그룹' 어딘가에만 존재하면 된다. 왼쪽과 오른쪽 그룹 사이에 있을 필요는 없다.
 
 * 입력: 3->5->8->5->10->2->1 (분할값 x = 5)
@@ -270,4 +296,187 @@ function solution_4(x) {
 두 개의 연결리스트를 만들어서 하나는 x보다 작은 노드들을 삽입하고 다른 하나는 x보다 크거나 같은 노드들을 넣는다. 모든 작업이 완료된 후 두 리스트를 합하면 된다.
 
 
+# 2.5 리스트의 합: 연결리스트로 숫자를 표현할 때 각 노드가 자릿수 하나를 가리키는 방식으로 표현할 수 있다. 각 숫자는 역순으로 배열되어 있는데, 첫 번째 자릿수가 리스트의 맨 앞에 위치하도록 배열된다는 뜻이다. 이와 같은 방식으로 표현된 숫자 두 개가 있을 때, 이 두 수를 더하여 그 합을 연결리스트로 반환하는 함수를 작성하라
 
+* 입력: (7->1->6) + (5->9->2) 즉, 617 + 295
+* 출력: 2->1->9 즉, 912
+
+```javascript
+function solution_5(list_1, list_2) {
+  let cur_1 = list_1.head, cur_2 = list_2.head;
+  let c = 0;
+  let newListHead = null;
+  let newList = null;
+  while (cur_1 != null || cur_2 != null) {
+    if (cur_1 == null || cur_2 == null) {
+      newList.next = cur_1 == null ? cur_2: cur_1;
+      break;
+    }
+    let sum = cur_1.data + cur_2.data + c;
+    if (newList == null) {
+      newList = new Node(sum % 10);
+      newListHead = new LinkedList(newList);
+    }
+    else {
+      newList.next = new Node(sum % 10);
+      newList = newList.next;
+    }
+    c = parseInt(sum / 10);
+    cur_1 = cur_1.next;
+    cur_2 = cur_2.next;
+  }
+
+  newListHead.display();  
+}
+```
+
+## 각 자릿수가 정상적으로 배열된다고 가정하고 같은 문제를 풀면?
+
+* 입력: (6->1->7) + (2->9->5) 즉, 617+295
+* 출력: 9->1->2 즉, 912
+
+재귀로 순회해서 끝에서 부터 더해가면 된다. 단, 리스트의 길이가 다를 경우가 있으므로 이 부분을 고려해야 한다.
+재귀 안에서 해결해볼까 했는 데, 복잡해져서 아예 길이를 같게 만드는 방법으로 해보았다.
+
+```javascript
+function solution_5_1(list_1, list_2) {  
+  let list_1_len = getSize(list_1.head), list_2_len = getSize(list_2.head);
+
+  while (list_1_len > list_2_len) {
+    list_2.head = new Node(0, list_2.head);
+    list_2_len++;
+  }
+  while (list_1_len < list_2_len) {
+    list_1.head = new Node(0, list_1.head);
+    list_1_len++;
+  }
+  
+  let newList = null;
+  recursion(list_1.head, list_2.head);
+
+  newList.display();
+  function recursion (cur_1, cur_2) {
+    if (cur_1 == null && cur_2 == null) return 0;
+    let sum = cur_1.data + cur_2.data + recursion(cur_1.next, cur_2.next);
+    if (newList == null) {
+      newList = new LinkedList(new Node(sum % 10));
+    }
+    else {
+      newList.head = new Node(sum % 10, newList.head);
+    }
+    return parseInt(sum / 10);
+  }
+
+  function getSize (list) {
+    let cur = list;
+    let len = 0;
+    while (cur != null) {
+      len++;
+      cur = cur.next;
+    }
+    return len;
+  }
+}
+```
+
+#  회문: 주어진 연결리스트가 회문인지 검사하는 함수를 작성하라
+
+회문이란? 순서를 거꾸로 읽어도 제대로 읽은 것과 같은 단어와 문장을 말한다.     
+예시) level, sos
+
+```javascript
+function solution_6(list) {
+  let cur = list.head;
+  return recursion(list.head);
+
+  function recursion (list) {
+    if (list == null) return true;    
+    let chk = recursion(list.next) && (cur.data === list.data);
+    cur = cur.next;
+    return chk;
+  }
+}
+```
+
+## 책 해법 1. 뒤집어서 비교하기
+
+연결리스트를 순회하면서 새 리스트의 맨 앞에 삽입하면서 역순 리스트를 만든 후 비교한다.
+
+## 책 해법 2. runner와 스택 이용
+
+```javascript
+function solution_6_1(list) {
+  let cur = list.head;
+  let runner = cur;
+  let len = 0;
+  let array = Array();
+  while (cur != null && cur.next != null) {
+    len++;
+    array.push(runner.data);
+    runner = runner.next;
+    cur = cur.next.next;
+  }
+
+  if (len % 2 === 0) runner = runner.next;
+
+  while (runner != null) { 
+    if (array.pop() !== runner.data) return false;
+    runner = runner.next;
+  }
+  return true;
+}
+```
+
+# 교집합: 단방향 연결리스트 두 개가 주어졌을 때 이 두 리스트의 교집합 노드를 찾은 뒤 반환하는 코드를 작성하라. 여기서 교집합이란 노드의 값이 아니라 노드의 주소가 완전히 같은 경우를 말한다. 즉, 첫 번째 리스트에 있는 k번째 노드와 두 번째 리스트에 있는 j번째 노드가 주소까지 완전히 같다면 이 노드는 교집합의 원소가 된다.
+
+두 연결리스트에서 교집합이 있다는 것은.. 그 교집합 노드 뒤부터는 같은 노드라는 것, 즉 마지막 노드가 같다.
+
+```javascript
+function solution_7(list_1, list_2) {  
+  let set = new Set();
+  let newList = null;
+  let cur = list_1.head;
+  while (cur != null) {
+    set.add(cur);
+    cur = cur.next;
+  }
+
+  cur = list_2.head;
+  while (cur != null) {
+    if (set.has(cur)) {
+      newList = cur;
+      break;
+    }
+    cur = cur.next;
+  }
+  if (newList == null) return null;
+  return new LinkedList(newList);
+}
+```
+## 책 풀이
+
+1. 두 연결리스트를 순회해서 마지막 노드와 사이즈를 구하고 각 마지막 노드가 같으면 교집합이 존재하며 다르면 교집합은 없다.
+2. 길이가 더 긴 연결리스트의 포인터를 이동시켜서 두 연결리스트 순회 길이가 같도록 포인터를 맞춘다.
+3. 동시에 두 연결리스트의 포인트를 이동시키면서 같은 노드가 발견되는 순간을 찾는다.
+
+
+# 루프발견: 순환 연결리스트가 주어졌을 때, 순환되는 부분의 첫째 노드를 반환하는 알고리즘을 작성하라. 순환 연결리스트란 노드의 next 포인터가 앞선 노드들 가운데 어느 하나를 가리키도록 설정되어 있는, 엄밀히 말해서 변질된 방식의 연결리스트를 의미한다.
+
+* 입력: A->B->C->D->E->C (앞에 나온 C와 같음)
+* 출력: C
+
+```javascript
+function solution_8(list) {
+  let set = new Set();
+  let cur = list.head;
+  
+  while (cur != null) {
+    if (set.has(cur)) return cur.data;
+    set.add(cur);    
+    cur = cur.next;
+  }
+  return null;
+}
+```
+
+# 끝!
