@@ -275,7 +275,7 @@ var store = [{
         "url": "http://localhost:4000/algorithm/algorithm-9/",
         "teaser":"http://localhost:4000/assets/images/alhambra.jpg"},{
         "title": "(코딩인터뷰) 연결리스트 면접 문제",
-        "excerpt":"코딩 인터뷰 예제 문제 풀이 2.1 중복 없애기 : 정렬되어 있지 않은 연결리스트가 주어졌을 때 이 리스트에서 중복되는 원소를 제거하는 코드를 작성하자. 임시 버퍼를 사용할 수 없는 경우도 생각해보자. 임시버퍼를 사용할 수 있다면, 중복을 허용하지 않는 Set 컬렉션을 이용해서 해결할 수 있다. 이 경우는 O(N)의 시간 복잡도를 갖는다. 임시버퍼를 사용할...","categories": ["algorithm"],
+        "excerpt":"코딩 인터뷰 완전분석 연결리스트 파트 예제 문제 풀이 배열 Random access 배열의 엘리먼트들은 메모리에 연속적으로 저장된다. 어떤 엘리먼트도 첫번째 엘리먼트의 주소에 각 엘리먼트 크기를 더해서 접근할 수 있다. 각 엘리먼트가 4byte고 세번째 엘리먼트 접근하려면 첫번째 주소 + 4*3 이다. 첫번째 탐색이나 마지막 엘리먼트 탐색 시간 차이가 없다. 탐색 시간 O(1)...","categories": ["algorithm"],
         "tags": [],
         "url": "http://localhost:4000/algorithm/coding-interview-linkedlist-1/",
         "teaser":"http://localhost:4000/assets/images/alhambra.jpg"}]
