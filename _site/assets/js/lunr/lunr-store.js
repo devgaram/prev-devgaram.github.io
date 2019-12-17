@@ -275,7 +275,12 @@ var store = [{
         "url": "http://localhost:4000/algorithm/algorithm-9/",
         "teaser":"http://localhost:4000/assets/images/alhambra.jpg"},{
         "title": "(코딩인터뷰) 연결리스트 면접 문제",
-        "excerpt":"코딩 인터뷰 완전분석 연결리스트 파트 예제 문제 풀이 배열 Random access 배열의 엘리먼트들은 메모리에 연속적으로 저장된다. 어떤 엘리먼트도 첫번째 엘리먼트의 주소에 각 엘리먼트 크기를 더해서 접근할 수 있다. 각 엘리먼트가 4byte고 세번째 엘리먼트 접근하려면 첫번째 주소 + 4*3 이다. 첫번째 탐색이나 마지막 엘리먼트 탐색 시간 차이가 없다. 탐색 시간 O(1)...","categories": ["algorithm"],
+        "excerpt":"코딩 인터뷰 완전분석 연결리스트 파트 예제 문제 풀이 배열 Random access 배열의 엘리먼트들은 메모리에 연속적으로 저장되므로 어떤 엘리먼트도 첫번째 엘리먼트의 주소에 각 엘리먼트 크기를 더해서 접근할 수 있다. 각 엘리먼트가 4byte고 세번째 엘리먼트 접근하려면 첫번째 주소 + 4*3 이다. 즉, 첫번째 탐색이나 마지막 엘리먼트 탐색 시간 차이가 없다. 탐색 시간...","categories": ["algorithm"],
         "tags": [],
         "url": "http://localhost:4000/algorithm/coding-interview-linkedlist-1/",
+        "teaser":"http://localhost:4000/assets/images/alhambra.jpg"},{
+        "title": "ES6를 모르면 React 배우기가 어려워요.",
+        "excerpt":"React를 배워볼까? 하고 두근거리는 마음으로 React 공식 문서에 방문해서 자습서부터 차근차근 읽어본 적이 있습니다. 그런데, 으잉? 이건 대체 뭐지? 제게 커다란 장벽이 나타났습니다. 그 것은 바로 바로… ES6 문법!!! 그래서 준비했습니다. “ES6를 모르면 React 배우기가 어려워요!” 지금부터 저와 함께 ES6 최신 문법을 정리해봅시다! 변수 선언하기 1. const 블록(중괄호 {}) 유효...","categories": ["javascript"],
+        "tags": ["es6","react"],
+        "url": "http://localhost:4000/javascript/javascript-es6/",
         "teaser":"http://localhost:4000/assets/images/alhambra.jpg"}]
