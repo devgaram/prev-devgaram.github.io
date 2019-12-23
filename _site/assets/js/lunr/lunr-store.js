@@ -288,4 +288,9 @@ var store = [{
         "excerpt":"경성대학교 양희재 교수님 강의를 듣고 정리했습니다. 오늘은 운영체제의 정의와 역할에 대해 공부했습니다. # 운영체제가 없는 컴퓨터의 전원을 키면 어떤 일이 일어날까?? 운영체제가 하는 일을 알면 운영체제가 없는 PC에서 어떤 일이 일어나는 지 알 수 있다. 결론부터 말하자면, 컴퓨터는 한 마디로 야.생.마. 가 되어 제어할 수 없게 된다. 아래에서 운영체제의 역할을...","categories": ["operating-system"],
         "tags": ["os"],
         "url": "http://localhost:4000/operating-system/operating-system-1/",
+        "teaser":"http://localhost:4000/assets/images/alhambra.jpg"},{
+        "title": "운영체제의 역사 - 일괄처리부터 시분할시스템까지 운영체제 변천의 역사",
+        "excerpt":"경성대학교 양희재 교수님 강의를 듣고 정리했습니다. 일괄처리부터 시분할시스템까지 운영체제 변천의 역사에 대해 공부했습니다. # Batch processing system(일괄처리) 최초의 운영체제로 과거 오퍼레이터가 했던 일련의 작업들을 메모리에 상주시켜 일괄처리한다. 메모리에 상주시킨 작은 프로그램을 레지던트 모니터(resident monitor)라고 한다. # Multiprogramming system(다중프로그래밍) 멀티프로그래밍 시스템 등장 배경은?? 배치 프로세싱 시스템은 메모리에 운영체제와 하나의 사용자 프로그램(컴파일러,...","categories": ["operating-system"],
+        "tags": ["os"],
+        "url": "http://localhost:4000/operating-system/operating-system-2/",
         "teaser":"http://localhost:4000/assets/images/alhambra.jpg"}]
