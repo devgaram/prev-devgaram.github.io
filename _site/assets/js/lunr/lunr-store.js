@@ -283,4 +283,9 @@ var store = [{
         "excerpt":"React를 배워볼까? 하고 두근거리는 마음으로 React 공식 문서에 방문해서 자습서부터 차근차근 읽어본 적이 있습니다. 그런데, 으잉? 이건 대체 뭐지? 제게 커다란 장벽이 나타났습니다. 그 것은 바로 바로… ES6 문법!!! 그래서 준비했습니다. “ES6를 모르면 React 배우기가 어려워요!” 지금부터 저와 함께 ES6 최신 문법을 정리해봅시다! 변수 선언하기 1. const 블록(중괄호 {}) 유효...","categories": ["javascript"],
         "tags": ["es6","react"],
         "url": "http://localhost:4000/javascript/javascript-es6/",
+        "teaser":"http://localhost:4000/assets/images/alhambra.jpg"},{
+        "title": "운영체제 서론 - 운영체제의 정의와 역할",
+        "excerpt":"경성대학교 양희재 교수님 강의를 듣고 정리했습니다. 오늘은 운영체제의 정의와 역할에 대해 공부했습니다. # 운영체제가 없는 컴퓨터의 전원을 키면 어떤 일이 일어날까?? 운영체제가 하는 일을 알면 운영체제가 없는 PC에서 어떤 일이 일어나는 지 알 수 있다. 결론부터 말하자면, 컴퓨터는 한 마디로 야.생.마. 가 되어 제어할 수 없게 된다. 아래에서 운영체제의 역할을...","categories": ["operating-system"],
+        "tags": ["os"],
+        "url": "http://localhost:4000/operating-system/operating-system-1/",
         "teaser":"http://localhost:4000/assets/images/alhambra.jpg"}]

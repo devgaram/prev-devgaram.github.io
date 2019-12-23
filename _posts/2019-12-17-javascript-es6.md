@@ -357,5 +357,10 @@ module.exports = {print, log}
 const { print, log } = require('./export')
 ```
 
-# promises
+# ES6에서 비동기 프로그래밍
 나중에 따로 정리할 예정.
+
+## 1. promises
+
+
+## 2. 제너레이터

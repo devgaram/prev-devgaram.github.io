@@ -5,9 +5,66 @@
     <description>라미의 블로그입니다.</description>
     <link>http://localhost:4000/</link>
     <atom:link href="http://localhost:4000/feed.xml" rel="self" type="application/rss+xml"/>
-    <pubDate>Tue, 17 Dec 2019 16:51:12 +0900</pubDate>
-    <lastBuildDate>Tue, 17 Dec 2019 16:51:12 +0900</lastBuildDate>
+    <pubDate>Mon, 23 Dec 2019 19:37:35 +0900</pubDate>
+    <lastBuildDate>Mon, 23 Dec 2019 19:37:35 +0900</lastBuildDate>
     <generator>Jekyll v3.8.5</generator>
+    
+      <item>
+        <title>운영체제 서론 - 운영체제의 정의와 역할</title>
+        <description>&lt;p&gt;경성대학교 양희재 교수님 강의를 듣고 정리했습니다.  &lt;br /&gt;
+오늘은 운영체제의 정의와 역할에 대해 공부했습니다.&lt;/p&gt;
+
+&lt;hr /&gt;
+
+&lt;h1 id=&quot;-운영체제가-없는-컴퓨터의-전원을-키면-어떤-일이-일어날까&quot;&gt;# 운영체제가 없는 컴퓨터의 전원을 키면 어떤 일이 일어날까??&lt;/h1&gt;
+
+&lt;p&gt;운영체제가 하는 일을 알면 운영체제가 없는 PC에서 어떤 일이 일어나는 지 알 수 있다. 결론부터 말하자면, 컴퓨터는 &lt;strong&gt;한 마디로 야.생.마.&lt;/strong&gt; 가 되어 제어할 수 없게 된다. 아래에서 운영체제의 역할을 살펴보며 왜 야생마가 되는 지 알아보자.&lt;/p&gt;
+
+&lt;h2 id=&quot;알아보기-전-간단히-컴퓨터-구조를-살펴보자&quot;&gt;알아보기 전, 간단히 컴퓨터 구조를 살펴보자!&lt;/h2&gt;
+&lt;p&gt;컴퓨터에는 &lt;code class=&quot;codetainer&quot;&gt;프로세스(처리기)&lt;/code&gt;와 &lt;code class=&quot;codetainer&quot;&gt;메인 메모리&lt;/code&gt;가 있다. 우리는 어떤 프로그램을 실행하기 전에 메모리에 명령들(Instructions)을 기록하는 데 이 명령어의 집합을 &lt;code class=&quot;codetainer&quot;&gt;프로그램&lt;/code&gt;이라고 한다. 이렇게 프로그램을 미리 내장해놓고 실행하며 이런 구조의 컴퓨터를 프로그램 내장형 컴퓨터라고 한다. 정리하자면, 전원을 키면 프로세스는 메인 메모리에서 명령어를 가져와서 실행하고 또 그 다음 명령어를 가져와서 실행한다.&lt;/p&gt;
+
+&lt;h2 id=&quot;운영체제가-없는-pc의-전원을-켰을-때-메인-메모리의-상태는&quot;&gt;운영체제가 없는 PC의 전원을 켰을 때, 메인 메모리의 상태는??&lt;/h2&gt;
+&lt;p&gt;멋대로의, 임의의 값이 들어있기에 프로세스가 하는 일이 의미가 없다. 마치 전혀 제어가 안되는 야생마와 같다.&lt;/p&gt;
+
+&lt;h2 id=&quot;운영체제는-프로그램을-어떻게-실행시킬까&quot;&gt;운영체제는 프로그램을 어떻게 실행시킬까??&lt;/h2&gt;
+&lt;p&gt;&lt;span class=&quot;clr-note&quot;&gt;프로그램은 컴퓨터의 하드디스크 안에 실행 파일 형태로 모여있으며 이 파일이 메모리에 올라가야 실제로 실행될 수 있다.&lt;/span&gt; 하드디스크의 실행 파일을 메모리에 올리는 것은 운영체제가 담당하기 때문에 운영체제가 없으면 실행 파일을 메모리에 올릴 수가 없다. 메인 메모리에 여러 개의 프로그램이 동시에 올라가있고 프로세스는 한 개 라면 동시에 어떻게 실행시킬까? 사실 이 것도 운영체제가 처리해준다.&lt;/p&gt;
+
+&lt;h2 id=&quot;그-외에&quot;&gt;그 외에&lt;/h2&gt;
+&lt;p&gt;&lt;span class=&quot;clr-note&quot;&gt;프린터에 인쇄 명령, 하드 디스크에 저장&lt;/span&gt; 등 &lt;span class=&quot;clr-grey&quot;&gt;(즉, 하드웨어 관리)&lt;/span&gt;도 운영체제가 처리해준다. 따라서 운영체제가 없으면 위에 언급한 내용들을 처리할 수 없어서 컴퓨터를 제대로 사용할 수가 없다.&lt;/p&gt;
+
+&lt;h2 id=&quot;정리하자면&quot;&gt;정리하자면!&lt;/h2&gt;
+&lt;p&gt;운영체제는 컴퓨터의 하드웨어(프로세스, 메모리, 디스크, 키보드, 마우스, 모니터, 네트워크, 스피커, 마이크, GPS..) 등을 잘 관리하여 성능을 높이고 사용자에게 편의성을 제공하는 역할을 담당한다.&lt;/p&gt;
+
+&lt;h1 id=&quot;-부팅booting&quot;&gt;# 부팅(Booting)&lt;/h1&gt;
+
+&lt;h2 id=&quot;알아보기-전-메모리에-대해-간단히-살펴보자&quot;&gt;알아보기 전, 메모리에 대해 간단히 살펴보자!&lt;/h2&gt;
+&lt;p&gt;메인 메모리는 일반적으로 &lt;code class=&quot;codetainer&quot;&gt;RAM&lt;/code&gt;과 &lt;code class=&quot;codetainer&quot;&gt;ROM&lt;/code&gt;으로 나눠지는 데 ROM은 극히 일부분을 차지하고 대부분은 RAM이다. RAM은 휘발성 메모리라서 전원을 껐다 키면 내용이 사라지지만 ROM과 하드디스크는 전원 상관 없이 내용이 유지된다.&lt;/p&gt;
+
+&lt;h2 id=&quot;극히-일부분인-rom이-하는-일은-무엇일까&quot;&gt;극히 일부분인 ROM이 하는 일은 무엇일까??&lt;/h2&gt;
+&lt;p&gt;전원을 키면 프로세스는 제일 먼저 &lt;code class=&quot;codetainer&quot;&gt;ROM&lt;/code&gt;의 명령어를 읽어와서 실행한다. &lt;span class=&quot;clr-grey&quot;&gt;ROM은 전원을 처음 켰을 때 한번만 필요.&lt;/span&gt; ROM의 프로그램 중, &lt;code class=&quot;codetainer&quot;&gt;POST(Power-On Self-Test: 컴퓨터가 환경 설정이 제대로 되어 있는지, 프린터 키보드 연결 여부 및 메인 메모리 크기 등을 테스트)&lt;/code&gt;를 제일 먼저 실행하고 그 다음 &lt;code class=&quot;codetainer&quot;&gt;부트로더(Boot loader)&lt;/code&gt;를 실행한다.&lt;/p&gt;
+
+&lt;h2 id=&quot;rom의-부트로더가-하는-일은&quot;&gt;ROM의 부트로더가 하는 일은??&lt;/h2&gt;
+&lt;p&gt;부트로더는 하드디스크에 있는 OS를 메인 메모리에 올리는 역할을 한다. OS가 메인 메모리에 올라가면 ROM은 필요가 없다.&lt;/p&gt;
+
+&lt;h2 id=&quot;그-후의-이야기&quot;&gt;그 후의 이야기..&lt;/h2&gt;
+&lt;p&gt;OS가 메인 메모리에 올라오면 윈도우즈라면 윈도우즈 초기화면이 나타나고 리눅스는 로그인 프롬트가 나타난다. 즉 &lt;span class=&quot;clr-note&quot;&gt;OS가 메인 메모리에 상주되어 모든 명령어를 받아드릴 준비가 된다.&lt;/span&gt; OS는 다른 프로그램과 달리 전원을 끌 때까지 메모리에 상주한다.&lt;/p&gt;
+
+&lt;h1 id=&quot;-커널kernel-vs-명령-해석기shell-command-interpreter&quot;&gt;# 커널(kernel) vs 명령 해석기(shell, command interpreter)&lt;/h1&gt;
+&lt;p&gt;운영체제는 여러가지 하드웨어 장치를 관리하는 프로그램으로 OS 중 핵심 부분을 &lt;code class=&quot;codetainer&quot;&gt;커널(kernel)&lt;/code&gt;이라고 한다. 반대로 &lt;code class=&quot;codetainer&quot;&gt;명령 해석기(shell, command interpreter)&lt;/code&gt;는 os의 껍질로 사용자로부터 명령을 받고 그 명령을 해석하여 결과를 보여주는 역할을 한다. 예를 들어, 리눅스에서 &lt;code class=&quot;codetainer&quot;&gt;$who&lt;/code&gt;라는 명령을 내려 사용자 목록을 보여주는 데, 이 것을 쉘이 담당한다.&lt;/p&gt;
+
+&lt;h2 id=&quot;하드웨어--운영체제--애플리케이션&quot;&gt;하드웨어 &amp;gt; 운영체제 &amp;gt; 애플리케이션&lt;/h2&gt;
+&lt;p&gt;하드웨어 위에 운영체제, 운영체제 위에서 애플리케이션이 실행된다.&lt;/p&gt;
+</description>
+        <pubDate>Mon, 23 Dec 2019 00:00:00 +0900</pubDate>
+        <link>http://localhost:4000/operating-system/operating-system-1/</link>
+        <guid isPermaLink="true">http://localhost:4000/operating-system/operating-system-1/</guid>
+        
+        <category>os</category>
+        
+        
+        <category>operating-system</category>
+        
+      </item>
     
       <item>
         <title>ES6를 모르면 React 배우기가 어려워요.</title>
@@ -329,8 +386,12 @@ this를 바인딩 하지 않기 때문에 메소드 함수에는 사용하지 �
 &lt;div class=&quot;language-javascript highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;kd&quot;&gt;const&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;print&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;log&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;}&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;require&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s1&quot;&gt;'./export'&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
 
-&lt;h1 id=&quot;promises&quot;&gt;promises&lt;/h1&gt;
-&lt;p&gt;나중에 정리할 예정.&lt;/p&gt;
+&lt;h1 id=&quot;es6에서-비동기-프로그래밍&quot;&gt;ES6에서 비동기 프로그래밍&lt;/h1&gt;
+&lt;p&gt;나중에 따로 정리할 예정.&lt;/p&gt;
+
+&lt;h2 id=&quot;1-promises&quot;&gt;1. promises&lt;/h2&gt;
+
+&lt;h2 id=&quot;2-제너레이터&quot;&gt;2. 제너레이터&lt;/h2&gt;
 </description>
         <pubDate>Tue, 17 Dec 2019 00:00:00 +0900</pubDate>
         <link>http://localhost:4000/javascript/javascript-es6/</link>
@@ -3176,131 +3237,6 @@ Integer값을 String으로 변환해주면 에러가 수정된다.&lt;/p&gt;
         
         
         <category>sql</category>
-        
-      </item>
-    
-      <item>
-        <title>Liquid 문법</title>
-        <description>&lt;p&gt;jekyll 블로그 운영시 알아야할 필수 liquid 문법&lt;/p&gt;
-
-&lt;hr /&gt;
-
-&lt;p&gt;&lt;a href=&quot;https://shopify.github.io/liquid/basics/types/&quot;&gt;liquid 문법 정리된 사이트&lt;/a&gt;&lt;/p&gt;
-
-&lt;h2 id=&quot;liquid&quot;&gt;Liquid&lt;/h2&gt;
-
-&lt;table&gt;
-&lt;thead&gt;
-	&lt;tr&gt;&lt;th&gt;category&lt;/th&gt;&lt;th&gt;Input&lt;/th&gt;&lt;th&gt;Output&lt;/th&gt;&lt;/tr&gt;
-&lt;/thead&gt;
-&lt;tbody&gt;
-	&lt;tr&gt;
-		&lt;td&gt;Objects&lt;/td&gt;
-		&lt;td&gt;
-		{ { page.title } }	
-		&lt;/td&gt;
-		&lt;td&gt;Introduction&lt;/td&gt;
-	&lt;/tr&gt;
-	&lt;tr&gt;
-		&lt;td&gt;Tags&lt;/td&gt;
-		&lt;td&gt;
-		{ % if user % } &lt;br /&gt;
-		  &amp;nbsp;&amp;nbsp;Hello { { user.name } }! &lt;br /&gt;
-		{ % endif % }
-		&lt;/td&gt;
-		&lt;td&gt;Hello Adam!&lt;/td&gt;
-	&lt;/tr&gt;
-	&lt;tr&gt;
-		&lt;td&gt;Filters&lt;/td&gt;
-		&lt;td&gt;
-		{ { &quot;/my/fancy/url&quot; | append: &quot;.html&quot; } }
-		&lt;/td&gt;
-		&lt;td&gt;/my/fancy/url.html&lt;/td&gt;
-	&lt;/tr&gt;
-	&lt;tr&gt;
-		&lt;td&gt;Filters&lt;/td&gt;
-		&lt;td&gt;
-		{ { &quot;adam!&quot; | capitalize | prepend: &quot;Hello &quot; } }
-		&lt;/td&gt;
-		&lt;td&gt;Hello Adam!&lt;/td&gt;
-	&lt;/tr&gt;
-	&lt;tr&gt;
-		&lt;td&gt;assing String&lt;/td&gt;
-		&lt;td&gt;
-		{ % assign my_string = &quot;Hello World!&quot; % }
-		&lt;/td&gt;
-		&lt;td&gt;String 타입&lt;/td&gt;
-	&lt;/tr&gt;
-	&lt;tr&gt;
-		&lt;td&gt;assing Number&lt;/td&gt;
-		&lt;td&gt;
-		{ % assign my_int = 25 % }
-		&lt;/td&gt;
-		&lt;td&gt;Number 타입&lt;/td&gt;
-	&lt;/tr&gt;
-	&lt;tr&gt;
-		&lt;td&gt;assing Boolean&lt;/td&gt;
-		&lt;td&gt;
-		{ % assign foo = true % }
-		&lt;/td&gt;
-		&lt;td&gt;Boolean 타입&lt;/td&gt;
-	&lt;/tr&gt;
-	&lt;tr&gt;
-		&lt;td&gt;Nil (empty)&lt;/td&gt;
-		&lt;td&gt;
-		The current user is { { user.name } }
-		&lt;/td&gt;
-		&lt;td&gt;The current user is&lt;/td&gt;
-	&lt;/tr&gt;
-	&lt;tr&gt;
-		&lt;td&gt;Array&lt;/td&gt;
-		&lt;td&gt;
-		{ % for user in site.users % }&lt;br /&gt;
-		  &amp;nbsp;&amp;nbsp; { { user } }&lt;br /&gt;
-		{ % endfor % }
-		&lt;/td&gt;
-		&lt;td&gt;Tobi Laura Tetsuro Adam&lt;/td&gt;
-	&lt;/tr&gt;
-	&lt;tr&gt;
-		&lt;td&gt;Array&lt;/td&gt;
-		&lt;td&gt;
-		{ { site.users[0] } }&lt;br /&gt;
-		{ { site.users[1] } }&lt;br /&gt;
-		{ { site.users[3] } }
-		&lt;/td&gt;
-		&lt;td&gt;Tobi &lt;br /&gt;
-		Laura &lt;br /&gt;
-		Adam&lt;/td&gt;
-	&lt;/tr&gt;
-	&lt;tr&gt;
-		&lt;td&gt;plus&lt;/td&gt;
-		&lt;td&gt;
-		{ { 4 | plus: 2 } }
-		&lt;/td&gt;
-		&lt;td&gt;6&lt;/td&gt;
-	&lt;/tr&gt;
-	&lt;tr&gt;
-		&lt;td&gt;limit&lt;/td&gt;
-		&lt;td&gt;
-		{ % for item in array limit:2 % }&lt;br /&gt;
-	       &amp;nbsp;&amp;nbsp; { { item } }&lt;br /&gt;
-		{ % endfor % }
-		&lt;/td&gt;
-		&lt;td&gt;limit를 통해 2개까지만 반복문을 돌린다.&lt;/td&gt;
-	&lt;/tr&gt;
-&lt;/tbody&gt;
-&lt;/table&gt;
-</description>
-        <pubDate>Tue, 05 Mar 2019 00:00:00 +0900</pubDate>
-        <link>http://localhost:4000/jekyll/liquid-site/</link>
-        <guid isPermaLink="true">http://localhost:4000/jekyll/liquid-site/</guid>
-        
-        <category>jekyll</category>
-        
-        <category>liquid</category>
-        
-        
-        <category>jekyll</category>
         
       </item>
     
