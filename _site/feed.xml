@@ -5,9 +5,46 @@
     <description>라미의 블로그입니다.</description>
     <link>http://localhost:4000/</link>
     <atom:link href="http://localhost:4000/feed.xml" rel="self" type="application/rss+xml"/>
-    <pubDate>Mon, 23 Dec 2019 21:18:47 +0900</pubDate>
-    <lastBuildDate>Mon, 23 Dec 2019 21:18:47 +0900</lastBuildDate>
+    <pubDate>Tue, 24 Dec 2019 21:31:08 +0900</pubDate>
+    <lastBuildDate>Tue, 24 Dec 2019 21:31:08 +0900</lastBuildDate>
     <generator>Jekyll v3.8.5</generator>
+    
+      <item>
+        <title>운영체제 - 인터럽트 기반 운영체제</title>
+        <description>&lt;p&gt;경성대학교 양희재 교수님 강의를 듣고 정리했습니다.  &lt;br /&gt;
+인터럽트 기반 운영체제에 대해 공부했습니다.&lt;/p&gt;
+
+&lt;hr /&gt;
+
+&lt;h1 id=&quot;-인터럽트-기반-시스템interrupt-based-system&quot;&gt;# 인터럽트 기반 시스템(Interrupt-Based System)&lt;/h1&gt;
+
+&lt;p&gt;현대 운영체제는 인터럽트 기반 시스템이다.&lt;/p&gt;
+
+&lt;h2 id=&quot;전원을-키면&quot;&gt;전원을 키면?&lt;/h2&gt;
+&lt;p&gt;메인메모리가 비워져 있는 상태에서 CPU가 ROM의 부트로더를 실행하면 하드디스크의 운영체제가 메인 메모리에 올라가게 된다. 운영체제가 메인 메모리에 올라간 것을 &lt;code class=&quot;codetainer&quot;&gt;부팅&lt;/code&gt;이라고 부른다.&lt;/p&gt;
+
+&lt;h2 id=&quot;부팅-끝난-후-운영체제의-상태는&quot;&gt;부팅 끝난 후 운영체제의 상태는?&lt;/h2&gt;
+&lt;p&gt;부팅이 끝나면 운영체제는 메모리에 상주하게 되고 이벤트(인터럽트)를 기다리는 대기 상태가 된다. 이 운영체제에는 여러 개의 코드가 있고 이 코드는 인터럽트(하드웨어, 소프트웨어, 내부)가 발생할 때 실행된다.&lt;/p&gt;
+
+&lt;h2 id=&quot;하드웨어-인터럽트---키보드-마우스&quot;&gt;하드웨어 인터럽트 - 키보드, 마우스..&lt;/h2&gt;
+&lt;p&gt;마우스로 예를 들어 보자. 우리가 마우스를 움직이면 마우스에서 전기 신호가 발생하여 그 신호가 CPU의 인터럽트 선으로 전달된다. &lt;span class=&quot;clr-note&quot;&gt;CPU는 인터럽트 신호를 받으면 지금 하던 일을 중지하고 운영체제에 있는 인터럽트 서비스 루틴(ISR)을 실행시킨다.&lt;/span&gt; &lt;code class=&quot;codetainer&quot;&gt;인터럽트 서비스 루틴&lt;/code&gt;은 해당 인터럽트가 오면 어떤 일을 수행할 지 코드해놓은 프로그램이다. 우리는 이 인터럽트와 인터럽트 서비스 루틴 덕분에 마우스를 움직이면 화면의 마우스 커서가 움직이게 할 수 있는 것이다. 다른 예시로 hwp 아이콘을 더블 클릭하는 경우를 생각해보자. 더블 클릭으로 인터럽트가 발생하면 CPU는 OS의 더블클릭 ISR을 실행한다. 더블 클릭 인터럽트 서비스 루틴은 하드디스크의 HWP 실행 파일을 메인 메모리에 올려서 CPU가 실행할 수 있도록 한다.&lt;/p&gt;
+
+&lt;h2 id=&quot;소프트웨어-인터럽트&quot;&gt;소프트웨어 인터럽트&lt;/h2&gt;
+&lt;p&gt;hwp 프로그램 실행 중 memo.hwp 파일을 읽어오고 싶은 경우를 생각해보자. 하드디스크를 뒤져서 memo.hwp를 메모리에 올려야하는 데 이 작업은 hwp 프로그램이 직접 수행하지않는다. 인터럽트를 발생시켜 운영체제의 ISR을 실행하여 메모리에 올리는 것이다. ISR이 실행되어 memo.hwp를 다 읽으면 다시 hwp 프로그램으로 돌아온다. &lt;span class=&quot;clr-note&quot;&gt;정리하자면, 사용자 프로그램에서 소프트웨어 인터럽트를 걸면 운영체제 안의 특정 코드(ISR)를 실행하고 이 코드 실행이 끝나면 다시 사용자 프로그램으로 돌아온다.&lt;/span&gt;&lt;/p&gt;
+
+&lt;h2 id=&quot;내부-인터럽트&quot;&gt;내부 인터럽트&lt;/h2&gt;
+&lt;p&gt;하나의 예시로 &lt;span class=&quot;clr-note&quot;&gt;divide by zero&lt;/span&gt;를 들 수 있다. &lt;code class=&quot;codetainer&quot;&gt;int i=5, j=0; i=i/j;&lt;/code&gt; 다음과 같이 0으로 나누는 연산을 하면 i에 값을 저장할 수 없게 된다. 이는 곧 그 다음 코드를 실행할 수 없다는 의미다. 컴퓨터는 이러한 경우, 프로그램을 강제 종료시키고 싶어진다. 그래서 CPU는 내부적으로 인터럽트를 발생한 것으로 인식하여 프로그램을 종료시키는 ISR을 실행시킨다.&lt;/p&gt;
+</description>
+        <pubDate>Mon, 23 Dec 2019 00:00:00 +0900</pubDate>
+        <link>http://localhost:4000/operating-system/operating-system-3/</link>
+        <guid isPermaLink="true">http://localhost:4000/operating-system/operating-system-3/</guid>
+        
+        <category>os</category>
+        
+        
+        <category>operating-system</category>
+        
+      </item>
     
       <item>
         <title>운영체제의 역사 - 일괄처리부터 시분할시스템까지 운영체제 변천의 역사</title>
@@ -3157,45 +3194,6 @@ returnVal &amp;lt; 0, string1 &amp;lt; string2 사전적으로 string1이 string
         <pubDate>Thu, 14 Mar 2019 00:00:00 +0900</pubDate>
         <link>http://localhost:4000/android/html5-error/</link>
         <guid isPermaLink="true">http://localhost:4000/android/html5-error/</guid>
-        
-        <category>android</category>
-        
-        <category>error</category>
-        
-        
-        <category>android</category>
-        
-      </item>
-    
-      <item>
-        <title>안드로이드 에러 - setText의 파라미터로 숫자를 전달했을 때</title>
-        <description>&lt;p&gt;setText의 파라미터로 숫자를 전달했을 때 발생되는 에러로그&lt;/p&gt;
-
-&lt;hr /&gt;
-
-&lt;p&gt;에러로그&lt;/p&gt;
-
-&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;android.content.res.Resources$NotFoundException: String resource ID #0x1f40
-at android.content.res.Resources.getText(Resources.java:354)
-at android.widget.TextView.setText(TextView.java:6133)
-at org.androidtown.mybudgeter.pager.ExpenditureRecyclerAdapter.onBindViewHolder(ExpenditureRecyclerAdapter.java:30)
-at org.androidtown.mybudgeter.pager.ExpenditureRecyclerAdapter.onBindViewHolder(ExpenditureRecyclerAdapter.java:16)
-....      
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
-
-&lt;div class=&quot;language-java highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;n&quot;&gt;expenditureAmount&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;na&quot;&gt;setText&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;currentExpenditure&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;na&quot;&gt;getAmount&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;());&lt;/span&gt;
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
-
-&lt;p&gt;에러로그는 위와 같은 코드에서 발생된 것으로, setText에 Integer 값을 전달했을 때 경우이다.  &lt;br /&gt;
-Integer값을 String으로 변환해주면 에러가 수정된다.&lt;/p&gt;
-
-&lt;div class=&quot;language-java highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;n&quot;&gt;expenditureAmount&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;na&quot;&gt;setText&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;Integer&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;na&quot;&gt;toString&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;currentExpenditure&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;na&quot;&gt;getAmount&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;()));&lt;/span&gt;
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
-
-</description>
-        <pubDate>Sun, 10 Mar 2019 00:00:00 +0900</pubDate>
-        <link>http://localhost:4000/android/android-error-1/</link>
-        <guid isPermaLink="true">http://localhost:4000/android/android-error-1/</guid>
         
         <category>android</category>
         

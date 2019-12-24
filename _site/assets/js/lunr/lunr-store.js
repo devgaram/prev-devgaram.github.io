@@ -293,4 +293,9 @@ var store = [{
         "excerpt":"경성대학교 양희재 교수님 강의를 듣고 정리했습니다. 일괄처리부터 시분할시스템까지 운영체제 변천의 역사에 대해 공부했습니다. # Batch processing system(일괄처리) 최초의 운영체제로 과거 오퍼레이터가 했던 일련의 작업들을 메모리에 상주시켜 일괄처리한다. 메모리에 상주시킨 작은 프로그램을 레지던트 모니터(resident monitor)라고 한다. # Multiprogramming system(다중프로그래밍) 멀티프로그래밍 시스템 등장 배경은?? 배치 프로세싱 시스템은 메모리에 운영체제와 하나의 사용자 프로그램(컴파일러,...","categories": ["operating-system"],
         "tags": ["os"],
         "url": "http://localhost:4000/operating-system/operating-system-2/",
+        "teaser":"http://localhost:4000/assets/images/alhambra.jpg"},{
+        "title": "운영체제 - 인터럽트 기반 운영체제",
+        "excerpt":"경성대학교 양희재 교수님 강의를 듣고 정리했습니다. 인터럽트 기반 운영체제에 대해 공부했습니다. # 인터럽트 기반 시스템(Interrupt-Based System) 현대 운영체제는 인터럽트 기반 시스템이다. 전원을 키면? 메인메모리가 비워져 있는 상태에서 CPU가 ROM의 부트로더를 실행하면 하드디스크의 운영체제가 메인 메모리에 올라가게 된다. 운영체제가 메인 메모리에 올라간 것을 부팅이라고 부른다. 부팅 끝난 후 운영체제의 상태는? 부팅이...","categories": ["operating-system"],
+        "tags": ["os"],
+        "url": "http://localhost:4000/operating-system/operating-system-3/",
         "teaser":"http://localhost:4000/assets/images/alhambra.jpg"}]
