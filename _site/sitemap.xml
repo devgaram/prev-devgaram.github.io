@@ -2,6 +2,10 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
     
     <url>
+        <loc>http://localhost:4000/operating-system/operating-system-4/</loc>
+    </url>
+    
+    <url>
         <loc>http://localhost:4000/operating-system/operating-system-3/</loc>
     </url>
     
@@ -379,6 +383,14 @@
     
     <url>
         <loc>http://localhost:4000/page6/</loc>
+    </url>
+    
+    
+    
+    
+    
+    <url>
+        <loc>http://localhost:4000/page7/</loc>
     </url>
     
     

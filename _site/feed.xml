@@ -5,9 +5,72 @@
     <description>라미의 블로그입니다.</description>
     <link>http://localhost:4000/</link>
     <atom:link href="http://localhost:4000/feed.xml" rel="self" type="application/rss+xml"/>
-    <pubDate>Tue, 24 Dec 2019 21:31:08 +0900</pubDate>
-    <lastBuildDate>Tue, 24 Dec 2019 21:31:08 +0900</lastBuildDate>
+    <pubDate>Wed, 25 Dec 2019 18:17:21 +0900</pubDate>
+    <lastBuildDate>Wed, 25 Dec 2019 18:17:21 +0900</lastBuildDate>
     <generator>Jekyll v3.8.5</generator>
+    
+      <item>
+        <title>운영체제 - 이중모드, 하드웨어 보호</title>
+        <description>&lt;p&gt;경성대학교 양희재 교수님 강의를 듣고 정리했습니다.   &lt;br /&gt;
+사용자 모드와 관리자 모드, 하드웨어 보호에 대해 공부했습니다.&lt;/p&gt;
+
+&lt;hr /&gt;
+
+&lt;h1 id=&quot;-이중모드dual-mode&quot;&gt;# 이중모드(Dual Mode)&lt;/h1&gt;
+
+&lt;h2 id=&quot;이중모드의-등장-배경은&quot;&gt;이중모드의 등장 배경은?&lt;/h2&gt;
+&lt;p&gt;하나의 서버 컴퓨터를 여러 사람이 동시에 사용하는 또는 한 사람이 여러 개의 프로그램을 동시에 사용하는 환경에서 한 사람의 고의/실수 프로그램은 전체에 영향을 끼치게 된다. 예를 들어, 한 사용자 프로그램에서 &lt;code class=&quot;codetainer&quot;&gt;STOP, HALT, RESET, SET_TIMER, SET_HW&lt;/code&gt;등의 명령을 실행한다면 컴퓨터 전체가 영향을 받는다. 즉, &lt;span class=&quot;clr-note&quot;&gt;시스템에 치명적인 명령은 관리자만 실행할 수 있도록&lt;/span&gt; 하기 위해 이중모드(사용자모드, 관리자모드)가 등장하게 된 것이다.&lt;/p&gt;
+
+&lt;h2 id=&quot;이중모드란&quot;&gt;이중모드란?&lt;/h2&gt;
+&lt;p&gt;&lt;code class=&quot;codetainer&quot;&gt;시스템(system) 모드 = 관리자(supervisor) 모드 = 모니터(monitor) 모드 = 특권(priviliged) 모드&lt;/code&gt; 와 &lt;code class=&quot;codetainer&quot;&gt;사용자 모드&lt;/code&gt;가 있다. 시스템 모드일 때, &lt;code class=&quot;codetainer&quot;&gt;STOP, HALT&lt;/code&gt; 와 같은 &lt;code class=&quot;codetainer&quot;&gt;특권 명령&lt;/code&gt;을 내릴 수 있고 사용자 프로그램에서는 치명적 명령을 사용 못하게 막는다.&lt;/p&gt;
+
+&lt;h2 id=&quot;이중모드는-어떻게-동작할까&quot;&gt;이중모드는 어떻게 동작할까?&lt;/h2&gt;
+&lt;p&gt;CPU에 있는 &lt;code class=&quot;codetainer&quot;&gt;레지스터&lt;/code&gt;는 비트를 가지고 있으며 각 비트는 &lt;code class=&quot;codetainer&quot;&gt;carry, negative, zero, overflow&lt;/code&gt; 발생을 알려주는 플래그 역할을 한다. 여기에 이중모드를 위한 비트를 추가하여 &lt;span class=&quot;clr-note&quot;&gt;시스템 모드면 1&lt;/span&gt;을 &lt;span class=&quot;clr-note&quot;&gt;사용자 모드면 0&lt;/span&gt;으로 표시한다.      &lt;br /&gt;&lt;br /&gt;
+&lt;img src=&quot;/assets/images/2019-12-25-img/dual-mode.png&quot; alt=&quot;이중모드&quot; /&gt;&lt;br /&gt;&lt;/p&gt;
+&lt;ul&gt;
+  &lt;li&gt;운영체제 서비스를 실행될 때는 &lt;span class=&quot;clr-note&quot;&gt;관리자 모드&lt;/span&gt;&lt;/li&gt;
+  &lt;li&gt;사용자 프로그램 실행될 때는 &lt;span class=&quot;clr-note&quot;&gt;사용자 모드&lt;/span&gt;&lt;/li&gt;
+  &lt;li&gt;하드웨어/소프트웨어 인터럽트 발생하면 &lt;span class=&quot;clr-note&quot;&gt;관리자 모드&lt;/span&gt;&lt;/li&gt;
+  &lt;li&gt;운영체제 서비스가 끝나면 다시 &lt;span class=&quot;clr-note&quot;&gt;사용자 모드&lt;/span&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h2 id=&quot;이중모드-예시&quot;&gt;이중모드 예시&lt;/h2&gt;
+&lt;p&gt;전원을 켰을 때 하드 디스크에 있는 운영체제가 메인 메모리에 올라가는 것은 &lt;strong&gt;시스템 모드&lt;/strong&gt;에서 동작한다. 부팅이 끝나면 &lt;strong&gt;사용자 모드&lt;/strong&gt;가 된다. 게임 아이콘을 더블클릭하여 인터럽트가 발생하면 다시 &lt;strong&gt;시스템 모드&lt;/strong&gt;가 되어 인터럽트 서비스 루틴이 게임을 메인 메모리에 올리고 cpu가 실행할 수 있도록 한다. 다시 &lt;strong&gt;사용자 모드&lt;/strong&gt;로 돌아오고 열심히 게임을 한다. 이제 게임 스코어를 하드디스크에 저장해보자. 게임 프로그램이 직접 하드디스크에 저장하는 것이 아니라 소프트웨어 인터럽트를 걸어 CPU가 지금 하던 일을 멈추고 운영체제의 ISR로 점프해서 실행하도록 한다. 이 때는 &lt;strong&gt;시스템 모드&lt;/strong&gt;이다. ISR이 완료되면 레지스터 비트를 0으로 하여 &lt;strong&gt;사용자 모드&lt;/strong&gt;로 만들고 다시 게임으로 돌아오게 된다.&lt;/p&gt;
+
+&lt;p&gt;하드웨어 인터럽트도 마찬가지다. &lt;strong&gt;사용자 모드&lt;/strong&gt;에서 마우스를 움직이게 되면 CPU로 인터럽트를 보내 &lt;strong&gt;시스템 모드&lt;/strong&gt;로 바꾼 후 ISR을 실행한다. 완료되면 다시 &lt;strong&gt;사용자 모드&lt;/strong&gt;가 된다. 즉, &lt;span class=&quot;clr-note&quot;&gt;하나의 프로그램이 실행되는 동안 사용자 모드, 시스템 모드가 계속 반복된다.&lt;/span&gt;&lt;/p&gt;
+
+&lt;h2 id=&quot;만약-사용자-프로그램에서-특권-명령을-내리면&quot;&gt;만약 사용자 프로그램에서 특권 명령을 내리면?&lt;/h2&gt;
+&lt;p&gt;CPU는 레지스터의 모니터 비트를 확인하여 특권 명령이 사용자 모드일 때 내려지면 인터럽트를 발생시킨다. 운영체제의 인터럽트 서비스 루틴이 실행되고 이 ISR은 잘못된 시도를 한 프로그램을 강제 종료시켜 메모리에서 사라지게 한다.&lt;/p&gt;
+
+&lt;h1 id=&quot;-하드웨어-보호&quot;&gt;# 하드웨어 보호&lt;/h1&gt;
+
+&lt;h2 id=&quot;입출력-장치-보호&quot;&gt;입출력 장치 보호&lt;/h2&gt;
+&lt;p&gt;사용자 A가 프린터를 사용 중인 상황에서 사용자 B가 프린트 출력 명령을 내리면 어떻게 될까? 운영체제가 없다면 A 사용자꺼 한 줄, B 사용자꺼 한 줄..식으로 출력이 될 것이다. 이같은 프린트 혼선, 리셋 등의 상황이 적절한가? 다른 예시로 하드디스크에 저장된 A의 정보를 B가 마음대로 읽고 쓰는 상황을 생각해보자. 이 것도 적절한가? 답은 &lt;span class=&quot;clr-note&quot;&gt;NO!!&lt;/span&gt;&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;어떻게 해야할까?&lt;/strong&gt; 컴퓨터는 바로 이렇게 해결했다.&lt;/p&gt;
+
+&lt;p&gt;입출력 명령인 &lt;code class=&quot;codetainer&quot;&gt;IN, OUT&lt;/code&gt;을 특권 명령으로 하여 사용자가 직접 입출력 명령을 내릴 수 없도록 했다. 만약 사용자가 직접 내리면 &lt;code class=&quot;codetainer&quot;&gt;Privileged instruction violation&lt;/code&gt;이기에 강제로 프로그램을 종료시킨다. 즉, 사용자가 입출력을 하기 위해서는 &lt;code class=&quot;codetainer&quot;&gt;소프트웨어 인터럽트&lt;/code&gt;를 발생시켜 운영체제에 요청해야한다. 인터럽트에 의해 CPU가 시스템 모드로 전환하고 운영체제의 ISR을 실행하면 운영체제가 입출력을 대행한다. ISR에는 요청이 적절한 지를 확인하는 코드가 있어 올바른 요청에만 실행된다. 만약, 올바른 요청이 아니면 운영체제는 이를 거부한다. ISR이 완료되면 다시 사용자 모드로 복귀된다.&lt;/p&gt;
+
+&lt;h2 id=&quot;메모리-보호&quot;&gt;메모리 보호&lt;/h2&gt;
+&lt;p&gt;메인 메모리에는 운영체제와 여러 개의 사용자 프로그램이 동시에 있기 때문에 다른 사용자 메모리 또는 운영체제에 접근하는 것을 막아야 한다. 보호하지 않으면 다른 사용자 정보나 프로그램을 해킹하거나 운영체제를 해킹하는 경우가 생긴다.&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;어떻게 메모리를 보호할까?&lt;/strong&gt; 컴퓨터는 바로 이렇게 해결했다.&lt;/p&gt;
+
+&lt;p&gt;CPU와 메인 메모리 사이는 Bus로 연결되어있고 CPU -&amp;gt; 메모리는 &lt;code class=&quot;codetainer&quot;&gt;Address Bus&lt;/code&gt;, 메모리 -&amp;gt; CPU는 &lt;code class=&quot;codetainer&quot;&gt;Data Bus&lt;/code&gt;로 부른다. 컴퓨터는 다른 메모리 영역의 침범을 막기 위해 Address Bus에 &lt;code class=&quot;codetainer&quot;&gt;MMU(Memory Management Unit)&lt;/code&gt;을 두었고 문지기 역할을 하도록 했다. MMU에는 &lt;code class=&quot;codetainer&quot;&gt;Base, Limit&lt;/code&gt;가 있고 값 설정은 특권 명령으로 운영체제만 바꿀 수 있다. MMU는 Base~Limit 사이면 통과시키고 범위 밖이면 CPU로 인터럽트 신호를 발생시켜 해당 명령을 내린 프로그램을 종료시킨다. 이처럼 다른 사용자 또는 운영체제 영역 메모리에 접근하려는 것을 &lt;code class=&quot;codetainer&quot;&gt;Segment Violation&lt;/code&gt; 이라고 한다.&lt;/p&gt;
+
+&lt;h2 id=&quot;cpu-보호&quot;&gt;cpu 보호&lt;/h2&gt;
+&lt;p&gt;한 사용자가 &lt;code class=&quot;codetainer&quot;&gt;while(n = 1)&lt;/code&gt; 과 같은 명령을 실행하면 CPU를 계속 독점하여 다른 사용자의 프로그램을 실행할 수 없게 된다. 이를 막기 위해 CPU 보호가 필요한 것이다. &lt;span class=&quot;clr-note&quot;&gt;컴퓨터는 Timer를 두어 일정 시간 경과 시 타이머 인터럽트를 발생시키는 방법으로 해결했다.&lt;/span&gt; 일정 신호 주기로 타이머가 CPU에 인터럽트를 걸게 되면 CPU는 ISR을 실행시켜 프로그램이 CPU를 너무 오랜 시간 독점하고 있는 지를 확인한다. 독점하고 있다고 판단되면 CPU를 강제 전환시켜 다른 프로그램을 실행토록 한다.&lt;/p&gt;
+</description>
+        <pubDate>Wed, 25 Dec 2019 00:00:00 +0900</pubDate>
+        <link>http://localhost:4000/operating-system/operating-system-4/</link>
+        <guid isPermaLink="true">http://localhost:4000/operating-system/operating-system-4/</guid>
+        
+        <category>os</category>
+        
+        
+        <category>operating-system</category>
+        
+      </item>
     
       <item>
         <title>운영체제 - 인터럽트 기반 운영체제</title>
@@ -3171,36 +3234,6 @@ returnVal &amp;lt; 0, string1 &amp;lt; string2 사전적으로 string1이 string
         
         
         <category>Java</category>
-        
-      </item>
-    
-      <item>
-        <title>html5 와 css3 와 관련된 에러 모음</title>
-        <description>&lt;ol&gt;
-  &lt;li&gt;IE에서 CSS 적용 안되는 문제 (2019-03-14)&lt;/li&gt;
-&lt;/ol&gt;
-
-&lt;hr /&gt;
-
-&lt;h2 id=&quot;1-ie에서-css-적용-안되는-문제&quot;&gt;1. IE에서 CSS 적용 안되는 문제&lt;/h2&gt;
-
-&lt;p&gt;HTML5, CSS3로 코딩된 페이지가 크롬과 IE 신형 버전에서는 정상적으로 적용되나, 구형 익스플로어에서 적용안되는 문제가 발생했다.
-이는 페이지 head 안에 아래의 메타 태그만 추가하면 해결된다.&lt;/p&gt;
-
-&lt;div class=&quot;language-html highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;nt&quot;&gt;&amp;lt;meta&lt;/span&gt; &lt;span class=&quot;na&quot;&gt;http-equiv=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;X-UA-Compatible&quot;&lt;/span&gt; &lt;span class=&quot;na&quot;&gt;content=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;IE=edge, chrome=1&quot;&lt;/span&gt;&lt;span class=&quot;nt&quot;&gt;&amp;gt;&lt;/span&gt;
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
-
-</description>
-        <pubDate>Thu, 14 Mar 2019 00:00:00 +0900</pubDate>
-        <link>http://localhost:4000/android/html5-error/</link>
-        <guid isPermaLink="true">http://localhost:4000/android/html5-error/</guid>
-        
-        <category>android</category>
-        
-        <category>error</category>
-        
-        
-        <category>android</category>
         
       </item>
     

@@ -298,4 +298,9 @@ var store = [{
         "excerpt":"경성대학교 양희재 교수님 강의를 듣고 정리했습니다. 인터럽트 기반 운영체제에 대해 공부했습니다. # 인터럽트 기반 시스템(Interrupt-Based System) 현대 운영체제는 인터럽트 기반 시스템이다. 전원을 키면? 메인메모리가 비워져 있는 상태에서 CPU가 ROM의 부트로더를 실행하면 하드디스크의 운영체제가 메인 메모리에 올라가게 된다. 운영체제가 메인 메모리에 올라간 것을 부팅이라고 부른다. 부팅 끝난 후 운영체제의 상태는? 부팅이...","categories": ["operating-system"],
         "tags": ["os"],
         "url": "http://localhost:4000/operating-system/operating-system-3/",
+        "teaser":"http://localhost:4000/assets/images/alhambra.jpg"},{
+        "title": "운영체제 - 이중모드, 하드웨어 보호",
+        "excerpt":"경성대학교 양희재 교수님 강의를 듣고 정리했습니다. 사용자 모드와 관리자 모드, 하드웨어 보호에 대해 공부했습니다. # 이중모드(Dual Mode) 이중모드의 등장 배경은? 하나의 서버 컴퓨터를 여러 사람이 동시에 사용하는 또는 한 사람이 여러 개의 프로그램을 동시에 사용하는 환경에서 한 사람의 고의/실수 프로그램은 전체에 영향을 끼치게 된다. 예를 들어, 한 사용자 프로그램에서 STOP,...","categories": ["operating-system"],
+        "tags": ["os"],
+        "url": "http://localhost:4000/operating-system/operating-system-4/",
         "teaser":"http://localhost:4000/assets/images/alhambra.jpg"}]
