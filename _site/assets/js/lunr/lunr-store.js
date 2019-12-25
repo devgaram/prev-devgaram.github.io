@@ -308,4 +308,9 @@ var store = [{
         "excerpt":"경성대학교 양희재 교수님 강의를 듣고 정리했습니다. 운영체제의 주요 서비스: 프로세스, 메모리, 파일관리, 시스템 호출 개론에 대해 공부했습니다. # 운영체제의 주요 서비스 프로세스 관리 주 기억장치 관리(메인 메모리 관리) 파일 관리(하드디스크의 파일) 보조기억장치 관리 입출력 장치 관리(프린트, 키보드, 마우스..) 네트워킹 보호 기타.. 프로세스 관리 메인 메모리에서 실행 중인 프로그램을 프로세스라고 한다....","categories": ["operating-system"],
         "tags": ["os"],
         "url": "http://localhost:4000/operating-system/operating-system-5/",
+        "teaser":"http://localhost:4000/assets/images/alhambra.jpg"},{
+        "title": "운영체제 - 프로세스 관리",
+        "excerpt":"경성대학교 양희재 교수님 강의를 듣고 정리했습니다. 프로세스의 정의, CPU 스케쥴러, 멀티프로그래밍에 대해 공부했습니다. # 프로세스 프로그램 vs 프로세스 Process = task = job 게임 프로그램이 하드디스크에 있으면 아무 것도 할 수 없다. 게임을 하기 위해 더블 클릭하면 게임 프로그램이 메인 메모리에 올라와서 실행 된다. 이렇게 실행 중인 프로그램을 프로세스라고 한다...","categories": ["operating-system"],
+        "tags": ["os"],
+        "url": "http://localhost:4000/operating-system/operating-system-6/",
         "teaser":"http://localhost:4000/assets/images/alhambra.jpg"}]
