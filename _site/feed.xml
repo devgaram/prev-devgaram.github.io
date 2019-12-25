@@ -5,9 +5,93 @@
     <description>라미의 블로그입니다.</description>
     <link>http://localhost:4000/</link>
     <atom:link href="http://localhost:4000/feed.xml" rel="self" type="application/rss+xml"/>
-    <pubDate>Wed, 25 Dec 2019 18:17:21 +0900</pubDate>
-    <lastBuildDate>Wed, 25 Dec 2019 18:17:21 +0900</lastBuildDate>
+    <pubDate>Wed, 25 Dec 2019 18:52:33 +0900</pubDate>
+    <lastBuildDate>Wed, 25 Dec 2019 18:52:33 +0900</lastBuildDate>
     <generator>Jekyll v3.8.5</generator>
+    
+      <item>
+        <title>운영체제 - 운영체제 주요 서비스 간략하게!</title>
+        <description>&lt;p&gt;경성대학교 양희재 교수님 강의를 듣고 정리했습니다.   &lt;br /&gt;
+운영체제의 주요 서비스: 프로세스, 메모리, 파일관리, 시스템 호출 개론에 대해 공부했습니다.&lt;/p&gt;
+
+&lt;hr /&gt;
+
+&lt;h1 id=&quot;-운영체제의-주요-서비스&quot;&gt;# 운영체제의 주요 서비스&lt;/h1&gt;
+&lt;ul&gt;
+  &lt;li&gt;프로세스 관리&lt;/li&gt;
+  &lt;li&gt;주 기억장치 관리(메인 메모리 관리)&lt;/li&gt;
+  &lt;li&gt;파일 관리(하드디스크의 파일)&lt;/li&gt;
+  &lt;li&gt;보조기억장치 관리&lt;/li&gt;
+  &lt;li&gt;입출력 장치 관리(프린트, 키보드, 마우스..)&lt;/li&gt;
+  &lt;li&gt;네트워킹&lt;/li&gt;
+  &lt;li&gt;보호&lt;/li&gt;
+  &lt;li&gt;기타..&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h2 id=&quot;프로세스-관리&quot;&gt;프로세스 관리&lt;/h2&gt;
+&lt;p&gt;메인 메모리에서 실행 중인 프로그램을 프로세스라고 한다.&lt;/p&gt;
+&lt;ul&gt;
+  &lt;li&gt;프로세스의 생성, 소멸(creation, deletion)&lt;/li&gt;
+  &lt;li&gt;프로세스 활동 일시 중지, 활동 재개(suspend, resume)&lt;/li&gt;
+  &lt;li&gt;프로세스간 통신(interprocess communication: IPC)&lt;/li&gt;
+  &lt;li&gt;프로세스간 동기화(synchromization)&lt;/li&gt;
+  &lt;li&gt;교착 상태 처리(deadlock handling)&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h2 id=&quot;주기억장치관리메인메모리&quot;&gt;주기억장치관리(메인메모리)&lt;/h2&gt;
+&lt;ul&gt;
+  &lt;li&gt;프로세스에게 메모리 공간 할당 (allocation)&lt;/li&gt;
+  &lt;li&gt;메모리의 어느 부분이 어느 프로세스에게 할당되었는가 추적 및 감시&lt;/li&gt;
+  &lt;li&gt;프로세스 종료 시 메모리 회수 (deallocation)&lt;/li&gt;
+  &lt;li&gt;메모리의 효과적 사용&lt;/li&gt;
+  &lt;li&gt;가상 메모리: 물리적 실제 메모리보다 큰 용량 갖도록&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h2 id=&quot;파일-관리&quot;&gt;파일 관리&lt;/h2&gt;
+&lt;p&gt;원래 디스크는 판 위의 Track과 sector의 집합이지만 파일이라는 논리적 관점으로 볼 수 있게 운영체제가 처리해준다.&lt;/p&gt;
+&lt;ul&gt;
+  &lt;li&gt;파일의 생성과 삭제 (file creation &amp;amp; deletion)&lt;/li&gt;
+  &lt;li&gt;디렉토리(directory)의 생성과 삭제 (또는 폴더 folder)- 기본동작지원: open, close, read, write, create, delete&lt;/li&gt;
+  &lt;li&gt;Track/sector – file 간의 매핑(mapping) – 백업(backup)&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h2 id=&quot;보조기억장치-관리&quot;&gt;보조기억장치 관리&lt;/h2&gt;
+&lt;p&gt;하드디스크, 플래시 메모리.&lt;/p&gt;
+&lt;ul&gt;
+  &lt;li&gt;빈 공간 관리 (free space management) - 포맷 후 비워져있는 Block(섹터/트랙 집합)은 사용하다보면 비워져있는 공간, 사용되고 있는 공간으로 나눠진다. 이 공간을 관리하는 것&lt;/li&gt;
+  &lt;li&gt;저장공간 할당 (storage allocation)&lt;/li&gt;
+  &lt;li&gt;디스크 스케쥴링 (disk scheduling) : 어떻게 하면 헤더를 적게 움직이면서 원하는 트랙이나 섹터를 읽을 수 있을까?&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h2 id=&quot;입출력-장치-관리&quot;&gt;입출력 장치 관리&lt;/h2&gt;
+&lt;ul&gt;
+  &lt;li&gt;장치 드라이브&lt;/li&gt;
+  &lt;li&gt;입출력 장치의 성능 향상 : &lt;span class=&quot;clr-note&quot;&gt;buffering&lt;/span&gt;(입출력 장치에서 읽은 내용을 일단 메모리에 가져오는 것, 한번 메모리에 가져오면 일단 빠르게 읽을 수 있음), &lt;span class=&quot;clr-note&quot;&gt;caching&lt;/span&gt;, &lt;span class=&quot;clr-note&quot;&gt;spooling&lt;/span&gt;(메모리 대신에 하드디스크를 중간 매체로 사용하는 것, 프린트로 출력할 내용을 디스크에 저장해서 cpu가 다른 일 할 수 있게)&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h2 id=&quot;시스템-콜&quot;&gt;시스템 콜&lt;/h2&gt;
+&lt;p&gt;운영체제 서비스를 받기 위한 호출&lt;/p&gt;
+&lt;ul&gt;
+  &lt;li&gt;&lt;span class=&quot;clr-note&quot;&gt;Process&lt;/span&gt;: end, abort, load, execute, create, terminate, get/set
+attributes, wait event, signal event&lt;/li&gt;
+  &lt;li&gt;&lt;span class=&quot;clr-note&quot;&gt;Memory&lt;/span&gt;: allocate, free&lt;/li&gt;
+  &lt;li&gt;&lt;span class=&quot;clr-note&quot;&gt;File&lt;/span&gt;: create, delete, open, close, read, write, get/set attributes&lt;/li&gt;
+  &lt;li&gt;&lt;span class=&quot;clr-note&quot;&gt;Device&lt;/span&gt;: request, release, read, write, get/set attributes,
+attach/detache devices&lt;/li&gt;
+  &lt;li&gt;&lt;span class=&quot;clr-note&quot;&gt;Information&lt;/span&gt;: get/set time, get/set system data&lt;/li&gt;
+  &lt;li&gt;&lt;span class=&quot;clr-note&quot;&gt;Communication&lt;/span&gt;: socket, send, receive&lt;/li&gt;
+&lt;/ul&gt;
+</description>
+        <pubDate>Wed, 25 Dec 2019 00:00:00 +0900</pubDate>
+        <link>http://localhost:4000/operating-system/operating-system-5/</link>
+        <guid isPermaLink="true">http://localhost:4000/operating-system/operating-system-5/</guid>
+        
+        <category>os</category>
+        
+        
+        <category>operating-system</category>
+        
+      </item>
     
       <item>
         <title>운영체제 - 이중모드, 하드웨어 보호</title>
@@ -3188,52 +3272,6 @@ findWords를 어떻게 구현할까…?&lt;/p&gt;
         
         
         <category>codinginterview</category>
-        
-      </item>
-    
-      <item>
-        <title>자바 API 정리</title>
-        <description>&lt;p&gt;JAVA 공부하면서 알게 된 API 정리한 글 입니다.&lt;/p&gt;
-
-&lt;hr /&gt;
-
-&lt;h1 id=&quot;javalangstring&quot;&gt;java.lang.String&lt;/h1&gt;
-
-&lt;h2 id=&quot;compareto&quot;&gt;compareTo&lt;/h2&gt;
-&lt;div class=&quot;language-java highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;kd&quot;&gt;public&lt;/span&gt; &lt;span class=&quot;kt&quot;&gt;int&lt;/span&gt; &lt;span class=&quot;nf&quot;&gt;compareTo&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;String&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;anotherString&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;)&lt;/span&gt;
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
-&lt;p&gt;두 개의 String을 사전적으로 비교하는 함수다.&lt;/p&gt;
-
-&lt;ul&gt;
-  &lt;li&gt;내부적으로
-    &lt;div class=&quot;language-java highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;k&quot;&gt;this&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;na&quot;&gt;charAt&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;k&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;-&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;anotherString&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;na&quot;&gt;charAt&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;k&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;)&lt;/span&gt;
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;    &lt;/div&gt;
-    &lt;p&gt;String을 구성하는 char의 유니코드 값으로 비교를 한다.&lt;/p&gt;
-    &lt;div class=&quot;language-java highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;k&quot;&gt;this&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;na&quot;&gt;length&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;()-&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;anotherString&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;na&quot;&gt;length&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;()&lt;/span&gt;
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;    &lt;/div&gt;
-    &lt;p&gt;각 String의 각 char index의 값이 모두 동일하면, 길이가 더 짧은 스트링이 사전적으로 앞선다.&lt;/p&gt;
-  &lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;p&gt;&lt;strong&gt;사용법&lt;/strong&gt;&lt;/p&gt;
-
-&lt;div class=&quot;language-java highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;kt&quot;&gt;int&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;returnVal&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;string1&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;na&quot;&gt;compareTo&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;string2&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;);&lt;/span&gt;
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
-&lt;p&gt;returnVal = 0, string1 == string2  &lt;br /&gt;
-returnVal &amp;gt; 0, string1 &amp;gt; string2 사전적으로 string1이 string2보다 뒤에 있다는 뜻.  &lt;br /&gt;
-returnVal &amp;lt; 0, string1 &amp;lt; string2 사전적으로 string1이 string2보다 앞에 있다는 뜻.&lt;/p&gt;
-
-&lt;hr /&gt;
-
-</description>
-        <pubDate>Thu, 27 Jun 2019 00:00:00 +0900</pubDate>
-        <link>http://localhost:4000/java/java-api-1/</link>
-        <guid isPermaLink="true">http://localhost:4000/java/java-api-1/</guid>
-        
-        <category>java</category>
-        
-        
-        <category>Java</category>
         
       </item>
     

@@ -303,4 +303,9 @@ var store = [{
         "excerpt":"경성대학교 양희재 교수님 강의를 듣고 정리했습니다. 사용자 모드와 관리자 모드, 하드웨어 보호에 대해 공부했습니다. # 이중모드(Dual Mode) 이중모드의 등장 배경은? 하나의 서버 컴퓨터를 여러 사람이 동시에 사용하는 또는 한 사람이 여러 개의 프로그램을 동시에 사용하는 환경에서 한 사람의 고의/실수 프로그램은 전체에 영향을 끼치게 된다. 예를 들어, 한 사용자 프로그램에서 STOP,...","categories": ["operating-system"],
         "tags": ["os"],
         "url": "http://localhost:4000/operating-system/operating-system-4/",
+        "teaser":"http://localhost:4000/assets/images/alhambra.jpg"},{
+        "title": "운영체제 - 운영체제 주요 서비스 간략하게!",
+        "excerpt":"경성대학교 양희재 교수님 강의를 듣고 정리했습니다. 운영체제의 주요 서비스: 프로세스, 메모리, 파일관리, 시스템 호출 개론에 대해 공부했습니다. # 운영체제의 주요 서비스 프로세스 관리 주 기억장치 관리(메인 메모리 관리) 파일 관리(하드디스크의 파일) 보조기억장치 관리 입출력 장치 관리(프린트, 키보드, 마우스..) 네트워킹 보호 기타.. 프로세스 관리 메인 메모리에서 실행 중인 프로그램을 프로세스라고 한다....","categories": ["operating-system"],
+        "tags": ["os"],
+        "url": "http://localhost:4000/operating-system/operating-system-5/",
         "teaser":"http://localhost:4000/assets/images/alhambra.jpg"}]
