@@ -5,9 +5,29 @@
     <description>라미의 블로그입니다.</description>
     <link>http://localhost:4000/</link>
     <atom:link href="http://localhost:4000/feed.xml" rel="self" type="application/rss+xml"/>
-    <pubDate>Wed, 25 Dec 2019 20:23:08 +0900</pubDate>
-    <lastBuildDate>Wed, 25 Dec 2019 20:23:08 +0900</lastBuildDate>
+    <pubDate>Thu, 26 Dec 2019 16:48:25 +0900</pubDate>
+    <lastBuildDate>Thu, 26 Dec 2019 16:48:25 +0900</lastBuildDate>
     <generator>Jekyll v3.8.5</generator>
+    
+      <item>
+        <title>운영체제 - 프로세스 관리</title>
+        <description>&lt;p&gt;경성대학교 양희재 교수님 강의를 듣고 정리했습니다.   &lt;br /&gt;
+프로세스의 정의, CPU 스케쥴러, 멀티프로그래밍에 대해 공부했습니다.&lt;/p&gt;
+
+&lt;hr /&gt;
+
+&lt;h1 id=&quot;-프로세스&quot;&gt;# 프로세스&lt;/h1&gt;
+</description>
+        <pubDate>Thu, 26 Dec 2019 00:00:00 +0900</pubDate>
+        <link>http://localhost:4000/operating-system/operating-system-7/</link>
+        <guid isPermaLink="true">http://localhost:4000/operating-system/operating-system-7/</guid>
+        
+        <category>os</category>
+        
+        
+        <category>operating-system</category>
+        
+      </item>
     
       <item>
         <title>운영체제 - 프로세스 관리</title>
@@ -80,10 +100,12 @@
 &lt;p&gt;short-term 보다는 적게 long-term 보다는 많게 일어난다. 운영체제는 메인 메모리를 감시하여 메모리에는 올라와있지만 아무 활동을 안하는 프로세스를 디스크에 쫒아낸다. 빈 메모리에는 새로운 프로그램을 올리거나 다른 프로세스에게 할당해준다. 이렇게 프로세스 이미지를 디스크로 쫒아내는 것을 &lt;code class=&quot;codetainer&quot;&gt;Swapping Out&lt;/code&gt; 이라고 하며 반대로 다시 프로세스를 사용하기 위해 메인 메모리에 올리면 &lt;code class=&quot;codetainer&quot;&gt;Swapping In&lt;/code&gt; 이라고 한다. 디스크를 프로세스 이미지를 쫒아내는 목적으로 사용하면 이를 &lt;code class=&quot;codetainer&quot;&gt;Swap&lt;/code&gt; 이라고 한다.&lt;/p&gt;
 
 &lt;h2 id=&quot;context-switching문맥전환&quot;&gt;Context switching(문맥전환)&lt;/h2&gt;
+&lt;p&gt;CPU는 메인 메모리의 여러 프로세스를 동시에 서비스할 수 없어서 Process1을 사용하다가 Process2로 넘어가야한다. 이처럼 프로세스를 전환하는 것을 문맥전환이라고 한다.&lt;/p&gt;
+
 &lt;ul&gt;
-  &lt;li&gt;Scheduler&lt;/li&gt;
-  &lt;li&gt;Dispatcher&lt;/li&gt;
-  &lt;li&gt;Context switching overhead&lt;/li&gt;
+  &lt;li&gt;&lt;span class=&quot;clr-note&quot;&gt;Scheduler&lt;/span&gt; : 큐에서 기다리는 잡 중에 무엇을 선택해서 작업할 지&lt;/li&gt;
+  &lt;li&gt;&lt;span class=&quot;clr-note&quot;&gt;Dispatcher&lt;/span&gt; : CPU가 프로세스1을 서비스하다가 스케줄러에 의해 프로세스2로 문맥전환을 하려는 상황을 생각해보자. 운영체제는 안전한 문맥전환을 위해 Dispatcher 프로그램을 통해 다음의 2가지 일을 한다. 첫째로, 프로세스1의 현재 상태와 MMU(BASE, LIMIT) 정보를 프로세스1을 위한 PCB에 저장한다. 그 다음, 프로세스2의 정보를 복원하여 이전에 중지된 위치에서 재개할 수 있게 한다.&lt;/li&gt;
+  &lt;li&gt;&lt;span class=&quot;clr-note&quot;&gt;Context switching overhead&lt;/span&gt; : 정보를 저장하고 복원하는 과정에서 오버헤드(부담)가 생기기 마련이다. 컴퓨터는 이를 Context switching overhead라고 부른다.&lt;/li&gt;
 &lt;/ul&gt;
 </description>
         <pubDate>Wed, 25 Dec 2019 00:00:00 +0900</pubDate>
@@ -3007,70 +3029,6 @@ S와 D가 친구 C를 공유할 때, (각 사용자는 K명의 친구가 있다,
         <pubDate>Fri, 30 Aug 2019 00:00:00 +0900</pubDate>
         <link>http://localhost:4000/codinginterview/coding-interview-question-2/</link>
         <guid isPermaLink="true">http://localhost:4000/codinginterview/coding-interview-question-2/</guid>
-        
-        
-        <category>codinginterview</category>
-        
-      </item>
-    
-      <item>
-        <title>(코딩인터뷰) 시스템 설계 및 규모 확장성 문제 1 - 중복 URL</title>
-        <description>&lt;p&gt;코딩 인터뷰 완전분석 (CRACKING THE CODING INTERVIEW 6/E) / 게일 라크만 맥도웰 지음 / 인사이트&lt;/p&gt;
-
-&lt;hr /&gt;
-
-&lt;h1 id=&quot;q-중복-url--100억-개의-url이-있다-중복된-문서를-찾으려면-어떻게-해야-하는가-여기서-중복이란-같은-url이라는-뜻이다&quot;&gt;Q. 중복 URL : 100억 개의 URL이 있다. 중복된 문서를 찾으려면 어떻게 해야 하는가? 여기서 ‘중복’이란 ‘같은 URL’이라는 뜻이다.&lt;/h1&gt;
-
-&lt;h2 id=&quot;내풀이&quot;&gt;내풀이&lt;/h2&gt;
-
-&lt;p&gt;만약 100억 개의 URL을 저장할 수 있는 충분한 공간이 있다면, 리스트를 정렬한 후 중복된 값 찾으면 될 것 같다.  &lt;br /&gt;
-아니면 100억 개의 URL을 해시테이블에 저장하는 전처리 과정을 하면 전처리 과정 중에도 중복된 문서를 찾을 수 있고 
-그 후 데이터가 추가될 때도 쉽게 중복 여부를 확인할 수 있을 것 같다.&lt;/p&gt;
-
-&lt;h2 id=&quot;책풀이&quot;&gt;책풀이&lt;/h2&gt;
-
-&lt;h2 id=&quot;1단계--합당한-가정을-세운다&quot;&gt;1단계 : 합당한 가정을 세운다.&lt;/h2&gt;
-
-&lt;p&gt;책은 100억 개의 URL을 처리하기위한 공간을 계산하기위해 다음과 같은 합당한 가정을 세운다.&lt;/p&gt;
-
-&lt;ul&gt;
-  &lt;li&gt;각 URL이 평균적으로 100개의 문자로 구성되어 있고 각 문자는 4바이트라고 가정한다.&lt;/li&gt;
-  &lt;li&gt;100(문자) * 4(bytes) * 100억(url개수) = 4,000,000,000,000 bytes = 4 * 10&lt;sup&gt;12&lt;/sup&gt; = 4TB&lt;/li&gt;
-  &lt;li&gt;즉, 100억 개의 URL을 처리하기위해서는 4TB 정도의 메모리 공간이 필요하다.&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;h2 id=&quot;2단계--현실적-제약을-무시한다&quot;&gt;2단계 : 현실적 제약을 무시한다.&lt;/h2&gt;
-
-&lt;p&gt;모든 데이터를 메모리에 보관할 수 있다고 가정한 후 문제에 접근한다.&lt;/p&gt;
-
-&lt;p&gt;이미 살펴본 URL에 대해 true를 반환하는 해시테이블을 사용하여 문제를 해결할 수 있다.  &lt;br /&gt;
-리스트를 정렬하는 방식은 시간도 더 들고 장점도 없다.&lt;/p&gt;
-
-&lt;h2 id=&quot;3단계--현실로-돌아온다&quot;&gt;3단계 : 현실로 돌아온다.&lt;/h2&gt;
-
-&lt;p&gt;4TB의 데이터를 메모리(RAM)에 전부 올릴 수 없는 상황에서 어떻게 해야하는지 생각한다.&lt;/p&gt;
-
-&lt;p&gt;&lt;strong&gt;해법 #1 : 디스크 저장&lt;/strong&gt;&lt;/p&gt;
-
-&lt;p&gt;각 URL을 .txt 파일에 저장한다.  &lt;br /&gt;
-.txt 파일의 크기는 1GB(10&lt;sup&gt;9&lt;/sup&gt;)로 4TB URL을 저장하기위해서는 4000개의 파일이 필요하다.  &lt;br /&gt;
-x = hash(u) % 4000로 저장할 .txt 파일을 결정한다.   &lt;br /&gt;
-같은 해시값을 갖는 URL은 같은 파일에 저장된다.   &lt;br /&gt;
-각 파일을 메모리에 올려 URL의 해시테이블을 생성한 다음에 중복이 존재하는 지 확인하면 된다.&lt;/p&gt;
-
-&lt;p&gt;&lt;strong&gt;해법 #2 : 데이터를 여러 서버에 분할&lt;/strong&gt;&lt;/p&gt;
-
-&lt;p&gt;본질적으로는 해법1과 같으나, 여러 서버를 사용한다는 차이가 있다.  &lt;br /&gt;
-URL을 .txt라는 파일에 저장하는 대신 서버 x에 전송하는 것이다.&lt;/p&gt;
-&lt;ul&gt;
-  &lt;li&gt;장점 : 병렬처리가능&lt;/li&gt;
-  &lt;li&gt;단점 : 4000개의 서버가 완벽 동작해야함(비현실적)&lt;/li&gt;
-&lt;/ul&gt;
-
-</description>
-        <pubDate>Fri, 30 Aug 2019 00:00:00 +0900</pubDate>
-        <link>http://localhost:4000/codinginterview/coding-interview-question-1/</link>
-        <guid isPermaLink="true">http://localhost:4000/codinginterview/coding-interview-question-1/</guid>
         
         
         <category>codinginterview</category>

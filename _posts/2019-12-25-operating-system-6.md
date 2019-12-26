@@ -70,6 +70,8 @@ I/O, 하드 디스크 사용을 위해서도 <code class="codetainer">Device Que
 short-term 보다는 적게 long-term 보다는 많게 일어난다. 운영체제는 메인 메모리를 감시하여 메모리에는 올라와있지만 아무 활동을 안하는 프로세스를 디스크에 쫒아낸다. 빈 메모리에는 새로운 프로그램을 올리거나 다른 프로세스에게 할당해준다. 이렇게 프로세스 이미지를 디스크로 쫒아내는 것을 <code class="codetainer">Swapping Out</code> 이라고 하며 반대로 다시 프로세스를 사용하기 위해 메인 메모리에 올리면 <code class="codetainer">Swapping In</code> 이라고 한다. 디스크를 프로세스 이미지를 쫒아내는 목적으로 사용하면 이를 <code class="codetainer">Swap</code> 이라고 한다.
 
 ## Context switching(문맥전환)
-- Scheduler
-- Dispatcher
-- Context switching overhead
+CPU는 메인 메모리의 여러 프로세스를 동시에 서비스할 수 없어서 Process1을 사용하다가 Process2로 넘어가야한다. 이처럼 프로세스를 전환하는 것을 문맥전환이라고 한다.
+
+- <span class="clr-note">Scheduler</span> : 큐에서 기다리는 잡 중에 무엇을 선택해서 작업할 지
+- <span class="clr-note">Dispatcher</span> : CPU가 프로세스1을 서비스하다가 스케줄러에 의해 프로세스2로 문맥전환을 하려는 상황을 생각해보자. 운영체제는 안전한 문맥전환을 위해 Dispatcher 프로그램을 통해 다음의 2가지 일을 한다. 첫째로, 프로세스1의 현재 상태와 MMU(BASE, LIMIT) 정보를 프로세스1을 위한 PCB에 저장한다. 그 다음, 프로세스2의 정보를 복원하여 이전에 중지된 위치에서 재개할 수 있게 한다.
+- <span class="clr-note">Context switching overhead</span> : 정보를 저장하고 복원하는 과정에서 오버헤드(부담)가 생기기 마련이다. 컴퓨터는 이를 Context switching overhead라고 부른다.
