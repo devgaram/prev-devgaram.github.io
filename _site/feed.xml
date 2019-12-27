@@ -5,9 +5,108 @@
     <description>라미의 블로그입니다.</description>
     <link>http://localhost:4000/</link>
     <atom:link href="http://localhost:4000/feed.xml" rel="self" type="application/rss+xml"/>
-    <pubDate>Thu, 26 Dec 2019 20:20:05 +0900</pubDate>
-    <lastBuildDate>Thu, 26 Dec 2019 20:20:05 +0900</lastBuildDate>
+    <pubDate>Fri, 27 Dec 2019 15:53:32 +0900</pubDate>
+    <lastBuildDate>Fri, 27 Dec 2019 15:53:32 +0900</lastBuildDate>
     <generator>Jekyll v3.8.5</generator>
+    
+      <item>
+        <title>운영체제 - 프로세스 생성과 종료 및 쓰레드</title>
+        <description>&lt;p&gt;경성대학교 양희재 교수님 강의를 듣고 정리했습니다.   &lt;br /&gt;
+프로세스 생성과 종료 및 쓰레드에 대해 공부했습니다.&lt;/p&gt;
+
+&lt;hr /&gt;
+
+&lt;h1 id=&quot;-process-creation프로세스-생성&quot;&gt;# Process Creation(프로세스 생성)&lt;/h1&gt;
+
+&lt;h2 id=&quot;프로세스는-프로세스에-의해-만들어진다&quot;&gt;프로세스는 프로세스에 의해 만들어진다!&lt;/h2&gt;
+&lt;p&gt;부팅 후 OS가 프로세스를 만들면 그 프로세스에 자식 프로세스가 만들어지고 또 자식의 자식 프로세스가 만들어진다.&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;/assets/images/2019-12-27-img/1.png&quot; alt=&quot;process tree&quot; /&gt;&lt;br /&gt;&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;부모 프로세스(Parent process)&lt;/li&gt;
+  &lt;li&gt;자식 프로세스(Child process)&lt;/li&gt;
+  &lt;li&gt;형제 프로세스(Sibling process) : 부모가 같은 프로세스&lt;/li&gt;
+  &lt;li&gt;프로세스 트리 (process tree) = 족보, 가계도&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h2 id=&quot;process-identifier-pid&quot;&gt;Process Identifier (PID)&lt;/h2&gt;
+&lt;p&gt;프로세스의 유니크 번호로 주민등록번호와 비슷한 개념이다. 절대 PID 중복되면 안됀다. cf) PPID : 부모 프로세스의 PID&lt;/p&gt;
+
+&lt;h2 id=&quot;프로세스-생성&quot;&gt;프로세스 생성&lt;/h2&gt;
+&lt;ul&gt;
+  &lt;li&gt;fork() system call – 부모 프로세스 복사해서 새로운 프로그램을 만든다.&lt;/li&gt;
+  &lt;li&gt;exec() – 새로 만들어진 프로그램의 실행파일을 메모리로 가져온다.&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h1 id=&quot;-process-termination프로세스-종료&quot;&gt;# Process Termination(프로세스 종료)&lt;/h1&gt;
+&lt;ul&gt;
+  &lt;li&gt;exit() system call - 프로세스를 종료시킨다. 해당 프로세스가 가졌던 모든 자원(메모리, 열었던 파일, 프린터같은 입출력 장치 등)을 회수해서 O/S에게 반환한다.&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h1 id=&quot;-쓰레드thread&quot;&gt;# 쓰레드(Thread)&lt;/h1&gt;
+
+&lt;p&gt;쓰레드란? &lt;span class=&quot;clr-note&quot;&gt;프로그램 내부의 흐름, 맥&lt;/span&gt;이다.&lt;/p&gt;
+
+&lt;div class=&quot;language-java highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;kd&quot;&gt;class&lt;/span&gt; &lt;span class=&quot;nc&quot;&gt;Test&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;{&lt;/span&gt;
+  &lt;span class=&quot;kd&quot;&gt;public&lt;/span&gt; &lt;span class=&quot;kd&quot;&gt;static&lt;/span&gt; &lt;span class=&quot;kt&quot;&gt;void&lt;/span&gt; &lt;span class=&quot;nf&quot;&gt;main&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;String&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;[]&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;args&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;{&lt;/span&gt;
+    &lt;span class=&quot;kt&quot;&gt;int&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;n&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;0&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;;&lt;/span&gt;
+    &lt;span class=&quot;kt&quot;&gt;int&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;m&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;6&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;;&lt;/span&gt;
+    &lt;span class=&quot;n&quot;&gt;System&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;na&quot;&gt;out&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;na&quot;&gt;println&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;n&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;+&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;m&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;);&lt;/span&gt;
+    &lt;span class=&quot;k&quot;&gt;while&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;n&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;&amp;lt;&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;m&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;n&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;++;&lt;/span&gt;
+    &lt;span class=&quot;n&quot;&gt;System&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;na&quot;&gt;out&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;na&quot;&gt;println&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;Bye&quot;&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;);&lt;/span&gt;
+  &lt;span class=&quot;o&quot;&gt;}&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;이처럼 하나의 프로그램에는 보통 맥(쓰레드)이 하나 있으나 어떤 프로그램은 맥(쓰레드)이 여러 개가 있다. 하나의 프로그램에 2개 이상의 맥이 있으면 &lt;span class=&quot;clr-note&quot;&gt;다중 쓰레드 (Multithreads)&lt;/span&gt;라고 한다. 맥이 빠른 시간 간격으로 스위칭되기 때문에 여러 맥이 동시에 실행되는 것처럼 보인다.(=&lt;code class=&quot;codetainer&quot;&gt;Concurrent&lt;/code&gt; 동시성) cf) &lt;code class=&quot;codetainer&quot;&gt;simultaneous&lt;/code&gt;는 진짜로 동시에 실행되는 경우를 말하며 CPU가 하나면 일어날 수 없는 일이다.&lt;/p&gt;
+
+&lt;h2 id=&quot;예시&quot;&gt;예시&lt;/h2&gt;
+&lt;p&gt;Web browser(화면 출력하는 쓰레드 + 데이터 읽어오는 쓰레드), Word processor(화면 출력하는 쓰레드 + 키보드 입력 받는 쓰레드 + 철자/문법
+오류 확인 쓰레드), 음악 연주기, 동영상 플레이어, Eclipse IDE&lt;/p&gt;
+
+&lt;p&gt;우리가 이전 포스팅에서는 &lt;code class=&quot;codetainer&quot;&gt;Process1 -&amp;gt; Process2 -&amp;gt; Process3...&lt;/code&gt;로 프로세스가 스위칭된다고 했지만 사실 운영체제는 다중 스레드를 지원하고 있어서 다음과 같은 흐름을 가진다. &lt;code class=&quot;codetainer&quot;&gt;Thread1 of Process1 -&amp;gt; Thread2 of Process1 -&amp;gt; Thread1 of Process2 -&amp;gt; Thread2 of Process2 -&amp;gt; Thread3 of Process2 .....&lt;/code&gt;&lt;/p&gt;
+
+&lt;h2 id=&quot;쓰레드-구조&quot;&gt;쓰레드 구조&lt;/h2&gt;
+
+&lt;p&gt;&lt;img src=&quot;/assets/images/2019-12-27-img/2.JPG&quot; alt=&quot;process&quot; /&gt;&lt;br /&gt;&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;프로세스의 메모리 공간 공유 (code, data)&lt;/li&gt;
+  &lt;li&gt;프로세스의 자원 공유 (file, i/o, …)&lt;/li&gt;
+  &lt;li&gt;비공유: 개별적인 PC(program counter), SP(stack pointer), registers, stack&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;&lt;img src=&quot;/assets/images/2019-12-27-img/3.JPG&quot; alt=&quot;process&quot; /&gt;&lt;br /&gt;&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;vs 프로세스&lt;/strong&gt; &lt;br /&gt;
+프로세스는 각각 독립된 메모리 영역(Code, Data, Stack, Heap)을 할당받는다. 즉, 각 프로세스는 별도의 주소 공간에서 실행되고 한 프로세스는 다른 프로세스의 변수나 자료구조에 접근할 수 없다. 다른 프로세스의 자원에 접근하려면 &lt;code class=&quot;codetainer&quot;&gt;프로세스 간의 통신(IPC, inter-process communication, 파일, 소켓, 파이프...)&lt;/code&gt;을 사용해야 한다.&lt;/p&gt;
+
+&lt;h1 id=&quot;-잠깐-컴퓨터-구조-지식을-채워보자&quot;&gt;# 잠깐 컴퓨터 구조 지식을 채워보자.&lt;/h1&gt;
+
+&lt;h2 id=&quot;register레지스터&quot;&gt;Register(레지스터)&lt;/h2&gt;
+&lt;p&gt;CPU 내부에서 처리할 명령어나 연산의 중간 결과값 등을 일시적으로 기억하는 임시 기억장소다.&lt;/p&gt;
+&lt;ul&gt;
+  &lt;li&gt;데이터 레지스터(data register) : CPU가 처리하는 데이터를 임시로 저장&lt;/li&gt;
+  &lt;li&gt;&lt;code class=&quot;codetainer&quot;&gt;주소 레지스터(address register)&lt;/code&gt; : 기억장치를 액세스할 주소를 저장하며 포인터(Pointer)라고도 한다. 스택 포인터(SP, Stack Pointer), 베이스 포인터(BP, Base Pointer), 인덱스 포인터(IX, Index Pointer)가 있다.&lt;/li&gt;
+  &lt;li&gt;범용 레지스터(GPR) :주소 레지스터 혹은 데이터 레지스터로 사용될 수 있는 레지스터&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h2 id=&quot;pc&quot;&gt;PC&lt;/h2&gt;
+&lt;p&gt;프로그램 카운터(Program counter, PC)는 마이크로프로세서(중앙 처리 장치) 내부에 있는 레지스터 중의 하나로서, 다음에 실행될 명령어의 주소를 가지고 있어 실행할 기계어 코드의 위치를 지정한다. 때문에 명령어 포인터라고도 한다.&lt;/p&gt;
+
+&lt;h2 id=&quot;버스&quot;&gt;버스&lt;/h2&gt;
+&lt;p&gt;CPU, 메모리, I/O 장치 등과 상호 필요한 정보를 교환하기 위해 연결된 공동의 전송선이다.&lt;/p&gt;
+</description>
+        <pubDate>Fri, 27 Dec 2019 00:00:00 +0900</pubDate>
+        <link>http://localhost:4000/operating-system/operating-system-8/</link>
+        <guid isPermaLink="true">http://localhost:4000/operating-system/operating-system-8/</guid>
+        
+        <category>os</category>
+        
+        
+        <category>operating-system</category>
+        
+      </item>
     
       <item>
         <title>운영체제 - CPU Scheduling</title>
@@ -3056,77 +3155,6 @@ LRU는 OS의 페이지 교체 알고리즘의 하나로 최근에 가장 오랫�
         <pubDate>Fri, 30 Aug 2019 00:00:00 +0900</pubDate>
         <link>http://localhost:4000/codinginterview/coding-interview-question-3/</link>
         <guid isPermaLink="true">http://localhost:4000/codinginterview/coding-interview-question-3/</guid>
-        
-        
-        <category>codinginterview</category>
-        
-      </item>
-    
-      <item>
-        <title>(코딩인터뷰) 시스템 설계 및 규모 확장성 문제 2 - 소셜네트워크</title>
-        <description>&lt;p&gt;코딩 인터뷰 완전분석 (CRACKING THE CODING INTERVIEW 6/E) / 게일 라크만 맥도웰 지음 / 인사이트&lt;/p&gt;
-
-&lt;hr /&gt;
-
-&lt;h1 id=&quot;q-소셜-네트워크--페이스북이나-링크드인과-같은-대규모-소셜-네트워크를-위한-자료구조는-어떻게-설계하겠는가-두-사람-사이의-최단-경로를-보여주는-알고리즘은-어떻게-설계하겠는가-가령-나-밥-수잔-제이슨-당신&quot;&gt;Q. 소셜 네트워크 : 페이스북이나 링크드인과 같은 대규모 소셜 네트워크를 위한 자료구조는 어떻게 설계하겠는가? 두 사람 사이의 최단 경로를 보여주는 알고리즘은 어떻게 설계하겠는가? (가령, 나-&amp;gt;밥-&amp;gt;수잔-&amp;gt;제이슨-&amp;gt;당신)&lt;/h1&gt;
-
-&lt;h2 id=&quot;내풀이&quot;&gt;내풀이&lt;/h2&gt;
-
-&lt;p&gt;‘나’를 기준으로 ‘나’의 친구들을 연결할 필요가 있고, ‘친구’의 친구들을 연결할 필요가 있다.  &lt;br /&gt;
-각 사용자를 ‘노드’로 정의하고 관계를 ‘에지’로 정의한다고 하면 자료구조로 그래프를 사용하는 게 적절하다고 생각한다. &lt;br /&gt;
-사용자 간의 경로 탐색은 너비우선탐색(BFS)로 하는 것이 적절하다고 생각한다.
-‘나’를 기준으로 동심원을 그리며 찾는 것이 깊이우선탐색(DFS)보다 낫다.
-DFS는 ‘노드’를 기준으로 방문하지않은 노드 끝까지 갔다가 돌아가는 식으로 탐색하므로 최단경로가 아닐 수도 있다.&lt;/p&gt;
-
-&lt;h2 id=&quot;책풀이&quot;&gt;책풀이&lt;/h2&gt;
-
-&lt;h2 id=&quot;단계1--문제를-단순화하기---수백만이-아닌-10명의-사용자로-생각해보기&quot;&gt;단계1 : 문제를 단순화하기 - 수백만이 아닌 10명의 사용자로 생각해보기&lt;/h2&gt;
-
-&lt;p&gt;각 사용자를 노드, 친구 관계를 간선으로 설정하여 하나의 그래프를 만들 수 있다.  &lt;br /&gt;
-두 사용자 간의 경로는 한 사용자에서 시작해서 너비 우선 탐색을 돌려보면된다.
-혹은 양방향 너비 우선 탐색을 할 수도 있다.   &lt;br /&gt;
-하나는 출발지에서, 나머지 하나는 도착지에서 시작해서 너비 우선 탐색 두 개를 동시에 돌리는 것을 말한다.   &lt;br /&gt;
-두 탐색이 어느 지점에서 충돌하는 순간 경로를 찾은 것이다.&lt;/p&gt;
-
-&lt;p&gt;&lt;strong&gt;깊이우선탐색을 사용하지 않는 이유는?&lt;/strong&gt;   &lt;br /&gt;
-깊이 우선 탐색은 단순히 경로 하나를 찾기 때문이고, 이 경로가 가장 짧은 경로가 아닐 수도 있다.  &lt;br /&gt;
-또한, 경로 하나를 찾는 과정도 비효율적이다. 두 사용자가 1촌 관계라 하더라도 하위 트리에 존재하는 수백만 개의 노드를 탐색하게 될 수 있기 때문이다.&lt;/p&gt;
-
-&lt;p&gt;&lt;strong&gt;구현방법&lt;/strong&gt;  &lt;br /&gt;
-&lt;img src=&quot;/assets/images/2019-08-30-img/2-1.jpg&quot; alt=&quot;1&quot; /&gt;    &lt;br /&gt; 
-&lt;img src=&quot;/assets/images/2019-08-30-img/2-2.jpg&quot; alt=&quot;2&quot; /&gt;     &lt;br /&gt;
-&lt;img src=&quot;/assets/images/2019-08-30-img/2-3.jpg&quot; alt=&quot;3&quot; /&gt;     &lt;br /&gt;
-&lt;img src=&quot;/assets/images/2019-08-30-img/2-4.jpg&quot; alt=&quot;4&quot; /&gt;     &lt;br /&gt;&lt;/p&gt;
-
-&lt;p&gt;양방향 너비 우선 탐색이 일반 너비 우선 탐색보다 빠르다.  &lt;br /&gt;
-S와 D가 친구 C를 공유할 때, (각 사용자는 K명의 친구가 있다, q는 경로의 길이)&lt;/p&gt;
-&lt;ul&gt;
-  &lt;li&gt;일반적인 너비 우선 탐색으로 S -&amp;gt; D로 가려면 대략 K + K*K개의 노드를 거쳐야 한다. = Q(K&lt;sup&gt;q&lt;/sup&gt;)&lt;/li&gt;
-  &lt;li&gt;양방향 너비 우선 탐색은 S 친구 K, D친구 K로 2K 노드만 거치면 된다. = Q(K&lt;sup&gt;q/2&lt;/sup&gt;)&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;p&gt;단, 양방향 너비 우선 탐색은 시작 지점과 도착 지점 모두 접근 가능할 때에나 사용 가능하다.&lt;/p&gt;
-
-&lt;h2 id=&quot;단계2--수백만-사용자의-처리&quot;&gt;단계2 : 수백만 사용자의 처리&lt;/h2&gt;
-
-&lt;p&gt;링크드인이나 페이스북 규모의 서비스를 만들 때에는 컴퓨터 하나만으로는 부족하다.  &lt;br /&gt;
-다시 말해 Person을 위와 같이 단순하게 설계해서는 제대로 동작하지 않을 것이라는 뜻이다.   &lt;br /&gt;
-우리가 찾는 ‘친구’는 같은 서버에 있지 않을 수도 있다.  &lt;br /&gt;
-따라서 ID로 구성되는 친구 리스트를 만들고, ID를 통해 해당 사용자 정보가 있는 컴퓨터 정보를 얻는다.   &lt;br /&gt;
-얻은 컴퓨터 정보 안에서 사용자 정보를 다시 탐색한다.  &lt;br /&gt;
-효율적 탐색을 위해서 해시테이블을 사용한다.&lt;/p&gt;
-
-&lt;p&gt;&lt;strong&gt;최적화하기&lt;/strong&gt;&lt;/p&gt;
-
-&lt;ul&gt;
-  &lt;li&gt;다른 서버에 대한 탐색을 줄인다.&lt;/li&gt;
-  &lt;li&gt;컴퓨터에 사용자 정보를 분배할 때, 무작위로 나누는 것이 아닌 사용자가 거주하는 나라나 시, 도, 군 등의 정보를 이용한다.&lt;/li&gt;
-&lt;/ul&gt;
-
-</description>
-        <pubDate>Fri, 30 Aug 2019 00:00:00 +0900</pubDate>
-        <link>http://localhost:4000/codinginterview/coding-interview-question-2/</link>
-        <guid isPermaLink="true">http://localhost:4000/codinginterview/coding-interview-question-2/</guid>
         
         
         <category>codinginterview</category>

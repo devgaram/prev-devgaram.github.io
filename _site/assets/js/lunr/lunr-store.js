@@ -318,4 +318,9 @@ var store = [{
         "excerpt":"경성대학교 양희재 교수님 강의를 듣고 정리했습니다. CPU 스케줄링 용어 및 척도, 알고리즘에 대해 공부했습니다. # CPU 스케줄링 관련 용어 정리 Preemptive(선점) vs Non-preemptive(비선점) Preemptive(선점)은 I/O 인터럽트, 프로세스 실행 완료의 경우가 아님에도 CPU 서비스를 받고 있는 프로세스를 강제로 쫒아내 다른 프로세스를 실행하는 것을 말한다. 예) 응급실에서 응급 환자를 우선 치료하는 것...","categories": ["operating-system"],
         "tags": ["os"],
         "url": "http://localhost:4000/operating-system/operating-system-7/",
+        "teaser":"http://localhost:4000/assets/images/alhambra.jpg"},{
+        "title": "운영체제 - 프로세스 생성과 종료 및 쓰레드",
+        "excerpt":"경성대학교 양희재 교수님 강의를 듣고 정리했습니다. 프로세스 생성과 종료 및 쓰레드에 대해 공부했습니다. # Process Creation(프로세스 생성) 프로세스는 프로세스에 의해 만들어진다! 부팅 후 OS가 프로세스를 만들면 그 프로세스에 자식 프로세스가 만들어지고 또 자식의 자식 프로세스가 만들어진다. 부모 프로세스(Parent process) 자식 프로세스(Child process) 형제 프로세스(Sibling process) : 부모가 같은 프로세스 프로세스...","categories": ["operating-system"],
+        "tags": ["os"],
+        "url": "http://localhost:4000/operating-system/operating-system-8/",
         "teaser":"http://localhost:4000/assets/images/alhambra.jpg"}]
