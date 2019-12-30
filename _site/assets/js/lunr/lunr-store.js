@@ -323,4 +323,9 @@ var store = [{
         "excerpt":"경성대학교 양희재 교수님 강의를 듣고 정리했습니다. 프로세스 생성과 종료 및 쓰레드에 대해 공부했습니다. # Process Creation(프로세스 생성) 프로세스는 프로세스에 의해 만들어진다! 부팅 후 OS가 프로세스를 만들면 그 프로세스에 자식 프로세스가 만들어지고 또 자식의 자식 프로세스가 만들어진다. 부모 프로세스(Parent process) 자식 프로세스(Child process) 형제 프로세스(Sibling process) : 부모가 같은 프로세스 프로세스...","categories": ["operating-system"],
         "tags": ["os"],
         "url": "http://localhost:4000/operating-system/operating-system-8/",
+        "teaser":"http://localhost:4000/assets/images/alhambra.jpg"},{
+        "title": "프로그래머스 - lv3 네트워크, lv2 짝지어 제거하기",
+        "excerpt":"# LV3 네트워크 각 행을 순회해서 컬럼 값이 1일 때, 해당 col을 row로 하여 또 순회하는 식으로 해결했다. function solution(n, computers) { var answer = 0; var arr = []; arr = computers.reduce((acc, cur) =&gt; { acc.push(cur.includes(1)); return acc; }, []); for (let i=0; i&lt;n; i++) { if (arr[i]) {...","categories": ["algorithm"],
+        "tags": [],
+        "url": "http://localhost:4000/algorithm/algorithm-12/",
         "teaser":"http://localhost:4000/assets/images/alhambra.jpg"}]
